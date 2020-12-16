@@ -1,1 +1,18 @@
 \section{Alert Production in Year One}
+The RUbin Construction Data Management (DM) Science team (DM-SST), carried out a study, of several options for Alert Production in Year 1, reported in DMTN-107: Options for Alert Production in LSST Operations Year 1.  
+Representatives of the Rubin Project Science Team (PST), DM-SST and Operations reviewed the proposed DM-SST options at a meeting in October, 2019 and converged on a proposed strategy for Alerts in year 1:
+
+\begin{itemize}
+\item Commissioning – Data  Templates: Build templates, where possible, from all commissioning data before the start of year one, and use them to generate alerts during year one. 
+\item Year One – Data Templates: Build templates progressively from data obtained during year one  (e.g., on a monthly timescale), and use them to generate alerts during year one,  either instead of, or in addition to using commissioning data to build templates.
+\end{itemize}
+
+To handle alert generation outside the template building process attached to theannual DRP, the Construction project initiated a change request to include incremental templates in the DM system workflow. This change has been accepted and is now part of the baselined DM project in constructiom. A summary of the changes is the following:
+
+\begin{itemize} 
+\item LCR-2273: Construct Image Differencing Templates Outside DRP, new requirment 1.4.6 Template Coadds ID: DMS-REQ-0280, The DMS shall periodically create Template Images in each of the u,g,r,i,z,y passbands. Templates may be constructed as part of executing the Data Release Production payload, or by a separate execution of the Template Generation payload. Prior to their availability from Data Releases these coadds shall be created incrementally when sufficient data passing relevant quality criteria is available. 
+\item To enable artifact rejection, templates will be built with at least three images in year one, and five in subsequent years.  (Rubin OSS-REQ-0158)
+\item Once a template is produced for a sky position and filter it will not be replaced until the next Data Release to avoid repeated baseline changes.
+\item Templates are not necessarily built from the first N images that are collected.
+\end{itemize}
+
