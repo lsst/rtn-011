@@ -3,9 +3,23 @@
 \input{meta}
 
 % Package imports go here.
+\usepackage{xspace}
+\usepackage{hyperref}
 
 % Local commands go here.
+\newcommand{\es}{Early Science\,}\xspace
+\newcommand{\sv}{Science Verification\,}\xspace
+\newcommand{\dpv}{Data Preview\,}\xspace
+\newcommand{\dpvs}{Data Previews\,}\xspace
+\newcommand{\dpzero}{Data Preview 0 (DP0)\,}\xspace
+\newcommand{\dpone}{Data Preview 1 (DP1)\,}\xspace
+\newcommand{\dptwo}{Data Preview 2 (DP2)\,}\xspace
+\newcommand{\drone}{Data Release 1 (DR1)\,}\xspace
+\newcommand{\tvssc}{Transients and Variable Stars Science Collaboration (tvssc)\,}\xspace
+\newcommand{\sssc}{Solar System Science Collaboration (sssc)\,}\xspace
 
+
+\setcounter{tocdepth}{4}
 %If you want glossaries
 %\input{aglossary.tex}
 %\makeglossaries
@@ -16,7 +30,7 @@
 % \setDocSubtitle{A subtitle}
 
 \author{%
-Leanne~~Guy, Bob~ Blum, \v{Z}eljko~Ivezi\'{c}, add your name as you contribute.
+Leanne~P.~Guy, Eric~Bellm, Bob~Blum, \v{Z}eljko~Ivezi\'{c}, author list incomplete ... add your name as you contribute.
 }
 
 \setDocRef{RTN-011}
@@ -28,7 +42,10 @@ Leanne~~Guy, Bob~ Blum, \v{Z}eljko~Ivezi\'{c}, add your name as you contribute.
 % \setDocCurator{The Curator of this Document}
 
 \setDocAbstract{%
-Science during year one is a priority for Rubin Observatory operations. This document provides the plans for enabling early science.  It is a living document that will evolve over the course of the pre-operations period. 
+Science during year one is a priority for Rubin Observatory operations. This document provides the plans for enabling early science. 
+
+
+ It is a living document that will evolve over the course of the pre-operations period. 
 }
 
 % Change history defined here.
@@ -37,10 +54,15 @@ Science during year one is a priority for Rubin Observatory operations. This doc
 % See LPM-51 for version number policy.
 \setDocChangeRecord{%
   \addtohist{1}{2020-10-30}{First draft}{Leanne Guy}
-  \addtohist{1}{2020-12-16}{Drft 1.1}{Bob Blum}
-}
+  \addtohist{2}{2020-12-16}{Draft 1.1}{Bob Blum}
+  \addtohist{3}{2021-10-08}{Rework structure}{Leanne Guy}
+  }
 
 
+\graphicspath{{./}{figures/}}
+\setcounter{tocdepth}{3}
+
+%%%%%% Begin %%%%%%
 \begin{document}
 
 % Create the title page.
@@ -51,13 +73,12 @@ Science during year one is a priority for Rubin Observatory operations. This doc
 % ADD CONTENT HERE
 % You can also use the \input command to include several content files.
 \input{intro}
-\input{sciencedrivers}
+\input{science}
 \input{commissioning}
-\input{too}
-\input{static}
 \input{alertproduction}
+\input{data}
 \input{survey}
-
+\input{consultation}
 
 \appendix
 % Include all the relevant bib files.
