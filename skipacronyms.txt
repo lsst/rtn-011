@@ -3,6 +3,7 @@ PATH
 MM
 DD
 YYYY
+XXX
 Z
 AS
 I
@@ -10,3 +11,6 @@ http
 p
 s
 A
+COM
+REQ
+ID

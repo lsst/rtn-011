@@ -4,4 +4,7 @@
 #   ACRONYM:Definition
 #
 # Example:
-#   MIA:Missing In Action
+TOO:Target of Opportunity
+MAF:Metrics Analysis Framework
+PP:Prompt Processing
+ES:Early Science

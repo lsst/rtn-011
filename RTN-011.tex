@@ -3,9 +3,26 @@
 \input{meta}
 
 % Package imports go here.
+\usepackage{xspace}
+\usepackage{hyperref}
 
 % Local commands go here.
+\newcommand{\es}{Early Science\,}\xspace
+\newcommand{\sv}{Science Verification\,}\xspace
+\newcommand{\dpv}{Data Preview\,}\xspace
+\newcommand{\dpvs}{Data Previews\,}\xspace
+\newcommand{\dpzero}{Data Preview 0 (DP0)\,}\xspace
+\newcommand{\dpone}{Data Preview 1 (DP1)\,}\xspace
+\newcommand{\dptwo}{Data Preview 2 (DP2)\,}\xspace
+\newcommand{\drone}{Data Release 1 (DR1)\,}\xspace
+\newcommand{\tvssc}{Transients and Variable Stars Science Collaboration (tvssc)\,}\xspace
+\newcommand{\sssc}{Solar System Science Collaboration (sssc)\,}\xspace
+\newcommand{\diffim}{Difference Imaging\,}\xspace
+\newcommand{\drp}{Data Release Production (DRP)\,}\xspace
+\newcommand{\ap}{Alert Production (AP)\,}\xspace
+\newcommand{\ro}{Rubin Observatory Production\,}\xspace
 
+\setcounter{tocdepth}{4}
 %If you want glossaries
 %\input{aglossary.tex}
 %\makeglossaries
@@ -16,7 +33,7 @@
 % \setDocSubtitle{A subtitle}
 
 \author{%
-Leanne~~Guy, Bob~ Blum, \v{Z}eljko~Ivezi\'{c}, add your name as you contribute.
+Leanne~P.~Guy, Eric~Bellm, Bob~Blum, \v{Z}eljko~Ivezi\'{c}, author list incomplete ... add your name as you contribute.
 }
 
 \setDocRef{RTN-011}
@@ -27,9 +44,14 @@ Leanne~~Guy, Bob~ Blum, \v{Z}eljko~Ivezi\'{c}, add your name as you contribute.
 % Optional: name of the document's curator
 % \setDocCurator{The Curator of this Document}
 
+% Leanne 
 \setDocAbstract{%
-Science during year one is a priority for Rubin Observatory operations. This document provides the plans for enabling early science.  It is a living document that will evolve over the course of the pre-operations period. 
+Science during the first year of Rubin Observatory / LSST operations is a high priority. 
+Alerts to  of transient, variable, and/or moving objects. are the only data product that will be immediately available (within 60 seconds of image readout) and publicly shareable, i.e not subject to a proprietary period. 
+The worldwide community is actively preparing to process the LSST alert stream and use it to generate groundbreaking scientific results. This note describes the \ro plan for ensuring \es. It is a living document that will evolve over the course of the remainder of the construction project and up until \drone. 
+
 }
+
 
 % Change history defined here.
 % Order: oldest first.
@@ -37,9 +59,15 @@ Science during year one is a priority for Rubin Observatory operations. This doc
 % See LPM-51 for version number policy.
 \setDocChangeRecord{%
   \addtohist{1}{2020-10-30}{First draft}{Leanne Guy}
-}
+  \addtohist{2}{2020-12-16}{Draft 1.1}{Bob Blum}
+  \addtohist{3}{2021-10-08}{Rework structure}{Leanne Guy}
+  }
 
 
+\graphicspath{{./}{figures/}}
+\setcounter{tocdepth}{3}
+
+%%%%%% Begin %%%%%%
 \begin{document}
 
 % Create the title page.
@@ -48,14 +76,26 @@ Science during year one is a priority for Rubin Observatory operations. This doc
 % use \mkshorttitle to remove the extra pages
 
 % ADD CONTENT HERE
-% You can also use the \input command to include several content files.
+% Leanne
 \input{intro}
-\input{sciencedrivers}
+
+% Leanne 
+\input{science}
+
+% Leanne 
 \input{commissioning}
+
+% Eric
 \input{alertproduction}
+
+% Leanne
+\input{data}
+
+% Zeljko 
 \input{survey}
 
-
+% Amanda
+\input{consultation}
 
 \appendix
 % Include all the relevant bib files.
@@ -69,9 +109,5 @@ Science during year one is a priority for Rubin Observatory operations. This doc
 \input{acronyms.tex}
 % If you want glossary uncomment below -- comment out the two lines above
 %\printglossaries
-
-
-
-
 
 \end{document}
