@@ -25,6 +25,7 @@ $(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex
 acronyms.tex: $(tex) myacronyms.txt
 	$(TEXMFHOME)/../bin/generateAcronyms.py -t "DM" $(tex)
 
+
 # If you want a glossary you must manually run generateAcronyms.py  -gu to put the \gls in your files.
 aglossary.tex :$(tex) myacronyms.txt
 	generateAcronyms.py  -g $(tex)
@@ -34,6 +35,9 @@ aglossary.tex :$(tex) myacronyms.txt
 clean:
 	latexmk -c
 	rm -f $(DOCNAME).bbl
+	rm -f $(DOCNAME).out
+	rm -f $(DOCNAME).dvi
+	rm -f $(DOCNAME).xdv
 	rm -f $(DOCNAME).pdf
 	rm -f meta.tex
 
