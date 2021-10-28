@@ -1,35 +1,36 @@
 \section{Introduction}
 
-This  note describes plan for ensuring the Rubin community will have sufficient data access, data products, and data analysis tools to produce early science when the full Legacy Survey of Space and Time (LSST)  begins. The start date for full survey operations is uncertain at this time, but we assume for purposes of planning that it will be no earlier than October 1, 2023. 
+This  note describes the plan for ensuring the Rubin community will have sufficient data access, data products, and data analysis tools to produce early science when the full Legacy Survey of Space and Time (LSST)  begins. The start date for full survey operations is planned for April 1, 2024 with considerable uncertainty. As of November 2021, the construction project schedule shows completetion between December 2023 and July 2024 (i.e. planned finish and finish with contingency). It is unlikely the project will finish in December 2023 and highly likley it will finish by July 2024. 
 
 One of the four science pillars of LSST is time-domain astronomy, which is enabled by alerts
 on LSST detections of transient, variable, and/or moving objects. 
-Alerts are the only data product that will be immediately available (within 60 seconds of image readout) and publicly
-shareable (not subject to a proprietary period; LSE-163). 
-The worldwide community has been actively preparing to process the LSST alert stream and use it to generate groundbreaking scientific results 
+Alerts are the only data product that will be immediately available (within 60 seconds of image readout) and publicly shareable (not subject to a proprietary period; LSE-163 and Rubin Data Policy RDO-013). 
+The worldwide community has been actively preparing to process the LSST alert stream and use it to generate groundbreaking scientific results. Some alert production is expected as soon as operations begin based on template generation in the construction project final commissioning phase.  
 
 \subsection{Definition of Early Science}  \label{ssec:defn}
 
-Early Science (ES) is any science enabled by Rubin by its community that happens before Data Release 1 (DR1) at the end of the first year of full survey operations. Expectations for early science have largely been high due to the extensive amount of on sky time planned in commissioning and science verification (SV).  
+Given that a first release of catalog data in operations requires significant progress in year 1, incuding to generate final templates for alert production, Early Science (ES) is defined as any science enabled by Rubin for its community that happens before Data Release 1 (DR1) at the end of the first year of full survey operations. Expectations for early science have largely been high due to the extensive amount of on sky time planned in commissioning and science verification (SV).  
 
 \subsection{Motivations for Early Science}
-Explain that the motivation for the \es programme is that in the current baseline there will be no science before \drone. 
-This is due to the fact that templates needed for \diffim are produced in \drp and \drone is not until 1 year after the start of operations. 
+The motivation for an \es programme is that in the current {\it baseline} there will be no {\it baseline} or regular science data products before \drone. 
+This is due to the fact that {\it baseline} templates needed for \diffim are produced in \drp and \drone is not until one year after the start of operations.
+
+To insure \es is enabled, Rubin pre-operations is working with the construction team to provide Data Previews. These are data release-like data products made from appropriate commissioning data, both from ComCam and LSSTCam. The Rubin alert production in commissioning and first year of operations will incliude the capability to build incremental templates. Such templates will use available images in a sub-set of filters and over an incomplete sky footprint to allow for partial alert generation. How extensive these templates are will depend on the overall success of commissioning including Science Validation surveys and other significant data sets. These same data sets will provide static sky data-release like products as well in the data previews. The success of \es thne depends on various scenrios comming out of commissioning as we transition into operations as described next.   
 
 \subsection{Early Science scenarios } \label{ssec:scenarios}
 Recent planning on the construction project has led to a reduced amount of on--sky time and SV time.
-As Rubin construction moves through the challenging phase of System Integration, Test and Commissioning (SIT-COM), on--sky time could get squeezed more. The Operations team is thus planning for various outcomes that might require special attention to producing ES opportunities in the first part of regular operations to ensure the community has access to exciting data and data sets while the survey begins its relentless coverage of the sky before DR1.
+As Rubin construction moves through the challenging phase of System Integration, Test and Commissioning (SIT-COM), on--sky time could get squeezed more. The Operations team is thus planning for various outcomes that might require special attention to producing \es opportunities in the first part of regular operations to ensure the community has access to exciting data and data sets while the survey begins its relentless coverage of the sky before DR1.
 
-In all cases, it is assumed Rubin Construction hands Rubin Operations a system that can capture, move, and process science quality data at the time Operations begins. Planning will then consider three high level options to ensure ES. These are initially described in this document, but the document is "living" and we expect the plans to mature in detail over time as we approach full survey operations and the extant SIT-COM program emerges and is executed. At some point, a single option will be adopted and executed:
+In all cases, it is assumed Rubin Construction hands Rubin Operations a system that can capture, move, and process science quality data at the time Operations begins. Planning will then consider three high level options to ensure \es. These are initially described in this document, but the document is "living" and we expect the plans to mature in detail over time as we approach full survey operations and the extant SIT-COM program emerges and is executed. At some point, a single option will be adopted and executed:
 
 \begin{itemize}
-\item {\textit Plan A:} SV is completely successful, move quickly to the LSST and DR1,
-\item {\textit Plan B:} Early Science Period (3-6 months) that is different than regular survey operations because on ? sky time in SIT-COM is reduced, leading to few science ready data before the LSST begins
-\item {\textit Plan C:} further shakedown of operations procedures and data taking is required even though the initial condition above is satisfied and the Rubin System can capture and produce science quality data.
+\item {\textit Plan A:} SV is completely successful, move quickly to the LSST and DR1 while providing \es data products in data previews
+\item {\textit Plan B:} Early Science Period in the start of full operations (3-6 months) that is different than regular survey operations because on-sky time in SIT-COM is reduced, leading to fewer science ready data before the LSST begins, but the system is otherwise ready
+\item {\textit Plan C:} further shakedown of operations procedures and data taking is required even though the initial condition above is satisfied and the Rubin System can capture and produce science quality data (i.e., the system passes the construction completion requirements but the operations team is not yet ready to begin the LSST.
 
 \end{itemize}
 
-Each option (A, B, or C) will include alert processing and generation of some type. The principle aspect of this in SIT-COM and year 1 operations is incremental template generation. In full survey operations, template images for difference image analysis and alert generation are constructed as part of the annual DRP. In order to support alert generation in year 1, Rubin will incrementally generate templates in SIT-COM and year 1 using the best images available and covering as much sky as possible given other needs which must be addressed as well. Details of the current strategy for alert generation (prompt processing, PP) with incremental templates are given below section \secref{sec:pp}.  
+Each option (A, B, or C) will include alert generation of some type. The principle aspect of this in SIT-COM and year 1 operations is incremental template generation. In full survey operations, template images for difference image analysis and alert generation are constructed as part of the annual DRP. In order to support alert generation in year 1, Rubin will incrementally generate templates in SIT-COM and year 1 using the best images available and covering as much sky as possible given other needs which must be addressed as well. Details of the current strategy for alert generation (prompt processing, PP) with incremental templates are given below section \secref{sec:pp}.  
 
 
 
