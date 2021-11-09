@@ -3,15 +3,29 @@
 \section{Early Science Data Products} 
 \label{sec:data}
 
+The definitive source for all LSST data products is the Data Products Definition Document, \citep{LSE-163}.
+Here we provide a summary of the dat products that are expected to be made available as part of the Early Science Program. 
+
 \subsection{Prompt data products}
-Describe the alert data products
+All Prompt data products are world public and include: 
+\begin{itemize}
+\item {\textbf Alerts:}  Alert packet containing: alertId, DIASource, DIAObject or SSObject,  previous 12 months of detections,  science/template/difference image cutouts. 
+\item {\textbf Images:	} Single visit images, difference images, template
+\item {\textbf Catalogs:} DIASource, DIAObject, SSObject, ForcedSource.
+
+Alerts will be issued with a latency of 60s from image readout. 
+The prompt products database, containing the prompt catalogs will be updated on a 24hr timescale. 
+
+\end{itemize}
 
 \subsection{Data Release data products}
-Images and catalogs from the DRP of the commissioning data will be made available to  data rights holders via the access mechanisms described in \ref{ssec:dataaccess}.
+Static science datasets for Early Science will flow from the science verification surveys in commissioning
+Images and catalogs from the DRP of the commissioning data will be made available to data rights holders via the access mechanisms described in \ref{ssec:dataaccess}.
+The Rubin data rights policy is described in  \cite{RDO-013}.
+
 
 \subsection{Access to \es data products}\label{ssec:dataaccess}
-Describe how the \es  data products will be accessed by the community. 
-Describe the community brokers, the science platforms and how the \dpvs play a role in providing access to \es data products. 
-Explain that the same data rights policy applies to \es data products. \cite{RDO-013}.
+Alerts will be accessible by the community via one of nine Rubin endorsed Community Brokers. 
+The community will access the Rubin data products via the Rubin Science Platform, \citep{LSE-319}.
 
 
