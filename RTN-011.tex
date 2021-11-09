@@ -21,21 +21,22 @@
 \newcommand{\drp}{Data Release Production (DRP)\,}\xspace
 \newcommand{\ap}{Alert Production (AP)\,}\xspace
 \newcommand{\ro}{Rubin Observatory\,}\xspace
-\newcommand{\vrolsst}{Vera C. Rubin Observatory Legacy Survey of Space and Time (LSST) \,}\xspace 
+\newcommand{\rolsst}{Rubin Observatory Legacy Survey of Space and Time (LSST)}\xspace
+\newcommand{\vrolsst}{Vera C. Rubin Observatory Legacy Survey of Space and Time (LSST)\xspace}
+\newcommand{\esp}{Early Science Program (ESP)\,}\xspace 
 
 \setcounter{tocdepth}{4}
 %If you want glossaries
 %\input{aglossary.tex}
 %\makeglossaries
 
-\title{Plans for Early Science}
+\title{Rubin Observatory Early Science Program}
 
 % Optional subtitle
 % \setDocSubtitle{A subtitle}
 
 \author{%
-Leanne~P.~Guy, Eric~Bellm, Bob~Blum, \v{Z}eljko~Ivezi\'{c}, author list incomplete ... add your name as you contribute.
-}
+Leanne~P.~Guy, Eric~Bellm, Bob~Blum, \v{Z}eljko~Ivezi\'{c}, Michael~Strauss}
 
 \setDocRef{RTN-011}
 \setDocUpstreamLocation{\url{https://github.com/rubin-observatory/rtn-011}}
@@ -43,10 +44,11 @@ Leanne~P.~Guy, Eric~Bellm, Bob~Blum, \v{Z}eljko~Ivezi\'{c}, author list incomple
 \date{\vcsDate}
 
 % Optional: name of the document's curator
-% \setDocCurator{The Curator of this Document}
+\setDocCurator{Leanne Guy}
 
 % Leanne 
 \setDocAbstract{%
+<<<<<<< HEAD
 Science during the first year of Rubin Observatory LSST operations is a high priority. 
 
 Rubin Observatory science will be enabled by data products from prompt processing, and from a series approximately annual data releases. 
@@ -77,6 +79,14 @@ The worldwide community is actively preparing to process the LSST alert stream a
 This note describes the \ro plan for ensuring \es. 
 It is a living document that will evolve over the course of the remainder of the construction project and up until \drone. 
 
+=======
+\es is defined as any science enabled through and including the first data release. 
+This document provides the plans for an Early Science Program with the \vrolsst. 
+It describes the strategy for obtaining observations during commissioning and in the early phases of the survey.
+It outlines how the Rubin operations team will work with the science community to optimise the various aspects of the Early Science Program 
+driven by opportunities for high-impact early science results.
+It is a living document that will evolve over the course of the remainder of the construction project and up to \drone. 
+>>>>>>> 0062948 (Update abstract)
 }
 
 
@@ -104,6 +114,10 @@ It is a living document that will evolve over the course of the remainder of the
 % Frequently for a technote we do not want a title page  uncomment this to remove the title page and changelog.
 % use \mkshorttitle to remove the extra pages
 
+% Leanne
+\input{summary}
+\clearpage
+
 % ADD CONTENT HERE
 % Leanne
 \input{intro}
@@ -112,7 +126,7 @@ It is a living document that will evolve over the course of the remainder of the
 \input{timeline}
 
 % Leanne 
-\input{science}
+%\input{science}
 
 % Eric
 \input{alertproduction}
@@ -124,10 +138,10 @@ It is a living document that will evolve over the course of the remainder of the
 \input{data}
 
 % Zeljko 
-\input{survey}
+%\input{survey}
 
 % Amanda
-\input{communication}
+%\input{communication}
 
 \appendix
 % Include all the relevant bib files.
