@@ -1,5 +1,6 @@
 # List acronyms that should be ignored by generateAcronyms.py.
 PATH
+B
 MM
 DD
 YYYY
