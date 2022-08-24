@@ -43,7 +43,7 @@ Compile this document through an lsst-texmf Docker image to avoid installing LaT
 
 Or run the included script::
 
-    ./docker_build.sh
+    ./build.sh
 
 Updating acronyms
 -----------------
