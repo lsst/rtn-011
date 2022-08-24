@@ -37,11 +37,11 @@ Clean built files::
 Docker 
 ------
 
-Compile this document through an lsst-texmf Docker image to avoid installing LaTeX and lsst-texmf on your own computer:
+Compile this document through an lsst-texmf Docker image to avoid installing LaTeX and lsst-texmf on your own computer::
 
     docker run --rm -v `pwd`:/build -w /build lsstsqre/lsst-texmf:latest sh -c 'make clean; make'
 
-Or run the included script:
+Or run the included script::
 
     ./docker_build.sh
 
