@@ -1,28 +1,38 @@
-\section{Rubin Observatory Commissioning} 
+\section{Rubin Observatory Commissioning}
 \label{sec:commissioning}
 
-The baseline schedule for on-sky observations during SIT-COM includes six months of technical integration and testing, and concludes with an 8-week period of sustained observing in the form of two \svs \citep{SCTN-007}. 
+The baseline schedule for on-sky observations during SIT-COM includes six months of technical integration and testing, and concludes with an 8-week period of sustained observing in the form of two \svs \citep{SCTN-007}.
+
+\subsection{Commissioning Observations}
+
+NEW TEXT, TO BE WRITTEN.
+
+Figure from Keith's slides showing Engineering, System Optimization, Science Validation phases.
+
+Text introducing figure.
+
+Key components of SO and SV phases with each Camera. 20 year depth tests. 1000 sq deg pilot survey. 
+
 
 \subsection{Template generation during commissioning}
 
-By the end of the commissioning period, coadd templates for use in difference imaging will only be available for $\approx$ 10\% of the sky. 
-Generating templates over a wide area is not an explicit goal of commissioning;  however, where possible, if commissioning observations are agnostic to pointing and filter, we would endeavour to choose a pointing and filter that maximizes building templates to enable early science. 
+By the end of the commissioning period, coadd templates for use in difference imaging will only be available for $\approx$ 10\% of the sky.
+Generating templates over a wide area is not an explicit goal of commissioning;  however, where possible, if commissioning observations are agnostic to pointing and filter, we would endeavour to choose a pointing and filter that maximizes building templates to enable early science.
 During LSSTCam commissioning we intend to incrementally generate templates over the maximal sky area supported by the available observations.
 
-The LSST SRD places well-defined criteria on the quality of the difference image and the amount of noise that a template can contribute to a difference image.  
-These criteria result in a minimum of three images being needed to construct a template for use in year one.  
-The commissioning period provides an excellent opportunity to investigate how many visits in a given band are sufficient to construct a usable template. 
-Given the desire to maximize the science harvest prior to the \drone,  relaxing these criteria is an option to be explored. 
+The LSST SRD places well-defined criteria on the quality of the difference image and the amount of noise that a template can contribute to a difference image.
+These criteria result in a minimum of three images being needed to construct a template for use in year one.
+The commissioning period provides an excellent opportunity to investigate how many visits in a given band are sufficient to construct a usable template.
+Given the desire to maximize the science harvest prior to the \drone,  relaxing these criteria is an option to be explored.
 
 \subsection{Alert generation during commissioning}
 
-Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period. 
-Where the accumulated ComCam data is sufficient for alert generation, we expect to provide alerts at high latency (weeks--months). 
+Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period.
+Where the accumulated ComCam data is sufficient for alert generation, we expect to provide alerts at high latency (weeks--months).
 The goal for these {\it canned} alerts is to enable alert brokers and science users to understand their characteristics and to help to validate their quality rather than to enable rapid followup and \es per se.
-Templates generated during commissioning will be used for Alert Production, with the goal of delivering real-time alert distribution to community brokers by the time of the \svs at the end of LSSTCam commissioning. 
+Templates generated during commissioning will be used for Alert Production, with the goal of delivering real-time alert distribution to community brokers by the time of the \svs at the end of LSSTCam commissioning.
 
 \subsection{Data Previews based on commissioning data}
 
-Data acquired during the \svs is expected to be of science-quality and will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) for data from the commissioning camera (ComCam) and Data Preview 2 (DP2) for data from the LSST science camera (LSSTCam) and all previous commissioning data. 
+Data acquired during the \svs is expected to be of science-quality and will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) for data from the commissioning camera (ComCam) and Data Preview 2 (DP2) for data from the LSST science camera (LSSTCam) and all previous commissioning data.
 Data Previews will be produced using the DRP pipeline and will include data products for both static sky science and time domain science.
-
