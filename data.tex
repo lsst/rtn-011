@@ -4,7 +4,10 @@
 \label{sec:data}
 
 Here we provide a summary of the data products that are expected to be made available as part of the \esp.
-The definitive source for all LSST data products is the Data Products Definition Document, \citep{LSE-163}.
+The definitive source for all LSST data products is the Data Products Definition Document (DPDD), \citep{LSE-163}.
+However, each pre-operations data preview and survey data release will be accompanied by its own DPDD, giving e.g. the catalog database schema for the tables included in that dataset.
+For an introduction to the Rubin data products, see \citet{RubinDataProductsAbridged}.
+For an example data release DPDD, see the online DP0.2 documentation.\footnote{\url{https://dp0-2.lsst.io/data-products-dp0-2/}}
 The Rubin data rights policy is described in  \cite{RDO-013}.
 
 \subsection{Prompt data products}
@@ -13,8 +16,8 @@ Prompt data products are described in detail in the Data Products Definition Doc
 Alert packets are triggered by difference image source detections and transmitted to community alert brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers} for the list of selected brokers.} and are publicly available.
 Similarly, daily Solar System Processing identifies new Solar System Objects from difference image sources and reports those publicly to the Minor Planet Center.
 
-Catalog and image products, as well as services for running user-generated processing on the data, are available to Rubin Data Rights holders after 24 hours through the Rubin Science Platform (\S~\ref{ssec:dataaccess}).
-\DIASource, \DIAObject, and \SSObject catalogs are queryable using VO interfaces to the Prompt Products Database.
+Catalog data products, as well as services for running user-generated processing on the data, are available to Rubin Data Rights holders after 24 hours through the Rubin Science Platform (\S~\ref{ssec:dataaccess}).
+\DIASource, \DIAObject, and \SSObject catalogs are queryable using VO interfaces to the Prompt Products Database. Image products are available after 80 hours. 
 
 \subsection{Data Release data products}
 Static science datasets for Early Science will flow from the \svs in commissioning.
