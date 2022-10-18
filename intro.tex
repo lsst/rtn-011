@@ -1,99 +1,68 @@
 \section{Introduction}
 
-This  note describes the plan for ensuring the Rubin community will have the data products and services necessary to produce early science during the time between commissioning and the release of the year 1 data.
-
+This note describes the plan for ensuring the Rubin community will have the data products and services necessary to produce high-impact early science during the time between commissioning and the first LSST Data Release, DR1.  
+Community expectations for early science are high due to the transformative nature of the Rubin data and the extensive amount of on-sky time planned in commissioning and science validation.
 
 \subsection{Definition of Early Science}  \label{ssec:defn}
 
 Early Science (ES) is defined as any science enabled by Rubin for its community through and including the first data release, \drone.
 
-DR1 will be based on the first 6 months of data and released 12 months after the start of full survey operations, currently expected to be between October 2025 and May 2026.
-% \S~\ref{tab:dr-one-products}.
 The Early Science Program is motivated by the fact that in the current baseline there will be no science-ready data products released to the community prior to DR1. 
-Alerts are produced by the LSST Prompt Processing pipelines via Difference Image Analysis (DIA), which creates difference images by subtracting a template image \footnote{Templates are transient-free coadds produced by stacking previous images such as to remove the flux of any transient or moving object.} from each new image acquired, and then identifying sources in the difference image. 
+DR1 is the first planned release of static-sky data products. 
+It will be based on the first 6 months of data and released 12 months after the start of full survey operations.  
+Alerts to transient, variable and moving objects are produced by the LSST Prompt Processing pipelines via Difference Image Analysis (DIA), which creates difference images by subtracting a template image \footnote{Templates are transient-free coadds produced by stacking previous images such as to remove the flux of any transient or moving object.} from each new image acquired, and then identifying sources in the difference image. 
 Without templates for a given pointing and filter, there can be no Alerts.
 Templates are produced during Data Release Production (DRP) and initially released as part of DR1, so in year 1 there will be no templates from which to generate alerts.
-
+The Early Science Program has been conceived with the goal of providing science-ready data products to the Rubin community during the time between commissioning and the first LSST Data Release, DR1 
 
 \subsection{Elements of the Early Science Program}
 
-To  alleviate  .....  The \esp consists of the following elements:
+The \esp consists of the following elements:
 \begin{itemize}
-	\item Two early Data Previews based on reprocessed data taken during the Rubin Observatory commissioning period. The first, Data Preview 1 (DP1) will be based on ComCam data and the seccond, Data Preview (DP2) based on LSSTCam data. 
+	\item A series of "Data Previews" based on reprocessed data taken during the Rubin Observatory commissioning period. The first, Data Preview 1 (DP1) will be based on ComCam data and the seccond, Data Preview (DP2) based on LSSTCam data. 
 	\item Template generation prior to the start of regular survey operations based on data collected during the commissioning period with the LSST Camera (LSSTCam)
 	\item Incremental generation of templates during the first year of survey operations for a given pointing and filter, as ans when sufficient images passing quality cuts have been acquired. 
-	These templates will then be used immediately during year 1 or the survey to generate alerts, thus increaing the number of Alerts generated durig year 1. 
+	These templates will then be used immediately during year 1 or the survey to generate alerts, thus increaing the number of Alerts generated during year 1. 
 \end{itemize}
+
+Rubin pre-operations is working with the construction project to provide early access to static-sky data products via Data Previews. 
+The first, Data Preview 0 (DP0) was released to a group of early adopters from the community in June 2022 and is based on the DESC DC2 simulated dataset, \citep{2021ApJS..253...31L}. 
+Subsequent Data Previews, DP1 and DP2 will be based on the data acquired during  commissioning from ComCam and LSSTCam Science Validation Surveys respectively, together with any additional science-quality data taken throughout the full commissioning period \citep{RDO-011}.
+
+A key component of the \esp is generation of templates from both the commissioning data and data collected during and year 1 of operations.
+In full survey operations, template images for difference image analysis and alert generation are constructed as part of the annual DRP.
+In order to support alert generation in year 1, Rubin will generate templates from all science-grade data taken during commissioning to provide a template library at the start of the 10 eyar survey, and incrementally generate templates during year 1 using the best images available and covering as much sky in as many filters as possible.
+Details of the current strategy for alert generation  with incremental templates are given in  \S~\ref{sec:pp}.
 
 
 \subsection{Early Science scenarios } \label{ssec:scenarios}
 
 Recent planning on the construction project has led to a reduced amount of on-sky time in commissioning, including a reduction in the time dedicated to final science validation of the as-built system compared to earlier draft plans.
 The total amount science validation time currently planned during commissioning is 8 weeks. 
-% \footnote{In an early draft commissioning plan, 3 months was dedicated to on-sky science validation surveys with LSSTCam.}
 As Rubin construction moves through the challenging phase of System Integration, Test and Commissioning (SIT-COM), on--sky time could be further reduced.
 
-% The Operations team is thus planning for various outcomes that might require special attention to producing \es opportunities in the first part of regular operations to ensure the community has prompt access to science-ready data products while the survey begins its relentless coverage of the sky leading to DR1.
-
-The Operations team is tracking the progress of the commissioning activities as they relate to\es opportunities to ensure that the community has prompt access to science-ready data products while the survey begins its relentless coverage of the sky leading to DR1.
-
+The Operations team is tracking the progress of the commissioning activities as they relate to \es opportunities to ensure that the community has prompt access to science-ready data products while the survey begins its relentless coverage of the sky leading to DR1.
 We broadly envisage two possible scenarios emerging from the commissioning phase of the construction project: 
 
 \begin{itemize}
 \item \textbf{Scenario A}:
 The full commissioning plan comprising system optimization and science validation is successfully executed as planned. 
-The Operations team will then carry out an Operations Readiness Review (ORR) to effectively conduct a “full dress rehearsal” of science operations. 
-
-Following a successful ORR, the 10-year survey will begin
- Survey operations start 
- Data collected during commissioning is reprocessed to produce a \dpone, which is released on timeframe .. shortly after starting the 10yr survey and before \drone
-
-ops completing the SV surveys 
-
-Demonstrate Rubin Operations Team readiness
-
-ORR:  the readiness of Rubin Observatory Operations team’s readiness to
-receive the construction deliverables and begin planned operations for conducting the Legacy
-Survey of Space and Time – the 10-year science survey for which the Rubin Observatory was
-designed and constructed to perform. 
-
-	
- a review of the Rubin Operations team’s readiness to begin the 10-year Legacy
-Survey of Space and Time (LSST).
-
+The Operations team will then carry out an Operations Readiness Review (ORR) to effectively conduct a “full dress rehearsal” of science operations and demonstrate the readiness of the Operations team to execute the 10 year survey. 
+Data collected during commissioning is reprocessed to produce DP2, which will be released 6 months follwoing the completion of the SV Surveys, see S~\ref{tab:dr-one-products}.
 
 \item \textbf{Scenario B}:
-On-sky time in commisisoning is reduced further resulting in the science validation surveys not being completed 
-
+On-sky time in commisisoning is reduced further resulting in the science validation surveys not being completed prior to the construction Operations Readiness Review (ORR). 
+In this scenario, the Operations team would spend up to 3 months prior to commencing the 10 year survey completing any remaining Science Validation Survey observations and releasing DP2 with the exact same data products as planned but 
 
 \end{itemize}
 
-% ---- old -----
+An key point to note is that the contents of DP2 will be unchanged irrespective of which scenario materializes.  
+Only the timing of the release of DP2 and the start of the 10 year survey are difrerent between the two scenarios. 
+In both scenarios it is assumed that the Rubin Construction project delivers an integrated system that can capture, transfer and process science-grade data at the time Operations begins.
+Both scenarios will include alert generation of some type, with the major distinction being the relative availability of templates in time, sky position, and filter.
 
-\TODO{Leanne}{We can now simplify the following scenarios greatly. Combine B and C into a single Plan B. Then spell out that the content of the DPs and DR1 are unchanged between Plan A and B - the only difference is in the timing of the data releases. Consider dropping the Plan A / B terminology altogether, and just discuss impacts on timing.}
 
-In all cases, it is assumed that the Rubin Construction project delivers an integrated system that can capture, transfer and process science-quality data at the time Operations begins.
-Planning will then consider the following three high-level options to ensure \es:
-\begin{itemize}
-\item \textbf{Option A}:
-Science validation is completely successful.
-Begin the LSST working towards DR1 while providing \es data products.
-\item \textbf{Option B:}
-On-sky time in commissioning was reduced such that fewer science-ready data products were produced before the LSST begins but the Rubin system can capture and produce science-quality data.
-Instigate a dedicated Early Science observing campaign for a limited period (3-6 months) at the start of full operations that is different to the regular survey cadence.
-\item \textbf{Option C:}
-The Rubin System  passes the construction completion requirements and can capture and produce science-quality data but the operations team is not yet ready to begin the LSST.
-Further shakedown of operations procedures and data taking is required, which will result in a delay to the start of full survey operations.
-This option will encompass elements of options B and C as appropriate.
-\end{itemize}
 
-All options will include alert generation of some type, with the major distinction being the relative availability of templates in time, sky position, and filter.
-The principle aspect of this strategy both  in SIT-COM and year 1 operations is incremental template generation.
-In full survey operations, template images for difference image analysis and alert generation are constructed as part of the annual DRP.
-In order to support alert generation in year 1, Rubin will incrementally generate templates during SIT-COM and year 1 using the best images available and covering as much sky  in as many filters as possible.
-Details of the current strategy for alert generation  with incremental templates are given in  \S~\ref{sec:pp}.
 
-Rubin pre-operations is working with the construction project to provide a series of Data Previews based on the data acquired during the SITCOM \svs, as well as any additional science-quality data taken throughout the full commissioning period \citep{RDO-011}.
-
-These options are current at the time of writing, but as this document is "living",  we expect the plans to mature as we approach full survey operations and the extant SIT-COM program emerges and is executed.
+These scenarios presented are current at the time of writing, but as this document is "living", we expect the plans to mature as we approach full survey operations and the extant commissioning program emerges and is executed.
 At some future point, a single option will be adopted and executed, and at that time, the details will be more fully specified.
