@@ -18,19 +18,12 @@ They include images, catalogs and alerts.
 During routine LSST operations, prompt image data products will be made available 80 hours following camera readout. 
 They include raw images, processed single visit images, difference images, and template images. 
 Prompt image products are proprietary, except for the alert postage stamps distributed in the alert stream and recorded in the alert database.
-Catalog data products will be available after 24 hours. 
 The image differencing source (\DIASource), forced photometry (\DIAForcedSource), and object (\DIAObject and \SSObject)
-catalog data products are all public. 
+catalog data products are all public and will be available after 24 hours. 
 Rubin Data Rights holders can access both prompt image and catalog data products via the Rubin Science Platform (\S~\ref{ssec:dataaccess}) and query using VO interfaces. 
-\DIASource, \DIAForcedSource, \DIAObject, and \SSObject catalogs are queryable using VO interfaces to the Prompt Products Database.
-
 Alert are triggered by sources detected with SNR>5 via difference image analysis (DIA) and transmitted to community alert brokers for the list of selected brokers.
 Alert packets transmitted to these brokers are world-public.
 Similarly, daily Solar System Processing identifies new Solar System Objects from difference image sources and reports those publicly to the Minor Planet Center.
-
-Catalog data products, as well as services for running user-generated processing on the data, are available to Rubin Data Rights holders after 24 hours through the Rubin Science Platform (\S~\ref{ssec:dataaccess}).
-\DIASource, \DIAObject, and \SSObject catalogs are queryable using VO interfaces to the Prompt Products Database.
-Image products are available after 80 hours.
 
 
 \subsection{Data Release data products}
