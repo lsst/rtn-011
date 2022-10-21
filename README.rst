@@ -18,6 +18,15 @@ Links
 - Live drafts: https://rtn-011.lsst.io
 - GitHub: https://github.com/rubin-observatory/rtn-011
 
+Cite as
+=======
+
+This document is published on Zenodo. Cite as::
+
+    Leanne P. Guy, Eric Bellm, Bob Blum, Melissa L. Graham, Željko Ivezić, & Michael Strauss. (2021). 
+    Rubin Observatory Plans for an Early Science Program (1.0). 
+    Zenodo. https://zenodo.org/record/5683849 
+
 Build
 =====
 
@@ -33,6 +42,17 @@ Compile the PDF::
 Clean built files::
 
     make clean
+
+Docker 
+------
+
+Compile this document through an lsst-texmf Docker image to avoid installing LaTeX and lsst-texmf on your own computer::
+
+    docker run --rm -v `pwd`:/build -w /build lsstsqre/lsst-texmf:latest sh -c 'make clean; make'
+
+Or run the included script::
+
+    ./build.sh
 
 Updating acronyms
 -----------------
