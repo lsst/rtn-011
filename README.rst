@@ -23,9 +23,9 @@ Cite as
 
 This document is published on Zenodo. Cite as::
 
-    Leanne P. Guy, Eric Bellm, Bob Blum, Melissa L. Graham, Željko Ivezić, & Michael Strauss. (2021). 
-    Rubin Observatory Plans for an Early Science Program (1.0). 
-    Zenodo. https://zenodo.org/record/5683849 
+    Leanne P. Guy, Eric Bellm, Bob Blum, Melissa L. Graham, Željko Ivezić, Michael Strauss, Keith Bechtol, Phil Marshall, & Robert Lupton. (2022). 
+    Rubin Observatory Plans for an Early Science Program (2.2). Zenodo. 
+    https://zenodo.org/record/5683849 
 
 Build
 =====
