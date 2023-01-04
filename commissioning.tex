@@ -7,19 +7,29 @@ The baseline schedule for on-sky observations with LSSTCam during commissioning 
 
 \begin{figure}
 \includegraphics[width=\linewidth]{figures/commissioning-plan}
-\caption{Outline plan for the collection of commissioning data, as of October 2022.}
+\caption{Outline plan for the collection of commissioning data, as of December 2022.}
 \label{fig:commissioning}
 \end{figure}
 
 Figure~\ref{fig:commissioning} shows the high level plan for the Rubin commissioning observations with the LSST Science Camera.
 Commissioning data collection is planned to take place in phases.
-A period of on-sky engineering time will be followed by a set of observations designed to help optimize the system, before the \svs are carried out.
+A period of on-sky engineering time will culminate at the System First Light milestone.
+This will be followed by a set of observations designed to help optimize the system, before the \svs are carried out.
 The SV surveys are designed to support scientific analyses that validate the system's performance, and allow Rubin to demonstrate operations readiness.
 
-The figure indicates a number of key components of the system optimization and SV phases planned for each camera.
+The figure indicates a number of key components of the system optimization and SV phases planned.
 These include a LSST wide-fast-deep (WFD) 1-2 year equivalent depth ``pilot'' survey.
 Field selection will be carried out by the Commissioning Team, taking into account a wide variety of constraints as well as a ``menu'' of science opportunities to which the LSST Science Community has contributed.
 Details of the Commissioning plans will be made available as those plans converge, in this technote and other documents as cited.
+
+For a more detailed view of the Rubin commissioning activities and their timing relative to System First Light, see Figure~\ref{fig:commissioning-gantt}.
+This chart shows how the 6 weeks of ``In-dome Engineering'' observations introduced in Figure~\ref{fig:commissioning} is expected to be broken down into on-sky testing, first light observations, and a calibration run.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/rubinobs_on-sky_commissioning_gantt.pdf}
+\caption{Detailed schedule of commissioning activities relative to System First Light, as of December 2022.}
+\label{fig:commissioning-gantt}
+\end{figure}
 
 
 \subsection{Template generation during commissioning}
@@ -38,15 +48,13 @@ Given the desire to maximize the science harvest prior to the \drone,  relaxing 
 
 Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period.
 However, the incremental template generation and alert production processes will be tested and optimized during commissioning with LSSTCam, resulting in a set of prompt data products, including alerts.
-
-Broker teams will be given access to these alerts for development purposes as soon as we start to prodouce them
-The goal for these ComCam canned alerts is to enable alert brokers and science users to understand their characteristics and to help to validate their quality, rather than to enable rapid followup and Early Science  per se.
-
-Templates, alerts, and other prompt data products will also be produced during LSSTCam on-sky commissioning, with the Alert and Prompt Product databases filled and made available for query prior to the DP2 data release (analgous to LSST survey operation, Table~\ref{tab:dp-two-products}). 
+Broker teams will be given access to these alerts for development purposes as soon as they are produced to understand their characteristics and to help to validate their quality, rather than to enable rapid followup and Early Science. 
+Templates, alerts, and other prompt data products will also be produced during LSSTCam on-sky commissioning, with the Alert and Prompt Product databases filled and made available for query prior to the DP2 data release (analagous to LSST survey operation, Table~\ref{tab:dp-two-products}). 
 Rubin will aim to provide a ``near-live'' alert stream to the Brokers by the end of the LSSTCam SV surveys.
 
 
 \subsection{Data Previews based on commissioning data}
 
-Data acquired during commissioning that is of science-quality will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) and Data Preview 2 (DP2) for data from the LSST science camera (LSSTCam) and all previous commissioning data.
+Data acquired with the LSST Science Camera (LSSTCam) during commissioning that is of science-quality will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) and Data Preview 2 (DP2) 
+
 Data Previews will be produced using the DRP pipeline and will include data products for both static sky science and time domain science.
