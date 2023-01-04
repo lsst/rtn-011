@@ -11,7 +11,7 @@ The baseline schedule for on-sky observations with LSSTCam during commissioning 
 \label{fig:commissioning}
 \end{figure}
 
-Figure~\ref{fig:commissioning} shows the high level plan for the Rubin commissioning observations.
+Figure~\ref{fig:commissioning} shows the high level plan for the Rubin commissioning observations with the LSST Science Camera.
 Commissioning data collection is planned to take place in phases.
 A period of on-sky engineering time will culminate at the System First Light milestone.
 This will be followed by a set of observations designed to help optimize the system, before the \svs are carried out.
@@ -43,16 +43,18 @@ These criteria result in a minimum of three images being needed to construct a t
 The commissioning period provides an excellent opportunity to investigate how many visits in a given band are sufficient to construct a usable template.
 Given the desire to maximize the science harvest prior to the \drone,  relaxing these criteria is an option to be explored.
 
-
+% TODOComplete rewrite %%%%%%
 \subsection{Alert generation during commissioning}
 
 Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period.
-However, the incremental template generation and alert production processes will be tested and optimized during on-sky commissioning, resulting in a set of prompt data products, including alerts.
-
-Rubin will aim to provide a ``near-live'' alert stream to the Brokers by the end of the LSST Cam SV surveys.
+However, the incremental template generation and alert production processes will be tested and optimized during commissioning with LSSTCam, resulting in a set of prompt data products, including alerts.
+Broker teams will be given access to these alerts for development purposes as soon as they are produced to understand their characteristics and to help to validate their quality, rather than to enable rapid followup and Early Science. 
+Templates, alerts, and other prompt data products will also be produced during LSSTCam on-sky commissioning, with the Alert and Prompt Product databases filled and made available for query prior to the DP2 data release (analagous to LSST survey operation, Table~\ref{tab:dp-two-products}). 
+Rubin will aim to provide a ``near-live'' alert stream to the Brokers by the end of the LSSTCam SV surveys.
 
 
 \subsection{Data Previews based on commissioning data}
 
-Data acquired during commissioning that is of science-quality will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) and Data Preview 2 (DP2).
+Data acquired with the LSST Science Camera (LSSTCam) during commissioning that is of science-quality will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) and Data Preview 2 (DP2) 
+
 Data Previews will be produced using the DRP pipeline and will include data products for both static sky science and time domain science.

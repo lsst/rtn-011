@@ -1,12 +1,12 @@
 \section{Early Science Data Products}
 \label{sec:data}
 
-All Rubin Observatory LSST data products are produced by the LSST Science Pipelines \cite{2019ASPC..523..521B,2018PASJ...70S...5B}.
-For an introduction to the Rubin data products, see \citet{RubinDataProductsAbridged}.
-Here we provide a summary of the data products that are expected to be made available as part of the \esp.
+All Rubin Observatory LSST data products are produced by the LSST Science Pipelines, \cite{2019ASPC..523..521B,2018PASJ...70S...5B}. 
+For an introduction to the LSST data products, see \citet{RubinDataProductsAbridged} and for a detailed description, see the LSST \dpdd,  \citet{LSE-163}.
+Here we provide a summary of the data products that are expected to be made available as part of the Early Science Program.
 
 Each pre-operations data preview and survey data release will be accompanied by its own release-specific DPDD, giving e.g. the  database schema for the catalogs included in that dataset.
-For an example data release DPDD, see the online DP0.2 documentation.\footnote{\url{https://dp0-2.lsst.io/data-products-dp0-2/}}
+For an example data release DPDD, see the online DP0.2 documentation \footnote{\url{https://dp0-2.lsst.io/data-products-dp0-2/}}.
 
 The Rubin data rights policy is described in  \cite{RDO-013}.
 
@@ -42,14 +42,9 @@ Static science datasets for Early Science will flow from the \svs in commissioni
 Images and catalogs from the DRP of the commissioning data will be made available to data rights holders in the form of Data Previews via the access mechanisms described in \S~\ref{ssec:dataaccess}.
 Due to the relatively short time periods available for commissioning observations (\S~\ref{ssec:scenarios}), these Data Previews will necessarily be limited in their area and temporal coverage relative to full Data Releases, however all Data Preview data products will be in the same science data model format as for future Data Releases.
 
-
-\subsection{Access to \es data products}\label{ssec:dataaccess}
-Alerts will be accessible by the community via one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
-The Rubin Data Rights community will access the Rubin data products via the Rubin Science Platform, \citep{LSE-319}.
-
-\subsection{Summary of expected \es data products}
-
-The tables in this section outline which data products can be expected in each \es data preview and data release, and when.
+\subsection{Summary of expected Early Science Data Products} \label{ssec:dataproductsummary}
+The tables in this section outline which data products can be expected in each Data Preview and Data Release, and on what time scale. 
+Following the replan of the construction project and the descoping of ComCam on-sky observations, the exact Data products to be released with Data Preview 1 are still under discussion. 
 
 \begin{table}
 \caption{Summary of data products expected in each data preview and early survey data release, as of December 2022.
@@ -65,6 +60,7 @@ Note the high degree of uncertainty in this table: DP1 will be planned in detail
 \includegraphics[width=\linewidth]{figures/DP1-products}
 \end{table}
 
+
 \begin{table}
 \caption{Summary of data products expected in DP2, as of December 2022.}
 \label{tab:dp-two-products}
@@ -76,3 +72,12 @@ Note the high degree of uncertainty in this table: DP1 will be planned in detail
 \label{tab:dr-one-products}
 \includegraphics[width=\linewidth]{figures/DR1-products}
 \end{table}
+
+
+\subsection{Access to Early Science  Data Products} \label{ssec:dataaccess}
+Alerts are fully world-public and will be accessible via one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
+All other data products listed in \S~\ref{ssec:dataproductsummary} will be accessible to Rubin Data Rights community via the Rubin Science Platform, \citep{LSE-319}.
+
+DP0.1 and DP0.2 are available via the RPS running at the Interim Data Facility (IDF) hosted on the Google Cloud Platform.
+The IDF is considered a production environment to support Data Preview releases. 
+
