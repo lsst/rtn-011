@@ -14,7 +14,7 @@ The Rubin data rights policy is described in  \cite{RDO-013}.
 % TODO make sure Alerts are described and that they are decoupled from a DP/
 
 Data products for transients, variable, and moving objects will be primarily produced by the Prompt Processing pipelines, which will perform reduction, calibration, difference image analysis (DIA), source detection and measurement, and alert distribution within 60 seconds of image readout.
-They include images, catalogs and alerts.
+They include \emph{images}, \emph{catalogs} and \emph{alerts}. 
 
 During routine LSST operations, prompt image data products will be made available 80 hours following camera readout.
 They include raw images, processed single visit images (PVIs), difference images, and template images.
@@ -24,7 +24,12 @@ The image differencing source (\DIASource), forced photometry (\DIAForcedSource)
 catalog data products are all public and will be available after 24 hours.
 Rubin Data Rights holders can access both prompt image and catalog data products via the Rubin Science Platform (\S~\ref{ssec:dataaccess}) and query using VO interfaces.
 
-Alerts are triggered by sources detected with SNR>5 via difference image analysis (DIA) and transmitted to community alert brokers for the list of selected brokers.
+Alerts are triggered by sources detected in difference images with a SNR>5 . 
+They are transmitted to Rubin community alert brokers, software systems that will ingest, process, and serve astronomical alerts from Rubin Observatory and other surveys to the broader scientific community. 
+Typical broker functionality includes cross-match association with archival catalogs, the identification and prioritization of objects in need of follow-up observations, and photometric classification based on light-curve analysis.
+Seven community alert brokers will receive direct access to the full stream and a further two will operate downstream of a full-stream broker. 
+For a full list of Rubin community brokers, see \url{https://www.lsst.org/scientists/alert-brokers}
+
 Alert packets transmitted to these brokers are world-public.
 Similarly, daily Solar System Processing identifies new Solar System Objects from difference image sources and reports those publicly to the Minor Planet Center.
 
