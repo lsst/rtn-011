@@ -1,7 +1,7 @@
 \section{Early Science Data Products}
 \label{sec:data}
 
-All Rubin Observatory LSST data products are produced by the LSST Science Pipelines, \cite{2019ASPC..523..521B,2018PASJ...70S...5B}. 
+All Rubin Observatory LSST data products are produced by the LSST Science Pipelines, \cite{2019ASPC..523..521B,2018PASJ...70S...5B}.
 For an introduction to the LSST data products, see \citet{RubinDataProductsAbridged} and for a detailed description, see the LSST \dpdd,  \citet{LSE-163}.
 Here we provide a summary of the data products that are expected to be made available as part of the Early Science Program.
 
@@ -14,7 +14,7 @@ The Rubin data rights policy is described in  \cite{RDO-013}.
 % TODO make sure Alerts are described and that they are decoupled from a DP/
 
 Data products for transients, variable, and moving objects will be primarily produced by the Prompt Processing pipelines, which will perform reduction, calibration, difference image analysis (DIA), source detection and measurement, and alert distribution within 60 seconds of image readout.
-They include \emph{images}, \emph{catalogs} and \emph{alerts}. 
+They include \emph{images}, \emph{catalogs} and \emph{alerts}.
 
 During routine LSST operations, prompt image data products will be made available 80 hours following camera readout.
 They include raw images, processed single visit images (PVIs), difference images, and template images.
@@ -24,10 +24,10 @@ The image differencing source (\DIASource), forced photometry (\DIAForcedSource)
 catalog data products are all public and will be available after 24 hours.
 Rubin Data Rights holders can access both prompt image and catalog data products via the Rubin Science Platform (\S~\ref{ssec:dataaccess}) and query using VO interfaces.
 
-Alerts are triggered by sources detected in difference images with a SNR>5 . 
-They are transmitted to Rubin community alert brokers, software systems that will ingest, process, and serve astronomical alerts from Rubin Observatory and other surveys to the broader scientific community. 
+Alerts are triggered by sources detected in difference images with a SNR>5 .
+They are transmitted to Rubin community alert brokers, software systems that will ingest, process, and serve astronomical alerts from Rubin Observatory and other surveys to the broader scientific community.
 Typical broker functionality includes cross-match association with archival catalogs, the identification and prioritization of objects in need of follow-up observations, and photometric classification based on light-curve analysis.
-Seven community alert brokers will receive direct access to the full stream and a further two will operate downstream of a full-stream broker. 
+Seven community alert brokers will receive direct access to the full stream and a further two will operate downstream of a full-stream broker.
 For a full list of Rubin community brokers, see \url{https://www.lsst.org/scientists/alert-brokers}
 
 Alert packets transmitted to these brokers are world-public.
@@ -40,7 +40,7 @@ In the tables below, we indicate what kind of Alert stream can be expected durin
 Note that the DP1 era is {\it very short}: the data products released in DP1 will be generated from relatively few observations taken in the few days around System First Light.
 As such, it may not make much sense to run the Prompt Processing pipeline on the DP1 images.
 Instead, the DP2 observations (commissioning's ``system optimization'' and Science Validation surveys) will be able to support prompt processing and alert generation shortly after System First Light.
-DRP image differencing on the First Light image time series will enable some limited initial time domain science with DP1. 
+DRP image differencing on the First Light image time series will enable some limited initial time domain science with DP1.
 
 \subsection{Data Release data products}
 
@@ -49,8 +49,8 @@ Images and catalogs from the DRP of the commissioning data will be made availabl
 Due to the relatively short time periods available for commissioning observations (\S~\ref{ssec:scenarios}), these Data Previews will necessarily be limited in their area and temporal coverage relative to full Data Releases, however all Data Preview data products will be in the same science data model format as for future Data Releases.
 
 \subsection{Summary of expected Early Science Data Products} \label{ssec:dataproductsummary}
-The tables in this section outline which data products can be expected in each Data Preview and Data Release, and on what time scale. 
-Following the replan of the construction project and the descoping of ComCam on-sky observations, the exact Data products to be released with Data Preview 1 are still under discussion. 
+The tables in this section outline which data products can be expected in each Data Preview and Data Release, and on what time scale.
+Following the replan of the construction project and the descoping of ComCam on-sky observations, the exact Data products to be released with Data Preview 1 are still under discussion.
 
 \begin{table}
 \caption{Summary of data products expected in each data preview and early survey data release, as of December 2022.
@@ -60,12 +60,18 @@ In the case of DP1, these expectations come with considerable uncertainty: see T
 \end{table}
 
 \begin{table}
+\caption{Summary of data products expected in DP0.3, as of January 2023.
+DP0.3 will be planned in detail during 2023.}
+\label{tab:dp-zpthree-products}
+\includegraphics[width=\linewidth]{figures/DP0_3-products}
+\end{table}
+
+\begin{table}
 \caption{Summary of data products expected in DP1, as of December 2022.
 Note the high degree of uncertainty in this table: DP1 will be planned in detail during 2023.}
 \label{tab:dp-one-products}
 \includegraphics[width=\linewidth]{figures/DP1-products}
 \end{table}
-
 
 \begin{table}
 \caption{Summary of data products expected in DP2, as of December 2022.}
@@ -85,5 +91,4 @@ Alerts are fully world-public and will be accessible via one or more of the nine
 All other data products listed in \S~\ref{ssec:dataproductsummary} will be accessible to Rubin Data Rights community via the Rubin Science Platform, \citep{LSE-319}.
 
 DP0.1 and DP0.2 are available via the RPS running at the Interim Data Facility (IDF) hosted on the Google Cloud Platform.
-The IDF is considered a production environment to support Data Preview releases. 
-
+The IDF is considered a production environment to support Data Preview releases.
