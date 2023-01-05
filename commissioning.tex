@@ -1,60 +1,44 @@
 \section{Rubin Observatory Commissioning}
 \label{sec:commissioning}
 
-The baseline schedule for on-sky observations with LSSTCam during commissioning includes 3 months of technical integration and testing followed by an 8-week period of sustained observing in the form of one or more Science Validation Surveys \citep{SCTN-007}.
+\subsection{Commissioning Schedule}
+\label{ssec:commissioning-schedule}
 
-\subsection{Commissioning observations}
+In December 2022, as a result of reoptimizing the sequence of integration activities, the Rubin Construction Project decided to install the LSST Science Camera (LSSTCam) on the telescope earlier in the assembly sequence than previously planned. 
+As a consequence, no on-sky data will be taken with the Commissioning Camera (ComCam). 
+This change in strategy will produce more early-commissioning data than would have been available with ComCam on a similar timeframe. 
 
-\begin{figure}
+\begin{figure}[htb]
+\includegraphics[width=0.9\linewidth]{figures/rubinobs_on-sky_commissioning_gantt.pdf}
+\caption{Detailed schedule of commissioning activities relative to System First Light, as of December 2022.}
+\label{fig:commissioning-gantt}
+\end{figure}
+
+Figure~\ref{fig:commissioning-gantt} shows the detailed schedule of commissioning activities relative to System First Light, as of December 2022.  
+The System First Light milestone marks the end of the the on-sky engineering phase and the start of the System Optimization and Science Validation phases. 
+System First Light is currently expected between July and August 2024 (see \S~\ref{sec:timeline}).
+As Rubin construction moves through the challenging phase of System Integration, Test and Commissioning, this schedule may change.
+
+\subsection{Commissioning Observations}
+\label{ssec:commissioning-observations}
+
+Figure~\ref{fig:commissioning} shows the high level plan for the Rubin commissioning observations with the LSST Science Camera.
+Commissioning data collection is planned to take place in phases.
+Following the System First Light milestone, a set of observations designed to help optimize the system will be taken during the System Optimization phase before the Science Validation Surveys are carried out. 
+The SV Surveys are designed to support scientific analyses that validate the system's performance, and allow Rubin to demonstrate operations readiness \citep{SITCOMTN-005}.
+
+\begin{figure}[htb]
 \includegraphics[width=\linewidth]{figures/commissioning-plan}
 \caption{Outline plan for the collection of commissioning data, as of December 2022.}
 \label{fig:commissioning}
 \end{figure}
 
-Figure~\ref{fig:commissioning} shows the high level plan for the Rubin commissioning observations with the LSST Science Camera.
-Commissioning data collection is planned to take place in phases.
-A period of on-sky engineering time will culminate at the System First Light milestone.
-This will be followed by a set of observations designed to help optimize the system, before the \svs are carried out.
-The SV surveys are designed to support scientific analyses that validate the system's performance, and allow Rubin to demonstrate operations readiness.
-
-The figure indicates a number of key components of the system optimization and SV phases planned.
+Figure~\ref{fig:commissioning} also indicates a number of planned key components of the System Optimization and SV phases.
 These include a LSST wide-fast-deep (WFD) 1-2 year equivalent depth ``pilot'' survey.
 Field selection will be carried out by the Commissioning Team, taking into account a wide variety of constraints as well as a ``menu'' of science opportunities to which the LSST Science Community has contributed.
-Details of the Commissioning plans will be made available as those plans converge, in this technote and other documents as cited.
-
-For a more detailed view of the Rubin commissioning activities and their timing relative to System First Light, see Figure~\ref{fig:commissioning-gantt}.
-This chart shows how the 6 weeks of ``In-dome Engineering'' observations introduced in Figure~\ref{fig:commissioning} is expected to be broken down into on-sky testing, first light observations, and a calibration run.
-
-\begin{figure}
-\includegraphics[width=\linewidth]{figures/rubinobs_on-sky_commissioning_gantt.pdf}
-\caption{Detailed schedule of commissioning activities relative to System First Light, as of December 2022.}
-\label{fig:commissioning-gantt}
-\end{figure}
+Details of the plans for commissioning observations will be made available as those plans converge, in this technote and other documents as cited.
 
 
-\subsection{Template generation during commissioning}
-
-By the end of the commissioning period, coadd templates for use in difference imaging will only be available for $\approx$ 10\% of the sky.
-Generating templates over a wide area is not an explicit goal of commissioning;  however, where possible, if commissioning observations are agnostic to pointing and filter, we would endeavour to choose a pointing and filter that maximizes building templates to enable early science.
-During LSSTCam commissioning we intend to incrementally generate templates over the maximal sky area supported by the available observations.
-
-The LSST SRD places well-defined criteria on the quality of the difference image and the amount of noise that a template can contribute to a difference image.
-These criteria result in a minimum of three images being needed to construct a template for use in year one.
-The commissioning period provides an excellent opportunity to investigate how many visits in a given band are sufficient to construct a usable template.
-Given the desire to maximize the science harvest prior to the \drone,  relaxing these criteria is an option to be explored.
-
-% TODOComplete rewrite %%%%%%
-\subsection{Alert generation during commissioning}
-
-Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period.
-However, the incremental template generation and alert production processes will be tested and optimized during commissioning with LSSTCam, resulting in a set of prompt data products, including alerts.
-Broker teams will be given access to these alerts for development purposes as soon as they are produced to understand their characteristics and to help to validate their quality, rather than to enable rapid followup and Early Science. 
-Templates, alerts, and other prompt data products will also be produced during LSSTCam on-sky commissioning, with the Alert and Prompt Product databases filled and made available for query prior to the DP2 data release (analagous to LSST survey operation, Table~\ref{tab:dp-two-products}). 
-Rubin will aim to provide a ``near-live'' alert stream to the Brokers by the end of the LSSTCam SV surveys.
 
 
-\subsection{Data Previews based on commissioning data}
 
-Data acquired with the LSST Science Camera (LSSTCam) during commissioning that is of science-quality will be released to the Rubin data rights community via two Data Previews, Data Preview 1 (DP1) and Data Preview 2 (DP2) 
-
-Data Previews will be produced using the DRP pipeline and will include data products for both static sky science and time domain science.
