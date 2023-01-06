@@ -3,7 +3,7 @@
 
 \subsection{Processing Overview}
 
-The \DPDD{} summarizes the pipelines which will be used during Prompt Processing to produce alerts as well as other prompt data products (\S \ref{sec:data}), including Solar System Processing.
+The \DPDD{} summarizes the pipelines which will be used during Prompt Processing to produce alerts as well as other prompt data products, including Solar System Processing.
 In brief, raw images have instrument signatures removed and are photometrically and astrometrically calibrated.
 When template images for the corresponding region of the sky are available, the template is subtracted from the new processed visit image and sources are detected on the image difference.
 Alerts are then generated for all DIASources detected at five sigma in the difference.
@@ -12,7 +12,7 @@ At the end of the night, DIASources without a history of previous detection are 
 Both Alert Production and Solar System Processing thus depend on the presence of template images.
 During steady-state operations, these templates will be constructed during the annual Data Releases and will built from the best available subset of images taken.
 The input images for DRP-produced templates will accordingly have very good seeing and  comprehensive spatial coverage.
-Coadding multiple images enables artifact rejection  \citedsp{DMTN-080} and reduces noise.
+Coadding multiple images enables artifact rejection  \citeds{DMTN-080} and reduces noise.
 All of these template characteristics all help to ensure that image differencing is highly complete and highly pure.
 
 To enable alert production to proceed during commissioning and early operations, it is necessary to accept templates of lower quality.
@@ -38,13 +38,29 @@ Representatives of the Rubin Project Science Team (PST), DM-SST and Operations r
 \item Year One Data Templates: Build templates progressively from data obtained during year one (e.g., on a monthly timescale), and use them to generate alerts during year one, either instead of, or in addition to using commissioning data to build templates.
 \end{itemize}
 
-To handle alert generation outside the template building process attached to the annual DRP, the Construction project initiated a change request to include incremental templates in the DM system workflow. This change has been accepted and is now part of the baselined DM project in constructiom. A summary of the changes is the following:
+To handle alert generation outside the template building process attached to the annual DRP, the Construction project initiated a change request to include incremental templates in the DM system workflow. This change has been accepted and is now part of the baselined DM project in construction. A summary of the changes is the following:
 
 \begin{itemize} 
 \item LCR-2273: Construct Image Differencing Templates Outside DRP, new requirement 1.4.6 Template Coadds ID: DMS-REQ-0280, The DMS shall periodically create Template Images in each of the u,g,r,i,z,y passbands. Templates may be constructed as part of executing the Data Release Production payload, or by a separate execution of the Template Generation payload. Prior to their availability from Data Releases these coadds shall be created incrementally when sufficient data passing relevant quality criteria is available. 
-\item To enable artifact rejection, templates will be built with at least three images in year one, and five in subsequent years.  (Rubin OSS-REQ-0158)
+\item To enable artifact rejection, templates will be built with at least three images in year one, and five in subsequent years (Rubin OSS-REQ-0158). \footnote{The LSST SRD places well-defined criteria on the quality of the difference image and the amount of noise that a template can contribute to a difference image.These criteria result in a minimum of three images being needed to construct a template for use in year one, and five in subsequent years.}
 \item Once a template is produced for a sky position and filter it will not be replaced until the next Data Release to avoid repeated baseline changes.
 \item Templates are not necessarily built from the first N images that are collected.
 \end{itemize}
+
+
+\subsection{Alert Generation during Commissioning}
+
+Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period.
+However, the incremental template generation and alert production processes will be tested and optimized during commissioning with LSSTCam, resulting in a set of prompt data products, including alerts.
+Broker teams will be given access to these alerts for development purposes as soon as they are produced to understand their characteristics and to help to validate their quality, rather than to enable rapid followup and Early Science. 
+The Alert and Prompt Product databases will be made available for query prior to the DP2 data release.
+
+During commissioning templates will be generated incrementally over the maximal sky area supported by the available observations.
+By the end of the commissioning period, coadd templates for use in difference imaging will only be available for $\approx$ 10\% of the sky.
+Generating templates over a wide area is not an explicit goal of commissioning;  however, where possible, if commissioning observations are agnostic to pointing and filter, we would endeavour to choose a pointing and filter that maximizes building templates to enable early science.
+
+Rubin aims to scale up alert production during commissioning with the aim of  providing a ``near-live'' alert stream to the Brokers by the end of the LSSTCam SV surveys.
+The commissioning period also provides an excellent opportunity to investigate how many visits in a given band are sufficient to construct a usable template.
+Given the desire to maximize the science harvest prior to the Data Release 1,  relaxing these criteria is an option to be explored.
 
 
