@@ -34,14 +34,15 @@ The Rubin data rights policy is described in  \cite{RDO-013}.
 %Alert production will begin shortly after System First Light, initially at low latency and limited volume but with both ramping up continuously through commissioning and into the first year of the survey.
 %In this way, Alert production and distribution is decoupled from the Data Preview schedule.
 %
-%In the tables below, we indicate what kind of Alert stream can be expected during each data preview ``era,'' defined as the time period within which that data preview's images are obtained.
+% %In the tables below, we indicate what kind of Alert stream can be expected during each data preview ``era,'' defined as the time period within which that data preview's images are obtained.
 %Note that the DP1 era is {\it very short}: the data products released in DP1 will be generated from relatively few observations taken in the few days around System First Light.
 %
 % Replace with a discussion of a bespoke PP to run for DP1 to optimize usefulness of the data products
 %
 %As such, it may not make much sense to run the Prompt Processing pipeline on the DP1 images.
-%Instead, the DP2 observations (commissioning's ``system optimization'' and Science Validation surveys) will be able to support prompt processing and alert generation (remove alert generation?) shortly after System First Light.
-%DRP image differencing on the First Light image time series will enable some limited initial time domain science with DP1. 
+%Instead, the DP1 data products will be generated with an abbreviated Data Release Processing pipeline, and focus on processed visit images and associated Source catalogs intended to support initial low-level investigations of Rubin's observational and instrumental effects.
+%Then, the DP2 observations (commissioning's ``system optimization'' and Science Validation surveys) will be able to support prompt processing and alert generation shortly after System First Light, as well as investigation of the properties of the coadded images generated and Difference Image Analysis performed.
+% % DRP image differencing on the First Light image time series would enable some limited initial time domain science with DP1, but is not planned at this time. 
 
 \subsection{Data Release data products}
 
@@ -54,7 +55,7 @@ The tables in this section outline which data products can be expected in each D
 Following the replan of the construction project and the descoping of ComCam on-sky observations, the exact Data products to be released with Data Preview 1 are still under discussion.
 
 \begin{table}
-\caption{Summary of data products expected in each data preview and early survey data release, as of December 2022.
+\caption{Summary of data products expected in each data preview and early survey data release, as of January 2023.
 In the case of DP1, these expectations come with considerable uncertainty: see Table~\ref{tab:dp-one-products} for more on this.}
 \label{tab:summary}
 \includegraphics[width=\linewidth]{figures/DPR-summary}
@@ -68,20 +69,20 @@ DP0.3 will be planned in detail during 2023.}
 \end{table}
 
 \begin{table}
-\caption{Summary of data products expected in DP1, as of December 2022.
-Note the high degree of uncertainty in this table: DP1 will be planned in detail during 2023.}
+\caption{Summary of data products expected in DP1, as of January 2023.
+Note the high degree of uncertainty in this table: DP1 will be planned in detail during 2023. Shown here is the minimal set of data products that can be expected.}
 \label{tab:dp-one-products}
 \includegraphics[width=\linewidth]{figures/DP1-products}
 \end{table}
 
 \begin{table}
-\caption{Summary of data products expected in DP2, as of December 2022.}
+\caption{Summary of data products expected in DP2, as of January 2023.}
 \label{tab:dp-two-products}
 \includegraphics[width=\linewidth]{figures/DP2-products}
 \end{table}
 
 \begin{table}
-\caption{Summary of data products expected in DR1, as of December 2022.}
+\caption{Summary of data products expected in DR1, as of January 2023.}
 \label{tab:dr-one-products}
 \includegraphics[width=\linewidth]{figures/DR1-products}
 \end{table}
@@ -89,9 +90,11 @@ Note the high degree of uncertainty in this table: DP1 will be planned in detail
 
 \subsection{Access to Early Science  Data Products} \label{ssec:dataaccess}
 Alerts are fully world-public and will be accessible via one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
-All other data products listed in \S~\ref{ssec:dataproductsummary} will be accessible to Rubin Data Rights community via the Rubin Science Platform, \citep{LSE-319}.
+All other data products listed in \S~\ref{ssec:dataproductsummary} will be accessible to Rubin Data Rights community via the Rubin Science Platform (RSP), \citep{LSE-319}.
 
-The Interim Data Facility (IDF) hosted on the Google Cloud Platform was set up to ..... and  is considered a production environment to support Data Preview releases. 
-
-DP0.1 and DP0.2 are currently available via the RSP running at the IDF.
-All future Rubin Data Previews will be similarly served via the RSP running at the IDF. 
+DP0.1 and DP0.2 are available via the RSP running at the US Data Access Center (US DAC), hosted on the Google Cloud Platform.
+During pre-operations, Rubin is also using Google Cloud resources for some image processing runs (including DP0.2), as its ``Interim Data Facility'' (IDF).
+Data processing is now in transition to the US Data Facility at SLAC, and the DP1 and DP2 processing will be carried out there.
+(The France Data Facility at CC-IN2P3 in Lyon, and the UK Data Facility on the IRIS network, are also being commissioned in parallel in time to participate in survey data processing.)
+Rubin data will continue to be served from the US DAC throughout pre-operations and into the LSST survey.
+An assortment of Rubin Independent Data Access Centers (IDACs) is also under construction, to provide additional user computing resources to LSST users around the globe.
