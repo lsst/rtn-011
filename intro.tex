@@ -6,6 +6,18 @@ Rubin Observatory's \emph{Early Science Program} is designed to provide Rubin da
 
 \subsection{Definition of Early Science}  \label{ssec:defn}
 Early Science is defined as any science enabled by Rubin for its community through and including the first LSST Data Release, DR1.
+ This includes the commissioning period and the first year of survey operations.
+
+\subsection{Motivation for an Early Science Program}  \label{ssec:motivation}
+
+The Early Science program is motivated by the desire to:
+\begin{itemize}
+\item enable high-impact science as early as possible
+\item provide early access to both static-sky and time-domain science-ready data products to support the community to prepare in advance of the first survey data release, 
+\item enable early time-domain astronomy via Alert Production
+\item provide early integration tests of the Rubin systems and prepare the team to be operations-ready
+\end{itemize}
+
 
 \subsection{Elements of the Early Science Program}
 
@@ -31,7 +43,7 @@ We broadly envisage two possible scenarios emerging from the commissioning phase
 \item \textbf{Scenario A}:
 The full commissioning plan comprising system optimization and science validation is successfully executed as planned. 
 Rubin Operations then carries out an Operations Rehearsal and Operations Readiness Review (ORR) to effectively conduct a \textit{full dress rehearsal} of science operations and demonstrate the readiness of the Operations team to execute the 10-year survey. 
-Science-grade data collected during the commissioning System Optimization period and subsequent Science Validation Surveys, \S~\ref{ssec:commissioning}, is reprocessed to produce the final Data Preview, DP2, which will be released 6 months following the completion of the Science Validation Surveys.
+Science-grade data collected during the commissioning System Optimization period and subsequent Science Validation Surveys, \S~\ref{sec:commissioning}, is reprocessed to produce the final Data Preview, DP2, which will be released 6 months following the completion of the Science Validation Surveys.
 
 \item \textbf{Scenario B}:
 On-sky time in commissioning is reduced as the construction work  draws to an end, resulting in the SV surveys not being completed prior to the end of the construction phase.
@@ -45,7 +57,17 @@ Both scenarios will include alert generation of some type, with the major distin
 The First Light observations that form the basis of DP1 must be taken and analysed in order to declare construction completeness, meaning that that DP1 is the identical in each scenario.
 The DP2 data products will be the same irrespective of which scenario materializes; only the timing of the release of DP2 and the start of the 10-year survey are different between the two scenarios.
 
-These two scenarios presented are current as of December 2022, however are subject to change commissioning program emerges and is executed.
+These two scenarios presented are current as of December 2022, however are subject to change as the commissioning program emerges and is executed.
 At some future point, a single option will be adopted and executed, and at that time, the details will be more fully specified.
 
+\subsection{Access to Early Science  Data Products} \label{ssec:dataaccess}
+Alerts are fully world-public and will be accessible via one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
+All other data products listed in \S~\ref{sec:datapreview} will be accessible to Rubin Data Rights community via the Rubin Science Platform (RSP), \citedsp{LSE-319}.
+
+DP0.1 and DP0.2 are available via the Rubin Science Platform (RSP) running at the US Data Access Center (US DAC), hosted on the Google Cloud Platform.
+During pre-operations, Rubin is also using Google Cloud resources for some image processing runs (including DP0.2), as its ``Interim Data Facility'' (IDF).
+Data processing is now in transition to the US Data Facility at SLAC, and the DP1 and DP2 processing will be carried out there.
+The French Data Facility (FRDF) at CC-IN2P3 in Lyon, and the UK Data Facility (UKDF) on the IRIS network, are also being commissioned in parallel in time to participate in LSST data processing.
+Rubin data will continue to be served from the US DAC throughout pre-operations and into the LSST survey.
+An assortment of Rubin Independent Data Access Centers (IDACs) is also under construction, to provide additional user computing resources to LSST users around the globe.
 
