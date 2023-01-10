@@ -10,7 +10,7 @@ Plans for Early Science
 RTN-011
 =======
 
-Science during year one is a priority for Rubin Observatory operations. This document provides the plans for enabling early science.  It is a living document that will evolve over the course of the pre-operations period. 
+Science prior to the first annual data release is a priority for Rubin Observatory operations. This document provides the plans for enabling early science.  It is a living document that will evolve over the course of the pre-operations period. 
 
 Links
 =====

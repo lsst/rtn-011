@@ -8,8 +8,8 @@
 
 
 % Local commands go here.
-\newcommand{\es}{Early Science\xspace}
-\newcommand{\dpdd}{Data Products Definition Document (DPDD)\xspace}
+
+\newcommand{\dpdd}{Data Products Definition Document (\DPDD{})\xspace}
 \newcommand{\dpv}{Data Preview\,}\xspace
 \newcommand{\dpvs}{Data Previews\,}\xspace
 \newcommand{\dpzero}{Data Preview 0 (DP0)\,}\xspace
@@ -25,13 +25,11 @@
 \newcommand{\rolsst}{Rubin Observatory Legacy Survey of Space and Time (LSST)\xspace}
 \newcommand{\vrolsst}{Vera C. Rubin Observatory Legacy Survey of Space and Time (LSST)\xspace}
 \newcommand{\lsst}{Legacy Survey of Space and Time (LSST)\xspace}
-\newcommand{\esp}{Early Science Program\xspace}
 \newcommand{\svs}{Science Validation Surveys\xspace}
 \newcommand{\sqdeg}{deg$^2$\xspace}
 
 \newcommand{\TODO}[2]{\textcolor{red}{{TO DO (#1): #2}}}
 
-\setcounter{tocdepth}{4}
 %If you want glossaries
 %\input{aglossary.tex}
 %\makeglossaries
@@ -43,7 +41,7 @@
 
 \author{%
 Leanne~P.~Guy, Keith Bechtol, Eric~Bellm, Bob~Blum, Melissa~L.~Graham,
-\v{Z}eljko~Ivezi\'{c}, Robert~H.~Lupton, Phil~Marshall, Michael~Strauss.}
+\v{Z}eljko~Ivezi\'{c}, Robert~H.~Lupton, Phil~Marshall, Colin~T.~Slater, Michael~Strauss.}
 
 \setDocRef{RTN-011}
 \setDocUpstreamLocation{\url{https://github.com/rubin-observatory/rtn-011}}
@@ -55,12 +53,14 @@ Leanne~P.~Guy, Keith Bechtol, Eric~Bellm, Bob~Blum, Melissa~L.~Graham,
 
 % Leanne
 \setDocAbstract{%
-Rubin Observatory is committed to enabling high-impact science prior to the first annual data release of the \lsst.
-In this document we provide the plans for a dedicated Early Science Program designed to realize that goal.
-Those plans include the release to the community of Rubin commissioning data products in the form of two Data Previews, the ramping up of the transient Alert stream, and the first LSST data release, DR1, based on the first 6 months of the LSST survey.
-We give an overview of which data products can be expected in each of these releases and present plans to implement incremental template generation to augment alert production in the early phases of the survey.
-The Rubin Operations team will work closely with the science community to optimize the \esp for the time-domain and solar system science achievable in the first year of operations.
-This is a living document; both it and the \esp will continue to evolve over the course of commissioning and pre-operations in response to the state of the as-built system and to community guidance. 
+
+This document outlines Rubin Observatory's plans for a dedicated \emph{Early Science Program} to enable high-impact science prior to the first annual data release of the  Legacy Survey of Space and Time (LSST).
+Components of the Early Science Program include releasing science-grade commissioning data products via a series of ``Data Previews,'' ramping up of the transient alert stream during commissioning,  implementing a program of incremental template generation to augment alert production in the early phases of the survey, and the first LSST Data Release, DR1, based on the first 6 months of data from the LSST.
+A detailed breakdown of which data products can be expected when is provided.
+The Rubin Operations team is working closely with the science community to optimize the Early Science Program for the time-domain and solar system science achievable in the first year of operations.
+This is a living document; both it and the Early Science Program will continue to evolve over the course of commissioning and pre-operations in response to the state of the as-built system and to community guidance.
+
+%Those plans include the release to the community of Rubin commissioning data products in the form Data Previews, the ramping up of the transient alert stream, and the first LSST Data Release, DR1, based on the first 6 months of the LSST survey.
 }
 
 
@@ -75,24 +75,21 @@ This is a living document; both it and the \esp will continue to evolve over the
   \addtohist{4}{2021-10-21}{Add timeline}{Leanne Guy}
   \addtohist{5}{2021-11-05}{Edits throughout}{Eric Bellm}
   \addtohist{6}{2021-11-09}{Global edits and consolidation}{Leanne Guy}
-	\addtohist{7}{2022-10-14}{Data Preview content, and incremental templates, revision of Early Science scenarios, address feedback from PCW 2022}{Phil Marshall \& Leanne Guy}
-  \addtohist{8}{2020-10-21}{Release version 2.0}{Leanne Guy}
-  \addtohist{9}{2020-10-24}{Changes to SCOC and survey text. Release version 2.1}{Leanne Guy}
-  \addtohist{10}{2020-11-16}{Clarifications on alert production during com-missioning, Release version 2.2}{Leanne Guy}
-  
+  \addtohist{7}{2022-10-14}{Data Preview content, and incremental templates, revision of Early Science scenarios, address feedback from PCW 2022}{Phil Marshall \& Leanne Guy}
+  \addtohist{8}{2022-10-21}{Release version 2.0}{Leanne Guy}
+  \addtohist{9}{2022-10-24}{Changes to SCOC and survey text. Release version 2.1}{Leanne Guy}
+  \addtohist{10}{2022-11-16}{Clarifications on alert production during com-missioning. Release version 2.2}{Leanne Guy}
+  \addtohist{11}{2022-11-16}{Updates following the construction project replan. Release version 3}{Leanne Guy}  
 }
 
 % Optional set citation information
 \setDocCitationInformation{
-Leanne P. Guy, Eric Bellm, Bob Blum, Melissa L. Graham, {\v Z}eljko Ivezi\'{c}, Michael Strauss, Keith Bechtol, Phil Marshall, Robert Lupton. (2022). Rubin Observatory Plans for an Early Science Program. Zenodo (2.2). \url{https://doi.org/10.5281/zenodo.5683848}.
+Leanne P. Guy, Keith Bechtol, Eric Bellm, Bob Blum, Melissa L. Graham, {\v Z}eljko Ivezi\'{c}, Robert H. Lupton, Phil Marshall, Colin T. Slater, Michael Strauss.(2023). Rubin Observatory Plans for an Early Science Program. Zenodo (3.0). \url{https://doi.org/10.5281/zenodo.5683848}.
 }
 
-
 \graphicspath{{./}{figures/}}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 
-
-%%%%%% Begin %%%%%%
 \begin{document}
 
 % Create the title page.
@@ -101,17 +98,16 @@ Leanne P. Guy, Eric Bellm, Bob Blum, Melissa L. Graham, {\v Z}eljko Ivezi\'{c}, 
 % use \mkshorttitle to remove the extra pages
 
 % Leanne
-\input{summary}
-\clearpage
+%\input{summary}
+%\clearpage
 
 % ADD CONTENT HERE
 \input{intro}
-\input{timeline}
-\input{science}
-\input{alertproduction}
 \input{commissioning}
-\input{data}
-\input{survey}
+\input{datapreview}
+\input{alertproduction}
+\input{science}
+\input{timeline}
 \input{communication}
 
 \appendix
