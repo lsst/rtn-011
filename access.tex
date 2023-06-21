@@ -1,0 +1,38 @@
+\section{Data Access Environment} \label{access}
+
+The Rubin data access environment provides data rights holders with access to all Rubin data products and services. 
+Prior to the start of Operations, all services for data access will be under active development and are provided on a shared-risk basis. 
+The Rubin data rights policy is described in \citeds{RDO-013}.
+
+\subsection{Data Access Centers}
+
+Rubin data products will be served to the community from the US Data Access Center (US DAC) hosted on the Google Cloud Platform\footnote{\url{data.lsst.cloud}}.
+\hyperref[sec:dp01]{DP0.1} and \hyperref[sec:dp02]{DP0.2}  are already available via the RSP running at the US DAC.
+
+An number of Rubin Independent Data Access Centers (IDACs) is also under construction to provide additional user computing resources to LSST users around the globe (\citeds{RTN-003}).
+
+\subsection{Rubin Science Platform}
+
+The Rubin Science Platform (RSP), described in \citeds{LSE-319}, is a set of integrated web-based applications, services, and tools to query, visualize, subset, and analyze LSST data.
+It comprises three different ``Aspects'': a \emph{Portal} Aspect designed to provide an environment for data discovery, query, filtering, and visualization, a \emph{Notebook} Aspect to enable next-to-the-data analysis, and an \emph{API} Aspect that enables programmatic access to the Rubin data products via Virtual Observatory (VO) interfaces.
+The Portal and Notebook Aspects of the RSP make use of the same APIs as the API Aspect to internally access the LSST datasets.
+
+An early version of the RSP is currently running at the US Data Access Center (US DAC) that provides access to provides DP0.1 and DP0.2. 
+
+\subsubsection{Image services}
+
+Image services is the term to describe the set of interfaces that provide access to LSST image data products\footnote{Image data products includes single-epoch images both raw and calibrated, difference images and coadded images of various types} through IVOA-style services in the API Aspect. 
+A detailed description of the Rubin Image Service Architecture can be found in \citeds{DMTN-139}.
+
+As of DP0.2 a first version of the Rubin's image services has been deployed as part of the RSP running at the US DAC and includes: an ObsCore data model and ObsTAP service for image metadata, image retrieval via https, an IVOA SODA service for making image cutouts, DataLink annotations to the ObsTAP service for access to the SODA service, and an authenticated HiPS service.
+Future releases will include difference-image and PVI re-creation services and a forced-photometry-on-demand service.
+Image services are accessible via the \emph{Portal}, \emph{Notebook}  and  \emph{API} aspects of the RSP. 
+
+Access to image data products via the Butler was deployed as part of DP0.1.
+
+\subsection{Community Brokers }
+
+Alerts are fully world-public and will be accessible via one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
+During the commissioning period, Rubin will work with the Community Brokers to integrate them \citedsp{rtn-010}.
+Community access to early alerts will depend on the readiness of the Community Brokers. 
+At this stage, we are expecting the first alerts from commissioning to become available via Community Brokers sometime following System First Light \citedsp{rtn-061}. 
