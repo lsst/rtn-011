@@ -14,6 +14,9 @@ The data products that comprise a Data Preview are produced by the LSST Science 
 For an introduction to the LSST data products, see \citet{RubinDataProductsAbridged} and for a detailed description, see the LSST \dpdd{},  \citedsp{LSE-163}.
 Each pre-operations Data Preview and survey Data Release will be accompanied by its own release-specific DPDD\footnote{For an example data release DPDD, see the online DP0.2 documentation {\url{https://dp0-2.lsst.io/data-products-dp0-2/}}.}, giving e.g. the  database schema for the catalogs included in that dataset.
 
+As both DP1 and DP2 will be based on commissioning data, they will not be released until the embargo period for commissioning data has passed. 
+\TODO{red}{Include a summary of the relevant details}
+
 Table~\ref{tab:data-preview-summary} provides a summary of the expected early science data products available in DP0, DP1, DP2 and the LSST Data Release 1.
 In the case of DP1, these expectations come with considerable uncertainty, see Table~\ref{tab:dp-one-products} for more details.
 
@@ -66,15 +69,26 @@ The exact data products for DP0.3 are still to be decided.
 \subsection{Data Preview 1}
 \label{sec:dp1}
 
-Data Preview 1 was originally defined to be based on reprocessed on-sky data taken with ComCam.
-Following the replan of the Construction project in December 2022, no on-sky data will be taken with ComCam, \S~\ref{sec:commissioning}.
-Consequently DP1 has been redefined to be based on a subset of science-grade images taken with LSSTCam during a period of a few days around the System First Light milestone, \S~\ref{ssec:commissioning-observations}.
-The processing pipelines and exact data products that will comprise DP1 are still under discussion. 
-At minimum, DP1 will deliver visit-level images and catalogs to enable initial studies of observational and instrumental effects. 
+\TODO{red}{Expand upon details further -- should have the DPs similar for each scenario. }
 
+The goal of Data Preview 1 (DP1)  is to provide the community with a small set data products taken with an LSST camera as early as possible to enable them to understand the characteristics of and prepare to work with real LSST data. 
+At this time, due to uncertainties in the construction schedule, two possible scenarios for DP1 are possible, depending on whether ComCam goes on sky or not. 
+Exactly which scenario plays out will not be known until LSSTCam is ready to ship to the summit. 
+
+\subsubsection{ComCam DP1}
+
+If ComCam goes on sky, DP1 will be based on reprocessed on-sky ComCam data. 
+All astronomically-useful images taken during commissioning with ComCam will be reprocessed by the LSST Science Pipelines to produce the set of data products listed in XX
+%Data Preview 1 was originally defined to be based on reprocessed on-sky data taken with ComCam.
+%Following the replan of the Construction project in December 2022, no on-sky data will be taken with ComCam, \S~\ref{sec:commissioning}.
+
+\subsubsection{LSSTCam DP1}
+If the project proceeds directly to LSSTCam on sky, DP1 will be based on a subset of science-grade images taken with LSSTCam during a period of a few days around the System First Light milestone, \S~\ref{ssec:commissioning-observations}.
 Note that the DP1 period of time during which data for DP1 are collected is \textit{very short}: the data products released in DP1 will be generated from relatively few observations taken in the few days around System First Light.
-Table~\ref{tab:dp-one-products} presents a summary of the data products expected in DP1.
 
+In both DP1 scenarios, the exact processing pipelines and  data products that will comprise DP1 are still under discussion and will depend somewhat on the data that comprises DP1. 
+At minimum, both DP1 scenarios  will deliver visit-level images and catalogs to enable initial studies of observational and instrumental effects. 
+Table~\ref{tab:dp-one-products} presents a current best idea of  the data products that might  comprise DP1. 
 
 \subsection{Data Preview 2}
 \label{sec:dp2}
@@ -105,7 +119,7 @@ Table~\ref{tab:dr-one-products} presents a summary of the data products expected
 \centering
 \includegraphics[width=0.9\linewidth]{figures/DP1-products}
 \caption{Summary of data products expected in DP1.
-Note the high degree of uncertainty in this table. DP1 will be planned in detail during 2024.}
+Note the high degree of uncertainty in this table. DP1 will be planned in detail during 2024. \TODO{red}{NEEDS REVISION}}
 \label{tab:dp-one-products}
 \end{table}
 
