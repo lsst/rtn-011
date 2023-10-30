@@ -5,7 +5,27 @@
 % Package imports go here.
 \usepackage{xspace}
 \usepackage{hyperref}
-\usepackage{color, colortbl}
+\usepackage{xcolor,color, colortbl}
+\usepackage{arydshln}
+
+%  Colors and shapes for tables
+\usepackage{makecell}
+\usepackage{amssymb}
+
+\newcommand{\mysquare}[1][black]{\small\textcolor{#1}{\ensuremath\blacksquare}}
+\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
+  
+\usepackage{arydshln}
+\setlength{\dashlinedash}{.4pt}
+\setlength{\dashlinegap}{.8pt}
+
+\usepackage{nicematrix}
+\usepackage{rotating}
+
+\usepackage{multirow} %for multirow
+\usepackage{rotating} %for sideways, rotating "samples" at 90°"
+\usepackage{bigstrut} %for bigstrut
+
 
 % Define the Rubin colors here
 
@@ -35,6 +55,8 @@
 \definecolor{RubinBlue}{HTML}{1C81A4}
 
 % Local commands go here.
+
+
 
 \newcommand{\dpdd}{Data Products Definition Document (\DPDD{})\xspace}
 \newcommand{\dpv}{Data Preview\,}\xspace
