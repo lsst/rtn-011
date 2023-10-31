@@ -6,30 +6,23 @@
 \usepackage{xspace}
 \usepackage{hyperref}
 \usepackage{xcolor,color, colortbl}
-\usepackage{arydshln}
-
-%  Colors and shapes for tables
-\usepackage{makecell}
-\usepackage{amssymb}
-
-\newcommand{\mysquare}[1][black]{\small\textcolor{#1}{\ensuremath\blacksquare}}
-\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
-  
-\usepackage{arydshln}
-\setlength{\dashlinedash}{.4pt}
-\setlength{\dashlinegap}{.8pt}
-
-\usepackage{nicematrix}
-\usepackage{rotating}
 
 \usepackage{multirow} %for multirow
 \usepackage{rotating} %for sideways, rotating "samples" at 90°"
-\usepackage{bigstrut} %for bigstrut
 
+\usepackage{arydshln}
+\setlength{\dashlinedash}{.4pt}
+\setlength{\dashlinegap}{.8pt}
+\usepackage{makecell}
+\usepackage{amssymb}
+
+% Colors for timeline 
+\definecolor{TLOrange0}{HTML}{F26035}
+\definecolor{TLOrange1}{HTML}{F58137}
+\definecolor{TLOrange2}{HTML}{FAA21A}
+\definecolor{TLOrange3}{HTML}{FDBC42}
 
 % Define the Rubin colors here
-
-% The main colors
 \definecolor{RubinLightTeal}{HTML}{00BABC}
 \definecolor{RubinDarkTeal}{HTML}{058B8C}
 \definecolor{RubinWhite}{HTML}{F5F5F5}
@@ -54,8 +47,12 @@
 \definecolor{RubinGreen}{HTML}{3CAE3F}
 \definecolor{RubinBlue}{HTML}{1C81A4}
 
+% Shapes
+\newcommand{\mysquare}[1][black]{\small\textcolor{#1}{\ensuremath\blacksquare}}
+\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
+\newcommand{\dpcirc}[1][RubinDarkTeal]{\Large\textcolor{#1}{\ensuremath\bullet}}
+  
 % Local commands go here.
-
 
 
 \newcommand{\dpdd}{Data Products Definition Document (\DPDD{})\xspace}
