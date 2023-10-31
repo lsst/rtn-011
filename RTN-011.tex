@@ -5,9 +5,55 @@
 % Package imports go here.
 \usepackage{xspace}
 \usepackage{hyperref}
+\usepackage{xcolor,color, colortbl}
 
+\usepackage{multirow} %for multirow
+\usepackage{rotating} %for sideways, rotating "samples" at 90°"
 
+\usepackage{arydshln}
+\setlength{\dashlinedash}{.4pt}
+\setlength{\dashlinegap}{.8pt}
+\usepackage{makecell}
+\usepackage{amssymb}
+
+% Colors for timeline 
+\definecolor{TLOrange0}{HTML}{F26035}
+\definecolor{TLOrange2}{HTML}{F58137}
+% \definecolor{TLOrange2}{HTML}{FAA21A}
+\definecolor{TLOrange3}{HTML}{FBB982 }
+
+% Define the Rubin colors here
+\definecolor{RubinLightTeal}{HTML}{00BABC}
+\definecolor{RubinDarkTeal}{HTML}{058B8C}
+\definecolor{RubinWhite}{HTML}{F5F5F5}
+\definecolor{RubinBlack}{HTML}{313333}
+
+% The complimentary teal colors
+\definecolor{RubinTeal0}{HTML}{D9F7F6}
+\definecolor{RubinTeal1}{HTML}{B1F2EF}
+\definecolor{RubinTeal2}{HTML}{009FA1}
+\definecolor{RubinTeal3}{HTML}{0C4A47}
+
+% The complimentary grey colors
+\definecolor{RubinGray0}{HTML}{DCE0E3}
+\definecolor{RubinGray1}{HTML}{6A6E6E}
+\definecolor{RubinGray2}{HTML}{1F2121}
+
+% The  accent colors
+\definecolor{RubinRed}{HTML}{ED4C4C}
+\definecolor{RubinOrange}{HTML}{FAB364}
+\definecolor{RubinYellow}{HTML}{FFE366}
+\definecolor{RubinPurple}{HTML}{583671}
+\definecolor{RubinGreen}{HTML}{3CAE3F}
+\definecolor{RubinBlue}{HTML}{1C81A4}
+
+% Shapes
+\newcommand{\mysquare}[1][black]{\small\textcolor{#1}{\ensuremath\blacksquare}}
+\newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
+\newcommand{\dpcirc}[1][RubinDarkTeal]{\Large\textcolor{#1}{\ensuremath\bullet}}
+  
 % Local commands go here.
+
 
 \newcommand{\dpdd}{Data Products Definition Document (\DPDD{})\xspace}
 \newcommand{\dpv}{Data Preview\,}\xspace
@@ -40,7 +86,7 @@
 % \setDocSubtitle{A subtitle}
 
 \author{%
-Leanne~P.~Guy, Keith Bechtol, Eric~Bellm, Bob~Blum, Melissa~L.~Graham,
+Leanne~P.~Guy, Keith~Bechtol, Eric~Bellm, Bob~Blum, Gregory~P.~Dubois-Felsmann, Melissa~L.~Graham,
 \v{Z}eljko~Ivezi\'{c}, Robert~H.~Lupton, Phil~Marshall, Colin~T.~Slater, Michael~Strauss.}
 
 \setDocRef{RTN-011}
@@ -83,7 +129,8 @@ This is a living document; both it and the Early Science Program will continue t
   \addtohist{12}{2023-01-12}{Correct Table 1 DP1 data products, Release version 3.1 }{Leanne Guy, Phil Marshall}
   \addtohist{13}{2023-06-01}{Updates following April schedule workshop; revision of early science scenarios; additional details on the data access environment}{Leanne Guy}
   \addtohist{14}{2023-06-21}{Release version 4.0}{Leanne Guy}
-
+  \addtohist{15}{2023-10-31}{Updates following April schedule workshop}{Leanne Guy}
+  \addtohist{16}{2023-10-31}{Release version 5.0}{Leanne Guy}
 }
 
 % Optional set citation information
