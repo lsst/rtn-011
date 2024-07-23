@@ -3,44 +3,47 @@
 \fontsize{6}{10}\selectfont 
 \setlength{\tabcolsep}{6pt} % Default value: 6pt
 {\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
     \hline
-\multicolumn{9}{|l|}{{\fontsize{9}{12}\selectfont \color{RubinDarkTeal}\textbf{Rubin Early Science -- Data Release Scenario}}}  \\\hline\hline
+\multicolumn{10}{|l|}{{\fontsize{9}{12}\selectfont \color{RubinDarkTeal}\textbf{Rubin Early Science -- Data Release Scenario}}}  \\\hline\hline
 \multirow{2}{*} {} & 
         \tiny Jun 2021 & \tiny Jun 2022 & \tiny Jun 2023  & 
         \tiny \makecell{Oct 2024 -- \\ Jul 2025}  & 
+        \tiny \makecell{start Jun--\\Nov 2025} &
         \tiny \makecell{ Nov 2025 -- \\ May 2026} & 
         \tiny \makecell{ May 2026 -- \\ Jan 2027} & 
         \tiny \makecell{ May 2027 -- \\ Jan 2028} & 
         \tiny \makecell{ May 2028 -- \\ Nov 2028} 
-    \\ \cline{2-9}
+    \\ \cline{2-10}
         
-        & \textbf{DP0.1}     &  \textbf{DP0.2}     &  \textbf{DP0.3}     &  \textbf{DP1}     &  \textbf{DP2}  &  \textbf{DR1} &  \textbf{DR2}  & \textbf{DR3} 
-   \\\cline{2-9} 
+        & \textbf{DP0.1}     &  \textbf{DP0.2}     &  \textbf{DP0.3}     &  \textbf{DP1} & \textbf{AP}    &  \textbf{DP2}  &  \textbf{DR1} &  \textbf{DR2}  & \textbf{DR3} 
+   \\\cline{2-10} 
        \multirow{3}{*}{\parbox{0.1\linewidth}{\vspace{0.2cm} \textbf{Data Product}}}  &   
         \rotatebox[origin=c]{90}{\tiny \makecell{\textbf{DC2} \\ \textbf{Simulated} \\\  \textbf{Sky Survey} }}  & 
         \rotatebox[origin=c]{90}{\tiny\makecell{\textbf{Reprocessed} \\ \textbf{DC2 Survey} }} &
 	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{Solar System} \\ \textbf{PPDB}  \\ \textbf{Simulation}}}  &  
-	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{ComCam} \\ \textbf{ or early} \\ \textbf{ LSSTCam} \\ \textbf{Data}}} & 
+	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{ComCam} \\ \textbf{Data}}} & 
+	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{Realtime} \\ \textbf{LSSTCam}\\ \textbf{Data}}} & 
 	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{LSSTCam} \\ \textbf{ Science} \\ \textbf{Validation}  \\ \textbf{Data}}} & 
 	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{LSST First } \\ \textbf{6 Months}  \\ \textbf{Data}}} &
 	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{LSST } \\ \textbf{Year 1} \\ \textbf{  Data}}} & 
 	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{LSST} \\  \textbf{Year 2} \\ \textbf{ Data}}} 
-    \\\cline{2-9 } \hline
+    \\\cline{2-10} \hline
     
-Raw Images   &   \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  \arrayrulecolor{gray}\hline
-DRP Processed Visit Images and Visit Catalogs         &    \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]    &    \mycirc[RubinDarkTeal]  \\\hline 
-DRP Coadded Images      &   \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   --  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\\hline
-DRP Object and ForcedSource Catalogs      &   \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   --  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  \\ \hline
-DRP Difference Images and DIASources       &  --  &   \mycirc[RubinDarkTeal]  &    --  &   --  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  \hline
-DRP ForcedSource Catalogs including DIA output     &  --  &   \mycirc[RubinDarkTeal]  &    --  &   --  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  \hline
+Raw Images   &   \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   \mycirc[RubinDarkTeal]  & \mycirc[RubinDarkTeal] &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  \arrayrulecolor{gray}\hline
+Processed Visit Images and Catalogs         &    \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   \mycirc[RubinDarkTeal]  & \mycirc[RubinDarkTeal] &   \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]    &    \mycirc[RubinDarkTeal]  \\\hline 
+Coadded Images      &   \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   --  & -- &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\\hline
+Object and ForcedSource Catalogs      &   \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  &    --  &   --  &  -- &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  \\ \hline
+Difference Images and DIASources       &  --  &   \mycirc[RubinDarkTeal]  &    --  &   --  & \mycirc[RubinDarkTeal] &   \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  \hline
+ForcedSource Catalogs including DIA &  --  &   \mycirc[RubinDarkTeal]  &    --  &   --  & -- &   \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  \hline
 %PP Processed Visit Images     & --  &   --  &    --  &   --  &    --  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]   &    \mycirc[RubinDarkTeal]   \\ \hline 
 %PP Difference Images     & --  &   --  &    --  &   --  &    --  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]   &    \mycirc[RubinDarkTeal]  \\  \hline
 %PP Catalogs     &   --  &  -- &    --  &   --  &   \mycirc[RubinDarkTeal] &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]    &    \mycirc[RubinDarkTeal] \\  \hline
 % PP SSP Catalogs   &   --  &   -- &    \mycirc[RubinDarkTeal]   &   --  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]   &    \mycirc[RubinDarkTeal]  \\  \hline
-DRP SSP Catalogs   &   --  &   -- &    --  &   --  &   --  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  
+Alerts &   --  &   -- &  --  &   --  & \mycirc[RubinDarkTeal] &  --  &  --  &  -- & --   \\ \hline 
+SSP Catalogs   &   --  &   -- &    \mycirc[RubinDarkTeal]  &   \mycirc[RubinDarkTeal]  & \mycirc[RubinDarkTeal] &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  \\  
  \arrayrulecolor{black}\hline
 \end{tabular}}
-\caption{Summary of Data Release data products expected in each data preview and early LSST data release.}
+\caption{Summary of data products expected in each early LSST data release.}
 \label{tab:data-preview-summary}
 \end{table}
