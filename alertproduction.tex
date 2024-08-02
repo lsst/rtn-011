@@ -28,7 +28,7 @@ Because we have a smaller set of input images to choose from and uncertain knowl
 Substantial validation will be required to determine when to build incremental templates to maximize the net throughput of Early Science.
 Nevertheless our goal is to enable Alert Generation to begin over at least a subset of the survey area as soon as the data are scientifically useful.
 
-Coadding multiple images enables artifact rejection  \citeds{DMTN-080} and is formally required due to the noise-level requirements placed on the DM system. 
+Coadding multiple images enables artifact rejection  \citedsp{DMTN-080} and is formally required due to the noise-level requirements placed on the DM system. 
 Additionally, the LSST survey is heavily dithered, so without coadding many images onto a common sky plane it is both difficult and inefficient to obtain image differences for a new pointing from past single images.
 Finally, single-image templates do not permit removal of artifacts, transients, and moving objects from the template, creating additional false positive sources in the resulting differences.
 
@@ -55,29 +55,24 @@ To handle alert generation outside the template building process attached to the
 \end{itemize}
 
 
-\subsection{Alert Generation during Commissioning}
+\subsection{Beginning Alert Production} \label{sec:alerts_start}
 
-Due to the need to verify the instrument characteristics, template quality, and image differencing and Real/Bogus performance, real-time alerts will not be immediately available during the commissioning period.
-However, the incremental template generation and alert production processes will be tested and optimized during commissioning with LSSTCam, resulting in a set of prompt data products, including alerts.
-Broker teams will be given access to these alerts for development purposes as soon as they are produced to understand their characteristics and to help to validate their quality, rather than to enable rapid followup and Early Science.
-The Alert and Prompt Product databases will be made available for query prior to the DP2 data release.
+A variety of technical, scientific, and organizational criteria must be met prior to the release of the first public alerts from LSSTCam.
+The prerequisites, which include formal agency approval, are summarized in \citeds{RTN-061}.
+Accordingly, alert production is expected to begin around the time of the Science Validation Surveys with LSSTCam and the start of the full LSST survey.
+Incremental template generation, difference imaging, and Real/Bogus pipelines will be tested and optimized during commissioning with ComCam and LSSTCam prior to first alert release.
+These efforts will contribute to data release DIA products released in DP1 and DP2.
+Full-volume, full-fidelity alert production is expected in the second year of the LSST survey after DR1. 
 
 During commissioning templates will be generated incrementally over the maximal sky area supported by the available observations.
 By the end of the commissioning period, coadd templates for use in difference imaging will only be available for $\approx$ 10\% of the sky.
 Generating templates over a wide area is not an explicit goal of commissioning;  however, where possible, if commissioning observations are agnostic to pointing and filter, we would endeavour to choose a pointing and filter that maximizes building templates to enable early science.
-
-Rubin aims to scale up alert production during commissioning with the aim of beginning routine Alert Production as soon as is feasible following System First light.
-Once begun, Alert Production will then proceed continuously into the full LSST survey.
-Alerts generated during commissioning may be produced with higher latency.
 The commissioning period also provides an excellent opportunity to investigate how many visits in a given band are sufficient to construct a usable template.
 
-Table~\ref{tab:prompt-data-products} lists the various alert and prompt processing data products currently planned at each phase of alert production during commissioning and the first two years of the LSST survey. 
-Phase 1 covers the commissioning system optimization and science validation periods and phase 2 covers early survey operations.  
+Rubin aims to begin routine Alert Production as soon as is feasible and scale up alert production as more templates become available.
+Once begun, Alert Production will proceed continuously through the full LSST survey.
+Alerts generated prior to DR1 may be produced with higher latency and/or lower fidelity.
+All Rubin alerts sent to community alert brokers are world-public.
 
-\input{tables/rubin_early_pp_scenario}
-%\begin{table}[ht]
-%\centering
-%\includegraphics[width=0.9\linewidth]{figures/Prompt-products}
-%\caption{Summary of prompt data products expected during commissioning and year 1 survey observations.}
-%\label{tab:prompt-data-products}
-%\end{table}
+Other data products produced during Alert Production (processed visit and difference images, DIA catalogs in the Prompt Products Database, direct image catalogs) may be accessed by Data Rights holders through the RSP.
+Access to these products may be delayed early in the survey (Figure \ref{fig:commissioning-es-schedule}).
