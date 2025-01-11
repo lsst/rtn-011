@@ -14,7 +14,7 @@ The data products that comprise the Data Previews and Data Releases are produced
 For an introduction to the LSST data products, see \citet{RubinDataProductsAbridged} and for a detailed description, see the LSST \dpdd{},  \citedsp{LSE-163}.
 Each Data Preview and LSST Data Release will be accompanied by its own release-specific DPDD\footnote{For an example data release DPDD, see the online DP0.2 documentation {\url{https://dp0-2.lsst.io/data-products-dp0-2/}}.}, giving e.g. the  database schema for the catalogs included in that dataset.
 Table~\ref{tab:data-preview-summary} provides a summary of the expected early science data products available in DP0, DP1, DP2 and the LSST Data Release 1.
-All LSST data products will be subject to the embargo periods described in  \citeds{DMTN-199}.
+All LSST data products will be subject to the embargo periods described in  \citeds{DMTN-199}; 30 days during commissioning and 80 hours during operations for pixel data.
 
 \input{tables/rubin_early_dr_scenario}
 
@@ -62,14 +62,23 @@ For full details on DP0.3 including an exact description of the data products se
 
 Data Preview 1 (DP1) will serve data products generated from a subset of science-grade astronomically useful images  taken  during  the ComCam on-sky commissioning campaign (\S~\ref{ssec:commissioning-milestones}), to enable the community to prepare to work with LSST data. 
 ComCam commissioning was completed on 15 December 2024. 
+The fields listed in table \ref{tab:data-preview-1-fields} has been selected for inclusion in DP1 based on  quality and scientific usefulness. 
+\input{tables/dp1_fields}
+
 The processing and preparation of ComCam data for DP1 will take place during the first half of 2025, with an expected DP1 release data in June or July 2025. 
 The planned data products for DP1 are presented in table~ \ref{tab:data-preview-summary}. 
 Data products that are marked as a stretch goal, DRP ForcedSource Catalogs, Difference Images and DIA Catalogs,  will not be confirmed until close to the DP1 release date. 
 
-DP1 will not contain any DRP  SSP data products due to needing  focus on providing high qualiy live LSSTCam SS Prompt data priducts as part of teh AP ramp up, starting roughly contemporaneously with DP1 release and in order to be ready for LSSTCam.
+DP1 will not contain any DRP  SSP data products in order to focus on readiness for LSSTCam and on providing high quality live LSSTCam SSP Prompt data products as part of the ramp up of Alert Production starting roughly contemporaneously with the DP1 release.
+
 
 \subsection{Data Preview 2}
 \label{sec:dp2}
+
+As the survey begins, all science-grade data collected during the SV survey, \S~\ref{sec:commissioning}, is reprocessed to produce the final Data Preview, DP2, which will be released 6 months following the start of operations.
+
+
+As the survey begins, all science-grade data collected during the commissioning System Optimization period and subsequent Science Validation Surveys, \S~\ref{sec:commissioning}, is reprocessed to produce the final Data Preview, DP2, which will be released 6 months following the start of operations.
 
 Data Preview 2 will serve a full consistent reprocessing of all data collected as part of the LSSTCam Science Validation Surveys (SV Surveys) together with any other science-grade commissioning images taken throughout the Science Optimization phase of commissioning, including the DP1 data. 
 
