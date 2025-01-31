@@ -60,36 +60,51 @@ For full details on DP0.3 including an exact description of the data products se
 \subsection{Data Preview 1}
 \label{sec:dp1}
 
-Data Preview 1 (DP1) will serve data products generated from a subset of science-grade astronomically useful images  taken  during  the ComCam on-sky commissioning campaign (\S~\ref{ssec:commissioning-milestones}), to enable the community to prepare to work with LSST data. 
-ComCam commissioning was completed on 15 December 2024. 
-The fields listed in table \ref{tab:data-preview-1-fields} has been selected for inclusion in DP1 based on  quality and scientific usefulness. 
+Data Preview 1 (DP1) will serve data products generated from a subset of science-grade astronomically useful images  taken  during  the ComCam on-sky commissioning campaign (\S~\ref{ssec:commissioning-comcam}), to enable the community to prepare to work with LSST data. 
+
+Seven target fields observed as part of the ComCam on-sky observing campaign  have been selected as the basis for DP1 due to their quality and scientific usefulness.  
+These seven fields, listed in table \ref{tab:dp1_fields} together with their central pointing coordinates, span a range of stellar densities, have good overlap with external reference datasets, and span the breadth of the four primary LSST science themes.
 \input{tables/dp1_fields}
 
-The processing and preparation of ComCam data for DP1 will take place during the first half of 2025, with an expected DP1 release data in June or July 2025. 
+Table \ref{tab:dp1_fields_visits} provides a summary of the band coverage for the DP1 fields and figure \ref{fig:dp1_fields_psf_maglim} shows the
+resulting integrated depth, expressed in terms of the flux of an unresolved source that would be measured with signal-to-noise ratio $S/N = 5$, using the $r$ band as an example.
+A typical observing epoch on a given target field consisted of 5-20 visits in each of the three loaded filters.
+Nearly all the visits  were taken with one single 1x30 second exposure time and not  2x15 second snaps\footnote{At this time, studies as to whether the LSST will use a 1x30 single exposure or 2x15 snaps as the default standard visit are ongoing with LSSTCam data, and a decision will be made prior to starting the LSST. }.
+DP1 is expected to include of the order of 2000 science images.
+\input{tables/dp1_fields_visits}
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_47_tuc_r.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_rubin_sv_38_7_r.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_fornax_dsph_r.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_ecdfs_r.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_edfs_r.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_rubin_sv_95_-25_r.pdf}
+        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_seagull_r.pdf}
+    \end{center}
+    \caption{Cumulative imaging depth expressed in terms of the $S/N=5$ limiting magnitude for unresolved sources for seven ComCam Deep Drilling Fields.
+    First Row (left to right): 47 Tuc, Rubin SV 38 7, Fornax dSph.
+    Second Row (left to right): ECDFS, EDFS, RubinSV 95 -25.
+    Third Row: Seagull.}
+    \label{fig:dp1_fields_psf_maglim}
+\end{figure}
+
+
+The  processing and preparation of ComCam data for DP1 will take place during the first half of 2025, with an expected DP1 release data in June or July 2025. 
 The planned data products for DP1 are presented in table~ \ref{tab:data-preview-summary}. 
 Data products that are marked as a stretch goal, DRP ForcedSource Catalogs, Difference Images and DIA Catalogs,  will not be confirmed until close to the DP1 release date. 
-
 DP1 will not contain any DRP  SSP data products in order to focus on readiness for LSSTCam and on providing high quality live LSSTCam SSP Prompt data products as part of the ramp up of Alert Production starting roughly contemporaneously with the DP1 release.
 
 
 \subsection{Data Preview 2}
 \label{sec:dp2}
 
-As the survey begins, all science-grade data collected during the SV survey, \S~\ref{sec:commissioning}, is reprocessed to produce the final Data Preview, DP2, which will be released 6 months following the start of operations.
-
-
 As the survey begins, all science-grade data collected during the commissioning System Optimization period and subsequent Science Validation Surveys, \S~\ref{sec:commissioning}, is reprocessed to produce the final Data Preview, DP2, which will be released 6 months following the start of operations.
 
-Data Preview 2 will serve a full consistent reprocessing of all data collected as part of the LSSTCam Science Validation Surveys (SV Surveys) together with any other science-grade commissioning images taken throughout the Science Optimization phase of commissioning, including the DP1 data. 
-
-
-DRP SSP is a stretch goal for DP2. It will depend on . oLong term goal is that DRP SSP is a rubin only product. It does not start with thworbit catalog from the MPC 
-A DP2 DRP 
-by pipwlines freeze for DP2 qw qoll be running live SSP .
-Most objects will have been reported to the MPC already and will be in our PPDB
-
-
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2.
+DRP Solar System Processing (SSP)  is currently a stretch goal for DP2. 
+DRP SSP is intended to be a Rubin-only product; meaning that  It does not start with the catalog from the Minor Planets Center (MPC).
+
 
 \subsection{Data Release 1}
 \label{sec:dr1}

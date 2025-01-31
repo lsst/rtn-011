@@ -1,47 +1,20 @@
-\begin{table}
-\centering
-\fontsize{6}{10}\selectfont 
-\setlength{\tabcolsep}{6pt} % Default value: 6pt
-{\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
-    \hline
-\multicolumn{7}{|l|}{{\fontsize{9}{12}\selectfont \color{RubinDarkTeal}\textbf{Rubin Early Science -- Data Preview 1 Fields}}}  \\\hline\hline
-\multirow{2}{*} {} & 
-%        \tiny Jun 2021 & \tiny Jun 2022 & \tiny Jun 2023  & 
-%        \tiny \makecell{Jun  2025 -- \\ Jul 2025}  & 
-%        \tiny \makecell{ Mar 2026 -- \\ May 2026} & 
-%        \tiny \makecell{ Sep 2026 -- \\ Jan 2027} 
-%        & 
-%        \tiny \makecell{ Sep 2027 -- \\ Jan 2028} & 
-%        \tiny \makecell{ Sep 2028 -- \\ Nov 2028} 
-%    \\ \cline{2-7}
-         \textbf{ECDFS}     &  \textbf{EDF-S}     &  \textbf{Fornax}     & 
-         \textbf{Seagull}     &  \textbf{Rubin SV 1}  &  \textbf{Rubin SV 2} 
-        % &  \textbf{DR2}  & \textbf{DR3} 
-
-   \\\cline{2-7} 
-       \multirow{3}{*}{\parbox{0.1\linewidth}{\vspace{-0.5cm} \textbf{}}}  &   
-        \rotatebox[origin=c]{0}{\tiny \makecell{\textbf{Extended} \\ \textbf{Chandra} \\\  \textbf{Deep Field} }}  & 
-        \rotatebox[origin=c]{0}{\tiny\makecell{\textbf{Euclid} \\ \textbf{Deep Field} }} &
-	\rotatebox[origin=c]{0}{\tiny\makecell{\textbf{Fornax\_dSph }  \\ \textbf{}}}  &  
-	\rotatebox[origin=c]{0}{\tiny\makecell{\textbf{Rubin SV} \\ \textbf{95, -25}  }} & 
-	\rotatebox[origin=c]{0}{\tiny\makecell{\textbf{Rubin SV } \\ \textbf{36, 7}  }} &
-	\rotatebox[origin=c]{0}{\tiny\makecell{\textbf{Seagull}  }} 
-%& 	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{LSST } \\ \textbf{Year 1} \\ \textbf{  Data}}} & 
-%	\rotatebox[origin=c]{90}{\tiny\makecell{\textbf{LSST} \\  \textbf{Year 2} \\ \textbf{ Data}}} 
-    \\\cline{2-7} \hline
-    
-Science Program  & BLOCK-320 &  BLOCK-320  &    BLOCK-320 &  BLOCK-320 &  BLOCK-320  &   BLOCK-320        \\  \arrayrulecolor{gray}\hline
-Tract & 5063, 4849 &  2394  &    4016  & 5526,5525 &  10463,10464, 10704  &   7610,7611,7850        \\  \arrayrulecolor{gray}\hline
- u  &  &    &    --  &  &    &           \\  \arrayrulecolor{gray}\hline
- g & 210 & 61   &   5  & 86  & 44    &      37    \\  \arrayrulecolor{gray}\hline
- r &  &    &    --  &  &    &          \\  \arrayrulecolor{gray}\hline
- i &  &    &    --  &  &    &          \\  \arrayrulecolor{gray}\hline
- z &  &    &    --  &  &    &          \\  \arrayrulecolor{gray}\hline
- y &  &    &    --  &  &    &          \\  \arrayrulecolor{gray}\hline
- 
- \arrayrulecolor{black}\hline
-\end{tabular}}
-\caption{List of the ComCam fields selected to be part of Rubin Data Preview 1..}
-\label{tab:data-preview-1-fields}
-\end{table}
+\begin{table*}
+    \centering
+      \caption{ComCam target fields and pointing centers that are to be included in the DP1 dataset. ICRS coordinates are shared in units of decimal degrees.}
+    \begin{tabular}{@{}llcc@{}}
+           \noalign{\vspace{5pt}}\hline\hline \noalign{\vspace{5pt}}
+      \textbf{Field Code} & \textbf{ Field Name}  &\textbf{Right Ascension} & \textbf{Declination} \\ \noalign{\vspace{1pt}}
+       \cline{3-4}  \noalign{\vspace{1pt}}
+    & & \textit{deg} & \textit{deg} \\ \noalign{\vspace{1pt}}
+    \hline  \noalign{\vspace{3pt}}
+    47 Tuc & 47 Tuc Globular Cluster              & 6.02    & -72.08    \\
+    Rubin SV 38 7 & Low Ecliptic Latitude Field  & 37.86   & 6.98      \\
+    Fornax dSph &Fornax Dwarf Spheroidal Galaxy  & 40.00   & -34.45    \\
+    ECDFS & Extended Chandra Deep Field South     & 53.13   & -28.10    \\
+    EDFS & Euclid Deep Field South                 & 59.10   & -48.73    \\
+    Rubin SV 95 -25 & Low Galactic Latitude Field  & 95.00   & -25.00    \\
+    Seagull & Seagull Nebula Seagull                     & 106.23  & -10.51    \\
+     \noalign{\vspace{3pt}}\hline
+    \end{tabular}
+    \label{tab:dp1_fields}
+\end{table*}
