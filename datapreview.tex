@@ -72,32 +72,9 @@ A typical observing epoch on a given target field consisted of 5-20 visits in ea
 Nearly all the visits  were taken with one single 1x30 second exposure time and not  2x15 second snaps\footnote{At this time, studies as to whether the LSST will use a 1x30 single exposure or 2x15 snaps as the default standard visit are ongoing with LSSTCam data, and a decision will be made prior to starting the LSST. }.
 DP1 is expected to include of the order of 2000 science images.
 \input{tables/dp1_fields_visits}
-%\begin{figure}
-%    \begin{center}
-%        \includegraphics[width=0.33\textwidth]{figures/comcam_psf_maglim_47_tuc_r.pdf}
-%        \hspace{1pt}
-%        \includegraphics[width=0.33\textwidth]{figures/comcam_psf_maglim_rubin_sv_38_7_r.pdf}
-%         \hspace{1pt}
-%        \includegraphics[width=0.33\textwidth]{figures/comcam_psf_maglim_fornax_dsph_r.pdf}
-%        \vspace{10pt}
-%        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_ecdfs_r.pdf}
-%        \hspace{1pt}
-%        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_edfs_r.pdf}
-%        \hspace{1pt}
-%        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_rubin_sv_95_-25_r.pdf}
-%        \vspace{10pt}
-%        \includegraphics[width=0.32\textwidth]{figures/comcam_psf_maglim_seagull_r.pdf}
-%    \end{center}
-%    \caption{Cumulative imaging depth expressed in terms of the $S/N=5$ limiting magnitude for unresolved sources for seven ComCam Deep Drilling Fields.
-%    First Row (left to right): 47 Tuc, Rubin SV 38 7, Fornax dSph.
-%    Second Row (left to right): ECDFS, EDFS, RubinSV 95 -25.
-%    Third Row: Seagull.}
-%    \label{fig:dp1_fields_psf_maglim}
-%\end{figure}
 
 \begin{figure}[htbp]
     \centering
-    % First row - 3 images
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/comcam_psf_maglim_47_tuc_r.pdf}
@@ -118,27 +95,15 @@ DP1 is expected to include of the order of 2000 science images.
         \caption{Fornax dSph}
         \label{fig:img3}
     \end{subfigure}
-    
     \vspace{1em}  % Vertical space between rows
-    
-    % Second row - 2 images (centered)
-    \begin{subfigure}[b]{0.3\textwidth}
+     \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/comcam_psf_maglim_ecdfs_r.pdf}
         \caption{ECDFS}
         \label{fig:img4}
     \end{subfigure}
     \hfill
-%    \begin{subfigure}[b]{0.3\textwidth}
-%        \centering
-%        \includegraphics[width=\textwidth]{figures/comcam_psf_maglim_edfs_r.pdf}
-%        \caption{EDFS}
-%        \label{fig:img5}
-%    \end{subfigure}
-    
-    \vspace{1em}  % Vertical space between rows
-    
-    % Third row - 3 images
+    \vspace{1em}  
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/comcam_psf_maglim_edfs_r.pdf}
@@ -159,15 +124,24 @@ DP1 is expected to include of the order of 2000 science images.
         \caption{Seagull}
         \label{fig:img8}
     \end{subfigure}
-    
      \caption{Cumulative imaging depth expressed in terms of the $S/N=5$ limiting magnitude for unresolved sources for seven ComCam Deep Drilling Fields.}
-     \label{fig:all_images}
+     \label{fig:dp1_fields_psf_maglim}
 \end{figure}
 
 The  processing and preparation of ComCam data for DP1 will take place during the first half of 2025, with an expected DP1 release data in June or July 2025. 
 The planned data products for DP1 are presented in table~ \ref{tab:data-preview-summary}. 
 Data products that are marked as a stretch goal, DRP ForcedSource Catalogs, Difference Images and DIA Catalogs,  will not be confirmed until close to the DP1 release date. 
 DP1 will not contain any DRP  SSP data products in order to focus on readiness for LSSTCam and on providing high quality live LSSTCam SSP Prompt data products as part of the ramp up of Alert Production starting roughly contemporaneously with the DP1 release.
+
+
+%%% rehash %%%
+ComCam observations that are expected to be included in Data Preview 1.
+
+Keep in mind that this is “expected” in a general sense.
+Exact image counts and coadd depths may change.
+
+
+For example, it is conceivable that a few individual exposures might not, in the end, meet the quality control standard of being “science-grade, astronomically useful” images.
 
 
 \subsection{Data Preview 2}
