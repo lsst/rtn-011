@@ -29,6 +29,12 @@ The following functionality is already deployed and operational on the RSP:
 \item Authenticated HiPS data service.
 \end{itemize}
 
+There will be an important change to the Butler for DP1. 
+To date, science users have accessed Rubin data products on the RSP using a  full read-write \textit{Direct Butler}, which connects to an SQL database.
+From DP1, for both scaling and security reasons, science users will access the  Rubin data products  via a new \textit{Remote Butler}, which interacts with a server via a REST API. 
+The  \textit{Remote Butler} read and query API will be the same as for the DP0-era \textit{Direct Butler}, however the new \textit{Remote Butler} will not  support user write operations.  
+Users will be able to write the outputs of their analyses to their home directory. 
+
 The following is a summary of new RSP functionality expected for DP1: 
 \begin{itemize}
 \item IVOA-compatible SIA image service;
