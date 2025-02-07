@@ -24,7 +24,7 @@ The following functionality is already deployed and operational on the RSP:
 \item TAP and Butler access to catalogs and images;
 \item ObsCore data model and ObsTAP service for image metadata and searches;
 \item Image retrieval via https;
-\item IVOA SODA service for single image cutouts, one at a time;
+\item IVOA SODA service for creating cutouts from single visit images\footnote{At this time, the cutout service can only process requests for one cutout at a time, meaning to create and retrieve 10 cutouts will require 10 independent synchronous calls to the cutout service. A bulk cutout service is under development and expected to be available by DR1};
 \item DataLink annotations to the ObsTAP service for access to the SODA service;
 \item Authenticated HiPS data service.
 \end{itemize}
