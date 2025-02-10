@@ -6,25 +6,25 @@
     \begin{tabular}{|p{0.31\linewidth} | p{0.32\linewidth}  | p{0.32\linewidth}|}
     \hline
     \multicolumn{3}{|l|}{{\fontsize{9}{12}\selectfont \color{RubinDarkTeal}\textbf{Rubin Early Science -- Alerts \& Prompt Products Scenario}}}  \\\hline\hline
-    
-
-
-
+  
 
 \multirow{1}{*} {}  & 
         \tiny  \makecell{Phase 1: 3 -- 16 weeks post System First Light}  & 
         \tiny   \makecell{Phase 2: 18 -- 17 weeks post System First Light} \\[5pt] \cline{2-3}        
         {\parbox{0.5\linewidth}{\vspace{0.6cm} \textbf{Data Product}}}  &   
-        { \makecell{ \textbf{Commissioning } \\ \textbf{(System Optimization \& SV Surveys)} }}  & 
+        { \makecell{ \textbf{LSSTCam Commissioning }  }}  & 
         {\makecell{\textbf{Year 1 Survey} \\ \textbf{Operations} }} 
          \\[10pt] \cline{2-3} \hline
 
-\textbf{Alerts}     & --- &   --- \\  \arrayrulecolor{gray}\hline
-\textbf{PP Processed Visit Images}     & Commissioning of the PP image differencing and incremental template building will begin shortly after System First Light. Prompt image release is embargoed during commissioning.  &   Access to unvetted processed visit images as prompt products in the first 6 months of the LSST is still TBD. PP PVIs available after DP2.     \\  \arrayrulecolor{gray}\hline
-\textbf{PP Difference Images}     & Difference imaging will be somewhat limited, since the image template sky coverage will be sparse. Prompt image release is embargoed during commissioning.  &     Difference imaging will steadily increase as incremental template building increases the templates available. Prompt access to unvetted PP difference images is still TBD. PP diff images available after DP2.    \\\hline
-\textbf{PP Catalogs}    &   PPDB likely unavailable for query. &  PPDB available for query. \\ 
- (DIASources, DIAObjects, DIAForced Sources)  & & \\\hline
-\textbf{PP SSP Catalogs}   &   Alert volume and latency will improve throughout the commissioning period. Aiming for ``near-live'' brokered Alert stream by the end of LSSTCam SV.  &   Difference imaging will steadily increase as incremental template building increases the templates available. Prompt access to unvetted PP difference images is still TBD. PP diff images available after DP2. \\  \hline
+\textbf{Alerts}     &  Alert volume and latency will improve throughout the commissioning period. Aiming for ``near-live'' brokered Alert stream by the end of LSSTCam Commissioning.  &  
+Continued ramp up of the alert stream contingent on the availability of templates.  Alerts expected to reach near full volume and fidelity after DR1.  Alert stream latency in year 1 is 120 seconds. \\  \arrayrulecolor{gray}\hline
+%
+\textbf{PP Processed Visit Images}     & Commissioning of the PP image differencing and incremental template building. Prompt image release is embargoed during commissioning (\S~\ref{ssec:impact}).  &   Access to processed visit images as prompt products in the first 6 months of the LSST is TBD.      \\  \arrayrulecolor{gray}\hline
+\textbf{PP Difference Images}     & Difference imaging will be somewhat limited, since the image template sky coverage will be sparse. Prompt image release is embargoed during commissioning (\S~\ref{ssec:impact}). &     Difference imaging will steadily increase as incremental template building increases the templates available. Access to PP difference images in the first 6 months of LSST is TBD.    \\\hline
+%
+\textbf{PP Catalogs}    &   Queryable PPDB available at shared risk. &  PPDB available for query. \\ 
+ (DIASources, DIAObjects, DIAForcedSources)  & & \\\hline
+%
 \textbf{PP SSP Catalogs}   &   Measurements of known SSObjects sent to the MPC whenever difference images are available. Searches for new SSObjects performed if appropriately-cadenced data is present. SSP Catalogs likely unavailable for query in the PPDB. &   Standard SSP Daily Data Products produced from difference images as they are available and reported to the MPC. SSP catalogs available for query in the PPDB.  \\  \hline
 
 \arrayrulecolor{black}\hline
@@ -32,7 +32,3 @@
 \caption{Summary of Prompt data products expected during commissioning and year 1 of survey observations..}
 \label{tab:prompt-data-products}
 \end{table}
-%PP Processed Visit Images     & --  &   --  &    --  &   --  &    --  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]   &    \mycirc[RubinDarkTeal]   \\ \hline 
-%PP Difference Images     & --  &   --  &    --  &   --  &    --  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]   &    \mycirc[RubinDarkTeal]  \\  \hline
-%PP Catalogs     &   --  &  -- &    --  &   --  &   \mycirc[RubinDarkTeal] &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]    &    \mycirc[RubinDarkTeal] \\  \hline
-%PP SSP Catalogs   &   --  &   -- &    \mycirc[RubinDarkTeal]   &   --  &    \mycirc[RubinDarkTeal]  &    \mycirc[RubinDarkTeal]  &  \mycirc[RubinDarkTeal]   &    \mycirc[RubinDarkTeal]  \\  \hline
