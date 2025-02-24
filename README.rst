@@ -48,7 +48,8 @@ Docker
 
 Compile this document through an lsst-texmf Docker image to avoid installing LaTeX and lsst-texmf on your own computer::
 
-    docker run --rm -v `pwd`:/build -w /build lsstsqre/lsst-texmf:latest sh -c 'make clean; make'
+    docker build --platform linux/amd64 -t rtn-011-env .
+    docker run --rm -v "$(pwd)":/app rtn-011-env
 
 Or run the included script::
 
