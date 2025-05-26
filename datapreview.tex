@@ -4,8 +4,8 @@
 A series of three Data Previews (DP) and one Data Release (DR) are planned to support the community as they develop their LSST analysis software and workflows, and to enable high-impact science as soon as possible.
 \begin{itemize}
 \item Data Preview 0 (DP0): Based on simulated LSST-like data.
-\item Data Preview 1 (DP1): Based on a subset of early science-grade commissioning data taken with LSSTComCam during the \textit{On-Sky Engineering} phase.
-\item Data Preview 2 (DP2): Based on a full reprocessing of all science-grade data taken withLSSTCam during the \textit{System Optimization and Science Validation Surveys} phases.
+\item Data Preview 1 (DP1): Based on a subset of early science-grade commissioning data taken with LSSTComCam during commissioning.
+\item Data Preview 2 (DP2): Based on a full reprocessing of all science-grade data taken with LSSTCam during commissioning.
 \item Data Release 1 (DR1): Based on the first six months of LSST data. 
 \end{itemize}
 Due to the relatively short time periods available for commissioning observations (\S~\ref{ssec:transition}), the Data Previews will necessarily be limited in their area and temporal coverage relative to a full Data Release. 
@@ -64,7 +64,7 @@ For full details on DP0.3 including an exact description of the data products se
 Data Preview 1 (DP1) will serve data products generated from a subset of science-grade astronomically useful images  taken  during  the ComCam on-sky commissioning campaign (\S~\ref{ssec:commissioning-comcam}), to enable the community to prepare to work with LSST data. 
 
 Seven target fields observed as part of the ComCam on-sky observing campaign  have been selected as the basis for DP1 due to their quality and scientific usefulness.  
-These seven fields, listed in Table~\ref{tab:dp1_fields} together with their central pointing coordinates, span a range of stellar densities, have good overlap with external reference datasets, and span the breadth of the four primary LSST science themes.
+These seven fields, listed in Table~\ref{tab:dp1_fields} together with their central pointing coordinates, span a range of stellar densities, have good overlap with external reference datasets, and span the breadth of the four primary LSST science themes. 
 \input{tables/dp1_fields}
 
 Table~\ref{tab:dp1_fields_visits} provides a summary of the band coverage for the DP1 fields and Figure~\ref{fig:dp1_fields_psf_maglim} shows the
@@ -73,11 +73,12 @@ resulting integrated depth, expressed in terms of the flux of an unresolved sour
 No coadds were produced for these regions during the on-sky commissioning campaign, hence the holes in the center of the figures.
 A typical observing epoch on a given target field consisted of 5-20 visits in each of the three loaded filters.
 Nearly all the visits  were taken with one single 1x30 second exposure time and not  2x15 second snaps\footnote{At this time, studies as to whether the LSST will use a 1x30 single exposure or 2x15 snaps as the default standard visit are ongoing with LSSTCam data, and a decision will be made prior to starting the LSST. }.
+Only 1x30 second exposure images are included in DP1.
 \input{tables/dp1_fields_visits}
 \input {figures/dp1_fields_depths}
 
 The  processing and preparation of LSSTComCam data for DP1 took place during the first half of 2025. 
-The planned release data for DP1 is 30 June 2025. 
+The planned release date for DP1 is 30 June 2025. 
 The planned data products for DP1 are presented in Table~\ref{tab:data-preview-summary}.
 DP1 is expected to include of the order of 2000 exposures.
 The processing of crowded fields in the centers of 47 Tuc and Fornax is on a best-effort basis.
