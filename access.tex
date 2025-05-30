@@ -19,25 +19,30 @@ The RSP is currently under active development and a fully functional RSP is not 
 The current version of the RSP is deployed at the US DAC and will be used to host the Early Science datasets.
 New functionality will be deployed incrementally, as it becomes available. 
 
-The following functionality is already deployed and operational on the RSP:
+RSP functionality already deployed and operational:
 \begin{itemize}
 \item TAP and Butler access to catalogs and images;
 \item DataLink annotations in TAP query results for access to light curves and other related information;
 \item ObsCore data model and ObsTAP service for image metadata and searches;
-\item Image retrieval via https;
 \item IVOA SODA service for cutouts from individual single-epoch images and coadded image tiles;\footnote{At this time, the cutout service can only process requests for one cutout at a time, meaning to create and retrieve 10 cutouts will require 10 independent synchronous calls to the cutout service. A bulk cutout service is under development and expected to be available by DR1};
 \item DataLink annotations to the ObsTAP service for access to the SODA service;
-\item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data.
+\item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data;
+\item IVOA-compatible SIA image service;
+\item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal.
 \end{itemize}
 
-The following is a summary of new RSP functionality planned to be available with  DP1: 
+RSP functionality planned to be available with  DP1: 
 \begin{itemize}
-\item IVOA-compatible SIA image service;
-\item Qserv query temporary uploads;
 \item User query history capabilities;
-\item Context-aware documentation, e.g. pop-ups in the portal, documentation in-context such as  ``click on the column name and go to the page that explains it in detail;''
-\item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal. 
 \end{itemize}
+
+RSP functionality not yet available but that is expected by DP2:
+\begin{itemize}
+\item Qserv query temporary uploads;
+\item Context-aware documentation, e.g. pop-ups in the portal, documentation in-context such as  ``click on the column name and go to the page that explains it in detail;''
+\item Support for the ADQL  spatial INTERSECTS() operation.
+\end{itemize}
+Most of the functionality  that is expected by DP2 will be rolled out incrementally between DP1 and DP2.
 
 RSP functionality not yet available but that is expected by DR1:
 \begin{itemize}
@@ -50,7 +55,6 @@ RSP functionality not yet available but that is expected by DR1:
 \item WebDAV service to edit files on their RSP from their preferred device. 
 \item Dask for parallel computing;
 \end{itemize} 
-
 
 RSP functionality that is under consideration for post-DR1:
 \begin{itemize}
