@@ -1,23 +1,23 @@
 \section{Data Access Environment} \label{access}
 
-The Rubin data access environment provides data rights holders with access to all Rubin data products and services. 
+The Rubin data access environment provides data rights holders with access to all Rubin data products and services.
 The Rubin data rights policy is described in \citeds{RDO-013}.
-Prior to the start of survey operations, all services for data access are under active development and are provided on a shared-risk basis. 
+Prior to the start of survey operations, all services for data access are under active development and are provided on a shared-risk basis.
 
 \subsection{Data Access Centers}
 
 Rubin data products will be served to the community from the US Data Access Center (US DAC) hosted in the Google Cloud.\footnote{\url{data.lsst.cloud}}.
-A number of Rubin Independent Data Access Centers (IDAC) are also under construction to provide additional user computing resources to LSST users around the globe (\citeds{RTN-003}).
+A number of Rubin Independent Data Access Centers (IDAC) are also under construction to provide additional user computing resources to LSST users around the globe \citedsp{RTN-003}.
 
 \subsection{Rubin Science Platform}
 \label{ssec:rsp}
-The Rubin Science Platform (RSP), described in \citeds{LSE-319}, is a set of integrated web-based applications, services, and tools that provides access to the Rubin data products and enables next-to-the-data analysis. 
+The Rubin Science Platform (RSP), described in \citeds{LSE-319}, is a set of integrated web-based applications, services, and tools that provides access to the Rubin data products and enables next-to-the-data analysis.
 The RSP comprises three different ``Aspects'': a \emph{Portal} Aspect designed to provide an environment for data discovery, query, filtering, and visualization, a \emph{Notebook} Aspect to enable next-to-the-data analysis, and an \emph{API} Aspect for programmatic access to the Rubin data products via Virtual Observatory (VO) interfaces.
 The Portal and Notebook Aspects of the RSP make use of the same APIs as the API Aspect to internally access the LSST datasets.
 
-The RSP is currently under active development and a fully functional RSP is not expected to be available until DR1. 
+The RSP is currently under active development and a fully functional RSP is not expected to be available until DR1.
 The current version of the RSP is deployed at the US DAC and will be used to host the Early Science datasets.
-New functionality will be deployed incrementally, as it becomes available. 
+New functionality will be deployed incrementally, as it becomes available.
 
 RSP functionality already deployed and operational:
 \begin{itemize}
@@ -31,7 +31,7 @@ RSP functionality already deployed and operational:
 \item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal.
 \end{itemize}
 
-RSP functionality planned to be available with  DP1: 
+RSP functionality planned to be available with  DP1:
 \begin{itemize}
 \item User query history capabilities;
 \end{itemize}
@@ -48,23 +48,23 @@ RSP functionality not yet available but that is expected by DR1:
 \begin{itemize}
 \item Bulk cutout services, both for individual targets across a range of epochs, and for lists of multiple targets;
 \item PSF retrieval service;
-\item Data product recreation service; 
+\item Data product recreation service;
 \item Parallel computing;
-\item Batch processing; 
+\item Batch processing;
 \item Support for collaborative work;
-\item WebDAV service to edit files on their RSP from their preferred device. 
+\item WebDAV service to edit files on their RSP from their preferred device.
 \item Dask for parallel computing;
-\end{itemize} 
+\end{itemize}
 
 RSP functionality that is under consideration for post-DR1:
 \begin{itemize}
 \item Access to GPUs;
 \item Bringing individual resources to the RSP, e.g. additional compute paid for by individuals.
-\end{itemize} 
+\end{itemize}
 
 \subsection{Community Brokers}
 \label{ssec:brokers}
 Alerts are fully world-public and will be accessible via one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
 During the commissioning period, Rubin will work with the Community Brokers to integrate them \citedsp{rtn-010}.
-Community access to early alerts will depend on the readiness of the Community Brokers. 
-At this stage, we are expecting the first alerts from commissioning to become available via Community Brokers sometime following System First Light \citeds{RTN-061}. 
+Community access to early alerts will depend on the readiness of the Community Brokers.
+At this stage, we are expecting the first alerts from commissioning to become available via Community Brokers sometime following System First Light \citedsp{RTN-061}.
