@@ -19,7 +19,7 @@
 \usepackage{makecell}
 \usepackage{amssymb}
 
-% Colors for timeline
+% Colors for timeline 
 \definecolor{TLOrange0}{HTML}{F26035}
 \definecolor{TLOrange2}{HTML}{F58137}
 % \definecolor{TLOrange2}{HTML}{FAA21A}
@@ -54,14 +54,16 @@
 \newcommand{\mysquare}[1][black]{\small\textcolor{#1}{\ensuremath\blacksquare}}
 \newcommand{\mycirc}[1][black]{\Large\textcolor{#1}{\ensuremath\bullet}}
 \newcommand{\dpcirc}[1][RubinDarkTeal]{\Large\textcolor{#1}{\ensuremath\bullet}}
-
+  
 % Local commands go here.
 
-% Define common parameters
-\newcommand{\currentdate}{May 2025\,}\xspace
-\newcommand{\ccfpdate}{24 October 2024\,}\xspace
-\newcommand{\lcfpdate}{15 April 2025\,}\xspace
-\newcommand{\rfldate}{4 July 2025\,}\xspace
+% Define common parameters 
+\newcommand{\currentdate}{November 2025}\xspace
+\newcommand{\opsstartdate}{26 October, 2025}\xspace
+\newcommand{\cstrcompdate}{25 October, 2025}\xspace 
+\newcommand{\ccfpdate}{24 October, 2025}\xspace
+\newcommand{\lcfpdate}{15 April, 2025}\xspace 
+\newcommand{\rfldate}{23 June, 2025}\xspace 
 
 \newcommand{\dpdd}{Data Products Definition Document (\DPDD{})\xspace}
 \newcommand{\dpv}{Data Preview\,}\xspace
@@ -93,11 +95,12 @@
 % Optional subtitle
 % \setDocSubtitle{A subtitle}
 
-\input{authors}
+\author{%
+Leanne~P.~Guy, Keith~Bechtol, Eric~Bellm, Bob~Blum, Gregory~P.~Dubois-Felsmann, Melissa~L.~Graham,
+\v{Z}eljko~Ivezi\'{c}, Robert~H.~Lupton, Phil~Marshall, Colin~T.~Slater, Michael~Strauss.}
 
 \setDocRef{RTN-011}
 \setDocUpstreamLocation{\url{https://github.com/rubin-observatory/rtn-011}}
-\setDocDOI{10.71929/rubin/2584021}
 
 \date{\vcsDate}
 
@@ -109,7 +112,7 @@
 
 This document presents  Rubin Observatory’s plan for an \emph{Early Science Program} designed to enable high-impact science  prior to the first annual data release of the Legacy Survey of Space and Time (LSST). 
 The program includes the release of data products based on a reprocessing of science-grade commissioning data through a series of Data Previews, a progressive ramp-up of the transient alert stream beginning in the late commissioning phase, and an incremental template-generation strategy to support early alert production. 
-Additional components include the release of nightly Processed Visit Images (PVIs) and associated Source catalogs during the first 2 years of the survey, leading up to Data Rele	ase 1 (DR1), which will be based on the first year of LSST observations. 
+Additional components include the release of nightly Processed Visit Images (PVIs) and associated Source catalogs during the first 2 years of the survey, leading up to Data Release 1 (DR1), which will be based on the first year of LSST observations. 
 A detailed schedule of expected data products and milestones is provided. 
 Developed in close collaboration with the science community, this living plan will continue to evolve through the start of LSST operations and DR1 in response to early system performance and community feedback.
 }
@@ -130,7 +133,7 @@ Developed in close collaboration with the science community, this living plan wi
   \addtohist{8}{2022-10-21}{Release version 2.0}{Leanne Guy}
   \addtohist{9}{2022-10-24}{Changes to SCOC and survey text. Release version 2.1}{Leanne Guy}
   \addtohist{10}{2022-11-16}{Clarifications on alert production during com-missioning. Release version 2.2}{Leanne Guy}
-  \addtohist{11}{2023-01-10}{Updates following the construction project replan, refactoring of document to remove duplication.  Release version 3.}{Leanne Guy}
+  \addtohist{11}{2023-01-10}{Updates following the construction project replan, refactoring of document to remove duplication.  Release version 3.}{Leanne Guy}  
   \addtohist{12}{2023-01-12}{Correct Table 1 DP1 data products, Release version 3.1 }{Leanne Guy, Phil Marshall}
   \addtohist{13}{2023-06-01}{Updates following April schedule workshop; revision of early science scenarios; additional details on the data access environment}{Leanne Guy}
   \addtohist{14}{2023-06-21}{Release version 4.0}{Leanne Guy}
@@ -141,12 +144,12 @@ Developed in close collaboration with the science community, this living plan wi
   \addtohist{19}{2025-02-10}{Major updates to the plans and data products for DP1. Revision of the Alert Production section. Release version 6.0}{Leanne Guy}
   \addtohist{20}{2025-02-24}{Minor updates to add more information on DP1 data products. Release version 6.1}{Leanne Guy}
   \addtohist{21}{2025-05-30}{Updates to DP1 data products, release timeline and moving object alert packet, Release version 6.2}{Melissa Graham, Leanne Guy, Eric Bellm}
-  \addtohist{22}{2025-08-19}{Create Rubin DOI}{T. Jenness}
+
 }
 
 % Optional set citation information
 \setDocCitationInformation{
-Leanne P. Guy, et al. Rubin Observatory Plans for an Early Science Program. NSF-DOE Vera C. Rubin Observatory RTN-011, \url{https://doi.org/10.71929/rubin/2584021}.
+Leanne P. Guy, et al. Rubin Observatory Plans for an Early Science Program. Zenodo \url{https://doi.org/10.5281/zenodo.5683848}.
 }
 
 \graphicspath{{./}{figures/}}
