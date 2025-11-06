@@ -15,32 +15,29 @@ Alerts for newly detected \textit{DiaSources} are issued within 120 seconds of o
 The \DPDD{} summarizes the pipelines used to generate the Prompt Data Products.
 Rubin plans to progressively scale up access to these products during the Early Science period.
 
-%%% Alerts
-%% Eric -- please update to provide the status of templates and early alerts as of Nov 2025
-\subsection{Alert Production in Commissioning and Early Operations}
+\subsection{Alert Production in Early Operations}
 \label{sec:pp}
 
-Both Alert Production and Solar System Processing depend on the existence of template images.
+Alert Production depends on the existence of template images.
 During steady-state operations, these templates will be constructed during the annual Data Releases and will be built from the best available subset of images.
-To enable alert production to proceed during commissioning and early operations, it is necessary build templates incrementally as data become available, as recommended by the study described in \citeds{DMTN-107}.
+To enable alert production to proceed during early operations, it is necessary build templates incrementally as data become available, as recommended by the study described in \citeds{DMTN-107}.
 Because we have a smaller set of input images to choose from and uncertain knowledge about future observations, incremental template generation necessarily must balance the trade-off of earlier template availability against template quality and spatial completeness.
 Validation will be required to determine when to build incremental templates to maximize the net throughput of Early Science.
-Nevertheless, our goal is to enable Alert Generation to begin over at least a subset of the survey area as soon as the data are scientifically useful.
 
 Scientifically it is important that once a template is constructed for a given region of sky, it is used exclusively until it can be updated in the next Data Release.
 Repeated changes to the template make it extremely difficult to construct usable lightcurves for objects from individual difference image sources: transient objects such as supernovae will be contaminated by changing flux levels from the evolving template, and variable objects such as variable stars and AGN will require repeated corrections for different template flux levels as well.
 
-During commissioning templates will be generated incrementally over the maximal sky area supported by the available observations.
-By the end of the commissioning period, coadd templates for use in difference imaging will only be available for $\approx$ 10\% of the sky.
-Generating templates over a wide area is not an explicit goal of commissioning;  however, where possible, if commissioning observations are agnostic to pointing and filter, we would endeavour to choose a pointing and filter that maximizes building templates to enable early science.
+During commissioning, templates were generated incrementally based on the available observations.
+Due to a slower-than-expected rate of data taking, this yielded usable templates for several Deep Drilling fields and several hundred square degrees of the wide SV survey.
+The DDFs are still observable at the end of 2025 and will be the source of the first alerts.
 
-Rubin aims to scale up alert production during commissioning with the aim of beginning early Alert Production over a progressively increasing fraction of the sky as soon as is feasible following Rubin First Light  (\S~\ref{sec:timeline}).
-\citeds{RTN-061} describes the criteria for sending the first Rubin alerts.
-Once begun, Alert Production will then proceed continuously into the full LSST survey.
-Alerts generated during the early science period may be produced with higher latency, and access to images and the PPDB (\S~\ref{sec:ppdb}) may not be available during this phase.
+The first Rubin alerts are currently expected to begin between December 2025 and February 2026 depending on the progress of the Early Operations Optimization and community broker readiness. 
+In 2026, we will scale up alert production over a progressively increasing fraction of the sky as more incremental templates become available.
+Alerts generated during the early science period may be produced with higher latency. 
+Access to images (\S~\ref{sec:prompt-images}) and the PPDB (\S~\ref{sec:ppdb}) will not initially be available.
+
 During  commissioning and early Operations periods,  alert packets for moving objects might not include the associated historical source records , and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
-
-The first Rubin alerts are currently expected to begin between December 2025 and February 2026. 
+Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
 
 %%% Prompt images
 \subsection{Prompt Images and Catalogs}
