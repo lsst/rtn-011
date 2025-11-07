@@ -17,7 +17,7 @@ The Rubin Science Platform (RSP), described in \citeds{LSE-319}, is a set of int
 The RSP comprises three different ``Aspects'': a \emph{Portal} Aspect designed to provide an environment for data discovery, query, filtering, and visualization; a \emph{Notebook} Aspect to enable next-to-the-data analysis; and an \emph{API} Aspect for programmatic access to the Rubin data products via Virtual Observatory (VO) interfaces.
 The Portal and Notebook Aspects of the RSP make use of the same APIs as the API Aspect to internally access the LSST datasets.
 
-The RSP is currently under active development and 	a fully functional RSP is not expected to be available until DR1.
+The RSP is currently under active development and a fully functional RSP is not expected to be available until DR1.
 The current version of the RSP is deployed at the US DAC and will be used to host the Early Science datasets.
 New functionality will be deployed incrementally, as it becomes available.
 
@@ -28,16 +28,9 @@ RSP functionality already deployed and operational:
 \item ObsCore data model for image metadata;
 \item IVOA-compatible SIAv2 and ObsTAP image metadata query services;
 \item IVOA SODA service for cutouts from individual single-epoch images and coadded image tiles\footnote{At this time, the cutout service can only process requests for one cutout at a time, meaning to create and retrieve 10 cutouts will require 10 independent synchronous calls to the cutout service. A bulk cutout service is under development and expected to be available by DR1};
-<<<<<<< HEAD
 \item DataLink annotations to the ObsTAP and SIAv2 services for access to the full images as well as the SODA service;
 \item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data;
 \item Some Portal-Notebook integration features such as seeding a notebook with a query that was executed in the Portal, and retrieving results in the Portal from a query executed from a notebook;
-=======
-\item DataLink annotations to the ObsTAP and SIAv2 services for access to the SODA service;
-\item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data;
-\item IVOA-compatible SIAv2 image service;
-\item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal;
->>>>>>> 6ffa793 (Clarified temporary-table uploads)
 \item Initial user query-history capabilities; and
 \item Temporary-table uploads for TAP queries, providing multi-object query capabilities, supported for both Qserv (DP1) and Postgres (DP0.3).
 \end{itemize}
@@ -47,7 +40,6 @@ RSP functionality not yet available but that is expected by DP2:
 \item Expanded user query-history and query-status capabilities;
 \item Context-aware documentation, e.g., pop-ups in the portal, documentation in-context such as ``click on the column name and go to the page that explains it in detail;''
 \item Support for the ADQL spatial INTERSECTS() operation.
-<<<<<<< HEAD
 \end{itemize}
 Most of the functionality  that is expected by DP2 will be rolled out incrementally between DP1 and DP2.
 
@@ -59,10 +51,10 @@ RSP functionality not yet available but that is expected by DP2:
 \item Expanded user query-history  and query-status capabilities;
 \item Context-aware documentation, e.g. pop-ups in the portal, documentation in-context such as  ``click on the column name and go to the page that explains it in detail;''
 \item Support for the ADQL  spatial INTERSECTS() operation.
-=======
->>>>>>> 6ffa793 (Clarified temporary-table uploads)
 \end{itemize}
 Most of the functionality  that is expected by DP2 will be rolled out incrementally between DP1 and DP2.
+
+Initial functionality for prompt-products data access in the RSP will be similar to that provided for DP1, but with Google BigQuery as the back end for the catalog data.
 
 RSP functionality not yet available but that is expected by DR1:
 \begin{itemize}
