@@ -2,10 +2,10 @@
 
 The Rubin data access environment provides data rights holders with access to all Rubin data products and services.
 The Rubin data rights policy is described in \citeds{RDO-013}.
-Prior to the start of survey operations, all services for data access are under active development and are provided on a shared-risk basis.
+Prior to the start release of the first full LSST Data Release, DR1, all services for data access are under active development and are provided on a shared-risk basis.
 
 \subsection{Data Access Centers}
-
+\label{sec:dacs}
 Rubin data products will be served to the community from the US Data Access Center (US DAC) hosted in the Google Cloud.\footnote{\url{data.lsst.cloud}}.
 A number of Rubin Independent Data Access Centers (IDAC) are also under construction to provide additional user computing resources to LSST users around the globe \citedsp{RTN-003}.
 
@@ -28,17 +28,14 @@ RSP functionality already deployed and operational:
 \item DataLink annotations to the ObsTAP service for access to the SODA service;
 \item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data;
 \item IVOA-compatible SIA image service;
-\item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal.
-\end{itemize}
-
-RSP functionality planned to be available with  DP1:
-\begin{itemize}
-\item User query history capabilities;
+\item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal;
+\item Initial user query-history capabilities.
 \end{itemize}
 
 RSP functionality not yet available but that is expected by DP2:
 \begin{itemize}
 \item Qserv query temporary uploads;
+\item Expanded user query-history  and query-status capabilities;
 \item Context-aware documentation, e.g. pop-ups in the portal, documentation in-context such as  ``click on the column name and go to the page that explains it in detail;''
 \item Support for the ADQL  spatial INTERSECTS() operation.
 \end{itemize}
@@ -54,6 +51,7 @@ RSP functionality not yet available but that is expected by DR1:
 \item Support for collaborative work;
 \item WebDAV service to edit files on their RSP from their preferred device.
 \item Dask for parallel computing;
+\item Full LSSTCam focal-plane visualizations.
 \end{itemize}
 
 RSP functionality that is under consideration for post-DR1:
