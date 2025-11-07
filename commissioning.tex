@@ -5,7 +5,7 @@ Rubin Observatory commissioning was completed on \cstrcompdate, and the Observat
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.98\linewidth]{rubinobs_on-sky_commissioning_and_early_science}
-\caption{Detailed schedule of commissioning  and early science activities relative to Rubin First Light, as of \currentdate.}
+\caption{Detailed schedule of completed commissioning and ongoing Early Science activities relative to the start of Operations.}
 \label{fig:commissioning-es-schedule}
 \vspace{0.1cm}
 \end{figure}
@@ -24,12 +24,12 @@ This milestone was achieved on \lcfpdate.
 \textbf{Rubin First Light}: The point at which Rubin routinely began to acquire science-grade imaging across the LSSTCam full focal plane.
 This milestone was achieved on \rfldate. 
 
-\textbf{Rubin Construction Commissioning Complete}: The point at which Rubin Observatory was deemed sufficiently complete and functional to be handed over from Construction to Operations for early system optimization and preparation for the start of the LSST survey. 
+\textbf{Rubin Construction Complete}: The point at which Rubin Observatory was deemed sufficiently complete and functional to be handed over from Construction to Operations for early system optimization and preparation for the start of the LSST survey. 
 This milestone was achieved on \cstrcompdate.
 
 Commissioning data collection was carried out in a sequence of planned phases, shown in Figure~\ref{fig:commissioning}, beginning with on-sky engineering using LSSTComCam and concluding with LSSTCam. 
 The System Optimization and Science Validation (SV) phases, both conducted with LSSTCam, focused on refining system performance and verifying scientific readiness through targeted observations. 
-These observations adopt many of the design elements of the standard LSST cadence, with modifications to increase the likelihood of delivering a stand-alone high-impact dataset to enhance opportunities for Early Science. 
+These observations adopted many of the design elements of the standard LSST cadence, with modifications to increase the likelihood of delivering a stand-alone high-impact dataset to enhance opportunities for Early Science. 
 Field selection was guided by commissioning priorities and community input, balancing technical constraints with scientific opportunity. 
 Collectively, these efforts validated the end-to-end performance of the as-built system, confirmed its ability to deliver seeing-limited image quality, and demonstrated substantial construction completeness
 \begin{figure}[hbt]
@@ -43,13 +43,13 @@ Collectively, these efforts validated the end-to-end performance of the as-built
 \subsection{LSSTComCam Commissioning}
 \label{ssec:commissioning-comcam}
 
-LSSTComCam is Rubin's engineering camera that is used for testing and validating the observatory's systems and processes prior to installation of the LSST Camera.
+LSSTComCam is Rubin's engineering camera that was used for testing and validating the observatory's systems and processes prior to the installation of the LSST Science Camera.
 The LSSTComCam focal plane has single raft with a 3×3 mosaic of 4K×4K ITL science sensors, giving a total of 144Mpix, 
 LSSTComCam has the same plate scale as LSSTCam (0.2 arcsec / pixel), with a field of view of 40 × 40 arcmin.
 The LSSTComCam filter exchanger holds only three physical filters at a time.
 
 The Rubin on-sky commissioning campaign using  LSSTComCam began on 24 October 2024 and ended on 11 December 2024, lasting a total of 7 weeks, and included observations to support both engineering and science pipelines commissioning.
-This highly successful campaign included a first series of on-sky engineering tests demonstrating the end-to-end functionality of the Simonyi Survey Telescope’s hardware and software systems  LSSTComCam.
+This highly successful campaign included a first series of on-sky engineering tests demonstrating the end-to-end functionality of the Simonyi Survey Telescope’s hardware and software systems.
 The median delivered image quality for commanded in-focus images collected during the campaign, quantified in terms of the PSF FWHM, was $\approx1.1$ arcseconds. 
 The best images have delivered PSF FWHM of $\approx0.7$ arcseconds.
 A full report on the  LSSTComCam on-sky commissioning campaign is available at \citeds{SITCOMTN-149}.
@@ -59,16 +59,16 @@ A full report on the  LSSTComCam on-sky commissioning campaign is available at \
 \label{ssec:commissioning-lsstcam}
 
 LSSTCam was installed on the Simonyi Survey Telescope on \currentdate. 
-Following initial engineering and integration work and the achievement of the LSSTCam First Photon milestone, the  on-sky commissioning campaign using the LSSTCam began on 15 April 2025 and ran through  21 September 2025. 
+Following initial engineering and integration work and the achievement of the LSSTCam First Photon milestone, on-sky commissioning campaign using the LSSTCam began on 15 April 2025 and ran through  21 September 2025. 
 
-Acquisition of science images\footnote{As opposed to images taken for engineering or Active Optics System (AOS) testing.} with LSSTCam began on 17 April 2025.
+The acquisition of science images\footnote{As opposed to images taken for engineering or Active Optics System (AOS) testing.} with LSSTCam began on 17 April 2025.
 Early observations consisted of  small-field survey visits dithered over small areas around a central boresight. 
-These visits were typically acquired in sequences of at least 10 visits per bandpass, cycling through the available filters, in a manner similar to the small-field survey science visits acquired during LSSTComCam commissioning and  included DP1.
+These visits were typically acquired in sequences of at least 10 visits per bandpass, cycling through the available filters, in a manner similar to the small-field survey science visits acquired during LSSTComCam commissioning and  included in DP1.
 
 The Science Validation (SV) surveys began on 2025-06-20, acquiring visits in a manner consistent with the planned LSST operations cadence. 
 While based on the baseline LSST survey design, the SV surveys incorporated several modifications to maximize the likelihood of producing a stand-alone, high-impact dataset that would enhance opportunities for Early Science. 
 They covered a more limited sky area to achieve greater depth within the SV timeframe, resulting in a temporal sampling distribution that differs from the LSST baseline.
-Figure \ref{fig:lsstcam_sv_nvisits} shows a map of all the science visits acquired during LSSTCam commissioning.
+Figure \ref{fig:lsstcam_sv_nvisits} shows a sky map of all the science visits acquired during LSSTCam commissioning.
 \begin{figure}[hbt]
 \centering
 \includegraphics[width=0.95\linewidth]{lsstcam_sv_nvisits}
@@ -78,7 +78,7 @@ Figure \ref{fig:lsstcam_sv_nvisits} shows a map of all the science visits acquir
 
 The SV surveys were executed using the Feature based Scheduler (FBS) and comprised two primary components, interleaved within a single FBS configuration.
 \begin{itemize}
-\item \textbf{Wide Survey:}  Designed to test template generation and Prompt Processing with difference image analysis at data rates representative of first year of LSST. This provided a sustained full-scale test of the Data Facility;
+\item \textbf{Wide Survey:}  Designed to test template generation and Prompt Processing with difference image analysis at data rates representative of the first year of the LSST. This provided a sustained full-scale test of the Data Facility;
 \item \textbf{Deep Survey:} Designed to test the production of deep coadds with integrated exposures  equivalent to or exceeding those of the LSST 10-year survey.  These observations achieved a rapid temporal sampling in the selected deep fields and validated the observing strategy for the LSST Deep Drilling Fields (DDFs).
 \end{itemize}
 The Wide Survey traced the ecliptic plane from dense regions of the Galactic Bulge through low-dust regions within the planned LSST Wide-Fast-Deep (WFD) footprint.
@@ -100,8 +100,7 @@ Figure \ref{fig:lsstcam_svvisits_timing} shows the temporal distribution LSSTCam
 
 Image quality proved challenging throughout the SV period
 This is evidenced in part as a point-spread function (PSF) larger than expected given estimates of the atmospheric contribution, and partly as spatial variations in the PSF across the field of view.
-While the median-per-visit PSF reported for the SV images is not substantially larger than  typical seasonal values,  the shape and variability of the PSF are the performance expected for full survey operations.
-
+While the median-per-visit PSF width at FWHM reported for the SV images is not substantially larger than  typical seasonal values,  the shape and variability of the PSF do not meet the performance requirements expected for full survey operations.
 
 As full summary of the SV data obtained during LSSTCam commissioning can be found at \url{https://survey-strategy.lsst.io/progress/sv_status/sv_20250930.html}. 
 A full report on the  LSSTCam on-sky commissioning campaign is in preparation at \citeds{SITCOMTN-170}.
@@ -112,17 +111,18 @@ A full report on the  LSSTCam on-sky commissioning campaign is in preparation at
 \label{sec:small_field}
 Several small fields were observed prior to the start of the SV surveys, with some overlapping the early portion of the SV survey period. 
 A subset of these observations formed part of the Rubin First Look campaign.
-A summary of the data collected is included in Table \ref{tab:sv_small_field_summary} provides a summary of these observations. 
+A summary of the data collected during the small-field surveys is provided in Table \ref{tab:sv_small_field_summary}. 
+The median Image Quality (IQ) is expressed in terms of the width of the PSF at FWHM.
 \begin{table*}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lccr}
 \toprule
 \textbf{Field} &
-\textbf{$N_{\mathrm{visits}}$} &
-\textbf{Median FWHM} & 
+\textbf{N} &
+\textbf{Median IQ} & 
 \textbf{Timespan} \\
- & & \textbf{(arcsec)} & \textbf{(days)} \\
+ & Visits & \textbf{(arcsec)} & \textbf{(days)} \\
 \midrule
 Carina              & 124  & ---  & 4 \\
 Rubin\_SV\_280\_\-48 & 148  & 1.52 & 1 \\
@@ -138,7 +138,7 @@ M49                 & 1173 & 1.29 & 13 \\
 Rubin\_SV\_225\_\-40 & 2052 & 1.36 & 97 \\
 \bottomrule
 \end{tabular}
-\caption{Summary of selected field observations during LSSTCam on-sky commissioning, showing the number of visits, median delivered image quality (FWHM), and total timespan of observations.}
+\caption{Summary of selected small-field observations showing the number of visits, median delivered image quality (PSF FWHM), and total timespan of observations.}
 \label{tab:sv_small_field_summary}
 \end{table*}
 
@@ -149,7 +149,7 @@ Rubin\_SV\_225\_\-40 & 2052 & 1.36 & 97 \\
 The initial SV wide area was approximately 3000 deg$^2$; this was reduced to 750 deg$^2$ approximately halfway through the SV survey period. 
 This was further reduced to approximately 300 deg$^2$ during the last week or so of the SV period  to concentrate observing cadence and  better enable image differencing tests. 
 Table \ref{tab:sv_wide_configs} provides the median numbers of visits and estimated m5 coadded depths  within each of the subsets of the Wide SV area.
-The median image quality expressed in terms of the width of the PSF at FWHM is also provided per band for all visits in the SV Wide area survey.
+The median image quality expressed in terms of the width of the PSF at FWHM is also provided per band across all subset areas in the SV Wide Area survey.
 \begin{table*}[htbp]
 \centering
 \renewcommand{\arraystretch}{1.2}
@@ -181,20 +181,20 @@ The median image quality expressed in terms of the width of the PSF at FWHM is a
 Figure \ref{fig:wide-image-quality} shows  distributions of the image quality and depth for the SV Wide Area Survey data 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.465\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sv_wide_fwhm}
-        \caption{Image quality}
+        \caption{Delivered image quality.}
         \label{fig:subfig1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{sv_wide_m5}
-        \caption{Image depth}
+        \caption{Estimated individual image depth.}
         \label{fig:subfig2}
     \end{subfigure}
-    \caption{Summary of the SV Wide Area observations from LSSTCam on-sky commissioning, showing per-band values within wide SV area, with the first row listing median visit counts per pointing and the second the estimated median single-visit image depth.} 
+    \caption{Summary of the delivered image quality per visit and  estimated individual image depth per visit for visits in the  SV Wide Area survey. } 
     \label{fig:wide-image-quality}
 \end{figure}
 The individual image depth across the SV wide-area survey  is slightly shallower than predicted by  baseline survey simulations, which model the  full LSST  footprint over the 10 years of operations. 
@@ -204,44 +204,47 @@ Under favorable conditions, the measured median zeropoints for individual images
 % DDF area summary 
 \subsubsection{SV Deep Drilling Fields}
 The four DDFs observed during the survey had variable completeness.
-Table \ref{tab:sv_ddf_summary} provides the median numbers of visits and coadded depths, together with the timespan over which observations were collected and the median image quality, expressed in terms of the PSF at FWHM. 
-\begin{table*}[htbp]
+Table \ref{tab:sv_ddf_summary}  lists the number of visits obtained during LSSTCam commissioning, including observations acquired during the  small-field  and SV surveys, within each Deep Drilling Field (DDF). 
+For each field, the first row gives the number of visits per band, while the second row reports the corresponding estimated coadded $5\sigma$ depths ($m_5$). 
+The total number of visits, the timespan over which observations were collected, and the median image quality, expressed in terms of the PSF at FWHM are also provided.
+\begin{table*}[htb]
 \centering
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{lccccccccc}
 \toprule
 \textbf{Field} &
 \textbf{Timespan} &
-\textbf{Median FWHM } &
+\textbf{Median FWHM} &
 \multicolumn{6}{c}{\textbf{Band}} &
 \textbf{Total} \\
 \cmidrule(lr){4-9}
- &    (days) & (arcsec)&  $u$ & $g$ & $r$ & $i$ & $z$ & $y$ & \textbf{N} \\
+ & (days) & (arcsec) & $u$ & $g$ & $r$ & $i$ & $z$ & $y$ & \textbf{N visits} \\
 \midrule
-ELAISS1  & 84 & 1.4 & 35 & 75 & 73 & 134 & 84 & 14 & 420 \\
-           &  &  & 25.6 & 26.6 & 26.1 & 26.2 & 25.1 & 22.7 &  \\
+XMM\_LSS  & 10 & 1.47 & 30 & — & — & — & — & — & 30 \\
+           &    &      & 25.3 & — & — & — & — & — &  \\
 \addlinespace
-XMM\_LSS & 10 & 1.47 & 27 & — & — & — & — & — & 27 \\
-         &  &  & 25.3 & — & — & — & — & — &  \\
+EDFS\_A   & 55 & 1.32 & — & 20 & 21 & 28 & 18 & — & 87 \\
+           &    &      & — & 25.3 & 25.2 & 25.0 & 24.1 & — &  \\
 \addlinespace
-ECDFS & 57& 1.51 & — & 30 & 32 & 35 & 36 & — & 133 \\
-      &  &  & — & 25.8 & 25.5 & 25.3 & 24.7 & — &  \\
+EDFS\_B   & 55 & 1.37 & — & 23 & 34 & 29 & 18 & — & 104 \\
+           &    &      & — & 25.4 & 25.2 & 25.0 & 24.1 & — &  \\
 \addlinespace
-COSMOS &15 & 1.22 & 102 & 105 & 123 & 235 & 115 & 122 & 802 \\
-        &  &  & 26.1 & 27.0 & 26.3 & 26.3 & 25.3 & 24.2 &  \\
+ECDFS     & 57 & 1.51 & — & 36 & 39 & 41 & 43 & — & 159 \\
+           &    &      & — & 25.8 & 25.5 & 25.3 & 24.7 & — &  \\
 \addlinespace
-EDFS\_A & 55 & 1.32 & — & 16 & 12 & 22 & 9 & — & 59 \\
-        &  &  & — & 25.3 & 25.2 & 25.0 & 24.1 & — &   \\
+ELAISS1   & 84 & 1.40 & 40 & 102 & 103 & 171 & 112 & 16 & 544 \\
+           &    &      & 25.6 & 26.6 & 26.1 & 26.2 & 25.1 & 22.7 &  \\
 \addlinespace
-EDFS\_B & 55 & 1.37 & — & 17 & 25 & 22 & 9 & — & 73 \\
-        &  &  & — & 25.4 & 25.2 & 25.0 & 24.1 & — &   \\
+COSMOS    & 15 & 1.22 & 126 & 123 & 206 & 408 & 152 & 141 & 1156 \\
+           &    &      & 26.1 & 27.0 & 26.3 & 26.3 & 25.3 & 24.2 &  \\
 \bottomrule
 \end{tabular}
-\caption{Summary of Deep Drilling Field observations from LSSTCam on-sky commissioning, showing per-band values for each field, with the first row listing visit counts and the second the corresponding $m5$ coadded depths. Timespan and median FWHM are shown for each field.}
+\caption{Summary of Deep Drilling Field observations from LSSTCam on-sky commissioning data, including SV and small-field campaigns. For each field, the first row lists the number of visits per band and total, and the second row lists the corresponding coadded $5\sigma$ depths ($m_5$). The observation timespan and median image FWHM are also indicated.}
 \label{tab:sv_ddf_summary}
 \end{table*}
-The SV surveys occurred relatively early in the observing season for all Deep Drilling Fields, and COSMOS was entirely unavailable for inclusion. The COSMOS data in Table~\ref{tab:sv_ddf_summary} therefore originate exclusively from the Small Fields Surveys (\S~\ref{sec:small_field}).
 
+The SV surveys occurred relatively early in the observing season for all Deep Drilling Fields, and COSMOS was entirely unavailable for inclusion. 
+The COSMOS data in Table~\ref{tab:sv_ddf_summary} therefore originate exclusively from the Small Fields Surveys (\S~\ref{sec:small_field}).
 The remaining DDFs became observable toward the end of the night beginning in July, with ELAISS1 rising first. 
 Consequently, ELAISS1 received the largest number of visits, while the other DDFs were observed less extensively due to limited SV on-sky time.
 ELAISS1 was the only field observed in all six bands, $ugrizy$. 
