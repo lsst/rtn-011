@@ -2,7 +2,7 @@
 
 The Rubin data access environment provides data rights holders with access to all Rubin data products and services.
 The Rubin data rights policy is described in \citeds{RDO-013}.
-Prior to the start release of the first full LSST Data Release, DR1, all services for data access are under active development and are provided on a shared-risk basis.
+Prior to the release of the first full LSST Data Release, DR1, all services for data access are under active development and are provided on a shared-risk basis.
 
 \subsection{Data Access Centers}
 \label{sec:dacs}
@@ -12,10 +12,10 @@ A number of Rubin Independent Data Access Centers (IDAC) are also under construc
 \subsection{Rubin Science Platform}
 \label{ssec:rsp}
 The Rubin Science Platform (RSP), described in \citeds{LSE-319}, is a set of integrated web-based applications, services, and tools that provides access to the Rubin data products and enables next-to-the-data analysis.
-The RSP comprises three different ``Aspects'': a \emph{Portal} Aspect designed to provide an environment for data discovery, query, filtering, and visualization, a \emph{Notebook} Aspect to enable next-to-the-data analysis, and an \emph{API} Aspect for programmatic access to the Rubin data products via Virtual Observatory (VO) interfaces.
+The RSP comprises three different ``Aspects'': a \emph{Portal} Aspect designed to provide an environment for data discovery, query, filtering, and visualization; a \emph{Notebook} Aspect to enable next-to-the-data analysis; and an \emph{API} Aspect for programmatic access to the Rubin data products via Virtual Observatory (VO) interfaces.
 The Portal and Notebook Aspects of the RSP make use of the same APIs as the API Aspect to internally access the LSST datasets.
 
-The RSP is currently under active development and 	a fully functional RSP is not expected to be available until DR1.
+The RSP is currently under active development and a fully functional RSP is not expected to be available until DR1.
 The current version of the RSP is deployed at the US DAC and will be used to host the Early Science datasets.
 New functionality will be deployed incrementally, as it becomes available.
 
@@ -23,12 +23,12 @@ RSP functionality already deployed and operational:
 \begin{itemize}
 \item TAP and Butler access to catalogs and images;
 \item DataLink annotations in TAP query results for access to light curves and other related information;
-\item ObsCore data model and ObsTAP service for image metadata and searches;
+\item ObsCore data model for image metadata;
+\item IVOA-compatible SIAv2 and ObsTAP image metadata query services;
 \item IVOA SODA service for cutouts from individual single-epoch images and coadded image tiles\footnote{At this time, the cutout service can only process requests for one cutout at a time, meaning to create and retrieve 10 cutouts will require 10 independent synchronous calls to the cutout service. A bulk cutout service is under development and expected to be available by DR1};
-\item DataLink annotations to the ObsTAP and SIAv2 services for access to the SODA service;
+\item DataLink annotations to the ObsTAP and SIAv2 services for access to the full images as well as the SODA service;
 \item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data;
-\item IVOA-compatible SIAv2 image service;
-\item Some Portal-Notebook integration features such as  seeding a notebook with a query that was executed in the Portal;
+\item Some Portal-Notebook integration features such as seeding a notebook with a query that was executed in the Portal, and retrieving results in the Portal from a query executed from a notebook;
 \item Initial user query-history capabilities; and
 \item Temporary-table uploads for TAP queries, providing multi-object query capabilities, supported for both Qserv (DP1) and Postgres (DP0.3).
 \end{itemize}
@@ -41,23 +41,28 @@ RSP functionality not yet available but that is expected by DP2:
 \end{itemize}
 Most of the functionality  that is expected by DP2 will be rolled out incrementally between DP1 and DP2.
 
+Initial functionality for prompt-products data access in the RSP will be similar to that provided for DP1, but with Google BigQuery as the back end for the catalog data.
+
 RSP functionality not yet available but that is expected by DR1:
 \begin{itemize}
 \item Bulk cutout services, both for individual targets across a range of epochs, and for lists of multiple targets;
 \item PSF retrieval service;
-\item Data product recreation service;
+\item Forced photometry on-demand service;
+\item Data product recreation services;
 \item Parallel computing;
 \item Batch processing;
+\item Support for persistent user-created databases, and their federation with the project-provided databases;
 \item Support for collaborative work;
-\item WebDAV service to edit files on their RSP from their preferred device.
+\item WebDAV service to edit files on their RSP from their preferred device;
 \item Dask for parallel computing;
 \item Full LSSTCam focal-plane visualizations.
 \end{itemize}
+Again, it is likely that a number of these features will be rolled out incrementally before DR1.
 
 RSP functionality that is under consideration for post-DR1:
 \begin{itemize}
 \item Access to GPUs;
-\item Bringing individual resources to the RSP, e.g. additional compute paid for by individuals.
+\item Bringing individual resources to the RSP, e.g., additional compute paid for by individuals.
 \end{itemize}
 
 \subsection{Community Brokers}
