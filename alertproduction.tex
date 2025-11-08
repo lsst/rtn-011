@@ -20,7 +20,7 @@ Rubin plans to progressively scale up access to these products during the Early 
 
 Alert Production depends on the existence of template images.
 During steady-state operations, these templates will be constructed during the annual Data Releases and will be built from the best available subset of images.
-To enable alert production to proceed during early operations, it is necessary build templates incrementally as data become available, as recommended by the study described in \citeds{DMTN-107}.
+To enable alert production to proceed during early operations, it will be necessary to build templates incrementally as data become available, as recommended by the study described in \citeds{DMTN-107}.
 Because we have a smaller set of input images to choose from and uncertain knowledge about future observations, incremental template generation necessarily must balance the trade-off of earlier template availability against template quality and spatial completeness.
 Validation will be required to determine when to build incremental templates to maximize the net throughput of Early Science.
 
@@ -34,26 +34,46 @@ The DDFs are still observable at the end of 2025 and will be the source of the f
 The first Rubin alerts are currently expected to begin between December 2025 and February 2026 depending on the progress of the Early Operations Optimization and community broker readiness. 
 In 2026, we will scale up alert production over a progressively increasing fraction of the sky as more incremental templates become available.
 Alerts generated during the early science period may be produced with higher latency. 
-Access to images (\S~\ref{ssec:prompt-images}) and the PPDB (\S~\ref{ssec:ppdb}) will not initially be available.
+Access to images (\S~\ref{ssec:prompt-images}) and the PPDB (\S~\ref{ssec:ppdb}) will not initially be available when the alert stream first appears, 
+but will be phased in during 2026 as discussed below.
 
-During  commissioning and early Operations periods,  alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
+During the commissioning and early Operations periods, alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
 Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
 
 %%% Prompt images
-\subsection{Prompt Images and Catalogs}
+\subsection{Prompt Images}
 \label{ssec:prompt-images}
 
-Starting in early operations and continuing through Data Release 1 (DR1), Rubin plans to begin nightly releases of single-epoch Processed Visit Images (PVIs) together with the associated Source catalogs of detections. 
-These Source catalogs will be provided through the Butler on a per-image basis.
-The PVIs will be subject to the standard 80-hour embargo period, while the catalogs are not but, for convenience and consistency, will be released together with the images after the 80-hour embargo.
+Starting in early operations and continuing through Data Release 1 (DR1), Rubin plans to begin nightly releases of single-epoch Processed Visit Images (PVIs) and difference images.
+These images will be subject to a standard 80-hour embargo period, and will be released shortly after the embargo expires.
+The exact cadence and latency are still being determined in the light of operational and performance constraints;
+more details will be provided closer to the start of the image releases.
 During the first six months of LSST operations, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.
 
-Prompt image publication is under active development.  The current expected start date for nightly PVI and catalog releases is not before April 2026. 
+\subsubsection{Prompt Source Catalogs}
+
+During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage for the sky,
+the project plans to release per-epoch \textit{Source} catalogs along with the PVIs.
+These are distinct from the \textit{DiaSource} catalogs produced by Alert Production.
+Just as for the \textit{Source} catalogs in future Data Releases, the prompt \textit{Source} catalogs will be based on detections on the PVIs,
+rather than on the difference images.
+This is a temporary measure and is planned to end upon the release of DR1.
+While these catalogs are not technically subject to the embargo, for reasons of convenience and consistency they will be released together with their corresponding PVIs following the expiry of the 80 hours.
+At present we plan to provide these catalogs only as per-image Butler datasets, and not via database queries.
+
+Prompt image publication is under active development.
+The current expected start date for nightly PVI and Source catalog releases is not before April 2026. 
 
 \subsection{Prompt Products Database}
 \label{ssec:ppdb}
 
 The Prompt Products Database (PPDB) serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
-It stores the Catalog Prompt Data Products and is designed to provide efficient access for scientific analysis and querying.
+It stores the Catalog Prompt Data Products (\textit{DiaSource}, \textit{DiaObject}, \textit{SSObject}, and \textit{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
+As noted above, it will not contain the early-Operations prompt \textit{Source} catalog data, however.
 
 Due to ongoing technical development, the PPDB is not currently expected to become publicly available until mid-2026.
+
+Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts,
+with the principal exception of some precovery data that will only appear in the PPDB.
+The project understands that several brokers are planning to aggregate the Alert stream and provide query services on the results,
+which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
