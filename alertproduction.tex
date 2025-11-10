@@ -1,7 +1,3 @@
-
-%During routine LSST operations, prompt image data products will be made available 80 hours following camera readout.
-%They include raw images, processed single visit images (PVIs), difference images, and template images.
-%Access to unvetted PVIs and difference images in the first 6 months of the LSST is still to be decided.
 \section{Prompt Data Products}
 \label{sec:prompt-products}
 
@@ -13,14 +9,14 @@ These products include single-visit images, difference images, and catalogs of d
 Alerts for newly detected \textit{DiaSources} are issued within 120 seconds of observation using community-standard formats and distributed to Community Brokers to facilitate rapid follow-up.
 
 The \DPDD{} summarizes the pipelines used to generate the Prompt Data Products.
-Rubin plans to progressively scale up access to these products during the Early Science period.
+Rubin plans to progressively scale up access to these products during Early Operations. 
 
 \subsection{Alert Production in Early Operations}
 \label{ssec:ap}
 
 Alert Production depends on the existence of template images.
 During steady-state operations, these templates will be constructed during the annual Data Releases and will be built from the best available subset of images.
-To enable alert production to proceed during early operations, it will be necessary to build templates incrementally as data become available, as recommended by the study described in \citeds{DMTN-107}.
+To enable alert production to proceed during Early Operations, it will be necessary to build templates incrementally as data become available, as recommended by the study described in \citeds{DMTN-107}.
 Because we have a smaller set of input images to choose from and uncertain knowledge about future observations, incremental template generation necessarily must balance the trade-off of earlier template availability against template quality and spatial completeness.
 Validation will be required to determine when to build incremental templates to maximize the net throughput of Early Science.
 
@@ -31,35 +27,34 @@ During commissioning, templates were generated incrementally based on the availa
 Due to a slower-than-expected rate of data taking, this yielded usable templates for several Deep Drilling fields and several hundred square degrees of the wide SV survey.
 The DDFs are still observable at the end of 2025 and will be the source of the first alerts.
 
-The first Rubin alerts are currently expected to begin between December 2025 and February 2026 depending on the progress of the Early Operations Optimization and community broker readiness. 
+The first Rubin alerts are currently expected to begin between December 2025 and February 2026 depending on the progress during the Early Optimization Phase and community broker readiness. 
 In 2026, we will scale up alert production over a progressively increasing fraction of the sky as more incremental templates become available.
-Alerts generated during the early science period may be produced with higher latency. 
+Alerts generated during the Early Operations may be produced with higher latency. 
 Access to images (\S~\ref{ssec:prompt-images}) and the PPDB (\S~\ref{ssec:ppdb}) will not initially be available when the alert stream first appears, 
 but will be phased in during 2026 as discussed below.
 
-During the commissioning and early Operations periods, alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
+During the Commissioning and Early Operations periods, alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
 Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
 
 %%% Prompt images
 \subsection{Prompt Images}
 \label{ssec:prompt-images}
 
-Starting in early operations and continuing through Data Release 1 (DR1), Rubin plans to begin nightly releases of single-epoch Processed Visit Images (PVIs) and difference images.
+Starting in Early Operations and continuing through Data Release 1 (DR1), Rubin plans to begin nightly releases of single-epoch Processed Visit Images (PVIs) and difference images.
 These images will be subject to a standard 80-hour embargo period, and will be released shortly after the embargo expires.
 The exact cadence and latency are still being determined in the light of operational and performance constraints;
 more details will be provided closer to the start of the image releases.
 During the first six months of LSST operations, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.
 
 \subsubsection{Prompt Source Catalogs}
+\label{ssec:prompt-catalogs}
 
-During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage for the sky,
-the project plans to release per-epoch \textit{Source} catalogs along with the PVIs.
+During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage for the sky, Rubin plans to release per-epoch \textit{Source} catalogs together with the PVIs.
 These are distinct from the \textit{DiaSource} catalogs produced by Alert Production.
-Just as for the \textit{Source} catalogs in future Data Releases, the prompt \textit{Source} catalogs will be based on detections on the PVIs,
-rather than on the difference images.
-This is a temporary measure and is planned to end upon the release of DR1.
-While these catalogs are not technically subject to the embargo, for reasons of convenience and consistency they will be released together with their corresponding PVIs following the expiry of the 80 hours.
-At present we plan to provide these catalogs only as per-image Butler datasets, and not via database queries.
+Similar to the \textit{Source} catalogs that will be part of future Data Releases, the prompt \textit{Source} catalogs will be based on detections on the PVIs, rather than on the difference images.
+This is a temporary measure and is planned to end with the release of DR1.
+Although these catalogs are not formally subject to the embargo, for reasons of convenience and consistency they will be released together with their corresponding PVIs following the expiry of the 80 hours.
+At present, these catalogs are planned to be distributed only as per-image Butler datasets, and will not be accessible via database queries.
 
 Prompt image publication is under active development.
 The current expected start date for nightly PVI and Source catalog releases is not before April 2026. 
@@ -69,7 +64,7 @@ The current expected start date for nightly PVI and Source catalog releases is n
 
 The Prompt Products Database (PPDB) serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
 It stores the Catalog Prompt Data Products (\textit{DiaSource}, \textit{DiaObject}, \textit{SSObject}, and \textit{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
-As noted above, it will not contain the early-Operations prompt \textit{Source} catalog data, however.
+As noted above, it will not contain the Early-Operations prompt \textit{Source} catalog data, however.
 
 Due to ongoing technical development, the PPDB is not currently expected to become publicly available until mid-2026.
 
