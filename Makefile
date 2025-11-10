@@ -13,8 +13,36 @@ endif
 
 export TEXMFHOME ?= lsst-texmf/texmf
 
+# ---------- Mermaid setup ----------
+MMDC = mmdc
+SVG2PDF = inkscape
+MMD_DIR = diagrams
+FIG_DIR = figures
+MMD_SRC = $(wildcard $(MMD_DIR)/*.mmd)
+MMD_PDF = $(patsubst $(MMD_DIR)/%.mmd,$(FIG_DIR)/%.pdf,$(MMD_SRC))
+
+# Generate SVG from Mermaid source (already tightly cropped)
+$(MMD_DIR)/%.svg: $(MMD_DIR)/%.mmd
+	@echo "Generating SVG: $< → $@"
+	$(MMDC) -i $< -o $@ -b transparent -t neutral
+
+# Convert SVG → PDF (preserve bounding box)
+$(MMD_DIR)/%.pdf: $(MMD_DIR)/%.svg
+	@echo " Converting SVG → PDF: $< → $@"
+	@if command -v inkscape >/dev/null 2>&1; then \
+	  echo "   using Inkscape..."; \
+	  inkscape "$<" --export-type=pdf --export-filename="$@"; \
+	elif command -v rsvg-convert >/dev/null 2>&1; then \
+	  echo "   using rsvg-convert..."; \
+	  rsvg-convert -f pdf -o "$@" "$<"; \
+	else \
+	  echo "Error: neither inkscape nor rsvg-convert found in PATH"; \
+	  exit 1; \
+	fi
+
 # Add aglossary.tex as a dependancy here if you want a glossary (and remove acronyms.tex)
 $(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex
+	@echo "Building LaTeX document: $(DOCNAME).pdf"
 	latexmk -bibtex -xelatex -f $(DOCNAME)
 #       makeglossaries $(DOCNAME)
 #       xelatex $(SRC)
