@@ -1,12 +1,12 @@
 \section{Rubin Construction Commissioning and Early System Optimization}
 \label{sec:commissioning}
 
-Rubin Construction  Commissioning was completed on \cstrcompdate, and the Observatory is now in the Operations Early  Optimization Phase. 
+Rubin Construction  Commissioning was completed on \cstrcompdate, and the Observatory is now in the Rubin Operations Early  Optimization Phase. 
 Figure~\ref{fig:commissioning-es-schedule} presents the detailed schedule of completed commissioning and ongoing Early Science activities relative to the start of Operations.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.98\linewidth]{rubinobs_on-sky_commissioning_and_early_science}
-\caption{Detailed schedule of completed commissioning and ongoing Early Science activities relative to the start of Operations.}
+\caption{Detailed schedule of completed commissioning and ongoing Early Operations activities relative to the start of Operations.}
 \label{fig:commissioning-es-schedule}
 \vspace{0.1cm}
 \end{figure}
@@ -59,23 +59,16 @@ A full report on the  LSSTComCam on-sky commissioning campaign is available at \
 \subsection{LSSTCam Commissioning}
 \label{ssec:commissioning-lsstcam}
 
-LSSTCam was installed on the Simonyi Survey Telescope on \currentdate. 
-Following initial engineering and integration work and the achievement of the LSSTCam First Photon milestone, on-sky commissioning campaign using the LSSTCam began on 15 April 2025 and ran through  21 September 2025. 
+LSSTCam was installed on the Simonyi Survey Telescope on \cameraontma. 
+Following initial engineering and integration work and the achievement of the LSSTCam First Photon milestone, on-sky commissioning campaign using the LSSTCam began on \startonskylsstcam and ran through \finonskylsstcam. 
 
-The acquisition of science images\footnote{As opposed to images taken for engineering or Active Optics System (AOS) testing.} with LSSTCam began on 17 April 2025.
-Early observations consisted of  small-field survey visits dithered over small areas around a central boresight. 
-These visits were typically acquired in sequences of at least 10 visits per bandpass, cycling through the available filters, in a manner similar to the small-field survey science visits acquired during LSSTComCam commissioning and  included in DP1.
+The acquisition of science images\footnote{As opposed to images taken for engineering or Active Optics System (AOS) testing.} with LSSTCam began on \startsciencelsstcam.
+Early observations consisted of  observations to support the Rubin First Look milestone followed by small-field survey visits dithered over small areas around a central boresight. 
+The small-field survey visits were typically acquired in sequences of at least 10 visits per bandpass, cycling through the available filters, in a manner similar to the small-field survey science visits acquired during LSSTComCam commissioning and  included in DP1.
 
-The Science Validation (SV) surveys began on 2025-06-20, acquiring visits in a manner consistent with the planned LSST operations cadence. 
+The Science Validation (SV) surveys began on \startsv, acquiring visits in a manner consistent with the planned LSST operations cadence. 
 While based on the baseline LSST survey design, the SV surveys incorporated several modifications to maximize the likelihood of producing a stand-alone, high-impact dataset that would enhance opportunities for Early Science. 
 They covered a more limited sky area to achieve greater depth within the SV time frame, resulting in a temporal sampling distribution that differs from the LSST baseline.
-Figure \ref{fig:lsstcam_sv_nvisits} shows a sky map of all the science visits acquired during LSSTCam commissioning.
-\begin{figure}[hbt]
-\centering
-\includegraphics[width=0.95\linewidth]{lsstcam_sv_nvisits}
-\caption{All science visits acquired during LSSTCam commissioning.}
-\label{fig:lsstcam_sv_nvisits}
-\end{figure}
 
 The SV surveys were executed using the Feature based Scheduler (FBS) and comprised two primary components, interleaved within a single FBS configuration.
 \begin{itemize}
@@ -83,7 +76,7 @@ The SV surveys were executed using the Feature based Scheduler (FBS) and compris
 \item \textbf{Deep Survey:} Designed to test the production of deep coadds with integrated exposures  equivalent to or exceeding those of the LSST 10-year survey.  These observations achieved a rapid temporal sampling in the selected deep fields and validated the observing strategy for the LSST Deep Drilling Fields (DDFs).
 \end{itemize}
 The Wide Survey traced the ecliptic plane from dense regions of the Galactic Bulge through low-dust regions within the planned LSST Wide-Fast-Deep (WFD) footprint.
-Four of the planned LSST Deep Drilling Fields (DDFs) were observed as part of the Deep Survey. 
+Four of the planned LSST Deep Drilling Fields (DDFs) were observed as part of thfe Deep Survey. 
 A secondary area within the low-dust WFD footprint was included to provide alternate targets when the primary or DDF fields were  unavailable, supporting early template generation in higher-declination areas.
 
 A total of 21,647 science visits were acquired during the SV surveys. 
@@ -103,9 +96,15 @@ Image quality proved challenging throughout the SV period
 This is evidenced in part as a point-spread function (PSF) larger than expected given estimates of the atmospheric contribution, and partly as spatial variations in the PSF across the field of view.
 While the median-per-visit PSF width at FWHM reported for the SV images is not substantially larger than  typical seasonal values,  the shape and variability of the PSF do not meet the performance requirements expected for full survey operations.
 
+Figure \ref{fig:lsstcam_sv_nvisits} shows a sky map of all the science visits acquired during LSSTCam commissioning.
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.95\linewidth]{lsstcam_sv_nvisits}
+\caption{All science visits acquired during LSSTCam commissioning.}
+\label{fig:lsstcam_sv_nvisits}
+\end{figure}
 As full summary of the SV data obtained during LSSTCam commissioning can be found at \url{https://survey-strategy.lsst.io/progress/sv_status/sv_20250930.html}. 
 A full report on the  LSSTCam on-sky commissioning campaign is in preparation at \citeds{SITCOMTN-170}.
-
 
 % Small field surveys
 \subsubsection{Small Field Surveys}

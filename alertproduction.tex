@@ -44,14 +44,14 @@ Starting in Early Operations and continuing through Data Release 1 (DR1), Rubin 
 These images will be subject to a standard 80-hour embargo period, and will be released shortly after the embargo expires.
 The exact cadence and latency are still being determined in the light of operational and performance constraints;
 more details will be provided closer to the start of the image releases.
-During the first six months of LSST operations, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.
+During the first six months of the LSST, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.
 
 \subsubsection{Prompt Source Catalogs}
 \label{ssec:prompt-catalogs}
 
-During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage for the sky, Rubin plans to release per-epoch \textit{Source} catalogs together with the PVIs.
+During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage for the sky, Rubin plans to release per-epoch \textit{Source} catalogs together with the single-epoch PVIs described in \S~\ref{ssec:prompt-images}.
 These are distinct from the \textit{DiaSource} catalogs produced by Alert Production.
-Similar to the \textit{Source} catalogs that will be part of future Data Releases, the prompt \textit{Source} catalogs will be based on detections on the PVIs, rather than on the difference images.
+Similar to the \textit{Source} catalogs that will be part of future Data Releases, these prompt \textit{Source} catalogs will be based on detections on the PVIs, rather than on the difference images.
 This is a temporary measure and is planned to end with the release of DR1.
 Although these catalogs are not formally subject to the embargo, for reasons of convenience and consistency they will be released together with their corresponding PVIs following the expiry of the 80 hours.
 At present, these catalogs are planned to be distributed only as per-image Butler datasets, and will not be accessible via database queries.
@@ -64,11 +64,10 @@ The current expected start date for nightly PVI and Source catalog releases is n
 
 The Prompt Products Database (PPDB) serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
 It stores the Catalog Prompt Data Products (\textit{DiaSource}, \textit{DiaObject}, \textit{SSObject}, and \textit{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
-As noted above, it will not contain the Early-Operations prompt \textit{Source} catalog data, however.
+As noted in \S~\ref{ssec:prompt-catalogs}, it will not contain the Early-Operations prompt \textit{Source} catalog data, which will be distributed only as per-image Butler datasets.
+
+Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts, with the principal exception of some precovery data that will only appear in the PPDB.
+The project understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
 
 Due to ongoing technical development, the PPDB is not currently expected to become publicly available until mid-2026.
 
-Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts,
-with the principal exception of some precovery data that will only appear in the PPDB.
-The project understands that several brokers are planning to aggregate the Alert stream and provide query services on the results,
-which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
