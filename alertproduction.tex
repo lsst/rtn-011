@@ -26,11 +26,19 @@ Repeated changes to the template make it extremely difficult to construct usable
 During commissioning, templates were generated incrementally based on the available observations.
 Due to a slower-than-expected rate of data taking, this yielded usable templates for several Deep Drilling fields and several hundred square degrees of the wide SV survey.
 
+<<<<<<< HEAD
 \textbf{The first Rubin alerts} began \rubinfirstalerts and  only used templates from the DDFs, which were observable through the end of 2025. 
 Rubin is scaling up alert production during 2026 over a progressively increasing fraction of the sky as more incremental templates become available.
 Expansion of the template area from DDF-only is not expected before May 2026.
 Alerts generated during Early Operations may be produced with higher latency. 
 Access to images (\S\ref{ssec:prompt-images}) and the PPDB (\S\ref{ssec:ppdb}) will not initially be available when the alert stream first appears, but will be phased in during 2026 as discussed below.
+=======
+\textbf{The first Rubin alerts} began \rubinfrstalerts, and  only used templates from the DDFs (which were observable through the end of 2025). 
+During 2026, Rubin will scale up alert production over a progressively increasing fraction of the sky as more incremental templates become available.
+Expansion of the template area from DDF-only is not expected before the end of March 2026, at the earliest.
+Alerts generated during Early Operations may be produced with higher latency. 
+Access to images (\secref{ssec:prompt-images}) and the PPDB (\secref{ssec:ppdb}) will not initially be available when the alert stream first appears, but will be phased in during 2026 as discussed below.
+>>>>>>> 270b4bd (Added first alerts date)
 
 During the Commissioning and Early Operations periods, alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
 Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
@@ -38,53 +46,22 @@ Solar System discoveries will be reported to the Minor Planet Center on an ad-ho
 \subsubsection{Specifics of template generation in year 1}
 
 In Year 1 (Y1), Rubin LSST will adopt an incremental and opportunistic approach to template generation. 
-<<<<<<< HEAD
-<<<<<<< HEAD
-Templates will be constructed once sufficient high-quality visits have been accumulated at a given sky position and will be deployed for image differencing upon validation. 
+Templates will be constructed once sufficient high-quality visits have been accumulated at a given sky position and will be deployed for image differencing upon validation.
 However, the production and scientific use of these templates must be understood within the broader operational realities of early survey execution.
 
-The guiding principle for Y1 is that system calibration and survey integrity take precedence over alert production. 
+The guiding principle for Y1 is that system calibration and survey integrity take precedence over alert production.
 Following the guidance of the SCOC in Section 3.8 of \citeds{PSTN-056}, stating that releasing some alerts in Y1 is an important goal, but that this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.
 
 Templates will be generated once a field has accumulated a sufficient number of visits of adequate image quality with stable and validated calibration and passing defined quality thresholds.
-=======
-Templates will be constructed as soon as sufficient high-quality visits have been accumulated in a given field and will be deployed for image differencing immediately upon validation. 
-=======
-Templates will be constructed once sufficient high-quality visits have been accumulated at a given sky position and will be deployed for image differencing upon validation. 
->>>>>>> e3f32bc (Apply suggestions from Eric Bellm)
-However, the production and scientific use of these templates must be understood within the broader operational realities of early survey execution.
 
-The guiding principle for Y1 is that system calibration and survey integrity take precedence over alert production. 
-Following the guidance of the SCOC in Section 3.8 of \citeds{PSTN-056}, stating that releasing some alerts in Y1 is an important goal, but that this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.
-
-
-% \emph{releasing some alerts in Y1 is an important goal: it enables the time-domain and Solar System science communities to prepare for full-volume, full-fidelity alert streams in later years and increases early discovery potential. Early template generation is particularly useful for testing Solar System alert streams that require post-discovery re-detections. Nevertheless, this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.}
-
-
-
-<<<<<<< HEAD
-Templates will be generated once a field has accumulated:  A sufficient number of visits, of Adequate image qualityStable and validated calibration, Data that pass defined quality thresholds.
->>>>>>> 2dabca0 (Update date for PVIs)
-=======
-Templates will be generated once a field has accumulated a sufficient number of visits of adequate image quality with stable and validated calibration and passing defined quality thresholds.
->>>>>>> e3f32bc (Apply suggestions from Eric Bellm)
-
-Once these conditions are met, templates will be built and activated without waiting for full annual data reprocessing. 
+Once these conditions are met, templates will be built and activated without waiting for full annual data reprocessing.
 In principle, this allows templates to be used within the same observing season in which they are created.
 
-In practice, however, incremental template generation is effectively a race between data acquisition, processing, and seasonal visibility. 
-If sufficient visits are not accumulated and processed before a field sets, alerts for that field will not be issued until the next seasonal revisit. 
+In practice, however, incremental template generation is effectively a race between data acquisition, processing, and seasonal visibility.
+If sufficient visits are not accumulated and processed before a field sets, alerts for that field will not be issued until the next seasonal revisit.
 Given realistic Y1 conditions, this outcome is expected to be common.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-Operational Constraints in Year 1 include several factors  that limit the likelihood of widespread same-season template use, including 
-=======
-Operational Constraints in Year 1 inclkude Several factors  that limit the likelihood of widespread same-season template use indluding 
->>>>>>> 2dabca0 (Update date for PVIs)
-=======
-Operational Constraints in Year 1 include several factors  that limit the likelihood of widespread same-season template use, including 
->>>>>>> e3f32bc (Apply suggestions from Eric Bellm)
+Operational Constraints in Year 1 include several factors  that limit the likelihood of widespread same-season template use, including
 
 \begin{itemize}
 \item Survey speed and observing efficiency. Template construction requires reaching a minimum density of high-quality visits. Reduced observing efficiency—whether due to commissioning constraints or operational overhead—directly slows template readiness.
