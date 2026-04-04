@@ -142,20 +142,19 @@ The planned release time range for DP2 is July -- September 2026.
 \subsection{Data Release 1}
 \label{ssec:dr1}
 
-LSST Data Release 1 (DR1) will be the first Data Release in which all data products, as described in the DPDD \citep{LSE-163}, are provided for the full LSST footprint (\citep{PSTN-056}).
+LSST Data Release 1 (DR1) will be the first Data Release in which all data products, as described in the DPDD \citep{LSE-163}, are provided for the full LSST footprint \citep{PSTN-056}.
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DR1.
 
 DR1 is currently envisaged as being based on approximately the first year of data taken as part of the LSST 10-year survey. 
-However, the definition of the DR1 dataset remains under discussion. 
-As described in \S\ref{ssec:ops-lsst-start}, the Start of Rubin Operations and the Start of the LSST survey are separated by an Early Optimization Phase, during which the system is brought to a state of sustained, reliable operational performance. 
-Because optimization is expected to continue beyond the formal start of the LSST, the data quality and survey performance during early operations may not be representative of future nominal survey conditions.
+However, the exact definition of the DR1 dataset remains an open topic of discussion, particularly in light of the early system optimization phase described in \S\ref{ssec:ops-lsst-start}. 
+Because this optimization is expected to continue beyond the formal start of the LSST, the data quality and survey performance during early operations may not be fully representative of nominal survey conditions.
+In this context, it may be advantageous to define the start date for the DR1 dataset independently of the formal start of the LSST, particularly if the survey begins in a non-representative mode. 
+This flexibility would enable the construction of a DR1 dataset that is optimally suited to early static  and non-time-critical time-domain science.
 
-In this context, the effective start date for the DR1 dataset may be defined independently of the formal start of LSST survey operations, particularly if the survey begins in a non-representative mode. 
-This flexibility enables the construction of a DR1 dataset that scientifically best supports early static and non-time-critical time-domain science.
+The criteria used to define (“cut”) the DR1 dataset are currently under discussion in Rubin ticket \href{https://rubinobs.atlassian.net/browse/RFC-1139}{RFC-1139: Proposal for a science-driven set of criteria to cut DR1}.
+This proposal advocates for a science-motivated definition of DR1 rather than an arbitrary definition based solely on calendar time.
+The proposed approach defines the DR1 dataset in terms of the achievement of key survey milestones, such as reaching the nominal Year~1 depth across the sky, obtaining sufficient observations to enable robust photometric and astrometric calibration, and generating adequate template coverage over the full survey footprint.
+Under this framework, the temporal span of DR1 would be approximately one year, but the exact boundary would be determined by survey performance and scientific readiness rather than a fixed calendar date, resulting  in a more scientifically meaningful  data release.
 
-The criteria used to define (“cut”) the DR1 dataset are currently under discussion in \citet{RFC-1139}. 
-One proposed, science-motivated option is to define DR1 based on the achievement of key survey milestones, such as reaching the nominal Year~1 depth across the sky, obtaining sufficient observations to enable robust photometric and astrometric calibration, and generating template coverage over the full survey footprint. 
-Under this approach, the temporal span of the DR1 dataset would be approximately one year, but the boundary would not be tied to an arbitrary calendar date, resulting in a more scientifically meaningful data release.
-
-At the time of writing, Data Release Processing of one year of LSST data is estimated to require approximately one year. 
-This implies an expected DR1 delivery approximately two years after the effective start date of the DR1 dataset.
+Data Release Processing of one year of LSST data is estimated to require approximately one year. 
+This implies an expected DR1 delivery approximately two years after the effective start date for the DR1 dataset.
