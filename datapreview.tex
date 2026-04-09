@@ -98,39 +98,44 @@ Both of these are currently stretch goals for DP2.
 \subsection{Data Preview 2}
 \label{ssec:dp2}
 
-Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign, (\S~\ref{ssec:commissioning-lsstcam}).
+Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign, (\S~\ref{ssec:commissioning-lsstcam}) and early operations.
 The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
-Preliminary estimates of the total sky area to be covered by deep coadd images in all six filters is $\sim$ 3\,000~deg$^{2}$.
-The total sky area over which DP2 deep coadd images would be created was defined in September 2025 to include only the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field sky regions.
-Visits within these areas that were obtained after this time were allowed to contribute to the deep coadd images (provided they had sufficiently good image quality).
-Visits outside these areas will also be made available as part of DP2, and will bring the total sky area covered by even a single filter up to $\sim$ 15\,000~deg$^{2}$.
 
-A temporary tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) will be available in the Rubin Science Platform, under the "Tutorials - DP2" drop-down menu.
-The plot below can be created and manipulated in this notebook, for example.
-
-\input{figures/dp2_visits_tracts}
-
+As of \currentdate, the DP2 processing is still ongoing. 
+A temporary tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) will be available in the Rubin Science Platform, under the "Tutorials - DP2" drop-down menu. 
 
 
 \subsubsection{Sky Coverage and Depth}
  
-DP2 is derived from LSSTCam observations acquired during the commissioning campaign between \startsciencelsstcam and \finonskylsstcam, supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate that overlap the existing survey footprint.  
-Observations obtained between these dates that extend beyond the commissioning footprint are expected to have very low visit counts. 
-To avoid processing such sparsely sampled regions, only supplemental observations that increase depth within the established commissioning footprint will be included.
+DP2 is derived from LSSTCam observations acquired during the commissioning campaign between \startsciencelsstcam and \finonskylsstcam, supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate that overlap the existing commissioning survey footprint.  
+Observations extending beyond this footprint during these periods have very low visit counts and are excluded from coadd processing; only supplemental observations that increase depth within the established commissioning footprint are included.
 
 The dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign.
  
-Approximately 16,900 visits meet the quality thresholds for inclusion in the deep coadds.  
+Approximately 16,900 visits meet the quality thresholds for inclusion in the deep coadds. 
 The wide-area survey regions reach median coadded depths broadly comparable to those reported for the Science Validation surveys in \S\,\ref{ssec:commissioning-lsstcam}.  
-The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively
-observed, with coverage in all six bands.  
-An additional ${\sim}$4000 visits that do not meet the coadd quality criteria will be available as single-visit
+The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively observed, with coverage in all six bands. 
+An additional ${\sim}$4000 visits that do not meet  coadd quality criteria will be available as single-visit
 data products only.
+
+The sky area covered by deep coadds in all six filters is estimated at ~3,000 deg². 
+This footprint was defined in September 2025 to include only the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; subsequent visits within these areas contribute to the coadds if they meet image quality requirements. 
+Visits outside these regions are also included in DP2 as single-visit data, bringing the total sky area with at least one filter to $\sim$ 15\,000~deg$^{2}$. 
+Figure \ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters and can be generated and interactively explored in the preliminary DP2 tutorial notebook on the Rubin Science Platform.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.98\linewidth]{dp2_visits_tracts}
+\caption{A 2D histogram illustrating the distribution of DP2 visits on the sky for all filters combined.}
+\label{fig:dp2_visits_tracts}
+\vspace{0.1cm}
+\end{figure}
+
 
 \subsubsection{Data Products}
  
-During  late 2025 and early 2026,  the LSSTCam commissioning data (\S~\ref{ssec:commissioning-lsstcam}) will be reprocessed to produce DP2.
+During  late 2025 and early 2026,  the LSSTCam commissioning data (\S~\ref{ssec:commissioning-lsstcam}) are being reprocessed to produce DP2.
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2.
 
 All data products delivered with DP1 will also be produced and included in DP2.
