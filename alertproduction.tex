@@ -92,8 +92,6 @@ In summary, LSST will actively pursue incremental template generation during Yea
 Some new external drivers including the upcoming six-month LVK run (“IR1”) provides motivation to consider deploying DECam-based templates into in Alert Production. 
 These would allow the alert system to build operational history, validate performance, and demonstrate readiness ahead of full LSST alert volumes.  This approach is under investigation; deployment depends on demonstrating an acceptably low rate of false positives.
 
-
-%%% Prompt images
 \subsection{Prompt Images}
 \label{ssec:prompt-images}
 
@@ -101,7 +99,7 @@ Starting in Early Operations and continuing through Data Release 1 (DR1), Rubin 
 These images will be subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}), and will be released shortly after the embargo expires.
 The exact cadence and latency are still being determined in the light of operational and performance constraints;
 more details will be provided closer to the start of the image releases.
-During the first six months of the LSST, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.
+During the first six months of the LSST, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.	
 
 \subsubsection{Prompt Direct-Image Source Catalogs}
 \label{ssec:prompt-catalogs}
@@ -113,7 +111,8 @@ Although not formally subject to the embargo, these catalogs will be released to
 They will be distributed only as per-image Butler datasets and will not be accessible via database queries.
 
 Prompt image publication is under active development.
-Nightly PVIs and per-epoch direct-image \texttt{Source} catalogs are  not expected to begin before July  2026.
+Nightly PVIs and per-epoch direct-image \texttt{Source} catalogs are  expected to become publicly available between June and September 2026.
+
 
 \subsection{Prompt Products Database}
 \label{ssec:ppdb}
@@ -125,6 +124,5 @@ As noted in \S~\ref{ssec:prompt-catalogs}, it will not contain the Early-Operati
 Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts, with the principal exception of some precovery data that will only appear in the PPDB.
 The project understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
 
-Due to ongoing technical development, the PPDB is not  expected to become publicly available before June 2026.
-Further details will be provided in future versions of this document. 
+The PPDB  is under active development and is expected to become publicly available between June and September 2026.
 
