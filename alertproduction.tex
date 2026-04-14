@@ -26,48 +26,96 @@ Repeated changes to the template make it extremely difficult to construct usable
 During commissioning, templates were generated incrementally based on the available observations.
 Due to a slower-than-expected rate of data taking, this yielded usable templates for several Deep Drilling fields and several hundred square degrees of the wide SV survey.
 
-\textbf{The first Rubin alerts} are currently expected to begin in early 2026, and will only use templates from the DDFs (which were observable through the end of 2025). 
-During 2026, Rubin will scale up alert production over a progressively increasing fraction of the sky as more incremental templates become available.
-Expansion of the template area from DDF-only is not expected before the end of March 2026, at the earliest.
+\textbf{The first Rubin alerts} began \rubinfirstalerts and  only used templates from the DDFs, which were observable through the end of 2025. 
+Rubin is scaling up alert production during 2026 over a progressively increasing fraction of the sky as more incremental templates become available.
+Expansion of the template area from DDF-only is not expected before May 2026.
 Alerts generated during Early Operations may be produced with higher latency. 
-Access to images (\S~\ref{ssec:prompt-images}) and the PPDB (\S~\ref{ssec:ppdb}) will not initially be available when the alert stream first appears, 
-but will be phased in during 2026 as discussed below.
+Access to images (\S\ref{ssec:prompt-images}) and the PPDB (\S\ref{ssec:ppdb}) will not initially be available when the alert stream first appears, but will be phased in during 2026 as discussed below.
 
 During the Commissioning and Early Operations periods, alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
 Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
 
-%%% Prompt images
-\subsection{Prompt Images}
+\subsubsection{Specifics of template generation in year 1}
+
+In Year 1 (Y1), Rubin LSST will adopt an incremental and opportunistic approach to template generation. 
+Templates will be constructed once sufficient high-quality visits have been accumulated at a given sky position and will be deployed for image differencing upon validation. 
+However, the production and scientific use of these templates must be understood within the broader operational realities of early survey execution.
+
+The guiding principle for Y1 is that system calibration and survey integrity take precedence over alert production. 
+Following the guidance of the SCOC in Section 3.8 of \citeds{PSTN-056}, stating that releasing some alerts in Y1 is an important goal, but that this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.
+
+Templates will be generated once a field has accumulated a sufficient number of visits of adequate image quality with stable and validated calibration and passing defined quality thresholds.
+
+Once these conditions are met, templates will be built and activated without waiting for full annual data reprocessing. 
+In principle, this allows templates to be used within the same observing season in which they are created.
+
+In practice, however, incremental template generation is effectively a race between data acquisition, processing, and seasonal visibility. 
+If sufficient visits are not accumulated and processed before a field sets, alerts for that field will not be issued until the next seasonal revisit. 
+Given realistic Y1 conditions, this outcome is expected to be common.
+
+Operational Constraints in Year 1 include several factors  that limit the likelihood of widespread same-season template use, including 
+
+\begin{itemize}
+\item Survey speed and observing efficiency. Template construction requires reaching a minimum density of high-quality visits. Reduced observing efficiency—whether due to commissioning constraints or operational overhead—directly slows template readiness.
+
+\item Planned and unplanned downtime. Instrumental issues, maintenance periods, and commissioning activities reduce usable observing time and may delay the accumulation of template-quality data.
+
+\item Image quality performance. Deviations from expected image quality affect template depth, subtraction fidelity, and the reliability of early alert streams.
+
+\item Survey strategy and calibration integrity. Altering the survey cadence or footprint to accelerate template formation risks compromising photometric calibration, survey uniformity, and Data Release 1 (DR1) quality. Y1 strategy will not be significantly distorted solely to increase early alert production.
+\end{itemize}
+
+These factors collectively make it unlikely that Y1 will achieve uniform, full-footprint template coverage suitable for steady-state alert production.
+
+Alert generation in Y1 should therefore be viewed as opportunistic and demonstrative, not representative of steady-state LSST operations. Limited regions may produce alerts once templates are available, potentially resulting in early bursts of alerts in specific areas. As coverage evolves, alert rates may fluctuate significantly.
+
+The objective of Y1 alert release is to:
+\begin{itemize}
+
+\item Exercise the end-to-end alert system under realistic conditions,
+
+\item Enable community preparation and pipeline testing,
+
+\item Demonstrate operational capability ahead of full survey scale.
+
+\end{itemize}
+Full-volume, uniform alert streams remain a goal for subsequent years.
+
+In summary, LSST will actively pursue incremental template generation during Year 1 and will deploy templates as soon as they meet defined quality standards. However, realistic operational constraints make widespread same-season template use unlikely. Alert production in Y1 will be limited and opportunistic, with calibration stability and survey quality remaining the overriding priorities.
+
+\subsubsection{Using external templates}
+Some new external drivers including the upcoming six-month LVK run (“IR1”) provides motivation to consider deploying DECam-based templates into in Alert Production. 
+These would allow the alert system to build operational history, validate performance, and demonstrate readiness ahead of full LSST alert volumes.  This approach is under investigation; deployment depends on demonstrating an acceptably low rate of false positives.
+
+\subsection{Prompt Images and Direct-Image Source Catalogs}
 \label{ssec:prompt-images}
 
 Starting in Early Operations and continuing through Data Release 1 (DR1), Rubin plans to begin nightly releases of single-epoch Processed Visit Images (PVIs) and difference images.
 These images will be subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}), and will be released shortly after the embargo expires.
-The exact cadence and latency are still being determined in the light of operational and performance constraints;
+The exact cadence and latency are still being determined in  light of operational and performance constraints;
 more details will be provided closer to the start of the image releases.
-During the first six months of the LSST, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.
+During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, prompt PVIs and difference images may be released with somewhat higher latency, as Rubin continues to assess data quality and scale up its data services.
 
-\subsubsection{Prompt Direct-Image Source Catalogs}
-\label{ssec:prompt-catalogs}
-
-During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage of the sky, Rubin will release per-epoch direct-image \texttt{Source} catalogs for each single-epoch PVI (see \S~\ref{ssec:prompt-images}). 
-Similar to the \texttt{Source} catalogs that will be part of future Data Releases, these catalogs are based on detections in the PVIs themselves, rather than on difference images, and are distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production. 
+During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage of the sky, Rubin will release Direct-Image \texttt{Source} catalogs for single-epoch PVIs. 
+Similar to the \texttt{Source} catalogs that will be part of future Data Releases, these catalogs are based on direct detections in the PVIs themselves, rather than on difference images, and are distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production. 
 This is a temporary measure that will end with the release of DR1. 
+
 Although not formally subject to the embargo, these catalogs will be released together with their corresponding PVIs after the 80-hour embargo period for convenience and consistency. 
 They will be distributed only as per-image Butler datasets and will not be accessible via database queries.
 
-Prompt image publication is under active development.
-Nightly PVIs and per-epoch direct-image \texttt{Source} catalogs are  expected to begin sometime between April and June 2026.
+Prompt images and Direct-Image \texttt{Source} Catalogs are under active development and represent a significant technical challenge given the complexity of delivering Data Preview 2, prompt image and catalog products, and access to the PPDB within the same six-month window. 
+They are expected to become publicly available between June and September 2026.
+
 
 \subsection{Prompt Products Database}
 \label{ssec:ppdb}
 
 The Prompt Products Database (PPDB) serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
 It stores the Catalog Prompt Data Products (\texttt{DiaSource}, \texttt{DiaObject}, \texttt{SSObject}, and \texttt{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
-As noted in \S~\ref{ssec:prompt-catalogs}, it will not contain the Early-Operations prompt \texttt{Source} catalog data, which will be distributed only as per-image Butler datasets.
+As noted in \S~\ref{ssec:prompt-images}, it will not contain the Early-Operations Prompt Image \texttt{Source} catalog data, which will be distributed only as per-image Butler datasets.
 
 Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts, with the principal exception of some precovery data that will only appear in the PPDB.
-The project understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
+Rubin understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
 
-Due to ongoing technical development, the PPDB is not  expected to become publicly available before June 2026.
-Further details will be provided in future versions of this document. 
-
+The PPDB  is under active development and, as for Prompt images and Direct-Image \texttt{Source} Catalogs (\S~\ref{ssec:prompt-images}), represents a significant technical challenge given the complexity of delivering Data Preview 2, prompt image and catalog products, and access to the PPDB within the same six-month window. 
+The PPDB is expected to become publicly available between June and September 2026.

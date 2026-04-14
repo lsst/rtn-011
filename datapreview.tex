@@ -5,8 +5,8 @@ A series of three Data Previews (DP) and one Data Release (DR) are planned:
 \begin{itemize}
 \item Data Preview 0 (DP0): Based on simulated LSST-like data.
 \item Data Preview 1 (DP1): Based on a subset of early science-grade commissioning data taken with LSSTComCam during commissioning.
-\item Data Preview 2 (DP2): Based on a full reprocessing of all science-grade data taken with LSSTCam during commissioning.
-\item Data Release 1 (DR1): Based on  the first year of LSST data.
+\item Data Preview 2 (DP2): Based on a full reprocessing of science-grade data taken with LSSTCam during commissioning and the Early Optimization phase until  the DP2 cutoff date, \dptwocutoffdate.
+\item Data Release 1 (DR1): Based on the first year of LSST data.
 \end{itemize}
 Each successive Data Preview will demonstrate increasing levels of functionality and product maturity, progressively building toward the first full Data Release (DR1).
 Because the commissioning observation period is relatively short (\S~\ref{ssec:transition}), the Data Previews will necessarily cover smaller areas and shorter timescales than a standard Data Release.
@@ -98,30 +98,77 @@ Both of these are currently stretch goals for DP2.
 \subsection{Data Preview 2}
 \label{ssec:dp2}
 
-Data Preview 2 (DP2) will serve data products generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign, \S~\ref{ssec:commissioning-lsstcam},  to enable the community to prepare to work with LSST data.
+Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign, (\S~\ref{ssec:commissioning-lsstcam}) and early operations.
+The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
-During  late 2025 and early 2026,  the LSSTCam commissioning data (\S~\ref{ssec:commissioning-lsstcam}) will be reprocessed to produce DP2.
-Any additional science-grade images acquired before \dptwocutoffdate\, {\it that fall within the existing DP2 footprint} may be incorporated into DP2.
-Observations obtained before this date that extend beyond the footprint are expected to have very low visit counts. 
-To avoid processing such sparsely sampled regions, only data that increase depth within the established footprint will be included.
+As of \currentdate, the DP2 processing is still ongoing. 
+A temporary tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) will be available in the Rubin Science Platform, under the "Tutorials - DP2" drop-down menu. 
 
+The planned release time range for DP2 is July -- September 2026.
+
+\subsubsection{Sky Coverage and Depth}
+ 
+DP2 is derived from LSSTCam observations acquired during the commissioning campaign between \startsciencelsstcam and \finonskylsstcam, supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate that overlap the existing commissioning survey footprint.  
+Observations extending beyond this footprint during these periods have very low visit counts and are excluded from coadd processing; only supplemental observations that increase depth within the established commissioning footprint are included.
+
+The dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign.
+ 
+Approximately 16,900 visits meet the quality thresholds for inclusion in the deep coadds. 
+The wide-area survey regions reach median coadded depths broadly comparable to those reported for the Science Validation surveys in \S\,\ref{ssec:commissioning-lsstcam}.  
+The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively observed, with coverage in all six bands. 
+An additional ${\sim}$4000 visits that do not meet  coadd quality criteria will be available as single-visit
+data products only.
+
+The sky area covered by deep coadds in all six filters is estimated at ~3,000 deg². 
+This footprint was defined in September 2025 to include only the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; subsequent visits within these areas contribute to the coadds if they meet image quality requirements. 
+Visits outside these regions are also included in DP2 as single-visit data, bringing the total sky area with at least one filter to $\sim$ 15\,000~deg$^{2}$. 
+Figure \ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters and can be generated and interactively explored in the preliminary DP2 tutorial notebook on the Rubin Science Platform.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.98\linewidth]{dp2_visits_tracts}
+\caption{A 2D histogram illustrating the distribution of DP2 visits on the sky for all filters combined.}
+\label{fig:dp2_visits_tracts}
+\vspace{0.1cm}
+\end{figure}
+
+
+\subsubsection{Data Products}
+ 
+During  late 2025 and early 2026,  the LSSTCam commissioning data (\S~\ref{ssec:commissioning-lsstcam}) are being reprocessed to produce DP2.
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2.
-Cell-based coadds remain a stretch goal for DP2.
+
 All data products delivered with DP1 will also be produced and included in DP2.
 The DRP Solar System Processing (SSP) is designed to be a Rubin-only product, meaning that it does not begin with the Minor Planet Center (MPC) catalog to identify objects discovered by other observatories, as is done in the Prompt Processing.
 Instead, it constructs a self-contained “Rubin-only Solar System orbit catalog,” which, although less complete, can be more rigorously debiased than the catalog produced in Prompt mode.
 For DP2, as in DP1, the available data are insufficient to produce a meaningful Rubin-only catalog from orbit associations.
 Therefore, Solar System products in DP2 will be generated by positional cross-matching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
+Cell-based coadds and the ShearObject catalog remain stretch goals for DP2.
 
-The planned release time range for DP2 is July -- September 2026.
+
+\subsubsection{Limitations}
+ 
+DP2 is based on commissioning data and users should be aware of certain limitations relative to future Data Releases.  The temporal baseline is short (approximately five months for the primary dataset) and the sky coverage, while substantial, does not span the full LSST footprint. 
+Image quality during the Science Validation surveys was variable, and the PSF exhibits spatial structure that does not yet meet full survey-operations requirements.  
+Some catalog columns described in the DPDD may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.  
+DP2-specific documentation, including the catalog schema and known issues, will accompany the release.
 
 \subsection{Data Release 1}
 \label{ssec:dr1}
 
-LSST Data Release 1 will be based on the first year  of data taken as part of the 10-year survey.
-Data Release Processing of this dataset is estimated to take approximately one full year, making the expected delivery date approximately two years following the start of the 10-year survey.
-DR1 will be the first Data Release in which all data products, as described in the DPDD \citep{LSE-163} will be provided.
+LSST Data Release 1 (DR1) will be the first Data Release in which all data products, as described in the DPDD \citep{LSE-163}, are provided for the full LSST footprint \citep{PSTN-056}.
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DR1.
 
+DR1 is currently envisaged as being based on approximately the first year of data taken as part of the LSST 10-year survey. 
+However, the exact definition of the DR1 dataset remains an open topic of discussion, particularly in light of the early system optimization phase described in \S\ref{ssec:ops-lsst-start}. 
+Because this optimization is expected to continue beyond the formal start of the LSST, the data quality and survey performance during early operations may not be fully representative of nominal survey conditions.
+In this context, it may be advantageous to define the start date for the DR1 dataset independently of the formal start of the LSST, particularly if the survey begins in a non-representative mode. 
+This flexibility would enable the construction of a DR1 dataset that is optimally suited to early static  and non-time-critical time-domain science.
 
+The criteria used to define (“cut”) the DR1 dataset are currently under active discussion. 
+A proposal currently under consideration at Rubin advocates for a science-driven definition of DR1, rather than one based solely on an arbitrary calendar boundary.
+In this approach, the DR1 dataset is defined by the achievement of key survey milestones, such as reaching the nominal Year~1 depth across the survey footprint, acquiring sufficient observations to enable robust photometric and astrometric calibration, and generating adequate template coverage over the full sky area.
+Within this framework, the temporal span of DR1 would be approximately one year, however the exact boundaries would be determined by survey performance and scientific readiness rather than a fixed calendar date, ensuring a more scientifically meaningful  data release.
 
+Data Release Processing of one year of LSST data is estimated to require approximately one year. 
+This implies an expected DR1 delivery approximately two years after the effective start date for the DR1 dataset.
