@@ -44,11 +44,6 @@ However, the production and scientific use of these templates must be understood
 The guiding principle for Y1 is that system calibration and survey integrity take precedence over alert production. 
 Following the guidance of the SCOC in Section 3.8 of \citeds{PSTN-056}, stating that releasing some alerts in Y1 is an important goal, but that this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.
 
-
-% \emph{releasing some alerts in Y1 is an important goal: it enables the time-domain and Solar System science communities to prepare for full-volume, full-fidelity alert streams in later years and increases early discovery potential. Early template generation is particularly useful for testing Solar System alert streams that require post-discovery re-detections. Nevertheless, this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.}
-
-
-
 Templates will be generated once a field has accumulated a sufficient number of visits of adequate image quality with stable and validated calibration and passing defined quality thresholds.
 
 Once these conditions are met, templates will be built and activated without waiting for full annual data reprocessing. 
@@ -92,26 +87,24 @@ In summary, LSST will actively pursue incremental template generation during Yea
 Some new external drivers including the upcoming six-month LVK run (“IR1”) provides motivation to consider deploying DECam-based templates into in Alert Production. 
 These would allow the alert system to build operational history, validate performance, and demonstrate readiness ahead of full LSST alert volumes.  This approach is under investigation; deployment depends on demonstrating an acceptably low rate of false positives.
 
-\subsection{Prompt Images}
+\subsection{Prompt Images and Direct-Image Source Catalogs}
 \label{ssec:prompt-images}
 
 Starting in Early Operations and continuing through Data Release 1 (DR1), Rubin plans to begin nightly releases of single-epoch Processed Visit Images (PVIs) and difference images.
 These images will be subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}), and will be released shortly after the embargo expires.
-The exact cadence and latency are still being determined in the light of operational and performance constraints;
+The exact cadence and latency are still being determined in  light of operational and performance constraints;
 more details will be provided closer to the start of the image releases.
-During the first six months of the LSST, prompt PVIs and difference images may be released with somewhat higher latency as Rubin continues to assess data quality and scale up data services.	
+During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, prompt PVIs and difference images may be released with somewhat higher latency, as Rubin continues to assess data quality and scale up its data services.
 
-\subsubsection{Prompt Direct-Image Source Catalogs}
-\label{ssec:prompt-catalogs}
-
-During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage of the sky, Rubin will release per-epoch direct-image \texttt{Source} catalogs for each single-epoch PVI (see \S~\ref{ssec:prompt-images}). 
-Similar to the \texttt{Source} catalogs that will be part of future Data Releases, these catalogs are based on detections in the PVIs themselves, rather than on difference images, and are distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production. 
+During the pre-DR1 Early Operations period, because of the lack of Data Release catalog coverage of the sky, Rubin will release Direct-Image \texttt{Source} catalogs for single-epoch PVIs. 
+Similar to the \texttt{Source} catalogs that will be part of future Data Releases, these catalogs are based on direct detections in the PVIs themselves, rather than on difference images, and are distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production. 
 This is a temporary measure that will end with the release of DR1. 
+
 Although not formally subject to the embargo, these catalogs will be released together with their corresponding PVIs after the 80-hour embargo period for convenience and consistency. 
 They will be distributed only as per-image Butler datasets and will not be accessible via database queries.
 
-Prompt image publication is under active development.
-Nightly PVIs and per-epoch direct-image \texttt{Source} catalogs are  expected to become publicly available between June and September 2026.
+Prompt images and Direct-Image \texttt{Source} Catalogs are under active development and represent a significant technical challenge given the complexity of delivering Data Preview 2, prompt image and catalog products, and access to the PPDB within the same six-month window. 
+They are expected to become publicly available between June and September 2026.
 
 
 \subsection{Prompt Products Database}
@@ -119,10 +112,10 @@ Nightly PVIs and per-epoch direct-image \texttt{Source} catalogs are  expected t
 
 The Prompt Products Database (PPDB) serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
 It stores the Catalog Prompt Data Products (\texttt{DiaSource}, \texttt{DiaObject}, \texttt{SSObject}, and \texttt{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
-As noted in \S~\ref{ssec:prompt-catalogs}, it will not contain the Early-Operations prompt \texttt{Source} catalog data, which will be distributed only as per-image Butler datasets.
+As noted in \S~\ref{ssec:prompt-images}, it will not contain the Early-Operations Prompt Image \texttt{Source} catalog data, which will be distributed only as per-image Butler datasets.
 
 Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts, with the principal exception of some precovery data that will only appear in the PPDB.
-The project understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
+Rubin understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
 
-The PPDB  is under active development and is expected to become publicly available between June and September 2026.
-
+The PPDB  is under active development and, as for Prompt images and Direct-Image \texttt{Source} Catalogs (\S~\ref{ssec:prompt-images}), represents a significant technical challenge given the complexity of delivering Data Preview 2, prompt image and catalog products, and access to the PPDB within the same six-month window. 
+The PPDB is expected to become publicly available between June and September 2026.
