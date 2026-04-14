@@ -5,8 +5,8 @@ A series of three Data Previews (DP) and one Data Release (DR) are planned:
 \begin{itemize}
 \item Data Preview 0 (DP0): Based on simulated LSST-like data.
 \item Data Preview 1 (DP1): Based on a subset of early science-grade commissioning data taken with LSSTComCam during commissioning.
-\item Data Preview 2 (DP2): Based on a full reprocessing of all science-grade data taken with LSSTCam during commissioning.
-\item Data Release 1 (DR1): Based on  the first year of LSST data.
+\item Data Preview 2 (DP2): Based on a full reprocessing of science-grade data taken with LSSTCam during commissioning and the Early Optimization phase until  the DP2 cutoff date, \dptwocutoffdate.
+\item Data Release 1 (DR1): Based on the first year of LSST data.
 \end{itemize}
 Each successive Data Preview will demonstrate increasing levels of functionality and product maturity, progressively building toward the first full Data Release (DR1).
 Because the commissioning observation period is relatively short (\S~\ref{ssec:transition}), the Data Previews will necessarily cover smaller areas and shorter timescales than a standard Data Release.
@@ -101,10 +101,10 @@ Both of these are currently stretch goals for DP2.
 Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign, (\S~\ref{ssec:commissioning-lsstcam}) and early operations.
 The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
-
 As of \currentdate, the DP2 processing is still ongoing. 
 A temporary tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) will be available in the Rubin Science Platform, under the "Tutorials - DP2" drop-down menu. 
 
+The planned release time range for DP2 is July -- September 2026.
 
 \subsubsection{Sky Coverage and Depth}
  
@@ -152,8 +152,6 @@ DP2 is based on commissioning data and users should be aware of certain limitati
 Image quality during the Science Validation surveys was variable, and the PSF exhibits spatial structure that does not yet meet full survey-operations requirements.  
 Some catalog columns described in the DPDD may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.  
 DP2-specific documentation, including the catalog schema and known issues, will accompany the release.
-
-The planned release time range for DP2 is July -- September 2026.
 
 \subsection{Data Release 1}
 \label{ssec:dr1}
