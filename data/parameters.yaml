@@ -1,12 +1,14 @@
 # RTN-011 milestone and event parameters.
 # Edit these values to update all fields the document.
 #
-# Date formats:
+# Valid Date formats:
 #   YYYY-MM-DD  full date
 #   YYYY-MM     month only
 #   YYYY-MM/YYYY-MM  date range (ISO 8601 interval)
 #   TBD         date not yet determined
-
+#
+# Appropriate date formats for use in the document will be generated during the build
+#
 # ---------------------------------------------------------------------------
 #  Milestones
 # ---------------------------------------------------------------------------
@@ -24,23 +26,24 @@ milestones:
 
 # ---------------------------------------------------------------------------
 # Timeline events:
-#  key:                short code shown in the ops timeline table
-#  description:        event description
-#  date:               ISO 8601 date or date range
-#  latexstring:        LaTeX \newcommand name generated for this date
-#  color:              LaTeX color for timeline cell (omit to exclude from ops timeline)
-#  dataset_description: short dataset name for DR scenario column header (omit to exclude)
-#  date_label:         overrides the date display in the DR scenario header (e.g. TBD dates)
-#  <name>:             any other field is treated as an extra latexstring: date pair
+#  key:                  short code shown in the ops timeline table
+#  description:          event description
+#  date:                 ISO 8601 date or date range
+#  latexstring:          LaTeX \newcommand name generated for this date
+#  color:                LaTeX color for timeline cell (omit to exclude)
+#  dataset_description:  short dataset name for DR scenario column header (omit to exclude)
+#  date_label:           overrides the date display in the DR scenario header (e.g. TBD dates)
+#  <name>:               any other field is treated as an extra latexstring: date pair
 # ---------------------------------------------------------------------------
 events:
+  # DP0:
   - key: DP0
     description: "Data Preview 0.1/2/3"
     date: "2023-06-30"
     latexstring: dpzerodate
     color: RubinDarkTeal
 
-  # DP0 sub-releases: appear in DR scenario table only (no color = not in timeline)
+  # DP0 sub-releases:
   - key: DP0.1
     description: "Data Preview 0.1"
     date: "2021-06"
@@ -59,6 +62,7 @@ events:
     latexstring: dpzeropointthreedate
     dataset_description: "Solar System PPDB Simulation"
 
+# Rubin First Light
   - key: RFL
     description: "Rubin First Light"
     date: "2025-06-23"
@@ -66,6 +70,7 @@ events:
     dataset_description: "Rubin First Light Data"
     color: RubinDarkTeal
 
+# DP1 release
   - key: DP1
     description: "Data Preview 1"
     date: "2025-06-30"
@@ -73,12 +78,14 @@ events:
     color: RubinDarkTeal
     dataset_description: "LSST ComCam Science Validation Data"
 
+# Start of Operations
   - key: OPS
     description: "Start of Operations"
     date: "2025-10-25"
     latexstring: opsstartdate
     color: RubinDarkTeal
 
+# Start of Alerts
   - key: RFA
     description: "Rubin First Alerts"
     date: "2026-02-24"
@@ -86,18 +93,21 @@ events:
     color: RubinDarkTeal
     dataset_description: "Rubin First Alerts Data"
 
+# PPDB release
   - key: PPDB
     description: "PPDB Release"
     date: "2026-06/2026-09"
     latexstring: ppdbdate
     color: TLOrange3
 
+# Start of Nightly PVIs
   - key: NPC
     description: "Nightly PVIs & Direct-Image Catalogs"
     date: "2026-06/2026-09"
     latexstring: npcdate
     color: TLOrange3
 
+# DP2 release
   - key: DP2
     description: "Data Preview 2"
     date: "2026-07/2026-09"
@@ -106,12 +116,14 @@ events:
     dataset_description: "LSSTCam Science Validation Data"
     dptwocutoffdate: "2026-01-09"
 
+# Start of LSST
   - key: SVY
     description: "Start of LSST"
     date: "TBD"
     latexstring: lsststartdate
     color: RubinDarkTeal
 
+# DR1 release
   - key: DR1
     description: "Data Release 1"
     date: "TBD"
@@ -120,6 +132,7 @@ events:
     dataset_description: "LSST Year 1 Data"
     date_label: "LSST start + 1 year"
 
+# DR2 release
   - key: DR2
     description: "Data Release 2"
     date: "TBD"
