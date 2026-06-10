@@ -130,5 +130,5 @@ events:
     latexstring: dronedate
     color: RubinDarkTeal
     dataset_description: "LSST Year 1 Data"
-    date_label: "LSST start + 1 year"
+    date_label: "LSST start + 1 yr"
 

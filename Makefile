@@ -41,7 +41,7 @@ $(MMD_DIR)/%.pdf: $(MMD_DIR)/%.svg
 	fi
 
 # Add aglossary.tex as a dependancy here if you want a glossary (and remove acronyms.tex)
-$(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex parameters.tex
+$(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex parameters.tex tables/.stamp
 	@echo "Building LaTeX document: $(DOCNAME).pdf"
 	latexmk -bibtex -xelatex -f $(DOCNAME)
 #       makeglossaries $(DOCNAME)
@@ -53,10 +53,16 @@ authors.tex:  authors.yaml
 
 # Acronym tool allows for selection of acronyms based on tags - you may want more than DM
 acronyms.tex: $(tex) myacronyms.txt
-	$(TEXMFHOME)/../bin/generateAcronyms.py -t "DM" $(tex)
+	python3 $(TEXMFHOME)/../bin/generateAcronyms.py -t "DM" $(tex)
 
 parameters.tex: data/parameters.yaml python/lsst/texmf/parameters.py python/lsst/texmf/utils.py
-	$(CURDIR)/bin/generate_parameters.py
+	python3 $(CURDIR)/bin/generate_parameters.py
+
+tables/.stamp: data/parameters.yaml python/lsst/texmf/parameters.py python/lsst/texmf/utils.py python/lsst/texmf/tables.py
+	python3 $(CURDIR)/bin/generate_tables.py
+	touch $@
+
+tables: tables/.stamp
 
 
 # If you want a glossary you must manually run generateAcronyms.py  -gu to put the \gls in your files.
@@ -64,7 +70,7 @@ aglossary.tex :$(tex) myacronyms.txt
 	generateAcronyms.py  -g $(tex)
 
 
-.PHONY: clean
+.PHONY: clean tables
 clean:
 	latexmk -c
 	rm -f $(DOCNAME).bbl
@@ -73,6 +79,8 @@ clean:
 	rm -f $(DOCNAME).xdv
 	rm -f $(DOCNAME).pdf
 	rm -f meta.tex
+	rm -f parameters.tex
+	rm -rf tables
 
 .FORCE:
 

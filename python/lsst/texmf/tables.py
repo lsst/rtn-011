@@ -218,19 +218,19 @@ _X = "--"
 
 _DR_PRODUCTS = [
     ("Raw Images",
-     [_T, _T, _X, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T, _T]),
     (r"DRP Processed  Visit Images  and Source Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T, _T]),
     (r"DRP Coadded Images   and Object Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T, _T]),
     (r"DRP Cell-based Coadded Images and ShearObject Catalog",
-     [_X, _X, _X, _X, _S, _T, _T]),
+     [_X, _X, _X, _X, _X, _T, _T, _T]),
     (r"DRP ForcedSource Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T, _T]),
     (r"DRP Difference Images and DIA Catalogs",
-     [_X, _T, _X, _T, _T, _T, _T]),
+     [_X, _T, _X, _T, _T, _T, _T, _T]),
     (r"DRP SSP Catalogs",
-     [_X, _X, _T, _T, _T, _T, _T]),
+     [_X, _X, _T, _T, _T, _T, _T, _T]),
 ]
 
 
@@ -252,13 +252,33 @@ def _dr_date_cell(event: dict) -> str:
     return f"\\tiny {display}"
 
 
+_KEEP_TOGETHER = frozenset({
+    ("Sky", "Survey"),
+    ("First", "Alerts"),
+    ("First", "Light"),
+})
+
+
 def _rotated_dataset(description: str) -> str:
     """Rotated makecell for a DR scenario dataset column header.
 
-    The description string is split on whitespace; each word becomes a
-    bold line in the rotated cell.
+    Each word becomes a bold line in the rotated cell. Numerals are kept
+    on the same line as the preceding word; word pairs in _KEEP_TOGETHER
+    are also kept on one line.
     """
-    content = " \\\\\n".join(f"\\textbf{{{word}}}" for word in description.split())
+    groups: list[str] = []
+    for word in description.split():
+        last = groups[-1].split()[-1] if groups else None
+        if groups and word.isdigit():
+            groups[-1] = groups[-1] + " " + word
+        elif last and (last, word) in _KEEP_TOGETHER:
+            groups[-1] = groups[-1] + " " + word
+        else:
+            groups.append(word)
+    def _fmt(g: str) -> str:
+        return " ".join(f"\\textbf{{{w}}}" for w in g.split())
+
+    content = " \\\\\n".join(_fmt(g) for g in groups)
     return f"\\rotatebox[origin=c]{{90}}{{\\tiny\\makecell{{{content}}}}}"
 
 
@@ -275,7 +295,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
     rows = []
     for i, (label, dots) in enumerate(_DR_PRODUCTS):
-        sep = r" \arrayrulecolor{gray}\hline" if i < len(_DR_PRODUCTS) - 1 else r" \hline"
+        sep = r" \arrayrulecolor{gray}\hline\arrayrulecolor{black}" if i < len(_DR_PRODUCTS) - 1 else r" \hline"
         row_cells = "   &  ".join(dots)
         rows.append(f"{label}   &   {row_cells} \\\\  {sep}")
     rows_str = "\n".join(rows)
@@ -284,7 +304,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 \\begin{{table}}[hbt!]
 \\centering
 \\fontsize{{6}}{{10}}\\selectfont
-\\setlength{{\\tabcolsep}}{{6pt}}
+\\setlength{{\\tabcolsep}}{{4pt}}
 {{\\renewcommand{{\\arraystretch}}{{1.2}}
 \\begin{{tabular}}{{{col_spec}}}
     \\hline
@@ -297,7 +317,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
    \\\\\\cline{{2-{total}}}
        \\multirow{{3}}{{*}}{{\\parbox{{0.1\\linewidth}}{{\\vspace{{0.2cm}} \\textbf{{Data Product}}}}}}  &
 \t\t{dataset_cells}
-    \\\\\\cline{{2-{total} }} \\hline
+    \\\\\\cline{{2-{total}}} \\hline
 
 {rows_str}
 
