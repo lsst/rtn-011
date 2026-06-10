@@ -73,7 +73,6 @@ clean:
 	rm -f $(DOCNAME).xdv
 	rm -f $(DOCNAME).pdf
 	rm -f meta.tex
-	rm -f parameters.tex
 
 .FORCE:
 
