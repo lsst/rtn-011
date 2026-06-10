@@ -41,7 +41,7 @@ $(MMD_DIR)/%.pdf: $(MMD_DIR)/%.svg
 	fi
 
 # Add aglossary.tex as a dependancy here if you want a glossary (and remove acronyms.tex)
-$(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex
+$(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex parameters.tex
 	@echo "Building LaTeX document: $(DOCNAME).pdf"
 	latexmk -bibtex -xelatex -f $(DOCNAME)
 #       makeglossaries $(DOCNAME)
@@ -54,6 +54,9 @@ authors.tex:  authors.yaml
 # Acronym tool allows for selection of acronyms based on tags - you may want more than DM
 acronyms.tex: $(tex) myacronyms.txt
 	$(TEXMFHOME)/../bin/generateAcronyms.py -t "DM" $(tex)
+
+parameters.tex: data/parameters.yaml python/lsst/texmf/parameters.py python/lsst/texmf/utils.py
+	$(CURDIR)/bin/generate_parameters.py
 
 
 # If you want a glossary you must manually run generateAcronyms.py  -gu to put the \gls in your files.
@@ -70,6 +73,7 @@ clean:
 	rm -f $(DOCNAME).xdv
 	rm -f $(DOCNAME).pdf
 	rm -f meta.tex
+	rm -f parameters.tex
 
 .FORCE:
 
