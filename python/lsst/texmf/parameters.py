@@ -43,7 +43,7 @@ class RTN011Parameters:
     """Milestone and date parameters for RTN-011.
 
     Loads values from ``data/parameters.yaml`` (two sections: ``milestones``
-    and ``events``) and can write a ``parameters.tex`` with human-readable
+    and ``events``) and  writes ``parameters.tex`` with human-readable
     LaTeX ``\\newcommand`` definitions for all entries.
 
     Parameters
