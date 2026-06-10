@@ -5,7 +5,10 @@ Run from the repository root:
     PYTHONPATH=python python bin/generate_tables.py
 """
 
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parents[1] / "python"))
 
 from lsst.texmf.parameters import RTN011Parameters
 from lsst.texmf.tables import (
@@ -17,12 +20,12 @@ from lsst.texmf.tables import (
 )
 
 TABLES_DIR = Path(__file__).parents[1] / "tables"
+TABLES_DIR.mkdir(exist_ok=True)
 
 
 def write(path: Path, content: str) -> None:
     path.write_text(content)
     print(f"Written: {path}")
-
 
 def main() -> None:
     params = RTN011Parameters()
