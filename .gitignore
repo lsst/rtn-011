@@ -49,6 +49,7 @@ one.*
 # algorithms
 *.alg
 *.loa
+*.pyc 
 
 # achemso
 acs-*.bib
