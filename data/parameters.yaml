@@ -132,11 +132,3 @@ events:
     dataset_description: "LSST Year 1 Data"
     date_label: "LSST start + 1 year"
 
-# DR2 release
-  - key: DR2
-    description: "Data Release 2"
-    date: "TBD"
-    latexstring: drtwodate
-    color: RubinDarkTeal
-    dataset_description: "LSST Year 2 Data"
-    date_label: "LSST start + 2 years"
