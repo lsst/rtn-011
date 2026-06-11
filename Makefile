@@ -84,6 +84,9 @@ clean:
 
 .FORCE:
 
+install:
+	pip install -r requirements.txt
+
 meta.tex: Makefile .FORCE
 	rm -f $@
 	touch $@
