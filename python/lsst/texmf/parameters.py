@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+from astropy.time import Time
 
 from .utils import compute_duration_weeks, is_range, to_long_month_year, to_short_month_year
 
@@ -71,7 +72,7 @@ class RTN011Parameters:
                 if name not in _EVENT_RESERVED:
                     self._by_latexstring[name] = value
 
-        # currentdate: YYYY-MM slice of the git commit date (matches vcsDate)
+        # currentdate: YYYY-MM of the most recent git commit (matches vcsDate)
         self._by_latexstring["currentdate"] = self._git_year_month()
 
         # Derived durations
@@ -90,7 +91,7 @@ class RTN011Parameters:
             ["git", "log", "-1", "--date=short", "--pretty=%ad"],
             capture_output=True, text=True, cwd=_REPO_ROOT,
         )
-        return result.stdout.strip()[:7]  # YYYY-MM-DD → YYYY-MM
+        return Time(result.stdout.strip(), format="iso", scale="utc").strftime("%Y-%m")
 
     @property
     def events(self) -> list[dict[str, str]]:
@@ -117,9 +118,9 @@ class RTN011Parameters:
             return "TBD"
         if is_range(value):
             return to_short_month_year(value)
-        if len(value) == 7 and value[4] == "-":  # YYYY-MM → long month name
+        if value.count("-") == 1:  # YYYY-MM → long month name
             return to_long_month_year(value)
-        if len(value) == 10 and value[4] == "-":  # YYYY-MM-DD kept as ISO
+        if value.count("-") == 2:  # YYYY-MM-DD kept as ISO
             return value
         return value  # non-date strings (e.g. "7 weeks") returned as-is
 

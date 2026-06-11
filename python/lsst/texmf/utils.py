@@ -18,20 +18,14 @@ __all__ = [
     "colored_month_cells",
     "compute_duration_weeks",
     "is_range",
-    "range_end",
-    "range_start",
+    "parse_range",
     "to_long_month_year",
     "to_month_num",
     "to_short_month_year",
     "to_year",
 ]
 
-from datetime import date
-
-_MONTH_SHORT = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-_MONTH_LONG = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"]
+from astropy.time import Time
 
 
 def is_range(value: str) -> bool:
@@ -39,29 +33,28 @@ def is_range(value: str) -> bool:
     return "/" in value
 
 
-def _parse_partial(iso: str) -> tuple[int, int, int | None]:
+def _to_time(iso: str) -> Time:
+    """Parse YYYY-MM or YYYY-MM-DD into a Time object (day defaults to 1)."""
+    padded = iso if iso.count("-") == 2 else f"{iso}-01"
+    return Time(padded, format="iso", scale="utc")
+
+
+def _parse_iso_date(iso: str) -> tuple[int, int, int | None]:
     """Parse YYYY-MM or YYYY-MM-DD into (year, month, day_or_None)."""
-    parts = iso.split("-")
-    year = int(parts[0])
-    month = int(parts[1])
-    day = int(parts[2]) if len(parts) == 3 else None
-    return year, month, day
+    has_day = iso.count("-") == 2
+    dt = _to_time(iso).datetime
+    return dt.year, dt.month, dt.day if has_day else None
 
 
-def range_start(value: str) -> str:
-    """Return the start portion of an ISO interval.
+def parse_range(value: str) -> tuple[str, str]:
+    """Return the (start, end) of an ISO interval.
 
-    Single dates are returned unchanged.
+    For single dates both elements are the same value.
     """
-    return value.split("/")[0] if is_range(value) else value
-
-
-def range_end(value: str) -> str:
-    """Return the end portion of an ISO interval.
-
-    Single dates are returned unchanged.
-    """
-    return value.split("/")[1] if is_range(value) else value
+    if is_range(value):
+        start, end = value.split("/")
+        return start, end
+    return value, value
 
 
 def to_month_num(value: str) -> int | None:
@@ -71,14 +64,14 @@ def to_month_num(value: str) -> int | None:
     """
     if value == "TBD" or is_range(value):
         return None
-    return _parse_partial(value)[1]
+    return int(_to_time(value).strftime("%m"))
 
 
 def to_year(value: str) -> int | None:
     """Return the year for a single ISO date; None for ranges or TBD."""
     if value == "TBD" or is_range(value):
         return None
-    return _parse_partial(value)[0]
+    return int(_to_time(value).strftime("%Y"))
 
 
 def to_short_month_year(value: str) -> str:
@@ -91,16 +84,14 @@ def to_short_month_year(value: str) -> str:
     """
     if value == "TBD":
         return "TBD"
-    if is_range(value):
-        s_year, s_month, _ = _parse_partial(range_start(value))
-        e_year, e_month, _ = _parse_partial(range_end(value))
-        s_str = _MONTH_SHORT[s_month - 1]
-        e_str = _MONTH_SHORT[e_month - 1]
-        if s_year == e_year:
-            return f"{s_str} -- {e_str} {s_year}"
-        return f"{s_str} {s_year} -- {e_str} {e_year}"
-    year, month, _ = _parse_partial(value)
-    return f"{_MONTH_SHORT[month - 1]} {year}"
+    if not is_range(value):
+        return _to_time(value).strftime("%b %Y")
+    start, end = parse_range(value)
+    ts, te = _to_time(start), _to_time(end)
+    s_year, e_year = ts.datetime.year, te.datetime.year
+    if s_year == e_year:
+        return f"{ts.strftime('%b')} -- {te.strftime('%b')} {s_year}"
+    return f"{ts.strftime('%b')} {s_year} -- {te.strftime('%b')} {e_year}"
 
 
 def to_long_month_year(value: str) -> str:
@@ -112,16 +103,14 @@ def to_long_month_year(value: str) -> str:
     """
     if value == "TBD":
         return "TBD"
-    if is_range(value):
-        s_year, s_month, _ = _parse_partial(range_start(value))
-        e_year, e_month, _ = _parse_partial(range_end(value))
-        s_str = _MONTH_LONG[s_month - 1]
-        e_str = _MONTH_LONG[e_month - 1]
-        if s_year == e_year:
-            return f"{s_str} -- {e_str} {s_year}"
-        return f"{s_str} {s_year} -- {e_str} {e_year}"
-    year, month, _ = _parse_partial(value)
-    return f"{_MONTH_LONG[month - 1]} {year}"
+    if not is_range(value):
+        return _to_time(value).strftime("%B %Y")
+    start, end = parse_range(value)
+    ts, te = _to_time(start), _to_time(end)
+    s_year, e_year = ts.datetime.year, te.datetime.year
+    if s_year == e_year:
+        return f"{ts.strftime('%B')} -- {te.strftime('%B')} {s_year}"
+    return f"{ts.strftime('%B')} {s_year} -- {te.strftime('%B')} {e_year}"
 
 
 def colored_month_cells(value: str, start_year: int, end_year: int, color: str) -> list[str]:
@@ -157,17 +146,14 @@ def colored_month_cells(value: str, start_year: int, end_year: int, color: str) 
         if start_year <= year <= end_year:
             cells[(year - start_year) * 12 + (month - 1)] = f"\\cellcolor{{{color}}}"
 
-    if is_range(value):
-        s_year, s_month, _ = _parse_partial(range_start(value))
-        e_year, e_month, _ = _parse_partial(range_end(value))
-        for y in range(s_year, e_year + 1):
-            m0 = s_month if y == s_year else 1
-            m1 = e_month if y == e_year else 12
-            for m in range(m0, m1 + 1):
-                _set(y, m)
-    else:
-        year, month, _ = _parse_partial(value)
-        _set(year, month)
+    start, end = parse_range(value)
+    s_year, s_month, _ = _parse_iso_date(start)
+    e_year, e_month, _ = _parse_iso_date(end)
+    for y in range(s_year, e_year + 1):
+        m0 = s_month if y == s_year else 1
+        m1 = e_month if y == e_year else 12
+        for m in range(m0, m1 + 1):
+            _set(y, m)
 
     return cells
 
@@ -187,6 +173,6 @@ def compute_duration_weeks(start: str, end: str) -> int:
     weeks : `int`
         Duration rounded to the nearest whole week.
     """
-    d0 = date.fromisoformat(start)
-    d1 = date.fromisoformat(end)
-    return round((d1 - d0).days / 7)
+    t0 = Time(start, format="iso", scale="utc")
+    t1 = Time(end, format="iso", scale="utc")
+    return round((t1 - t0).to_value("d") / 7)
