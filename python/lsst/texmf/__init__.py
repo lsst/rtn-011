@@ -6,8 +6,8 @@
 # See the COPYRIGHT file at the top-level directory of this distribution
 # for details of code ownership.
 #
-# Use of this source code is governed by a 3-clause BSD-style
-# license that can be found in the LICENSE file.
+# Use of this source code is governed by a Creative Commons
+# Attribution 4.0 International license that can be found in the LICENSE file.
 """RTN-011 LaTeX parameter and table generation utilities."""
 
 __all__ = [
