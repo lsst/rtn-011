@@ -1,3 +1,4 @@
+astropy
 pydantic<2.0.0
 lander<2.0.0
 pyyaml
