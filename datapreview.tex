@@ -98,15 +98,25 @@ Both of these are currently stretch goals for DP2.
 \subsection{Data Preview 2}
 \label{ssec:dp2}
 
-Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign, (\S~\ref{ssec:commissioning-lsstcam}) and early operations.
+Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign (\S~\ref{ssec:commissioning-lsstcam}) and early operations.
+This commissioning dataset was reprocessed during late 2025 and early 2026 to produce the DP2 data products.
+Data processing completed in April 2026 and the products are currently undergoing detailed validation and preparation for release via the RSP (\S\,\ref{ssec:rsp}).
 The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
-As of \currentdate, the DP2 processing is still ongoing.
-A temporary tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) will be available in the Rubin Science Platform, under the "Tutorials - DP2" drop-down menu.
+DP2 will be delivered in two phases over the \dptwodate window.
+The first phase, \textbf{Early DP2}, comprises the deep coadd images and all catalogs, with a target release date of \edptwodate.
+The second phase, full \textbf{DP2}, adds the visit-level data products, completing the full release, with a target release date of  \fulldptwo.
+The data products released as EDP2 will be incorporated unchanged into full DP2 with no additional processing.
+Rubin will provide at least 30 days advance notice before each phase goes live.
 
-The planned release time range for DP2 is July -- September 2026.
+This phased delivery is driven by a bandwidth constraint in Rubin's hybrid cloud architecture, in which data products are stored at the USDF and served to users via the US DAC in Google Cloud.
+Recent scalability tests revealed that the available USDF--Google Cloud network bandwidth is insufficient to serve visit-level images at LSST scale.
+Engineering work is underway to address this, including installation of new network switches at USDF, but the resolution introduces timing uncertainty.
+Deep coadd images are unaffected because they are planned for direct hosting in Google Cloud\footnote{  This is the case  for all future Data Releases, not just DP2} and can be delivered in Early DP2 without reliance on hybrid cloud bandwidth.
+Visit-level images, which must be streamed from USDF, will follow once sufficient bandwidth is confirmed.
 
 \subsubsection{Sky Coverage and Depth}
+\label{sssec:dp2-sky}
 
 DP2 is derived from LSSTCam observations acquired during the commissioning campaign between \startsciencelsstcam and \finonskylsstcam, supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate that overlap the existing commissioning survey footprint.
 Observations extending beyond this footprint during these periods have very low visit counts and are excluded from coadd processing; only supplemental observations that increase depth within the established commissioning footprint are included.
@@ -122,7 +132,7 @@ data products only.
 The sky area covered by deep coadds in all six filters is estimated at ~3,000 deg².
 This footprint was defined in September 2025 to include only the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; subsequent visits within these areas contribute to the coadds if they meet image quality requirements.
 Visits outside these regions are also included in DP2 as single-visit data, bringing the total sky area with at least one filter to $\sim$ 15\,000~deg$^{2}$.
-Figure \ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters and can be generated and interactively explored in the preliminary DP2 tutorial notebook on the Rubin Science Platform.
+Figure~\ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters and can be generated and interactively explored in the preliminary DP2 tutorial notebook on the Rubin Science Platform.
 
 \begin{figure}[htb]
 \centering
@@ -132,26 +142,40 @@ Figure \ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the s
 \vspace{0.1cm}
 \end{figure}
 
+An initial tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) is available in the Rubin Science Platform, under the ``Tutorials -- DP2'' drop-down menu.
 
-\subsubsection{Data Products}
+\subsubsection{Early DP2 Data Products}
+\label{sssec:edp2}
 
-During  late 2025 and early 2026,  the LSSTCam commissioning data (\S~\ref{ssec:commissioning-lsstcam}) are being reprocessed to produce DP2.
-Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2.
+Early DP2  will include \textbf{all} catalog data products derived from the DRP reprocessing of the DP2 dataset, but only the deep coadd images; visit-level images will not be available until the full DP2 release \S~\ref{sssec:dp2-full}.
 
-All data products delivered with DP1 will also be produced and included in DP2.
-The DRP Solar System Processing (SSP) is designed to be a Rubin-only product, meaning that it does not begin with the Minor Planet Center (MPC) catalog to identify objects discovered by other observatories, as is done in the Prompt Processing.
-Instead, it constructs a self-contained ``Rubin-only Solar System orbit catalog", which, although less complete, can be more rigorously debiased than the catalog produced in Prompt mode.
-For DP2, as in DP1, the available data are insufficient to produce a meaningful Rubin-only catalog from orbit associations.
-Therefore, Solar System products in DP2 will be generated by positional cross-matching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
-Cell-based coadds and the ShearObject catalog remain stretch goals for DP2.
+Deep coadd images are hosted directly in Google Cloud and can be served without reliance on hybrid cloud bandwidth between the USDF and Google Cloud.
+They will be distributed in a new \texttt{LSST images} format, which enables efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of the LSST science pipelines, supporting long-term archival use.
+New in DP2 are cell-based coadds \citep{dmtn-075, dmtn-294, sitcomtn-137}, a Rubin/LSST image coaddition product in which a survey patch is subdivided into small spatial cells, and each cell is independently coadded using only fully overlapping input exposures to ensure a well-defined, spatially uniform PSF and weighting within the cell.
+The driving motivation for cell-based coadds is to improve the accuracy and stability of precision measurements by controlling PSF variation and edge effects that arise in standard coadds.
 
+Solar System processing in DP2 follows the same simplified approach as for DP1 relative to the full Rubin DRP Solar System Processing (SSP) framework.
+In its full form, SSP is designed to produce a Rubin-only product, beginning without reliance on the Minor Planet Center (MPC) catalog used in Prompt Processing.
+Instead, it constructs a self-contained “Rubin-only Solar System orbit catalog,” which, although less complete, can be more rigorously debiased than catalogs produced in Prompt mode.
+However, for DP2, as in DP1, the available data are insufficient to support robust orbit-based association at this level.
+Therefore, Solar System products in DP2 will instead be generated via positional cross-matching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
+DP2 will also deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \citep{DPDD}
+
+Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2; Early DP2 encompasses all coadd image and catalog entries in that table.
+
+\subsubsection{Full DP2 Data Products}
+\label{sssec:dp2-full}
+
+In addition to the data products in EDP2 (Section~\ref{sssec:edp2}), the full DP2 release includes all visit-level image data products, completing the DP2 dataset.
+The visit-level image data products comprise the single-visit images contributing to the coadds, as well as approximately ${\sim}$4000 additional single-visit images that did not meet the coadd quality criteria (Section~\ref{sssec:dp2-sky}), together with difference images.
 
 \subsubsection{Limitations}
 
-DP2 is based on commissioning data and users should be aware of certain limitations relative to future Data Releases.  The temporal baseline is short (approximately five months for the primary dataset) and the sky coverage, while substantial, does not span the full LSST footprint.
+DP2 is based on commissioning data and users should be aware of certain limitations relative to future Data Releases.
+The temporal baseline is short (approximately five months for the primary dataset) and the sky coverage, while substantial, does not span the full LSST footprint.
 Image quality during the Science Validation surveys was variable, and the PSF exhibits spatial structure that does not yet meet full survey-operations requirements.
-Some catalog columns described in the DPDD may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.
-DP2-specific documentation, including the catalog schema and known issues, will accompany the release.
+Some catalog columns described in the DPDD (\citep{DPDD}) may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.
+DP2-specific documentation, including the catalog schema and known issues, will accompany the release at \url{dp-2.lsst.io}
 
 \subsection{Data Release 1}
 \label{ssec:dr1}
