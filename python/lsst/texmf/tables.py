@@ -88,7 +88,7 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
     for event in params.events:
         if "color" not in event:
             continue
-        desc = event["description"].replace("&", r"\&")
+        desc = event["name"].replace("&", r"\&")
         event_rows.append(
             _timeline_row(event["key"], desc, event["date"], event["color"]) + "\n\\\\\\hline"
         )
@@ -218,19 +218,19 @@ _X = "--"
 
 _DR_PRODUCTS = [
     ("Raw Images",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T]),
     (r"DRP Processed  Visit Images  and Source Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T]),
     (r"DRP Coadded Images   and Object Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T]),
     (r"DRP Cell-based Coadded Images and ShearObject Catalog",
-     [_X, _X, _X, _X, _X, _T, _T, _T]),
+     [_X, _X, _X, _X, _X, _T, _T]),
     (r"DRP ForcedSource Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
+     [_T, _T, _X, _T, _T, _T, _T]),
     (r"DRP Difference Images and DIA Catalogs",
-     [_X, _T, _X, _T, _T, _T, _T, _T]),
+     [_X, _T, _X, _T, _T, _T, _T]),
     (r"DRP SSP Catalogs",
-     [_X, _X, _T, _T, _T, _T, _T, _T]),
+     [_X, _X, _T, _T, _T, _T, _T]),
 ]
 
 
@@ -284,13 +284,13 @@ def _rotated_dataset(description: str) -> str:
 
 def make_dr_scenario_table(params: RTN011Parameters) -> str:
     """Generate ``tables/rubin_early_dr_scenario.tex``."""
-    dr_events = [e for e in params.events if "dataset_description" in e]
+    dr_events = [e for e in params.datarelease_expanded if "description" in e]
     n = len(dr_events)
     total = n + 1  # +1 for the Data Product label column
 
     date_cells = " & ".join(_dr_date_cell(e) for e in dr_events)
     key_cells = " &  ".join(f"\\textbf{{{e['key']}}}" for e in dr_events)
-    dataset_cells = " &\n\t\t".join(_rotated_dataset(e["dataset_description"]) for e in dr_events)
+    dataset_cells = " &\n\t\t".join(_rotated_dataset(e["description"]) for e in dr_events)
     col_spec = "|l|" + "c|" * n
 
     rows = []

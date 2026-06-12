@@ -24,10 +24,10 @@ from astropy.time import Time
 
 from .utils import compute_duration_weeks, is_range, to_long_month_year, to_short_month_year
 
-# Fields in an event dict that are not latexstring: date pairs.
+# Fields in an event dict that are not latex_string: date pairs.
 _EVENT_RESERVED = frozenset({
-    "key", "description", "date", "latexstring",
-    "color", "dataset_description", "date_label",
+    "key", "name", "description", "date", "latex_string",
+    "color", "date_label", "sub_releases",
 })
 
 _REPO_ROOT = Path(__file__).parents[3]
@@ -43,9 +43,9 @@ AUTOGEN_HEADER = """\
 class RTN011Parameters:
     """Milestone and date parameters for RTN-011.
 
-    Loads values from ``data/parameters.yaml`` (two sections: ``milestones``
-    and ``events``) and  writes ``parameters.tex`` with human-readable
-    LaTeX ``\\newcommand`` definitions for all entries.
+    Loads values from ``data/parameters.yaml`` (sections: ``milestones``,
+    ``datarelease``, ``prompt``) and writes ``parameters.tex`` with
+    human-readable LaTeX ``\\newcommand`` definitions for all entries.
 
     Parameters
     ----------
@@ -58,19 +58,31 @@ class RTN011Parameters:
         with open(yaml_path) as f:
             raw: dict[str, Any] = yaml.safe_load(f)
 
-        # Flat date parameters: {latexstring: iso_value}
+        # Flat date parameters: {latex_string: iso_value}
         self._dates: dict[str, str] = raw.get("milestones", {})
 
-        # Timeline events: list of dicts (key, description, date, latexstring)
-        self._events: list[dict[str, str]] = raw.get("events", [])
+        # Data release events (may contain sub_releases)
+        dr_section = raw.get("datarelease", {})
+        self._datarelease: list[dict[str, Any]] = dr_section.get("events", [])
 
-        # Combined lookup by latexstring name for __getattr__
+        # Prompt product events
+        self._prompt: list[dict[str, Any]] = raw.get("prompt", [])
+
+        # All top-level events combined
+        self._events: list[dict[str, Any]] = self._datarelease + self._prompt
+
+        # Combined lookup by latex_string name for __getattr__
         self._by_latexstring: dict[str, str] = dict(self._dates)
         for event in self._events:
-            self._by_latexstring[event["latexstring"]] = event["date"]
+            self._by_latexstring[event["latex_string"]] = event["date"]
             for name, value in event.items():
                 if name not in _EVENT_RESERVED:
                     self._by_latexstring[name] = value
+            for sub in event.get("sub_releases", []):
+                self._by_latexstring[sub["latex_string"]] = sub["date"]
+                for name, value in sub.items():
+                    if name not in _EVENT_RESERVED:
+                        self._by_latexstring[name] = value
 
         # currentdate: YYYY-MM of the most recent git commit (matches vcsDate)
         self._by_latexstring["currentdate"] = self._git_year_month()
@@ -94,12 +106,34 @@ class RTN011Parameters:
         return Time(result.stdout.strip(), format="iso", scale="utc").strftime("%Y-%m")
 
     @property
-    def events(self) -> list[dict[str, str]]:
-        """Timeline events in YAML order.
+    def datarelease(self) -> list[dict[str, Any]]:
+        """Top-level data release events in YAML order."""
+        return self._datarelease
 
-        Each event is a dict with at minimum: key, description, date,
-        latexstring. Optional fields: color, dataset_description, date_label.
+    @property
+    def datarelease_expanded(self) -> list[dict[str, Any]]:
+        """Data release events with sub_releases flattened.
+
+        Parents that have sub_releases are replaced by their children;
+        parents without sub_releases appear directly.
         """
+        result = []
+        for event in self._datarelease:
+            subs = event.get("sub_releases")
+            if subs:
+                result.extend(subs)
+            else:
+                result.append(event)
+        return result
+
+    @property
+    def prompt(self) -> list[dict[str, Any]]:
+        """Prompt product events in YAML order."""
+        return self._prompt
+
+    @property
+    def events(self) -> list[dict[str, Any]]:
+        """All top-level events (datarelease + prompt) in YAML order."""
         return self._events
 
     def __getattr__(self, name: str) -> str:
@@ -109,7 +143,7 @@ class RTN011Parameters:
             raise AttributeError(f"No parameter '{name}'") from None
 
     def __contains__(self, name: str) -> bool:
-        """Return True if *name* is a known parameter latexstring."""
+        """Return True if *name* is a known parameter latex_string."""
         return name in self._by_latexstring
 
     def _to_display(self, value: str) -> str:
