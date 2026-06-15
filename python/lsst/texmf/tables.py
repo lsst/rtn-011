@@ -221,8 +221,8 @@ _DR_PRODUCTS = [
      [_T, _T, _X, _T, _X, _T, _T]),
     (r"DRP Processed Visit Images",
      [_T, _T, _X, _T, _X, _T, _T]),
-    (r"DRP Deep (cell-based) Coadded Images",
-     [_T, _T, _X, _X, _T, _T, _T]),
+    (r"DRP Deep  Coadded Images",
+     [_T, _T, _X, _T, _T, _T, _T]),
     (r"DRP Difference Images",
      [_X, _T, _X, _T, _X, _T, _T]),
     (r"DRP Template Coadd Images",
@@ -240,7 +240,7 @@ _DR_PRODUCTS = [
     (r"DRP SSP Catalogs",
      [_X, _X, _T, _T, _T, _T, _T]),
     (r"MPC Orbits Catalog",
-     [_X, _X, _T, _T, _T, _T, _T]),
+     [_X, _X, _X, _T, _T, _T, _T]),
 ]
 
 
@@ -302,7 +302,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
     date_cells = " & ".join(_dr_date_cell(e) for e in dr_events)
     key_cells = " &  ".join(f"\\textbf{{{e['key']}}}" for e in dr_events)
     dataset_cells = " &\n\t\t".join(_rotated_dataset(e["description"]) for e in dr_events)
-    col_spec = "|l|" + r">{\centering\arraybackslash}p{1.2cm}|" * n
+    col_spec = "|p{3.5cm}|" + r">{\centering\arraybackslash}p{1.2cm}|" * n
 
     rows = []
     for i, (label, dots) in enumerate(_DR_PRODUCTS):
@@ -314,9 +314,9 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
     return f"""{AUTOGEN_STR}
 \\begin{{table}}[hbt!]
 \\centering
-\\fontsize{{6}}{{10}}\\selectfont
-\\setlength{{\\tabcolsep}}{{6pt}}
-{{\\renewcommand{{\\arraystretch}}{{1.2}}
+\\fontsize{{7}}{{10}}\\selectfont
+\\setlength{{\\tabcolsep}}{{8pt}}
+{{\\renewcommand{{\\arraystretch}}{{1.4}}
 \\begin{{tabular}}{{{col_spec}}}
     \\hline
 \\multicolumn{{{total}}}{{|l|}}{{{{\\fontsize{{9}}{{12}}\\selectfont \\color{{RubinDarkTeal}}\\textbf{{Rubin Early Science -- Data Release Scenario}}}}}}  \\\\\\hline\\hline
@@ -326,7 +326,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
         & {key_cells}
    \\\\\\cline{{2-{total}}}
-       \\multirow{{3}}{{*}}{{\\parbox{{0.1\\linewidth}}{{\\vspace{{0.2cm}} \\textbf{{Data Product}}}}}}  &
+       \\multirow{{3}}{{*}}{{\\parbox{{3.5cm}}{{\\vspace{{0.3cm}} \\textbf{{Data Product}}}}}}  &
 \t\t{dataset_cells}
     \\\\\\cline{{2-{total}}} \\hline
 
