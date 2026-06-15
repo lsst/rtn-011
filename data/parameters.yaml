@@ -114,6 +114,9 @@ datarelease:
         value: "2026-07/2026-09"
         latex_string: dptwodate
       color: TLOrange3
+      science_visit_start_date:
+        value: "2025-04-24"
+        latex_string: dptwostartdate
       cutoff_date:
         value: "2026-01-09"
         latex_string: dptwocutoffdate
