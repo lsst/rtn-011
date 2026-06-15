@@ -98,8 +98,8 @@ Both of these are currently stretch goals for DP2.
 \subsection{Data Preview 2}
 \label{ssec:dp2}
 
-Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign (\S~\ref{ssec:commissioning-lsstcam}) and early operations.
-This commissioning dataset was reprocessed during late 2025 and early 2026 to produce the DP2 data products.
+Data Preview 2 (DP2) will provide the first large-area, multi-band dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign between \startsciencelsstcam and \finonskylsstcam(\S~\ref{ssec:commissioning-lsstcam}) supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate.
+This commissioning and early operations dataset was reprocessed during late 2025 and early 2026 to produce the DP2 data products.
 Data processing completed in April 2026 and the products are currently undergoing detailed validation and preparation for release via the RSP (\S\,\ref{ssec:rsp}).
 The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
@@ -115,34 +115,51 @@ Engineering work is underway to address this, including installation of new netw
 Deep coadd images are unaffected because they are planned for direct hosting in Google Cloud\footnote{  This is the case  for all future Data Releases, not just DP2} and can be delivered in Early DP2 without reliance on hybrid cloud bandwidth.
 Visit-level images, which must be streamed from USDF, will follow once sufficient bandwidth is confirmed.
 
-\subsubsection{Sky Coverage and Depth}
+\subsubsection{Dataset Definition}
 \label{sssec:dp2-sky}
 
-DP2 is derived from LSSTCam observations acquired during the commissioning campaign between \startsciencelsstcam and \finonskylsstcam, supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate that overlap the existing commissioning survey footprint.
-Observations extending beyond this footprint during these periods have very low visit counts and are excluded from coadd processing; only supplemental observations that increase depth within the established commissioning footprint are included.
+The DP2 dataset comprises science visits acquired between \startsciencelsstcam\ and \dptwocutoffdate.
+Coadds are restricted to regions within the survey footprint established during the LSSTCam on-sky commissioning campaign (through \finonskylsstcam); observations falling outside this footprint, taken during the subsequent early operations period, have insufficient visit counts for coadd inclusion and are provided instead as single-epoch images.
+Visit-level exclusions include engineering frames, out-of-focus sequences acquired for Active Optics System (AOS) commissioning, stray-light scans, and visits flagged in the \texttt{excluded\_visits} list, which typically comprise images affected by focus errors or anomalous mount or hexapod motion.
+See tables 1 and 4 in \citep{rtn-111} for a summary of the visit-level exclusions applied during the processing.
 
-The dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign.
+DP2 contains approximately 30,000 visits, of which $\sim~16{,}900$ meet the quality thresholds for inclusion in the deep coadds.
 
-Approximately 16,900 visits meet the quality thresholds for inclusion in the deep coadds.
-The wide-area survey regions reach median coadded depths broadly comparable to those reported for the Science Validation surveys in \S\,\ref{ssec:commissioning-lsstcam}.
-The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively observed, with coverage in all six bands.
-An additional ${\sim}$4000 visits that do not meet  coadd quality criteria will be available as single-visit
-data products only.
+\subsubsection{Sky Coverage and depth}
 
-The sky area covered by deep coadds in all six filters is estimated at ~3,000 deg².
-This footprint was defined in September 2025 to include only the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; subsequent visits within these areas contribute to the coadds if they meet image quality requirements.
-Visits outside these regions are also included in DP2 as single-visit data, bringing the total sky area with at least one filter to $\sim$ 15\,000~deg$^{2}$.
-Figure~\ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters and can be generated and interactively explored in the preliminary DP2 tutorial notebook on the Rubin Science Platform.
-
+Figure~\ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.98\linewidth]{dp2_visits_tracts}
+\includegraphics[width=0.98\linewidth]{dp2_visits_tracts_nvisits}
 \caption{A 2D histogram illustrating the distribution of DP2 visits on the sky for all filters combined.}
 \label{fig:dp2_visits_tracts}
 \vspace{0.1cm}
 \end{figure}
 
-An initial tutorial notebook to explore and visualize the preliminary DP2 visit and tract metadata (e.g., coordinates, filters, dates) is available in the Rubin Science Platform, under the ``Tutorials -- DP2'' drop-down menu.
+The DP2 coadded footprint covers $\sim~3{,}000~deg^{2}$ in all six filters, defined to encompass the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; visits within these areas are included in the coadds if they meet image quality requirements.
+The total sky area with coverage in at least one filter is $\sim~15{,}000~deg^{2}$, with visits outside the coadded footprint available as single-epoch images only.
+
+Wide-area survey regions reach median coadded depths broadly comparable to those reported for the Science Validation surveys (\S\,\ref{ssec:commissioning-lsstcam}).
+The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively observed, with coverage in all six bands.
+Visits are included in the deep coadds if the visit-level median PSF FWHM is better than 1.7~arcseconds, each detector has a PSF FWHM better than 1.8~arcseconds, and the atmospheric transparency is at least 0.75.
+An additional $\sim~15\%$ of otherwise qualifying inputs were excluded on the basis of PSF ellipticity $e$ > 0.2.
+
+Figure~\ref{fig:dp2_psf_maglim} shows the $5\sigma$ PSF magnitude limit across the DP2 coadded footprint for each of the six LSST bands.
+\input{figures/dp2_psf_maglim}
+(LSST = the LSST footprint; 3k = the original SV footprint; 750 is the consolidated/revised SV footprint; 300 is the top 300 degrees. Table gives the median values.)
+
+An initial tutorial notebook for exploring and visualizing the DP2 visit and tract metadata (e.g., coordinates, filters, dates) is available in the Rubin Science Platform under the ``Tutorials -- DP2'' drop-down menu, and can be used to interactively generate and explore figures such as Figure~\ref{fig:dp2_visits_tracts}.
+
+\subsubsection{DP2 Fields}
+
+%Table \ref{} lists the
+
+Table \ref{tab:dp1_fields_in_dp2} details the number of visits in DP2 that overlap the DP1 fields with a breakdown by band.
+\input{tables/dp1_fields_in_dp2}
+
+
+The dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign.
+
 
 \subsubsection{Early DP2 Data Products}
 \label{sssec:edp2}
@@ -167,7 +184,7 @@ Table~\ref{tab:data-preview-summary} presents a summary of the data products exp
 \label{sssec:dp2-full}
 
 In addition to the data products in EDP2 (Section~\ref{sssec:edp2}), the full DP2 release includes all visit-level image data products, completing the DP2 dataset.
-The visit-level image data products comprise the single-visit images contributing to the coadds, as well as approximately ${\sim}$4000 additional single-visit images that did not meet the coadd quality criteria (Section~\ref{sssec:dp2-sky}), together with difference images.
+The visit-level image data products comprise the single-visit images contributing to the coadds, as well as approximately $\sim~4{,}000$ additional single-visit images that did not meet the coadd quality criteria (Section~\ref{sssec:dp2-sky}), together with difference images.
 
 \subsubsection{Limitations}
 
