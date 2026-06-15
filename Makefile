@@ -41,7 +41,7 @@ $(MMD_DIR)/%.pdf: $(MMD_DIR)/%.svg
 	fi
 
 # Add aglossary.tex as a dependancy here if you want a glossary (and remove acronyms.tex)
-$(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex parameters.tex tables/.stamp
+$(DOCNAME).pdf: $(tex) meta.tex local.bib acronyms.tex authors.tex parameters.tex tables/.stamp figures/.stamp
 	@echo "Building LaTeX document: $(DOCNAME).pdf"
 	latexmk -bibtex -xelatex -f $(DOCNAME)
 #       makeglossaries $(DOCNAME)
@@ -64,13 +64,19 @@ tables/.stamp: data/parameters.yaml python/lsst/texmf/parameters.py python/lsst/
 
 tables: tables/.stamp
 
+figures/.stamp: python/lsst/texmf/figures.py
+	python3 $(CURDIR)/bin/generate_figures.py
+	touch $@
+
+figures: figures/.stamp
+
 
 # If you want a glossary you must manually run generateAcronyms.py  -gu to put the \gls in your files.
 aglossary.tex :$(tex) myacronyms.txt
 	generateAcronyms.py  -g $(tex)
 
 
-.PHONY: clean tables
+.PHONY: clean tables figures
 clean:
 	latexmk -c
 	rm -f $(DOCNAME).bbl
@@ -81,6 +87,7 @@ clean:
 	rm -f meta.tex
 	rm -f parameters.tex
 	rm -rf tables
+	rm -f figures/.stamp
 
 .FORCE:
 
