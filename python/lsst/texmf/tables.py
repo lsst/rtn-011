@@ -218,18 +218,28 @@ _X = "--"
 
 _DR_PRODUCTS = [
     ("Raw Images",
+     [_T, _T, _X, _T, _X, _T, _T]),
+    (r"DRP Processed Visit Images",
+     [_T, _T, _X, _T, _X, _T, _T]),
+    (r"DRP Deep (cell-based) Coadded Images",
+     [_T, _T, _X, _X, _T, _T, _T]),
+    (r"DRP Difference Images",
+     [_X, _T, _X, _T, _X, _T, _T]),
+    (r"DRP Template Coadd Images",
+     [_X, _T, _X, _X, _X, _T, _T]),
+    (r"DRP Source Catalogs",
      [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP Processed  Visit Images  and Source Catalogs",
+    (r"DRP Object Catalogs",
      [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP Coadded Images   and Object Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP Cell-based Coadded Images and ShearObject Catalog",
-     [_X, _X, _X, _X, _X, _T, _T]),
     (r"DRP ForcedSource Catalogs",
      [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP Difference Images and DIA Catalogs",
+    (r"DRP ShearObject Catalog",
+     [_X, _X, _X, _X, _T, _T, _T]),
+    (r"DRP DIA Catalogs",
      [_X, _T, _X, _T, _T, _T, _T]),
     (r"DRP SSP Catalogs",
+     [_X, _X, _T, _T, _T, _T, _T]),
+    (r"MPC Orbits Catalog",
      [_X, _X, _T, _T, _T, _T, _T]),
 ]
 
@@ -276,7 +286,8 @@ def _rotated_dataset(description: str) -> str:
         else:
             groups.append(word)
     def _fmt(g: str) -> str:
-        return " ".join(f"\\textbf{{{w}}}" for w in g.split())
+        inner = " ".join(f"\\textbf{{{w}}}" for w in g.split())
+        return f"\\hspace{{3pt}}{inner}\\hspace{{3pt}}"
 
     content = " \\\\\n".join(_fmt(g) for g in groups)
     return f"\\rotatebox[origin=c]{{90}}{{\\tiny\\makecell{{{content}}}}}"
@@ -291,7 +302,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
     date_cells = " & ".join(_dr_date_cell(e) for e in dr_events)
     key_cells = " &  ".join(f"\\textbf{{{e['key']}}}" for e in dr_events)
     dataset_cells = " &\n\t\t".join(_rotated_dataset(e["description"]) for e in dr_events)
-    col_spec = "|l|" + "c|" * n
+    col_spec = "|l|" + r">{\centering\arraybackslash}p{1.2cm}|" * n
 
     rows = []
     for i, (label, dots) in enumerate(_DR_PRODUCTS):
@@ -304,7 +315,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 \\begin{{table}}[hbt!]
 \\centering
 \\fontsize{{6}}{{10}}\\selectfont
-\\setlength{{\\tabcolsep}}{{4pt}}
+\\setlength{{\\tabcolsep}}{{6pt}}
 {{\\renewcommand{{\\arraystretch}}{{1.2}}
 \\begin{{tabular}}{{{col_spec}}}
     \\hline
