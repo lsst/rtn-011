@@ -31,6 +31,15 @@ __all__ = [
 from .parameters import RTN011Parameters
 from .utils import colored_month_cells, to_short_month_year
 
+
+def _event_date(event: dict) -> str:
+    """Return the date string from an event dict.
+
+    The date field is a dict with 'value' and 'latex_string' sub-fields;
+    this helper extracts the plain date string.
+    """
+    return event["date"]["value"]
+
 AUTOGEN_STR = "%%% This table is auto-generated from data/parameters.yaml -- DO NOT EDIT"
 
 # ---------------------------------------------------------------------------
@@ -90,7 +99,7 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
             continue
         desc = event["name"].replace("&", r"\&")
         event_rows.append(
-            _timeline_row(event["key"], desc, event["date"], event["color"]) + "\n\\\\\\hline"
+            _timeline_row(event["key"], desc, _event_date(event), event["color"]) + "\n\\\\\\hline"
         )
 
     rows_str = "\n".join(event_rows)
@@ -210,38 +219,11 @@ def make_dp1_visits_table() -> str:
 # Data Release scenario table
 # ---------------------------------------------------------------------------
 
-# Static dot/dash content per row: (product_label, [dp0.1..dr2])
-# _T = confirmed (RubinDarkTeal), _S = stretch (RubinGray1), _X = not available
+# Dot/dash markers: T = confirmed, S = stretch goal, X = not available
 _T = r"\mycirc[RubinDarkTeal]"
 _S = r"\mycirc[RubinGray1]"
 _X = "--"
-
-_DR_PRODUCTS = [
-    ("Raw Images",
-     [_T, _T, _X, _T, _X, _T, _T]),
-    (r"DRP Processed Visit Images",
-     [_T, _T, _X, _T, _X, _T, _T]),
-    (r"DRP Deep  Coadded Images",
-     [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP Difference Images",
-     [_X, _T, _X, _T, _X, _T, _T]),
-    (r"DRP Template Coadd Images",
-     [_X, _T, _X, _X, _X, _T, _T]),
-    (r"DRP Source Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP Object Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP ForcedSource Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T]),
-    (r"DRP ShearObject Catalog",
-     [_X, _X, _X, _X, _T, _T, _T]),
-    (r"DRP DIA Catalogs",
-     [_X, _T, _X, _T, _T, _T, _T]),
-    (r"DRP SSP Catalogs",
-     [_X, _X, _T, _T, _T, _T, _T]),
-    (r"MPC Orbits Catalog",
-     [_X, _X, _X, _T, _T, _T, _T]),
-]
+_STATUS = {"T": _T, "S": _S, "X": _X}
 
 
 def _dr_date_cell(event: dict) -> str:
@@ -252,7 +234,7 @@ def _dr_date_cell(event: dict) -> str:
             prefix, suffix = label.split(" + ", 1)
             return f"\\tiny \\makecell{{ {prefix} \\\\ + {suffix}}}"
         return f"\\tiny \\makecell{{{label}}}"
-    date = event["date"]
+    date = _event_date(event)
     if date == "TBD":
         return "\\tiny TBD"
     display = to_short_month_year(date)
@@ -304,9 +286,11 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
     dataset_cells = " &\n\t\t".join(_rotated_dataset(e["description"]) for e in dr_events)
     col_spec = "|p{3.5cm}|" + r">{\centering\arraybackslash}p{1.2cm}|" * n
 
+    products = params.dr_products
     rows = []
-    for i, (label, dots) in enumerate(_DR_PRODUCTS):
-        sep = r" \arrayrulecolor{gray}\hline\arrayrulecolor{black}" if i < len(_DR_PRODUCTS) - 1 else r" \hline"
+    for i, label in enumerate(products):
+        dots = [_STATUS[e["data_product_status"][i]] for e in dr_events]
+        sep = r" \arrayrulecolor{gray}\hline\arrayrulecolor{black}" if i < len(products) - 1 else r" \hline"
         row_cells = "   &  ".join(dots)
         rows.append(f"{label}   &   {row_cells} \\\\  {sep}")
     rows_str = "\n".join(rows)

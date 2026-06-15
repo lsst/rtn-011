@@ -31,77 +31,121 @@ milestones:
 # Data and service release events (datarelease, prompt):
 #  key:                  short code shown in the ops timeline table
 #  name:                 event name shown in the ops timeline table
-#  date:                 ISO 8601 date or date range
-#  latex_string:         LaTeX \newcommand name generated for this date
+#  date:                 date dict; any field with value+latex_string emits a \newcommand
+#    value:              ISO 8601 date or date range
+#    latex_string:       LaTeX \newcommand name for this date
 #  color:                LaTeX color for timeline cell (omit to exclude from timeline)
 #  description:          short dataset description for DR scenario column header
 #  date_label:           overrides the date display in the DR scenario header (e.g. TBD dates)
 #  sub_releases:         child releases shown in DR scenario in place of the parent
-#  <name>:               any other field is treated as an extra latex_string: date pair
+#  data_product_status:  1D array of T/S/X, one per entry in products (omit on parents with sub_releases)
 # ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------
 #  Data Releases (DP and DR events)
 # ---------------------------------------------------------------------------
 datarelease:
+
+  # Product row order for the DR scenario table.  The data_product_status arrays on
+  # each event follow this exact order (position 0 = first product, etc.).
+  products:
+    - "Raw Images"
+    - "DRP Processed Visit Images"
+    - "DRP Deep Coadded Images"
+    - "DRP Difference Images"
+    - "DRP Template Coadd Images"
+    - "DRP Source Catalogs"
+    - "DRP Object Catalogs"
+    - "DRP ForcedSource Catalogs"
+    - "DRP ShearObject Catalog"
+    - "DRP DIA Catalogs"
+    - "DRP SSP Catalogs"
+    - "MPC Orbits Catalog"
+
   events:
+
     - key: DP0
       name: "Data Preview 0.1/2/3"
-      date: "2023-06-30"
-      latex_string: dpzerodate
+      date:
+        value: "2023-06-30"
+        latex_string: dpzerodate
       color: RubinDarkTeal
       sub_releases:
         - key: DP0.1
           name: "Data Preview 0.1"
-          date: "2021-06"
-          latex_string: dpzeropointonedate
+          date:
+            value: "2021-06"
+            latex_string: dpzeropointonedate
           description: "DC2 Simulated Sky Survey"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [T,   T,   T,   X,   X,   T,   T,   T,   X,   X,   X,   X]
 
         - key: DP0.2
           name: "Data Preview 0.2"
-          date: "2022-06"
-          latex_string: dpzeropointtwodate
+          date:
+            value: "2022-06"
+            latex_string: dpzeropointtwodate
           description: "Reprocessed DC2 Sky Survey"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   X,   T,   X,   X]
 
         - key: DP0.3
           name: "Data Preview 0.3"
-          date: "2023-06"
-          latex_string: dpzeropointthreedate
+          date:
+            value: "2023-06"
+            latex_string: dpzeropointthreedate
           description: "Solar System PPDB Simulation"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [X,   X,   X,   X,   X,   X,   X,   X,   X,   X,   T,   X]
 
     - key: DP1
       name: "Data Preview 1"
-      date: "2025-06-30"
-      latex_string: dponedate
+      date:
+        value: "2025-06-30"
+        latex_string: dponedate
       color: RubinDarkTeal
       description: "LSST ComCam Science Validation Data"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [T,   T,   T,   T,   X,   T,   T,   T,   X,   T,   T,   T]
 
     - key: DP2
       name: "Data Preview 2"
-      date: "2026-07/2026-09"
-      latex_string: dptwodate
+      date:
+        value: "2026-07/2026-09"
+        latex_string: dptwodate
       color: TLOrange3
-      dptwocutoffdate: "2026-01-09"
+      cutoff_date:
+        value: "2026-01-09"
+        latex_string: dptwocutoffdate
       sub_releases:
         - key: EDP2
           name: "Early Data Preview 2"
-          date: "2026-07"
-          latex_string: edptwodate
+          date:
+            value: "2026-07"
+            latex_string: edptwodate
           description: "LSSTCam Science Validation Data"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
 
         - key: DP2
           name: "Data Preview 2"
-          date: "2026-09"
-          latex_string: fulldptwo
+          date:
+            value: "2026-09"
+            latex_string: fulldptwo
           description: "LSSTCam Science Validation Data"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
     - key: DR1
       name: "Data Release 1"
-      date: "TBD"
-      latex_string: dronedate
+      date:
+        value: "TBD"
+        latex_string: dronedate
       color: RubinDarkTeal
       description: "LSST Year 1 Data"
       date_label: "LSST start + 1 yr"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
 # ---------------------------------------------------------------------------
 #  Prompt Products and Services
@@ -109,20 +153,23 @@ datarelease:
 prompt:
   - key: RFA
     name: "Rubin First Alerts"
-    date: "2026-02-24"
-    latex_string: rubinfirstalerts
+    date:
+      value: "2026-02-24"
+      latex_string: rubinfirstalerts
     color: RubinDarkTeal
     description: "Rubin First Alerts Data"
 
   - key: NPC
     name: "Nightly PVIs & Direct-Image Catalogs"
-    date: "2026-06/2026-09"
-    latex_string: npcdate
+    date:
+      value: "2026-06/2026-09"
+      latex_string: npcdate
     color: TLOrange3
 
   - key: PPDB
     name: "PPDB Release"
-    date: "2026-06/2026-09"
-    latex_string: ppdbdate
+    date:
+      value: "2026-06/2026-09"
+      latex_string: ppdbdate
     color: TLOrange3
     description: "Prompt Products database"

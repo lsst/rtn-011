@@ -24,11 +24,15 @@ from astropy.time import Time
 
 from .utils import compute_duration_weeks, is_range, to_long_month_year, to_short_month_year
 
-# Fields in an event dict that are not latex_string: date pairs.
-_EVENT_RESERVED = frozenset({
-    "key", "name", "description", "date", "latex_string",
-    "color", "date_label", "sub_releases",
-})
+def _collect_latex_params(event: dict, out: dict) -> None:
+    """Extract latex_string:value pairs from all dict-valued fields in an event.
+
+    Any field whose value is a dict with both 'latex_string' and 'value' keys
+    contributes one entry to *out*.
+    """
+    for field_value in event.values():
+        if isinstance(field_value, dict) and "latex_string" in field_value and "value" in field_value:
+            out[field_value["latex_string"]] = field_value["value"]
 
 _REPO_ROOT = Path(__file__).parents[3]
 DEFAULT_YAML = _REPO_ROOT / "data" / "parameters.yaml"
@@ -63,6 +67,7 @@ class RTN011Parameters:
 
         # Data release events (may contain sub_releases)
         dr_section = raw.get("datarelease", {})
+        self._dr_products: list[str] = dr_section.get("products", [])
         self._datarelease: list[dict[str, Any]] = dr_section.get("events", [])
 
         # Prompt product events
@@ -74,15 +79,9 @@ class RTN011Parameters:
         # Combined lookup by latex_string name for __getattr__
         self._by_latexstring: dict[str, str] = dict(self._dates)
         for event in self._events:
-            self._by_latexstring[event["latex_string"]] = event["date"]
-            for name, value in event.items():
-                if name not in _EVENT_RESERVED:
-                    self._by_latexstring[name] = value
+            _collect_latex_params(event, self._by_latexstring)
             for sub in event.get("sub_releases", []):
-                self._by_latexstring[sub["latex_string"]] = sub["date"]
-                for name, value in sub.items():
-                    if name not in _EVENT_RESERVED:
-                        self._by_latexstring[name] = value
+                _collect_latex_params(sub, self._by_latexstring)
 
         # currentdate: YYYY-MM of the most recent git commit (matches vcsDate)
         self._by_latexstring["currentdate"] = self._git_year_month()
@@ -104,6 +103,11 @@ class RTN011Parameters:
             capture_output=True, text=True, cwd=_REPO_ROOT,
         )
         return Time(result.stdout.strip(), format="iso", scale="utc").strftime("%Y-%m")
+
+    @property
+    def dr_products(self) -> list[str]:
+        """Ordered list of data product names for the DR scenario table."""
+        return self._dr_products
 
     @property
     def datarelease(self) -> list[dict[str, Any]]:
