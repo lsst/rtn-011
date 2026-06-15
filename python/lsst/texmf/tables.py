@@ -22,6 +22,7 @@ from __future__ import annotations
 __all__ = [
     "AUTOGEN_STR",
     "make_dp1_fields_table",
+    "make_dp1_fields_in_dp2_table",
     "make_dp1_visits_table",
     "make_dr_scenario_table",
     "make_ops_timeline_table",
@@ -211,6 +212,45 @@ def make_dp1_visits_table() -> str:
          \\noalign{{\\vspace{{3pt}}}}\\hline
     \\end{{tabular}}
     \\label{{tab:dp1_fields_visits}}
+\\end{{table*}}
+"""
+
+
+# ---------------------------------------------------------------------------
+# DP1 fields in DP2 table (frm rtn-011)
+# ---------------------------------------------------------------------------
+
+_DP1_FIELDS_IN_DP2 = [
+    #                                          u    g    r    i    z    y  Total
+    ("47 Tuc Globular Cluster",                0,   0,   0,   4,   2,   2,    8),
+    ("Low Ecliptic Latitude Field",            0,   0,   0,   0,   0,   0,    0),
+    ("Fornax Dwarf Spheroidal Galaxy",         0,   0,   0,   1,   1,   1,    3),
+    ("Extended Chandra Deep Field South",     10,  61,  50, 100,  62,  11,  294),
+    ("Euclid Deep Field South",                7,  31,  33,  59,  34,  11,  175),
+    ("Low Galactic Latitude Field",            0,   0,   0,   6,   1,   4,   11),
+    ("Seagull Nebula",                         0,   0,   0,   2,   1,   0,    3),
+]
+
+
+def make_dp1_fields_in_dp2_table() -> str:
+    """Generate ``tables/dp1_fields_in_dp2.tex``."""
+    rows = "\n".join(
+        f"    {name:<40} & {u:>4} & {g:>4} & {r:>4} & {i:>4} & {z:>4} & {y:>4} & {total:>5} \\\\"
+        for name, u, g, r, i, z, y, total in _DP1_FIELDS_IN_DP2
+    )
+    return f"""{AUTOGEN_STR}
+\\begin{{table*}}
+    \\centering
+    \\caption{{DP1 fields included in the DP2 dataset and the number of visits per band contributing to the deep coadds.}}
+    \\begin{{tabular}}{{@{{}}lrrrrrrrr@{{}}}}
+           \\noalign{{\\vspace{{5pt}}}}\\hline\\hline \\noalign{{\\vspace{{5pt}}}}
+    \\textbf{{Field}} & \\textbf{{u}} & \\textbf{{g}} & \\textbf{{r}} & \\textbf{{i}} & \\textbf{{z}} & \\textbf{{y}} & \\textbf{{Total}} \\\\
+        \\hline  \\noalign{{\\vspace{{3pt}}}}
+
+{rows}
+         \\noalign{{\\vspace{{3pt}}}}\\hline
+    \\end{{tabular}}
+    \\label{{tab:dp1_fields_in_dp2}}
 \\end{{table*}}
 """
 
