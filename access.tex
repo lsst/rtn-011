@@ -10,7 +10,7 @@ Prior to the first full LSST Data Release, DR1, all services for data access are
 Rubin data products will be served to the community from the US Data Access Center (US DAC) hosted in the Google Cloud.\footnote{\url{data.lsst.cloud}}.
 A number of Rubin Independent Data Access Centers (IDAC) are also under construction to provide additional user computing resources to LSST users around the globe \citedsp{RTN-003}.
 
-Rubin employs a \emph{hybrid cloud} architecture in which science data products are stored at the USDF and made accessible to users via the US DAC in Google  Cloud.
+Rubin employs a \emph{hybrid cloud} architecture in which science data products are stored at the USDF and made accessible to users via the US DAC in Google  Cloud, \cite{2024SPIE13101E..2BO}.
 The deep coadd data products are an exception: because there is one coadd per  sky region per band (a relatively small and slowly-growing dataset), coadd images  are hosted directly in Google Cloud, independently of USDF storage.
 This architectural distinction has implications for the DP2 delivery timeline: products served directly from Google Cloud (deep coadds and catalogs) can be released as Early DP2 ahead of products that require real-time data transfer from the USDF (visit-level images), which depend on sufficient hybrid cloud network  bandwidth.
 See \S~\ref{ssec:dp2} for the phased DP2 release schedule and the engineering  work underway to address the bandwidth constraint.
