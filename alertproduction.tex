@@ -26,11 +26,11 @@ Repeated changes to the template make it extremely difficult to construct usable
 During commissioning, templates were generated incrementally based on the available observations.
 Due to a slower-than-expected rate of data taking, this yielded usable templates for several Deep Drilling fields and several hundred square degrees of the wide SV survey.
 
-\textbf{The first Rubin alerts} began \rubinfirstalerts and  only used templates from the DDFs, which were observable through the end of 2025.
-Rubin is scaling up alert production during 2026 over a progressively increasing fraction of the sky as more incremental templates become available.
-Expansion of the template area from DDF-only is not expected before May 2026.
+\textbf{The first Rubin alerts} began \rubinfirstalerts{} and initially used templates derived solely from the DDFs, which remained observable through the end of 2025.
+Rubin is scaling up alert production during 2026 over a progressively increasing fraction of the sky, as additional incremental templates become available.
+The template coverage map can be found at \url{ls.st/template-coverage}.
 Alerts generated during Early Operations may be produced with higher latency.
-Access to images (\S\ref{ssec:prompt-images}) and the PPDB (\S\ref{ssec:ppdb}) will not initially be available when the alert stream first appears, but will be phased in during 2026 as discussed below.
+Access to images (\S\ref{ssec:prompt-images}) and the PPDB (\S\ref{ssec:ppdb}) will not be available initially when the alert stream becomes active, but will be phased in during 2026 as discussed below.
 
 During the Commissioning and Early Operations periods, alert packets for moving objects might not include the associated historical source records, and parameters such as phase curve slope (G) would be empty until sufficient detections exist to derive them.
 Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
@@ -121,7 +121,7 @@ Note that the contents of the PPDB are very similar to the cumulative content of
 Rubin understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
 
 The PPDB is under active development and represents a significant technical challenge.
-At least initially the full query capability may not be available for PPDB, rather more target services will be provided.
+At least initially the full query capability will not be available for PPDB, rather more target services will be provided.
 Delivery of the PPDB is currently prioritized as the second delivery milestone after EDP2 \S~\ref{sssec:edp2}, and before the release of full DP2 (\S~\ref{ssec:dp2}).
 
 The PPDB is expected to become publicly available in the \ppdbdate time range.
