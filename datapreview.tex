@@ -173,7 +173,7 @@ In its full form, SSP is designed to produce a Rubin-only product, beginning wit
 Instead, it constructs a self-contained “Rubin-only Solar System orbit catalog,” which, although less complete, can be more rigorously debiased than catalogs produced in Prompt mode.
 However, for DP2, as in DP1, the available data are insufficient to support robust orbit-based association at this level.
 Therefore, Solar System products in DP2 will instead be generated via positional cross-matching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
-DP2 will also deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \citep{DPDD}
+DP2 will also deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citedsp{LSE-163}.
 
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2; Early DP2 encompasses all coadd image and catalog entries in that table.
 
@@ -188,13 +188,13 @@ The visit-level image data products comprise the single-visit images contributin
 DP2 is based on commissioning data and users should be aware of certain limitations relative to future Data Releases.
 The temporal baseline is short (approximately five months for the primary dataset) and the sky coverage, while substantial, does not span the full LSST footprint.
 Image quality during the Science Validation surveys was variable, and the PSF exhibits spatial structure that does not yet meet full survey-operations requirements.
-Some catalog columns described in the DPDD (\citep{DPDD}) may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.
+Some catalog columns described in the \dpdd{},~\citedsp{LSE-163} may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.
 DP2-specific documentation, including the catalog schema and known issues, will accompany the release at \url{dp-2.lsst.io}
 
 \subsection{Data Release 1}
 \label{ssec:dr1}
 
-LSST Data Release 1 (DR1) will be the first Data Release in which all data products, as described in the DPDD \citep{LSE-163}, are provided for the full LSST footprint \citep{PSTN-056}.
+LSST Data Release 1 (DR1) will be the first Data Release in which all data products, as described in the \dpdd{},~\citedsp{LSE-163}, are provided for the full LSST footprint \citep{PSTN-056}.
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DR1.
 
 DR1 is currently envisaged as being based on approximately the first year of data taken as part of the LSST 10-year survey.
