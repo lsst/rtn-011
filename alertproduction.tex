@@ -115,7 +115,7 @@ and the PPDB.
 
 The Prompt Products Database (PPDB) serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
 It stores the catalog Prompt Data Products (\texttt{DiaObject}, \texttt{DiaSource}, \texttt{DiaForcedSource}, \texttt{SSObject}, and \texttt{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
-As noted in \S~\ref{ssec:prompt-images}, it will not contain the \texttt{Source} catalog data for the prompt single-visit images, which will be distributed only as per-image Butler datasets.
+As noted in \S~\ref{ssec:prompt-images}, it will not contain the \texttt{prompt\_direct\_source} catalog data for the prompt single-visit images, which will be distributed only as per-image Butler datasets (and only up through DR1).
 
 Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts, with the principal exception of some precovery data that will only appear in the PPDB.
 Rubin understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
