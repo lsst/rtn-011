@@ -123,7 +123,7 @@ Coadds are restricted to regions within the survey footprint established during 
 Visit-level exclusions include engineering frames, out-of-focus sequences acquired for Active Optics System (AOS) commissioning, stray-light scans, and visits flagged in the \texttt{excluded\_visits} list, which typically comprise images affected by focus errors or anomalous mount or hexapod motion.
 See tables 1 and 4 in \citeds{RTN-111} for a summary of the visit-level exclusions applied during the processing.
 
-DP2 contains approximately 30,000 visits, of which $\sim~16{,}900$ meet the quality thresholds for inclusion in the deep coadds.
+DP2 contains approximately 30,000 visits, of which $\sim$16,900 meet the quality thresholds for inclusion in the deep coadds.
 
 \subsubsection{Sky Coverage and depth}
 
@@ -136,8 +136,8 @@ Figure~\ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the s
 \vspace{0.1cm}
 \end{figure}
 
-The DP2 coadded footprint covers $\sim~3{,}000~deg^{2}$ in all six filters, defined to encompass the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; visits within these areas are included in the coadds if they meet image quality requirements.
-The total sky area with coverage in at least one filter is $\sim~15{,}000~deg^{2}$, with visits outside the coadded footprint available as single-epoch images only.
+The DP2 coadded footprint covers $\sim$3,000 $\mathrm{deg}^{2}$ in all six filters, defined to encompass the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; visits within these areas are included in the coadds if they meet image quality requirements.
+The total sky area with coverage in at least one filter is $\sim$15,000 $\mathrm{deg}^{2}$, with visits outside the coadded footprint available as single-epoch images only.
 
 Wide-area survey regions reach median coadded depths broadly comparable to those reported for the Science Validation surveys (\S\,\ref{ssec:commissioning-lsstcam}).
 The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively observed, with coverage in all six bands.
@@ -164,7 +164,8 @@ Table \ref{tab:dp1_fields_in_dp2} details the number of visits in DP2 that overl
 Early DP2  will include \textbf{all} catalog data products derived from the DRP reprocessing of the DP2 dataset, but only the deep coadd images; visit-level images will not be available until the full DP2 release \S~\ref{sssec:dp2-full}.
 
 Deep coadd images are hosted directly in Google Cloud and can be served without reliance on hybrid cloud bandwidth between the USDF and Google Cloud.
-They will be distributed in a new \texttt{LSST images} format, which enables efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of the LSST science pipelines, supporting long-term archival use.
+They will be distributed in a new \texttt{LSST images} FITS-based format, which enables more efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of details of the LSST science pipelines, supporting long-term archival use.
+Documentation on this format will be provided along with Early DP2.
 New in DP2 are cell-based coadds \citep{dmtn-075, dmtn-294, sitcomtn-137}, a Rubin/LSST image coaddition product in which a survey patch is subdivided into small spatial cells, and each cell is independently coadded using only fully overlapping input exposures to ensure a well-defined, spatially uniform PSF and weighting within the cell.
 The driving motivation for cell-based coadds is to improve the accuracy and stability of precision measurements by controlling PSF variation and edge effects that arise in standard coadds.
 
