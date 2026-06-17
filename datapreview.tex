@@ -127,7 +127,11 @@ DP2 contains approximately 30,000 visits, of which $\sim$16,900 meet the quality
 
 \subsubsection{Sky Coverage and depth}
 
-Figure~\ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the sky across all filters
+The DP2 sky coverage spans $\sim$15,000~$\mathrm{deg}^{2}$ in at least one filter, of which $\sim$3,000~$\mathrm{deg}^{2}$ were coadded across all six filters.
+The coadded footprint encompasses the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; visits within these areas are included in the coadds if they meet image quality requirements.
+Visits outside this footprint are available as single-epoch images only.
+Figure~\ref{fig:dp2_visits_tracts} shows the on-sky distribution of DP2 visits across all filters.
+The footprint shown corresponds to the full LSST survey region; the DP2 coadded area is further subdivided into the original \emph{survey validation} (SV) footprint ($\sim$3,000~$\mathrm{deg}^{2}$), a consolidated SV footprint ($\sim$750~$\mathrm{deg}^{2}$), and the deepest inner subset ($\sim$300~$\mathrm{deg}^{2}$).
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.98\linewidth]{dp2_visits_tracts_nvisits}
@@ -136,27 +140,19 @@ Figure~\ref{fig:dp2_visits_tracts} shows the distribution of DP2 visits on the s
 \vspace{0.1cm}
 \end{figure}
 
-The DP2 coadded footprint covers $\sim$3,000 $\mathrm{deg}^{2}$ in all six filters, defined to encompass the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; visits within these areas are included in the coadds if they meet image quality requirements.
-The total sky area with coverage in at least one filter is $\sim$15,000 $\mathrm{deg}^{2}$, with visits outside the coadded footprint available as single-epoch images only.
-
 Wide-area survey regions reach median coadded depths broadly comparable to those reported for the Science Validation surveys (\S\,\ref{ssec:commissioning-lsstcam}).
 The Deep Drilling Fields achieve substantially greater depth; ELAISS1 and COSMOS are the most extensively observed, with coverage in all six bands.
-Visits are included in the deep coadds if the visit-level median PSF FWHM is better than 1.7~arcseconds, each detector has a PSF FWHM better than 1.8~arcseconds, and the atmospheric transparency is at least 0.75.
+Visits are included in the coadds if the visit-level median PSF FWHM is better than 1.7~arcseconds, each detector has a PSF FWHM better than 1.8~arcseconds, and the atmospheric transparency is at least 0.75.
 An additional $\sim~15\%$ of otherwise qualifying inputs were excluded on the basis of PSF ellipticity $e$ > 0.2.
-
 Figure~\ref{fig:dp2_psf_maglim} shows the $5\sigma$ PSF magnitude limit across the DP2 coadded footprint for each of the six LSST bands.
 \input{figures/dp2_psf_maglim}
-(LSST = the LSST footprint; 3k = the original SV footprint; 750 is the consolidated/revised SV footprint; 300 is the top 300 degrees. Table gives the median values.)
 
 An initial tutorial notebook for exploring and visualizing the DP2 visit and tract metadata (e.g., coordinates, filters, dates) is available in the Rubin Science Platform under the ``Tutorials -- DP2'' drop-down menu, and can be used to interactively generate and explore figures such as Figure~\ref{fig:dp2_visits_tracts}.
 
 \subsubsection{DP2 Fields}
-
 The DP2 dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign.
-
 Table \ref{tab:dp1_fields_in_dp2} details the number of visits in DP2 that overlap the DP1 fields with a breakdown by band.
 \input{tables/dp1_fields_in_dp2}
-
 
 \subsubsection{Early DP2 Data Products}
 \label{sssec:edp2}
