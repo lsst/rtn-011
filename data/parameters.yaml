@@ -108,10 +108,23 @@ datarelease:
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   X,   T,   T,   T,   X,   T,   T,   T]
 
-    - key: DP2
-      name: "Data Preview 2"
+    - key: EDP2
+      name: "Early Data Preview 2"
       date:
         value: "2026-07/2026-09"
+        latex_string: edptwodate
+      color: TLOrange3
+      description: "LSSTCam Science Validation Data"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
+
+    - key: DP2
+      name: "Data Preview 2"
+      full_date-range:
+        value: "2026-07/2026-12"
+        latex_string: dptwofulldaterange
+      date:
+        value: "2026-10/2026-12"
         latex_string: dptwodate
       color: TLOrange3
       science_visit_start_date:
@@ -120,24 +133,9 @@ datarelease:
       cutoff_date:
         value: "2026-01-09"
         latex_string: dptwocutoffdate
-      sub_releases:
-        - key: EDP2
-          name: "Early Data Preview 2"
-          date:
-            value: "2026-07/2026-09"
-            latex_string: edptwodate
-          description: "LSSTCam Science Validation Data"
-          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
-          data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
-
-        - key: DP2
-          name: "Data Preview 2"
-          date:
-            value: "2026-09/2026-10"
-            latex_string: fulldptwo
-          description: "LSSTCam Science Validation Data"
-          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
-          data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
+      description: "LSSTCam Science Validation Data"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
     - key: DR1
       name: "Data Release 1"
