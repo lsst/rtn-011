@@ -6,6 +6,7 @@ A series of three Data Previews (DP) and one Data Release (DR) are planned:
 \item Data Preview 0 (DP0): Based on simulated LSST-like data.
 \item Data Preview 1 (DP1): Based on a subset of early science-grade commissioning data taken with LSSTComCam during commissioning.
 \item Data Preview 2 (DP2): Based on a full reprocessing of science-grade data taken with LSSTCam during commissioning and the Early Optimization phase until  the DP2 cutoff date, \dptwocutoffdate.
+DP2 will be delivered in two phases, EDP2 and DP2, as discussed in \S~\ref{ssec:dp2}.
 \item Data Release 1 (DR1): Based on the first year of LSST data.
 \end{itemize}
 Each successive Data Preview will demonstrate increasing levels of functionality and product maturity, progressively building toward the first full Data Release (DR1).
@@ -103,39 +104,36 @@ This commissioning and early operations dataset was reprocessed during late 2025
 Data processing completed in April 2026 and the products are currently undergoing detailed validation and preparation for release via the RSP (\S\,\ref{ssec:rsp}).
 The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
-DP2 will be delivered in two phases over the \dptwodate window.
-The first phase, \textbf{Early DP2}, comprises the deep coadd images and all catalogs, with a target release date of \edptwodate.
-The second phase, full \textbf{DP2}, adds the visit-level data products, completing the full release, with a target release date of  \fulldptwo.
-The data products released as EDP2 will be incorporated unchanged into full DP2 with no additional processing.
+DP2 will be delivered in two phases over the \dptwofulldaterange window.
+The first phase, \textbf{Early DP2 (EDP2)}, comprises the deep coadd images and all catalogs, with a target release date of \edptwodate.
+The second phase, \textbf{DP2}, adds the visit-level data products, completing the full release, with a target release date of  \dptwodate.
+The data products released as EDP2 will be incorporated unchanged into DP2 with no additional processing.
 Rubin will provide at least 30 days advance notice before each phase goes live.
 
-This phased delivery is driven by a bandwidth constraint in Rubin's hybrid cloud architecture, in which data products are stored at the USDF and served to users via the US DAC in Google Cloud.
-Recent scalability tests revealed that the available USDF--Google Cloud network bandwidth is insufficient to serve visit-level images at LSST scale.
-Engineering work is underway to address this, including installation of new network switches at USDF, but the resolution introduces timing uncertainty.
-Deep coadd images are unaffected because they are planned for direct hosting in Google Cloud\footnote{  This is the case  for all future Data Releases, not just DP2} and can be delivered in Early DP2 without reliance on hybrid cloud bandwidth.
-Visit-level images, which must be streamed from USDF, will follow once sufficient bandwidth is confirmed.
+This phased delivery reflects a bandwidth constraint in Rubin's hybrid cloud architecture, in which data are stored at the USDF and served to users via the US DAC in Google Cloud.
+Scalability testing revealed that available USDF--Google Cloud network bandwidth is insufficient to serve visit-level images at LSST scale.
+Engineering work to address this, including installation of new network switches at the USDF, is underway but introduces timing uncertainty.
+Deep coadd images are unaffected: they are hosted directly in Google Cloud\footnote{As will be the case for all future Data Releases.} and can be delivered in EDP2 without reliance on hybrid cloud bandwidth.
+Visit-level images, which must be streamed from the USDF, will follow once sufficient bandwidth is confirmed.
 
 \subsubsection{Dataset Definition}
 \label{sssec:dp2-sky}
 
-The DP2 dataset comprises science visits acquired between \startsciencelsstcam\ and \dptwocutoffdate.
-Coadds are restricted to regions within the survey footprint established during the LSSTCam on-sky commissioning campaign (through \finonskylsstcam); observations falling outside this footprint, taken during the subsequent early operations period, have insufficient visit counts for coadd inclusion and are provided instead as single-epoch images.
-Visit-level exclusions include engineering frames, out-of-focus sequences acquired for Active Optics System (AOS) commissioning, stray-light scans, and visits flagged in the \texttt{excluded\_visits} list, which typically comprise images affected by focus errors or anomalous mount or hexapod motion.
-See tables 1 and 4 in \citeds{RTN-111} for a summary of the visit-level exclusions applied during the processing.
-
-DP2 contains approximately 30,000 visits, of which $\sim$16,900 meet the quality thresholds for inclusion in the deep coadds.
+The DP2 dataset comprises science visits acquired between \startsciencelsstcam\ and \dptwocutoffdate: approximately 30,000 in total, of which $\sim$16,900 meet the quality thresholds for coadd inclusion.
+Coadds are restricted to the footprint established during LSSTCam on-sky commissioning (through \finonskylsstcam); visits from the subsequent early operations period that fall outside this footprint lack sufficient depth for coaddition and are provided as single-epoch images only.
+Visit-level exclusions include engineering frames, out-of-focus sequences from Active Optics System (AOS) commissioning, stray-light scans, and visits in the \texttt{excluded\_visits} list (typically images affected by focus errors or anomalous mount or hexapod motion).
+See \citeds{RTN-111} Tables~1 and~4 for a full accounting of visit-level exclusions.
 
 \subsubsection{Sky Coverage and depth}
 
-The DP2 sky coverage spans $\sim$15,000~$\mathrm{deg}^{2}$ in at least one filter, of which $\sim$3,000~$\mathrm{deg}^{2}$ were coadded across all six filters.
+DP2 covers $\sim$15,000~$\mathrm{deg}^{2}$ in at least one filter, of which $\sim$3,000~$\mathrm{deg}^{2}$ were coadded across all six filters.
 The coadded footprint encompasses the Wide-Fast-Deep, Small Field Survey, and Deep Drilling Field regions; visits within these areas are included in the coadds if they meet image quality requirements.
 Visits outside this footprint are available as single-epoch images only.
-Figure~\ref{fig:dp2_visits_tracts} shows the on-sky distribution of DP2 visits across all filters.
-The footprint shown corresponds to the full LSST survey region; the DP2 coadded area is further subdivided into the original \emph{survey validation} (SV) footprint ($\sim$3,000~$\mathrm{deg}^{2}$), a consolidated SV footprint ($\sim$750~$\mathrm{deg}^{2}$), and the deepest inner subset ($\sim$300~$\mathrm{deg}^{2}$).
+Figure~\ref{fig:dp2_visits_tracts} shows the on-sky distribution of DP2 visits across all filters; the coadded area is further subdivided into the original \emph{survey validation} (SV) footprint ($\sim$3,000~$\mathrm{deg}^{2}$), a consolidated SV footprint ($\sim$750~$\mathrm{deg}^{2}$), and the deepest inner subset ($\sim$300~$\mathrm{deg}^{2}$).
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.98\linewidth]{dp2_visits_tracts_nvisits}
-\caption{A 2D histogram illustrating the distribution of DP2 visits on the sky for all filters combined.}
+\caption{On-sky distribution of DP2 visits, summed over all filters}
 \label{fig:dp2_visits_tracts}
 \vspace{0.1cm}
 \end{figure}
@@ -150,18 +148,15 @@ Figure~\ref{fig:dp2_psf_maglim} shows the $5\sigma$ PSF magnitude limit across t
 An initial tutorial notebook for exploring and visualizing the DP2 visit and tract metadata (e.g., coordinates, filters, dates) is available in the Rubin Science Platform under the ``Tutorials -- DP2'' drop-down menu, and can be used to interactively generate and explore figures such as Figure~\ref{fig:dp2_visits_tracts}.
 
 \subsubsection{DP2 Fields}
-The DP2 dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign.
+The DP2 dataset encompasses the Science Validation wide-area survey,  Deep Drilling Fields (ECDFS, EDFS\_a, EDFS\_b, and ELAISS1, COSMOS), and a number of targeted small-field regions including the Trifid--Lagoon, Prawn, M49, and New Horizons fields that were part of the Rubin First Light campaign (see table \ref{tab:sv_small_field_summary}).
 Table \ref{tab:dp1_fields_in_dp2} details the number of visits in DP2 that overlap the DP1 fields with a breakdown by band.
 \input{tables/dp1_fields_in_dp2}
 
 \subsubsection{Early DP2 Data Products}
 \label{sssec:edp2}
 
-Early DP2  will include \textbf{all} catalog data products derived from the DRP reprocessing of the DP2 dataset, but only the deep coadd images; visit-level images will not be available until the full DP2 release \S~\ref{sssec:dp2-full}.
-
-Deep coadd images are hosted directly in Google Cloud and can be served without reliance on hybrid cloud bandwidth between the USDF and Google Cloud.
-They will be distributed in a new \texttt{LSST images} FITS-based format, which enables more efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of details of the LSST science pipelines, supporting long-term archival use.
-Documentation on this format will be provided along with Early DP2.
+EDP2 includes \textbf{all} catalog data products derived from the DRP reprocessing of the DP2 dataset, plus the deep coadd images; visit-level images are not available until  DP2 (\S~\ref{sssec:dp2-full}).
+Deep coadd images will be distributed in a new \texttt{LSST images} FITS-based format, which enables more efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of details of the LSST science pipelines, supporting long-term archival use.
 New in DP2 are cell-based coadds \citep{dmtn-075, dmtn-294, sitcomtn-137}, a Rubin/LSST image coaddition product in which a survey patch is subdivided into small spatial cells, and each cell is independently coadded using only fully overlapping input exposures to ensure a well-defined, spatially uniform PSF and weighting within the cell.
 The driving motivation for cell-based coadds is to improve the accuracy and stability of precision measurements by controlling PSF variation and edge effects that arise in standard coadds.
 
@@ -172,19 +167,19 @@ However, for DP2, as in DP1, the available data are insufficient to support robu
 Therefore, Solar System products in DP2 will instead be generated via positional cross-matching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
 DP2 will also deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citedsp{LSE-163}.
 
-Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DP2; Early DP2 encompasses all coadd image and catalog entries in that table.
+Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in EDP2.
 
-\subsubsection{Full DP2 Data Products}
+\subsubsection{DP2 Data Products}
 \label{sssec:dp2-full}
 
-In addition to the data products in EDP2 (Section~\ref{sssec:edp2}), the full DP2 release includes all visit-level image data products, completing the DP2 dataset.
+In addition to the data products in EDP2 (Section~\ref{sssec:edp2}), the DP2 release includes all visit-level image data products, completing the DP2 dataset.
 The visit-level image data products comprise the single-visit images contributing to the coadds, as well as approximately $\sim~4{,}000$ additional single-visit images that did not meet the coadd quality criteria (Section~\ref{sssec:dp2-sky}), together with difference images.
 
 \subsubsection{Limitations}
 
 DP2 is based on commissioning data and users should be aware of certain limitations relative to future Data Releases.
 The temporal baseline is short (approximately five months for the primary dataset) and the sky coverage, while substantial, does not span the full LSST footprint.
-Image quality during the Science Validation surveys was variable, and the PSF exhibits spatial structure that does not yet meet full survey-operations requirements.
+Image quality during the Science Validation surveys was variable, and the PSF exhibits spatial structure that does not yet meet full LSST requirements.
 Some catalog columns described in the \dpdd{},~\citedsp{LSE-163} may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.
 DP2-specific documentation, including the catalog schema and known issues, will accompany the release at \url{dp-2.lsst.io}
 
