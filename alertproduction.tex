@@ -92,23 +92,20 @@ These would allow the alert system to build operational history, validate perfor
 
 Starting in Early Operations and continuing through Data Release 1 (DR1), Rubin plans to release single-epoch Processed Visit Images (PVIs)
 and difference images, as well as direct-image \texttt{Source}-like catalogs for each PVI.
-These direct-image ``\texttt{prompt\_direct\_source}'' catalogs are based on direct detections in the PVIs themselves, similar to the \texttt{Source} catalogs that will be part of future Data Releases, and distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production.
+These direct-image ``\texttt{prompt\_direct\_source}" catalogs are based on direct detections in the PVIs themselves, similar to the \texttt{Source} catalogs that will be part of future Data Releases, and distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production.
 They are provided as an interim measure pending the availability of Data Release catalog coverage at DR1, at which point  they will be discontinued.
 They will be distributed only as per-image Butler datasets and will not be accessible via database queries.
 
-PVIs and difference images are subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}); while the direct-image \texttt{Source} catalogs are not strictly covered, for the sake of self-consistency they
-will be released together with their corresponding PVIs after the embargo expires.
+PVIs and difference images are subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}); while the direct-image \texttt{prompt\_direct\_source} catalogs are not strictly embargoed, for the sake of self-consistency they  will be released together with their corresponding PVIs after the embargo expires.
 The exact cadence and latency of these releases are still being determined in light of operational and performance constraints; more details will be provided
 closer to the start of releases.
 During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, all of these products may be released with somewhat
 higher latency as Rubin continues to assess data quality and scale up its data  services.
 
-The services required to deliver prompt images and direct-image \texttt{Source} Catalogs  are under active development and represent a significant technical challenge.
-In addition to the complexity of co-delivering these products alongside DP2 and the PPDB, serving visit-level images requires sufficient bandwidth between the USDF and Google Cloud via the hybrid cloud architecture.
-Recent scalability tests showed this bandwidth to be insufficient at LSST scale; engineering work is underway to address this, including installation of new  network switches at USDF (see \S~\ref{ssec:dp2}).
-As a result, prompt image and direct-image \texttt{prompt\_direct\_source} catalog delivery have now been deprioritized relative to the Early DP2 coadds and catalogs and the PPDB, neither of which depends on hybrid cloud bandwidth.
-Prompt images and direct-image \texttt{prompt\_direct\_source} catalogs are expected to become publicly available in the \npcdate time range, following delivery of Early DP2
-and the PPDB.
+The services required to deliver prompt images and \texttt{prompt\_direct\_source} catalogs are under active development and represent a significant technical challenge.
+In addition to the complexity of co-delivering these products alongside DP2 and the PPDB, serving visit-level images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud --- the same constraint driving the EDP2/DP2 split (\S~\ref{ssec:dp2}).
+As a result, prompt image and \texttt{prompt\_direct\_source} catalog delivery have been deprioritized relative to EDP2 and the PPDB (\S~\ref{ssec:[ppdb}), neither of which depends on hybrid cloud bandwidth.
+Prompt images and \texttt{prompt\_direct\_source} catalogs are expected to become publicly available in the \npcdate\ time range, following delivery of EDP2 and the PPDB.
 
 \subsection{Prompt Products Database}
 \label{ssec:ppdb}
