@@ -162,7 +162,7 @@ The driving motivation for cell-based coadds is to improve the accuracy and stab
 
 Solar System processing in DP2 follows the same simplified approach as for DP1 relative to the full Rubin DRP Solar System Processing (SSP) framework.
 In its full form, SSP is designed to produce a Rubin-only product, beginning without reliance on the Minor Planet Center (MPC) catalog used in Prompt Processing.
-Instead, it constructs a self-contained “Rubin-only Solar System orbit catalog,” which, although less complete, can be more rigorously debiased than catalogs produced in Prompt mode.
+Instead, it constructs a self-contained ``Rubin-only Solar System orbit catalog,'' which, although less complete, can be more rigorously debiased than catalogs produced in Prompt mode.
 However, for DP2, as in DP1, the available data are insufficient to support robust orbit-based association at this level.
 Therefore, Solar System products in DP2 will instead be generated via positional cross-matching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
 DP2 will also deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citedsp{LSE-163}.
