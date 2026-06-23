@@ -87,53 +87,48 @@ In summary, LSST will actively pursue incremental template generation during Yea
 Some new external drivers, including the upcoming six-month LIGO-Virgo-KAGRA (LVK) run ``IR1,” provide motivation to consider deploying DECam-based templates in Alert Production.
 These would allow the alert system to build operational history, validate performance, and demonstrate readiness ahead of full LSST alert volumes.  This approach is under investigation; deployment depends on demonstrating an acceptably low rate of false positives.
 
-\subsection{Prompt Images and Direct-Image Catalogs}
+\subsection{Prompt Images}
 \label{ssec:prompt-images}
 
-Prompt images comprise PVIs and difference images; each difference image release will be accompanied by the template image used to produce it, which is not itself a prompt product but is necessary for science with difference images.
-Starting in Early Operations and continuing until Data Release 1 (DR1), Rubin plans to release single-epoch Processed Visit Images (PVIs) from Prompt Processing and direct-image \texttt{Source}-like catalogs for each PVI, along with difference images and template images produced incrementally.
+Prompt images comprise raw images, Processed Visit Images (PVIs), and difference images.
+Each difference image release will be accompanied by the template image used to produce it; template images are not themselves prompt products but are necessary for science with difference images.
+Starting in Early Operations, Rubin plans to release PVIs and raw images from each night's observations, with difference images following as incremental templates are built and validated.
 
-The direct-image ``\texttt{prompt\_direct\_source}" catalogs are based on direct detections in PVIs, similar to the \texttt{Source} catalogs that will be part of future Data Releases, and distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production.
-They are provided as an interim measure pending the availability of Data Release catalog coverage at DR1, at which point  they will be discontinued.
-They will be distributed only as per-image Butler datasets and will not be accessible via database queries.
-
-PVIs and difference images are subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}); while the direct-image \texttt{prompt\_direct\_source} catalogs are not strictly embargoed, for the sake of self-consistency they will be released together with their corresponding PVIs after the embargo expires.
+PVIs and difference images are subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}).
 Template images are formally subject to the same embargo, although in practice all constituent science images will have long since cleared the 80-hour window by the time a template is available.
-The exact cadence and latency of these releases are still being determined in light of operational and performance constraints; more details will be provided
-closer to the start of releases.
-During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, all of these products may be released with somewhat
-higher latency as Rubin continues to assess data quality and scale up its data  services.
+During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, these products may be released with somewhat higher latency as Rubin scales up its data services.
 
-The services required to deliver prompt images are under active development and represent a significant technical challenge.
-In addition to the complexity of co-delivering these products alongside DP2 and the PPDB, serving visit-level images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud;  the same constraint driving the EDP2/DP2 split (\S~\ref{ssec:dp2}).
-As a result, prompt image and \texttt{prompt\_direct\_source} catalog delivery have been deprioritized relative to EDP2 and the PPDB (\S~\ref{ssec:ppdb}), neither of which depends on hybrid cloud bandwidth.
-Prompt images and \texttt{prompt\_direct\_source} catalogs are expected to become publicly available in the \npcdate\ time range, following delivery of EDP2 and the PPDB.
+Delivering prompt images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud, the same constraint driving the EDP2/DP2 split (\S~\ref{ssec:dp2}).
+As a result, prompt image delivery has been deprioritized relative to EDP2 and the PPDB (\S~\ref{ssec:ppdb}), neither of which depends on hybrid cloud bandwidth.
+Prompt images are expected to become publicly available in the \npcdate\ time range, following delivery of EDP2 and the PPDB.
 
-\subsection{Prompt Products Database}
+\subsection{Prompt Catalogs and the Prompt Products Database}
 \label{ssec:ppdb}
 
-All Prompt Data Product catalogs, with the exception of the \texttt{prompt\_direct\_source} catalogs described in \S~\ref{ssec:prompt-images}, are released through the Prompt Products Database (PPDB).
-The PPDB serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, supporting community use of alerts.
-It stores the catalog Prompt Data Products (\texttt{DiaObject}, \texttt{DiaSource}, \texttt{DiaForcedSource}, \texttt{SSObject}, and \texttt{SSSource}), as well as observation metadata tables, and is designed to provide efficient access for scientific analysis and querying.
-As noted in \S~\ref{ssec:prompt-images}, the \texttt{prompt\_direct\_source} catalog will be distributed as per-image Butler datasets only, through DR1.
-
-Note that the contents of the PPDB are very similar to the cumulative content of all released Alerts, with the principal exception of some precovery data that will only appear in the PPDB.
-Rubin understands that several brokers are planning to aggregate the Alert stream and provide query services on the results, which we hope will cover some of the use cases of the PPDB during the period before it becomes available to users.
+The prompt catalog data products comprise the \texttt{DiaObject}, \texttt{DiaSource}, \texttt{DiaForcedSource}, \texttt{SSObject}, and \texttt{SSSource} catalogs (\citeds{LSE-163}), all released through the Prompt Products Database (PPDB); the \texttt{prompt\_direct\_source} catalogs described in \S~\ref{ssec:prompt-direct-catalogs} are an exception.
+The PPDB serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, storing all prompt catalog data products and observation metadata and providing efficient access for scientific analysis.
+Its contents closely mirror the cumulative alert stream, with the addition of some precovery data available only in the PPDB.
 
 The PPDB is under active development and represents a significant technical challenge.
 At least initially, full query capabilities on all tables will not be available; instead, a more limited set of targeted services will be provided.
-We expect to support full property-based ADQL queries over the \emph{current} versions of all \texttt{DiaObject}s.
-In order to support early prompt solar system and time-domain science, we will additionally support dedicated query services for:
+Rubin expects to support full property-based ADQL queries over the \emph{current} versions of all \texttt{DiaObject}s.
+In order to support early prompt solar system and time-domain science, Rubin will additionally support dedicated query services for:
 \begin{itemize}
 \item Retrieval of all \texttt{DiaSource} data associated with a given \texttt{DiaObject}, i.e., the data for a light curve; and
 \item Retrieval of all \texttt{DiaForcedSource} data associated with a given \texttt{DiaObject}.
 \end{itemize}
 The PPDB will initially be configured to support these particular query patterns with efficient data clustering.
 These additional query services will be linked to the results of \texttt{DiaObject} queries via the IVOA DataLink mechanism for service discovery and easy access to light curves in the RSP Portal and elsewhere.
-
-Resources permitting we will also endeavor to include a query service for the history of \texttt{DiaObject} record evolution for a current \texttt{DiaObject}.
+Resources permitting, Rubin will also endeavor to include a query service for the history of \texttt{DiaObject} record evolution for a current \texttt{DiaObject}.
 Experience with these query services will then inform further engineering effort on the PPDB and the future expansion to more general query capabilities.
 
-Delivery of the PPDB is currently prioritized as the second delivery milestone after EDP2 (\S~\ref{sssec:edp2}), and before the release of DP2 (\S~\ref{ssec:dp2}).
+Several brokers are planning to aggregate the alert stream and offer query services, which Rubin expects will cover many PPDB use cases in the interim before the PPDB is available.
+The PPDB is prioritized as the second delivery milestone after EDP2 (\S~\ref{sssec:edp2}) and before DP2 (\S~\ref{ssec:dp2}), and is expected to become publicly available in the \ppdbdate\ time range.
 
-The PPDB is expected to become publicly available in the \ppdbdate time range.
+\subsection{Prompt Direct Catalogs}
+\label{ssec:prompt-direct-catalogs}
+
+Starting in Early Operations and continuing until Data Release 1 (DR1), Rubin will additionally provide \texttt{prompt\_direct\_source} catalogs for each PVI (\S~\ref{ssec:prompt-images}).
+These direct-image \texttt{Source}-like catalogs of detections in PVIs are analogous to the \texttt{Source} catalogs of future Data Releases and distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production.
+They are an interim measure until DR1 catalog coverage supersedes them and are distributed only as per-image Butler datasets and will not be accessible via database queries.
+Although not strictly embargoed, for the sake of self-consistency, they will be released with their corresponding PVIs after the 80-hour embargo expires.
