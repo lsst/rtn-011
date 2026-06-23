@@ -116,7 +116,7 @@ datarelease:
       color: TLOrange3
       description: "LSSTCam Science Validation Data"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
-      data_product_status: [X,   X,   T,   X,   T,   T,   T,   T,   T,   T,   T,   T]
+      data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
 
     - key: DP2
       name: "Data Preview 2"
