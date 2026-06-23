@@ -98,14 +98,14 @@ PVIs and difference images are subject to the standard 80-hour embargo period (\
 Template images are formally subject to the same embargo, although in practice all constituent science images will have long since cleared the 80-hour window by the time a template is available.
 During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, these products may be released with somewhat higher latency as Rubin scales up its data services.
 
-Delivering prompt images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud, the same constraint driving the EDP2/DP2 split (\S~\ref{ssec:dp2}).
-As a result, prompt image delivery has been deprioritized relative to EDP2 and the PPDB (\S~\ref{ssec:ppdb}), neither of which depends on hybrid cloud bandwidth.
-Prompt images are expected to become publicly available in the \npcdate\ time range, following delivery of EDP2 and the PPDB.
+Delivering prompt images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud, the same constraint driving the EDP2/DP2 split.
+As a result, prompt image delivery has been deprioritized relative to EDP2 and the PPDB, neither of which depends on hybrid cloud bandwidth.
+Prompt images are expected to become publicly available in the \npcdate\ time range, following delivery of EDP2 (\S~\ref{ssec:dp2}) and the PPDB (\S~\ref{ssec:ppdb}).
 
 \subsection{Prompt Catalogs and the Prompt Products Database}
 \label{ssec:ppdb}
 
-The prompt catalog data products comprise the \texttt{DiaObject}, \texttt{DiaSource}, \texttt{DiaForcedSource}, \texttt{SSObject}, and \texttt{SSSource} catalogs (\citeds{LSE-163}), all released through the Prompt Products Database (PPDB); the \texttt{prompt\_direct\_source} catalogs described in \S~\ref{ssec:prompt-direct-catalogs} are an exception.
+The prompt catalog data products comprise the \texttt{DiaObject}, \texttt{DiaSource}, \texttt{DiaForcedSource}, \texttt{SSObject}, and \texttt{SSSource} catalogs (\citeds{LSE-163}), all released through the Prompt Products Database (PPDB).
 The PPDB serves as Rubin’s real-time catalog of transient, variable, and moving-object detections, storing all prompt catalog data products and observation metadata and providing efficient access for scientific analysis.
 Its contents closely mirror the cumulative alert stream, with the addition of some precovery data available only in the PPDB.
 
