@@ -8,9 +8,9 @@ Prior to the first full LSST Data Release, DR1, all services for data access are
 \subsection{Data Access Centers}
 \label{ssec:dacs}
 Rubin data products will be served to the community from the US Data Access Center (US DAC) hosted in the Google Cloud.\footnote{\url{data.lsst.cloud}}.
-A number of Rubin Independent Data Access Centers (IDAC) are also under construction to provide additional user computing resources to LSST users around the globe \citedsp{RTN-003}.
+A number of Rubin Independent Data Access Centers (IDAC) are also under construction to provide additional user computing resources to LSST users around the globe \citeds{RTN-003}.
 
-Rubin employs a \emph{hybrid cloud} architecture in which science data products are stored at the USDF and made accessible to users via the US DAC in Google  Cloud, \cite{2024SPIE13101E..2BO}.
+Rubin employs a \emph{hybrid cloud} architecture in which science data products are stored at the USDF and made accessible to users via the US DAC in Google  Cloud, \cite[][]{2024SPIE13101E..2BO}.
 The deep coadd data products are an exception: because there is one coadd per sky region per band (a relatively small and slowly-growing dataset), coadd images are hosted directly in Google Cloud, independently of USDF storage.
 This architectural distinction has implications for the DP2 delivery timeline: products served directly from Google Cloud (deep coadds and catalogs) can be released as Early DP2 ahead of products that require real-time data transfer from the USDF (visit-level images), which depend on full hybrid cloud US DAC readiness.
 See \S~\ref{ssec:dp2} for the phased DP2 release schedule and the engineering  work underway.
@@ -31,7 +31,8 @@ RSP functionality already deployed and operational:
 \item DataLink annotations in TAP query results for access to light curves and other related information;
 \item ObsCore data model for image metadata;
 \item IVOA-compatible SIAv2 and ObsTAP image metadata query services;
-\item IVOA SODA service for cutouts from individual single-epoch images and coadded image tiles\footnote{At this time, the cutout service can only process requests for one cutout at a time, meaning to create and retrieve 10 cutouts will require 10 independent synchronous calls to the cutout service. A bulk cutout service is under development and expected to be available by DR1};
+\item IVOA SODA service for cutouts from individual single-epoch images and coadded image tiles\footnote{At this time, the cutout service can only process requests for one cutout at a time, meaning to create and retrieve 10 cutouts will require 10 independent synchronous calls to the cutout service.
+A bulk cutout service is under development and expected to be available by DR1};
 \item DataLink annotations to the ObsTAP and SIAv2 services for access to the full images as well as the SODA service;
 \item Authenticated HiPS data service for seamless pan-and-zoom access to coadded data;
 \item Some Portal-Notebook integration features such as seeding a notebook with a query that was executed in the Portal, and retrieving results in the Portal from a query executed from a notebook;
@@ -74,8 +75,8 @@ RSP functionality that is under consideration for post-DR1:
 \subsection{Community Brokers}
 \label{ssec:brokers}
 Alerts are fully world-public and are accessible through one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
-During the commissioning period, Rubin collaborated with the Community Brokers to integrate them \citedsp{rtn-010}, ensuring that the alert stream could be efficiently distributed to the community.
-Since the release of Rubin First Alerts on \rubinfirstalerts, the seven full-stream brokers have been receiving the early Rubin alert stream  from data collected during the Early Optimization Phase, providing added-value analyses such as cross-matches with existing catalogs, light curve characterizations, and preliminary classifications of transient and variable sources.
+During the commissioning period, Rubin collaborated with the Community Brokers to integrate them \citeds{rtn-010}, ensuring that the alert stream could be efficiently distributed to the community.
+Since the release of Rubin First Alerts on \rubinfirstalerts, the seven full-stream brokers have been receiving the early Rubin alert stream  from data collected during the Early Optimization Phase, providing added-value analyses such as crossmatches with existing catalogs, light curve characterizations, and preliminary classifications of transient and variable sources.
 
 These first pre-LSST alerts, while not yet reaching the velocity, latency, nor fidelity expected for full operations, represent the initial operational demonstration of Rubin’s alert production pipeline.
 The early release provided the Community Brokers with real-time data, enabling valuable feedback on pipeline performance and broker integration, and helping to validate the end-to-end alert distribution architecture prior to full survey operations.
