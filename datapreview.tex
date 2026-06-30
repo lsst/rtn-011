@@ -94,7 +94,6 @@ The snapshot of the MPCORB Catalog tables included in DP1 was taken from around 
 Individual exposures taken during the commissioning campaign  that did not meet the quality control standard of being ``science-grade, astronomically useful'' images, were not be included in the DP1 release,  and consequently, the exact number of exposures and coadd depths in DP1 was different to what was seen during the commissioning campaign.
 Additionally, some columns were missing from some catalogs due to the small data sets involved in DP1.
 There were  no cell-based coadds in DP1, nor \texttt{ShearObject} catalog.
-Both of these are currently stretch goals for DP2.
 
 \subsection{Data Preview 2}
 \label{ssec:dp2}
@@ -157,8 +156,10 @@ Table \ref{tab:dp1_fields_in_dp2} details the number of visits in DP2 that overl
 
 EDP2 includes \textbf{all} catalog data products derived from the DRP reprocessing of the DP2 dataset, plus the deep coadd images; visit-level images and template coadds are not available until DP2 (\S~\ref{sssec:dp2-full}).
 Deep coadd images will be distributed in a new \texttt{LSST images} FITS-based format, which enables more efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of details of the LSST science pipelines, supporting long-term archival use.
+
 New in DP2 are cell-based coadds \citep[][]{DMTN-015, SITCOMTN-137, SITCOMTN-162}, a Rubin/LSST image coaddition product in which a survey patch is subdivided into small spatial cells, and each cell is independently coadded using only fully overlapping input exposures to ensure a well-defined, spatially uniform PSF and weighting within the cell.
 The driving motivation for cell-based coadds is to improve the accuracy and stability of precision measurements by controlling PSF variation and edge effects that arise in standard coadds.
+Together with cell-based coadds, EDP2 will deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citeds{LSE-163}.
 
 Solar System processing in DP2 follows the same simplified approach as for DP1 relative to the full Rubin DRP Solar System Processing (SSP) framework.
 In its full form, SSP is designed to produce a Rubin-only product, beginning without reliance on the Minor Planet Center (MPC) catalog used in Prompt Processing.
@@ -166,16 +167,16 @@ Instead, it constructs a self-contained ``Rubin-only solar system orbit catalog,
 However, for DP2, as in DP1, the available data are insufficient to support robust orbit-based association at this level.
 Therefore, solar system products in DP2 will instead be generated via positional crossmatching of Rubin difference-image detections (\texttt{DiaSources}) with predicted ephemerides of known objects from the MPCORB catalog.
 
-DP2 will also deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citeds{LSE-163}.
-
 Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in EDP2.
+
+EDP2 is scheduled for release on \edptwodate.
 
 \subsubsection{DP2 Data Products}
 \label{sssec:dp2-full}
 
 In addition to the data products in EDP2 (Section~\ref{sssec:edp2}), the DP2 release includes all visit-level image data products, as well as the template coadds constructed from DP2 data, completing the DP2 dataset.
 The visit-level image data products comprise the single-visit images contributing to the coadds, as well as those from approximately $\sim\,4,000$ additional visits that did not meet the coadd quality criteria (Section~\ref{sssec:dp2-sky}), together with corresponding difference images.
-An additional XXX deg$^{\rm 2}$ of sky are covered by DP2 with the inclusion of these further images.
+An additional $\sim$\,12,000\,deg$^{\rm 2}$ of sky are covered by DP2 with the inclusion of these further images.
 
 \subsubsection{Limitations}
 
