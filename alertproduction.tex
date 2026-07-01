@@ -116,8 +116,7 @@ Prompt images are expected to become publicly available in the \npcdate time ran
 \subsection{Prompt Catalogs and the Prompt Products Database}
 \label{ssec:ppdb}
 
-The Prompt Products Database (PPDB) serves as Rubin's real-time catalog of transient, variable, and moving-object detections,
-storing all prompt catalog data products and observation metadata and providing efficient access for scientific analysis.
+The Prompt Products Database (PPDB) serves as Rubin's real-time catalog of transient, variable, and moving-object detections, storing all prompt catalog data products and observation metadata and providing efficient access for scientific analysis.
 
 Upon initial release, the PPDB will include the \texttt{DiaObject}, \texttt{DiaSource}, and \texttt{DiaForcedSource}
 catalogs (\citeds{LSE-163}) arising from detections in difference image analysis.
@@ -127,7 +126,6 @@ though some precovery data will be available only in the PPDB.
 In addition, the initial public release of the PPDB will contain information on Solar System object observations
 and discoveries arising from the Rubin data.
 The key tables provided will be the following:
-
 \begin{itemize}
   \item \texttt{mpc\_orbits}: a clone of the master table maintained by the Minor Planet Center, one row per SSO;
   \item \texttt{SSObject}: one row per SSO for those MPC-confirmed objects to which Rubin has contributed observations; and
@@ -136,48 +134,13 @@ The key tables provided will be the following:
     represented in the PPDB in the DiaSource table,
     and observations arising from Data Release-style processing of Rubin data, most notably DP2.
 \end{itemize}
-
-Additional mechanisms will be provided that
-provide users with information on the presence of known SSOs near detected transients,
-so that overlap between moving-object orbits and static astrophysical transients can be understood,
-and expand on the linkages between Rubin SSO data and the MPC's own databases.
 The overall data model and the schemas of these tables have evolved somewhat from the version presented in the DPDD
 and those in previous Data Previews;
 the updated data model has not yet been released, but will be available on the Rubin schema browser in advance of
 the initial PPDB release.
 
-\subsubsection{Prompt Catalog Data Services}
-
-The PPDB is under active development and represents a significant technical challenge.
-At least initially, full query capabilities on all tables will not be available;
-instead, a more limited set of targeted services will be provided.
-These restrictions arise from our process of learning how to work with the underlying database
-(Google BigQuery) in a cost-effective, scalable way.
-
-For the difference image analysis catalogs,
-Rubin expects to provide an IVOA TAP service supporting full property-based ADQL queries over
-the \emph{current} versions of all \texttt{DiaObject}s,
-and the full contents of the \texttt{mpc\_orbits} and \texttt{SSObject} catalogs.
-
-In order to support early prompt solar system and time-domain science, Rubin will additionally support dedicated query services for:
-\begin{itemize}
-  \item Retrieval of all \texttt{DiaSource} or \texttt{DiaForcedSource} data associated with a given \texttt{DiaObject},
-i.e., the data for a light curve;
-  \item Retrieval of all \texttt{SSSource} records for a given SSO, by its MPC designation or its Rubin ID; and
-  \item Retrieval of nearby-SSO data for a given DiaSource ID.
-\end{itemize}
-These additional query services will be linked to the results of \texttt{DiaObject} queries via the IVOA DataLink mechanism for service discovery and easy access to light curves in the RSP Portal and elsewhere.
-A query service for the history of \texttt{DiaObject} record evolution is a stretch goal for the first release of the PPDB.
-The PPDB will initially be configured to support these particular query patterns with efficient data clustering.
-Experience with these query services will then inform further engineering effort on the PPDB
-and future expansion to more general query capabilities.
-
-Note that several brokers are planning to aggregate the alert stream and offer query services;
-Rubin expects this will cover many PPDB use cases in the interim before the PPDB is available.
+Query services for PPDB catalogs are described in \S\,\ref{ses:access}.
 The PPDB is prioritized as the second delivery milestone after EDP2 (\S~\ref{sssec:edp2}) and before DP2 (\S~\ref{ssec:dp2}), and is expected to become publicly available in the \ppdbdate\ time range.
-
-The Rubin team is also working with partners in the community to provide access to key
-prompt catalog data products in the evolving community ``HATS'' format.
 
 \subsection{Prompt Direct Catalogs}
 \label{ssec:prompt-direct-catalogs}

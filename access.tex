@@ -72,6 +72,38 @@ RSP functionality that is under consideration for post-DR1:
 \item Bringing individual resources to the RSP, e.g., additional compute paid for by individuals.
 \end{itemize}
 
+\subsubsection{Prompt Catalog Data Services}
+\label{ssec:prompt_access}
+
+The PPDB is under active development and represents a significant technical challenge.
+At least initially, full query capabilities on all tables will not be available; instead, a more limited set of targeted services will be provided.
+These restrictions arise from our process of learning how to work with the underlying database (Google BigQuery) in a cost-effective, scalable way.
+
+For the difference image analysis catalogs, Rubin expects to provide an IVOA TAP service supporting full property-based ADQL queries over
+the \emph{current} versions of all \texttt{DiaObject}s,
+and the full contents of the \texttt{mpc\_orbits} and \texttt{SSObject} catalogs.
+
+In order to support early prompt solar system and time-domain science, Rubin will additionally support dedicated query services for:
+\begin{itemize}
+  \item Retrieval of all \texttt{DiaSource} or \texttt{DiaForcedSource} data associated with a given \texttt{DiaObject},
+i.e., the data for a light curve;
+  \item Retrieval of all \texttt{SSSource} records for a given SSO, by its MPC designation or its Rubin ID; and
+  \item Retrieval of nearby-SSO data for a given \texttt{DiaSource} ID.
+\end{itemize}
+These additional query services will be linked to the results of \texttt{DiaObject} queries via the IVOA DataLink mechanism for service discovery and easy access to light curves in the RSP Portal and elsewhere.
+A query service for the history of \texttt{DiaObject} record evolution is a stretch goal for the first release of the PPDB.
+The PPDB will initially be configured to support these particular query patterns with efficient data clustering.
+Experience with these query services will then inform further engineering effort on the PPDB
+and future expansion to more general query capabilities.
+
+Additional mechanisms will be provided that provide users with information on the presence of known SSOs near detected transients, so that overlap between moving-object orbits and static astrophysical transients can be understood, and expand on the linkages between Rubin SSO data and the MPC's own databases.
+
+Note that several brokers are planning to aggregate the alert stream and offer query services;
+Rubin expects this will cover many PPDB use cases in the interim before the PPDB is available.
+The PPDB is prioritized as the second delivery milestone after EDP2 (\S~\ref{sssec:edp2}) and before DP2 (\S~\ref{ssec:dp2}), and is expected to become publicly available in the \ppdbdate\ time range.
+
+The Rubin team is also working with partners in the community to provide access to key prompt catalog data products in the evolving community ``HATS'' format.
+
 \subsection{Community Brokers}
 \label{ssec:brokers}
 Alerts are fully world-public and are accessible through one or more of the nine Rubin-endorsed Community Brokers\footnote{See \url{https://www.lsst.org/scientists/alert-brokers}}.
