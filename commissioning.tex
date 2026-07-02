@@ -11,6 +11,10 @@ Figure~\ref{fig:commissioning-es-schedule} presents the detailed schedule of com
 \vspace{0.1cm}
 \end{figure}
 
+As of \currentdate, Data Preview 2 (DP2) has been split into Early Data Preview 2 (EDP2), which will release the coadded images and all catalogs,
+and Data Preview (DP2), which adds the visit-level data products, completing the full DP2 release.
+This is discussed in detail in \S~\ref{ssec:dp2}.
+
 \subsection{Summary of Commissioning Activities}
 \label{ssec:commissioning-schedule}
 
@@ -45,7 +49,7 @@ Collectively, these efforts validated the end-to-end performance of the as-built
 
 LSSTComCam is Rubin's engineering camera that was used for testing and validating the observatory's systems and processes prior to the installation of the LSST Science Camera.
 The LSSTComCam focal plane has single raft with a 3×3 mosaic of 4K×4K ITL science sensors, giving a total of 144Mpix,
-LSSTComCam has the same plate scale as LSSTCam (0.2 arcsec / pixel), with a field of view of 40 × 40 arcmin.
+LSSTComCam has the same plate scale as LSSTCam (0\farcs2 / pixel), with a field of view of 40 × 40 arcmin.
 The LSSTComCam filter exchanger holds only three physical filters at a time.
 
 The Rubin on-sky commissioning campaign using  LSSTComCam began on \startsvcoomcam and ended on \finsvcomcam, lasting a total of 7 weeks, and included observations to support both engineering and science pipelines commissioning.
@@ -71,12 +75,14 @@ They covered a more limited sky area to achieve greater depth within the SV time
 
 The SV surveys were executed using the Feature based Scheduler (FBS) and comprised two primary components, interleaved within a single FBS configuration.
 \begin{itemize}
-\item \textbf{Wide Survey:}  Designed to test template generation and Prompt Processing with difference image analysis at data rates representative of the first year of the LSST. This provided a sustained full-scale test of the Data Facility;
-\item \textbf{Deep Survey:} Designed to test the production of deep coadds with integrated exposures  equivalent to or exceeding those of the LSST 10-year survey.  These observations achieved a rapid temporal sampling in the selected deep fields and validated the observing strategy for the LSST Deep Drilling Fields (DDFs).
+\item \textbf{Wide Survey:}  Designed to test template generation and Prompt Processing with difference image analysis at data rates representative of the first year of the LSST.
+This provided a sustained full-scale test of the Data Facility;
+\item \textbf{Deep Survey:} Designed to test the production of deep coadds with integrated exposures  equivalent to or exceeding those of the LSST 10-year survey.
+These observations achieved a rapid temporal sampling in the selected deep fields and validated the observing strategy for the LSST Deep Drilling Fields (DDFs).
 \end{itemize}
 The Wide Survey traced the ecliptic plane from dense regions of the Galactic Bulge through low-dust regions within the planned LSST Wide-Fast-Deep (WFD) footprint.
 Four of the planned LSST Deep Drilling Fields (DDFs) were observed as part of the Deep Survey.
-A secondary area within the low-dust WFD footprint was included to provide alternate targets when the primary or DDF fields were  unavailable, supporting early template generation in higher-declination areas.
+A secondary area within the low-dust WFD footprint was included to provide alternate targets when the primary or DDF fields were  unavailable, supporting early template generation in higher-decl. areas.
 
 A total of 21,647 science visits were acquired during the SV surveys.
 This total excludes known bad visits (as of 2025-09-30) but includes exposures spanning a broad range of data quality, reflecting variations in cloud extinction, delivered image quality, and engineering issues.
@@ -121,7 +127,7 @@ The median Image Quality (IQ) is expressed in terms of the width of the PSF at F
 \textbf{N} &
 \textbf{Median IQ} &
 \textbf{Timespan} \\
- & Visits & \textbf{(arcsec)} & \textbf{(days)} \\
+ & Visits & \textbf{(arcseconds)} & \textbf{(days)} \\
 \midrule
 Carina (NGC 3372)             & 124  & ---  & 4 \\
 Rubin\_SV\_280\_\-48 & 148  & 1.52 & 1 \\
@@ -145,9 +151,14 @@ Rubin\_SV\_225\_\-40 & 2052 & 1.36 & 97 \\
 % Wide area summary
 \subsubsection{SV Wide Area}
 \label{sec:sv_wide}
-The initial SV wide area was approximately 3000 deg$^2$; this was reduced to 750 deg$^2$ approximately halfway through the SV survey period.
-This was further reduced to approximately 300 deg$^2$ during the last week or so of the SV period  to concentrate observing cadence and  better enable image differencing tests.
-Table \ref{tab:sv_wide_configs} provides the median numbers of visits and estimated m5 coadded depths  within each of the subsets of the Wide SV area.
+
+The SV wide-area survey was conducted over a footprint that contracted progressively over the commissioning period, necessitated by limited observing time rather than reflecting the original survey design.
+The survey began with an initial area of approximately 3,000~deg$^{2}$ (the ``3K'' or ``wide SV'' region), following the ecliptic plane from dense regions of the Galactic Bulge through low-dust regions of the planned LSST Wide-Fast-Deep footprint.
+Approximately halfway through the SV period, the footprint was consolidated to $\sim$\,750~deg$^{2}$ to concentrate visits and improve coadd depth; in the final week of commissioning it was further reduced to $\sim$\,300~deg$^{2}$ to achieve the visit density required for difference-image testing.
+As a result, the visit count and coadded depth increase substantially toward the inner regions of the footprint: the wide SV (3K) 3,000~deg$^{2}$ region reaches a median of 38 visits across all bands and an estimated coadded depth of $m_5\approx$ 25.0, the 750 deg$^{2}$ subset reaches 56 visits and $m_5\approx$ 25.8, and the 300 deg$^{2}$ core reaches 64 visits and $m_5$ \approx 25.7 (Table~\ref{tab:sv_wide_configs}).
+For comparison, the LSST Year~1 WFD baseline predicts a median of 13 visits per pointing per band and $m_5 \approx$\,25.0 over the full footprint.
+The 300~deg$^{2}$ DP2 core approaches Year~1 depth in all bands, and the 3,000~deg$^{2}$ wide SV region reaches or exceeds Year~1 depth in some bands.
+Table~\ref{tab:sv_wide_configs} provides the median numbers of visits and estimated $m_5$ coadded depths  within each of the subsets of the Wide SV area.
 The median image quality expressed in terms of the width of the PSF at FWHM is also provided per band across all subset areas in the SV Wide Area survey.
 \begin{table*}[htbp]
 \centering
@@ -169,7 +180,7 @@ The median image quality expressed in terms of the width of the PSF at FWHM is a
 300 deg$^2$ & 2 & 5 & 11 & 18 & 15 & 10 & 64 \\
              & 24.5 & 25.2 & 25.0 & 24.9 & 24.1 & 23.0 &  \\
 \midrule
-\makecell[l]{\textbf{Median FWHM}\\\textbf{(arcsec)}}
+\makecell[l]{\textbf{Median FWHM}\\\textbf{(arcseconds)}}
  & 1.18 & 1.26 & 1.26 & 1.24 & 1.17 & 1.25 &  \\
 \bottomrule
 \end{tabular}
@@ -217,7 +228,7 @@ The total number of visits, the timespan over which observations were collected,
 \multicolumn{6}{c}{\textbf{Band}} &
 \textbf{Total} \\
 \cmidrule(lr){4-9}
- & (days) & (arcsec) & $u$ & $g$ & $r$ & $i$ & $z$ & $y$ & \textbf{N visits} \\
+ & (days) & (arcseconds) & $u$ & $g$ & $r$ & $i$ & $z$ & $y$ & \textbf{N visits} \\
 \midrule
 XMM\_LSS  & 10 & 1.47 & 30 & — & — & — & — & — & 30 \\
            &    &      & 25.3 & — & — & — & — & — &  \\
@@ -260,21 +271,14 @@ The optimal dither pattern for LSST DDF observations is the subject of ongoing i
 \subsection{Start of Operations and the Start of the LSST}
 \label{ssec:ops-lsst-start}
 
+
 The \textit{Start of Rubin Operations} and the \textit{Start of the LSST} are two distinct milestones separated by the \textit{Rubin Operations Early Optimization Phase}.
 Understanding the distinction between these two milestones, and what is required to transition from one to the other, is essential context for the Early Science Program.
 
 Following Rubin Construction substantial completeness (\S\ref{ssec:commissioning-schedule}) on \cstrcompdate, Rubin Operations began the following day on \opsstartdate.
 This milestone marked the formal handover of Rubin Observatory from the Construction project to the Operations team.
-The \textit{Start of the LSST} is the subsequent milestone at which Rubin Observatory begins executing the Legacy Survey of Space and Time, as defined by the baseline survey strategy \citep{PSTN-056}.
+The \textit{Start of the LSST} is the milestone at which Rubin Observatory begins executing the LSST, as defined by the baseline survey strategy \citep[][]{PSTN-056}.
 
-The period from the Start of Rubin Operations through the Start of the LSST is termed the \textit{Early Operations Optimization Phase} (\S~\ref{ssec:defn}).
-During Construction Commissioning, the as-built system demonstrated that it is capable of meeting the LSST science requirements as defined in the Science Requirements Document \citedsp{LPM-17}.
-However, demonstrating that the system \textit{can} achieve the required performance is not the same as demonstrating that it can do so in a sustained, reliable, and repeatable manner over the course of a 10-year survey.
-The goal of the Early Optimization Phase is to bridge this gap: to bring the system to a state of operational readiness that supports start of the LSST.
-It is expected that optimization will continue even after the start of the LSST.
+The start of the LSST was formally declared on \lsststartdate.
 
-Data collected during the Early Optimization Phase continue to provide the basis for early data products released to the community.
-For example, early alerts based on templates built during the Commissioning period began streaming to community brokers on \rubinfirstalerts\footnote{\url{https://rubinobservatory.org/news/first-alerts}}, and the release of nightly Processed Visit Images (PVIs) is expected sometime during \npcdate.
 
-At the time of this writing, Rubin Observatory remains in the Early Optimization Phase.
-A start date for the LSST will be determined once that phase is successfully completed.

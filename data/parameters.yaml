@@ -23,112 +23,154 @@ milestones:
   startsciencelsstcam: "2025-04-17"
   startonskylsstcam: "2025-04-15"
   cameraontma: "2025-03-05"
+  rfldate: "2025-06-23"
+  opsstartdate: "2025-10-25"
+  lsststartdate: "2026-06-29"
 
 # ---------------------------------------------------------------------------
-# Timeline events:
+# Data and service release events (datarelease, prompt):
 #  key:                  short code shown in the ops timeline table
-#  description:          event description
-#  date:                 ISO 8601 date or date range
-#  latexstring:          LaTeX \newcommand name generated for this date
-#  color:                LaTeX color for timeline cell (omit to exclude)
-#  dataset_description:  short dataset name for DR scenario column header (omit to exclude)
+#  name:                 event name shown in the ops timeline table
+#  date:                 date dict; any field with value+latex_string emits a \newcommand
+#    value:              ISO 8601 date or date range
+#    latex_string:       LaTeX \newcommand name for this date
+#  color:                LaTeX color for timeline cell (omit to exclude from timeline)
+#  description:          short dataset description for DR scenario column header
 #  date_label:           overrides the date display in the DR scenario header (e.g. TBD dates)
-#  <name>:               any other field is treated as an extra latexstring: date pair
+#  sub_releases:         child releases shown in DR scenario in place of the parent
+#  data_product_status:  1D array of T/S/X, one per entry in products (omit on parents with sub_releases)
 # ---------------------------------------------------------------------------
-events:
-  # DP0:
-  - key: DP0
-    description: "Data Preview 0.1/2/3"
-    date: "2023-06-30"
-    latexstring: dpzerodate
-    color: RubinDarkTeal
 
-  # DP0 sub-releases:
-  - key: DP0.1
-    description: "Data Preview 0.1"
-    date: "2021-06"
-    latexstring: dpzeropointonedate
-    dataset_description: "DC2 Simulated Sky Survey"
+# ---------------------------------------------------------------------------
+#  Data Releases (DP and DR events)
+# ---------------------------------------------------------------------------
+datarelease:
 
-  - key: DP0.2
-    description: "Data Preview 0.2"
-    date: "2022-06"
-    latexstring: dpzeropointtwodate
-    dataset_description: "Reprocessed DC2 Survey"
+  # Product row order for the DR scenario table.  The data_product_status arrays on
+  # each event follow this exact order (position 0 = first product, etc.).
+  products:
+    - "Raw Images"
+    - "DRP Processed Visit Images"
+    - "DRP Deep Coadded Images"
+    - "DRP Difference Images"
+    - "DRP Template Coadd Images"
+    - "DRP Source Catalogs"
+    - "DRP Object Catalogs"
+    - "DRP ForcedSource Catalogs"
+    - "DRP ShearObject Catalog"
+    - "DRP DIA Catalogs"
+    - "DRP SSP Catalogs"
+    - "MPC Orbits Catalog"
 
-  - key: DP0.3
-    description: "Data Preview 0.3"
-    date: "2023-06"
-    latexstring: dpzeropointthreedate
-    dataset_description: "Solar System PPDB Simulation"
+  events:
 
-# Rubin First Light
-  - key: RFL
-    description: "Rubin First Light"
-    date: "2025-06-23"
-    latexstring: rfldate
-    dataset_description: "Rubin First Light Data"
-    color: RubinDarkTeal
+    - key: DP0
+      name: "Data Preview 0.1/2/3"
+      date:
+        value: "2023-06-30"
+        latex_string: dpzerodate
+      color: RubinDarkTeal
+      sub_releases:
+        - key: DP0.1
+          name: "Data Preview 0.1"
+          date:
+            value: "2021-06"
+            latex_string: dpzeropointonedate
+          description: "DC2 Simulated Sky Survey"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [T,   T,   T,   X,   X,   T,   T,   T,   X,   X,   X,   X]
 
-# DP1 release
-  - key: DP1
-    description: "Data Preview 1"
-    date: "2025-06-30"
-    latexstring: dponedate
-    color: RubinDarkTeal
-    dataset_description: "LSST ComCam Science Validation Data"
+        - key: DP0.2
+          name: "Data Preview 0.2"
+          date:
+            value: "2022-06"
+            latex_string: dpzeropointtwodate
+          description: "Reprocessed DC2 Sky Survey"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   X,   T,   X,   X]
 
-# Start of Operations
-  - key: OPS
-    description: "Start of Operations"
-    date: "2025-10-25"
-    latexstring: opsstartdate
-    color: RubinDarkTeal
+        - key: DP0.3
+          name: "Data Preview 0.3"
+          date:
+            value: "2023-06"
+            latex_string: dpzeropointthreedate
+          description: "Solar System PPDB Simulation"
+          #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+          data_product_status: [X,   X,   X,   X,   X,   X,   X,   X,   X,   X,   T,   X]
 
-# Start of Alerts
+    - key: DP1
+      name: "Data Preview 1"
+      date:
+        value: "2025-06-30"
+        latex_string: dponedate
+      color: RubinDarkTeal
+      description: "LSST ComCam Science Validation Data"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [T,   T,   T,   T,   X,   T,   T,   T,   X,   T,   T,   T]
+
+    - key: EDP2
+      name: "Early Data Preview 2"
+      date:
+        value: "2026-07-27"
+        latex_string: edptwodate
+      color: TLOrange3
+      description: "LSSTCam Science Validation Data"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
+
+    - key: DP2
+      name: "Data Preview 2"
+      full_date-range:
+        value: "2026-07/2026-12"
+        latex_string: dptwofulldaterange
+      date:
+        value: "2026-10/2026-12"
+        latex_string: dptwodate
+      color: TLOrange3
+      science_visit_start_date:
+        value: "2025-04-24"
+        latex_string: dptwostartdate
+      cutoff_date:
+        value: "2026-01-06"
+        latex_string: dptwocutoffdate
+      description: "LSSTCam Science Validation Data"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
+
+    - key: DR1
+      name: "Data Release 1"
+      date:
+        value: "TBD"
+        latex_string: dronedate
+      color: RubinDarkTeal
+      description: "LSST Year 1 Data"
+      date_label: "LSST start + 1 yr"
+      #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
+      data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
+
+# ---------------------------------------------------------------------------
+#  Prompt Products and Services
+# ---------------------------------------------------------------------------
+prompt:
   - key: RFA
-    description: "Rubin First Alerts"
-    date: "2026-02-24"
-    latexstring: rubinfirstalerts
+    name: "Rubin First Alerts"
+    date:
+      value: "2026-02-24"
+      latex_string: rubinfirstalerts
     color: RubinDarkTeal
-    dataset_description: "Rubin First Alerts Data"
+    description: "Rubin First Alerts Data"
 
-# PPDB release
-  - key: PPDB
-    description: "PPDB Release"
-    date: "2026-06/2026-09"
-    latexstring: ppdbdate
-    color: TLOrange3
-
-# Start of Nightly PVIs
   - key: NPC
-    description: "Nightly PVIs & Direct-Image Catalogs"
-    date: "2026-06/2026-09"
-    latexstring: npcdate
+    name: "Nightly PVIs & Direct-Image Catalogs"
+    date:
+      value: "2026-10/2026-12"
+      latex_string: npcdate
     color: TLOrange3
 
-# DP2 release
-  - key: DP2
-    description: "Data Preview 2"
-    date: "2026-07/2026-09"
-    latexstring: dptwodate
+  - key: PPDB
+    name: "PPDB Release"
+    date:
+      value: "2026-09/2026-10"
+      latex_string: ppdbdate
     color: TLOrange3
-    dataset_description: "LSSTCam Science Validation Data"
-    dptwocutoffdate: "2026-01-09"
-
-# Start of LSST
-  - key: SVY
-    description: "Start of LSST"
-    date: "TBD"
-    latexstring: lsststartdate
-    color: RubinDarkTeal
-
-# DR1 release
-  - key: DR1
-    description: "Data Release 1"
-    date: "TBD"
-    latexstring: dronedate
-    color: RubinDarkTeal
-    dataset_description: "LSST Year 1 Data"
-    date_label: "LSST start + 1 yr"
-
+    description: "Prompt Products database"

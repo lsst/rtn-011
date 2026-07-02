@@ -22,6 +22,7 @@ from __future__ import annotations
 __all__ = [
     "AUTOGEN_STR",
     "make_dp1_fields_table",
+    "make_dp1_fields_in_dp2_table",
     "make_dp1_visits_table",
     "make_dr_scenario_table",
     "make_ops_timeline_table",
@@ -30,6 +31,15 @@ __all__ = [
 
 from .parameters import RTN011Parameters
 from .utils import colored_month_cells, to_short_month_year
+
+
+def _event_date(event: dict) -> str:
+    """Return the date string from an event dict.
+
+    The date field is a dict with 'value' and 'latex_string' sub-fields;
+    this helper extracts the plain date string.
+    """
+    return event["date"]["value"]
 
 AUTOGEN_STR = "%%% This table is auto-generated from data/parameters.yaml -- DO NOT EDIT"
 
@@ -88,9 +98,9 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
     for event in params.events:
         if "color" not in event:
             continue
-        desc = event["description"].replace("&", r"\&")
+        desc = event["name"].replace("&", r"\&")
         event_rows.append(
-            _timeline_row(event["key"], desc, event["date"], event["color"]) + "\n\\\\\\hline"
+            _timeline_row(event["key"], desc, _event_date(event), event["color"]) + "\n\\\\\\hline"
         )
 
     rows_str = "\n".join(event_rows)
@@ -207,31 +217,53 @@ def make_dp1_visits_table() -> str:
 
 
 # ---------------------------------------------------------------------------
+# DP1 fields in DP2 table (frm rtn-011)
+# ---------------------------------------------------------------------------
+
+_DP1_FIELDS_IN_DP2 = [
+    #                                          u    g    r    i    z    y  Total
+    ("47 Tuc Globular Cluster",                0,   0,   0,   4,   2,   2,    8),
+    ("Low Ecliptic Latitude Field",            0,   0,   0,   0,   0,   0,    0),
+    ("Fornax Dwarf Spheroidal Galaxy",         0,   0,   0,   1,   1,   1,    3),
+    ("Extended Chandra Deep Field South",     10,  61,  50, 100,  62,  11,  294),
+    ("Euclid Deep Field South",                7,  31,  33,  59,  34,  11,  175),
+    ("Low Galactic Latitude Field",            0,   0,   0,   6,   1,   4,   11),
+    ("Seagull Nebula",                         0,   0,   0,   2,   1,   0,    3),
+]
+
+
+def make_dp1_fields_in_dp2_table() -> str:
+    """Generate ``tables/dp1_fields_in_dp2.tex``."""
+    rows = "\n".join(
+        f"    {name:<40} & {u:>4} & {g:>4} & {r:>4} & {i:>4} & {z:>4} & {y:>4} & {total:>5} \\\\"
+        for name, u, g, r, i, z, y, total in _DP1_FIELDS_IN_DP2
+    )
+    return f"""{AUTOGEN_STR}
+\\begin{{table*}}
+    \\centering
+    \\caption{{DP1 fields included in the DP2 dataset and the number of visits per band contributing to the deep coadds.}}
+    \\begin{{tabular}}{{@{{}}lrrrrrrrr@{{}}}}
+           \\noalign{{\\vspace{{5pt}}}}\\hline\\hline \\noalign{{\\vspace{{5pt}}}}
+    \\textbf{{Field}} & \\textbf{{u}} & \\textbf{{g}} & \\textbf{{r}} & \\textbf{{i}} & \\textbf{{z}} & \\textbf{{y}} & \\textbf{{Total}} \\\\
+        \\hline  \\noalign{{\\vspace{{3pt}}}}
+
+{rows}
+         \\noalign{{\\vspace{{3pt}}}}\\hline
+    \\end{{tabular}}
+    \\label{{tab:dp1_fields_in_dp2}}
+\\end{{table*}}
+"""
+
+
+# ---------------------------------------------------------------------------
 # Data Release scenario table
 # ---------------------------------------------------------------------------
 
-# Static dot/dash content per row: (product_label, [dp0.1..dr2])
-# _T = confirmed (RubinDarkTeal), _S = stretch (RubinGray1), _X = not available
+# Dot/dash markers: T = confirmed, S = stretch goal, X = not available
 _T = r"\mycirc[RubinDarkTeal]"
 _S = r"\mycirc[RubinGray1]"
 _X = "--"
-
-_DR_PRODUCTS = [
-    ("Raw Images",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
-    (r"DRP Processed  Visit Images  and Source Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
-    (r"DRP Coadded Images   and Object Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
-    (r"DRP Cell-based Coadded Images and ShearObject Catalog",
-     [_X, _X, _X, _X, _X, _T, _T, _T]),
-    (r"DRP ForcedSource Catalogs",
-     [_T, _T, _X, _T, _T, _T, _T, _T]),
-    (r"DRP Difference Images and DIA Catalogs",
-     [_X, _T, _X, _T, _T, _T, _T, _T]),
-    (r"DRP SSP Catalogs",
-     [_X, _X, _T, _T, _T, _T, _T, _T]),
-]
+_STATUS = {"T": _T, "S": _S, "X": _X}
 
 
 def _dr_date_cell(event: dict) -> str:
@@ -242,7 +274,7 @@ def _dr_date_cell(event: dict) -> str:
             prefix, suffix = label.split(" + ", 1)
             return f"\\tiny \\makecell{{ {prefix} \\\\ + {suffix}}}"
         return f"\\tiny \\makecell{{{label}}}"
-    date = event["date"]
+    date = _event_date(event)
     if date == "TBD":
         return "\\tiny TBD"
     display = to_short_month_year(date)
@@ -276,7 +308,8 @@ def _rotated_dataset(description: str) -> str:
         else:
             groups.append(word)
     def _fmt(g: str) -> str:
-        return " ".join(f"\\textbf{{{w}}}" for w in g.split())
+        inner = " ".join(f"\\textbf{{{w}}}" for w in g.split())
+        return f"\\hspace{{3pt}}{inner}\\hspace{{3pt}}"
 
     content = " \\\\\n".join(_fmt(g) for g in groups)
     return f"\\rotatebox[origin=c]{{90}}{{\\tiny\\makecell{{{content}}}}}"
@@ -284,18 +317,20 @@ def _rotated_dataset(description: str) -> str:
 
 def make_dr_scenario_table(params: RTN011Parameters) -> str:
     """Generate ``tables/rubin_early_dr_scenario.tex``."""
-    dr_events = [e for e in params.events if "dataset_description" in e]
+    dr_events = [e for e in params.datarelease_expanded if "description" in e]
     n = len(dr_events)
     total = n + 1  # +1 for the Data Product label column
 
     date_cells = " & ".join(_dr_date_cell(e) for e in dr_events)
     key_cells = " &  ".join(f"\\textbf{{{e['key']}}}" for e in dr_events)
-    dataset_cells = " &\n\t\t".join(_rotated_dataset(e["dataset_description"]) for e in dr_events)
-    col_spec = "|l|" + "c|" * n
+    dataset_cells = " &\n\t\t".join(_rotated_dataset(e["description"]) for e in dr_events)
+    col_spec = "|p{3.5cm}|" + r">{\centering\arraybackslash}p{1.2cm}|" * n
 
+    products = params.dr_products
     rows = []
-    for i, (label, dots) in enumerate(_DR_PRODUCTS):
-        sep = r" \arrayrulecolor{gray}\hline\arrayrulecolor{black}" if i < len(_DR_PRODUCTS) - 1 else r" \hline"
+    for i, label in enumerate(products):
+        dots = [_STATUS[e["data_product_status"][i]] for e in dr_events]
+        sep = r" \arrayrulecolor{gray}\hline\arrayrulecolor{black}" if i < len(products) - 1 else r" \hline"
         row_cells = "   &  ".join(dots)
         rows.append(f"{label}   &   {row_cells} \\\\  {sep}")
     rows_str = "\n".join(rows)
@@ -303,9 +338,9 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
     return f"""{AUTOGEN_STR}
 \\begin{{table}}[hbt!]
 \\centering
-\\fontsize{{6}}{{10}}\\selectfont
-\\setlength{{\\tabcolsep}}{{4pt}}
-{{\\renewcommand{{\\arraystretch}}{{1.2}}
+\\fontsize{{7}}{{10}}\\selectfont
+\\setlength{{\\tabcolsep}}{{8pt}}
+{{\\renewcommand{{\\arraystretch}}{{1.4}}
 \\begin{{tabular}}{{{col_spec}}}
     \\hline
 \\multicolumn{{{total}}}{{|l|}}{{{{\\fontsize{{9}}{{12}}\\selectfont \\color{{RubinDarkTeal}}\\textbf{{Rubin Early Science -- Data Release Scenario}}}}}}  \\\\\\hline\\hline
@@ -315,7 +350,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
         & {key_cells}
    \\\\\\cline{{2-{total}}}
-       \\multirow{{3}}{{*}}{{\\parbox{{0.1\\linewidth}}{{\\vspace{{0.2cm}} \\textbf{{Data Product}}}}}}  &
+       \\multirow{{3}}{{*}}{{\\parbox{{3.5cm}}{{\\vspace{{0.3cm}} \\textbf{{Data Product}}}}}}  &
 \t\t{dataset_cells}
     \\\\\\cline{{2-{total}}} \\hline
 
