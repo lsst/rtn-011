@@ -144,7 +144,7 @@ datarelease:
         latex_string: dronedate
       color: RubinDarkTeal
       description: "LSST Year 1 Data"
-      date_label: "LSST start + 1 yr"
+      date_label: "LSST start + 2 yrs"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
