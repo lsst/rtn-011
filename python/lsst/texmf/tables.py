@@ -134,7 +134,7 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
  \\\\ \\arrayrulecolor{{black}}\\hline\\hline
 
 \\end{{tabular}}}}
-\\caption{{Rubin Operations Key Milestones for Early Science}}
+\\caption{{Rubin Operations Key Milestones for Early Science. Dark teal boxes indicate milestones that have been achieved, whereas orange boxes indicate best-estimate ranges at the time of writing.}}
 \\label{{tab:ops-timeline}}
 \\end{{table}}
 """
