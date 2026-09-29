@@ -124,7 +124,7 @@ datarelease:
         value: "2026-07/2026-12"
         latex_string: dptwofulldaterange
       date:
-        value: "2026-10/2026-12"
+        value: "2026-11/2026-12"
         latex_string: dptwodate
       color: TLOrange3
       science_visit_start_date:
@@ -140,11 +140,11 @@ datarelease:
     - key: DR1
       name: "Data Release 1"
       date:
-        value: "TBD"
+        value: "2028-07/2028-12"
         latex_string: dronedate
-      color: RubinDarkTeal
+      color: TLOrange3
       description: "LSST Year 1 Data"
-      date_label: "LSST start + 1 yr"
+      date_label: "LSST start + 2 yrs"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
@@ -163,14 +163,14 @@ prompt:
   - key: NPC
     name: "Nightly PVIs & Direct-Image Catalogs"
     date:
-      value: "2026-10/2026-12"
+      value: "2026-11/2026-12"
       latex_string: npcdate
     color: TLOrange3
 
   - key: PPDB
     name: "PPDB Release"
     date:
-      value: "2026-09/2026-10"
+      value: "2026-10/2026-11"
       latex_string: ppdbdate
     color: TLOrange3
     description: "Prompt Products database"
