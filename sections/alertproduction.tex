@@ -101,7 +101,7 @@ This approach is under investigation; deployment depends on demonstrating an acc
 \subsection{Prompt Images}
 \label{ssec:prompt-images}
 
-Prompt images comprise raw images, Processed Visit Images (PVIs), and difference images.
+Prompt images comprise raw images, processed visit images (PVIs), and difference images.
 Difference image releases will each be accompanied by the template used to produce them; templates are not themselves prompt products but are required to interpret difference images.
 Rubin plans to release PVIs and raw images from each night's observations, with difference images following as incremental templates are built and validated.
 
@@ -113,6 +113,15 @@ Delivering prompt images requires sufficient hybrid cloud bandwidth between the 
 As a result, prompt image delivery has been deprioritized relative to EDP2 and the PPDB, neither of which depends on hybrid cloud bandwidth.
 Prompt images are expected to become publicly available in the \npcdate time range, following delivery of EDP2 (\S~\ref{ssec:dp2}) and the PPDB (\S~\ref{ssec:ppdb}).
 
+\subsection{Prompt Direct Catalogs}
+\label{ssec:prompt-direct-catalogs}
+
+Starting in Early Operations and continuing until Data Release 1 (DR1), Rubin will additionally provide \texttt{prompt\_direct\_source} catalogs for each PVI (\S~\ref{ssec:prompt-images}).
+These direct-image \texttt{Source}-like catalogs of detections in PVIs are analogous to the \texttt{Source} catalogs of future Data Releases and distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production.
+They are an interim measure until DR1 catalog coverage supersedes them and are distributed only as per-image Butler datasets and will not be accessible via database queries.
+Although not strictly embargoed, for the sake of self-consistency, they will be released with their corresponding PVIs after the 80-hour embargo expires.
+
+
 \subsection{Prompt Catalogs and the Prompt Products Database}
 \label{ssec:ppdb}
 
@@ -120,11 +129,9 @@ The Prompt Products Database (PPDB) serves as Rubin's real-time catalog of trans
 
 Upon initial release, the PPDB will include the \texttt{DiaObject}, \texttt{DiaSource}, and \texttt{DiaForcedSource}
 catalogs (\citeds{LSE-163}) arising from detections in difference image analysis.
-The contents of these tables closely mirror the cumulative alert stream,
-though some precovery data will be available only in the PPDB.
+The contents of these tables closely mirror the cumulative alert stream, though some precovery data will be available only in the PPDB.
 
-In addition, the initial public release of the PPDB will contain information on Solar System object observations
-and discoveries arising from the Rubin data.
+In addition, the initial public release of the PPDB will contain information on Solar System object observations and discoveries arising from the Rubin data.
 The key tables provided will be the following:
 \begin{itemize}
   \item \texttt{mpc\_orbits}: a clone of the master table maintained by the Minor Planet Center, one row per SSO;
@@ -134,18 +141,17 @@ The key tables provided will be the following:
     represented in the PPDB in the DiaSource table,
     and observations arising from Data Release-style processing of Rubin data, most notably DP2.
 \end{itemize}
-The overall data model and the schemas of these tables have evolved somewhat from the version presented in the DPDD
-and those in previous Data Previews;
-the updated data model has not yet been released, but will be available on the Rubin schema browser in advance of
-the initial PPDB release.
-
+The overall data model and the schemas of these tables have evolved somewhat from the version presented in the DPDD and those in previous Data Previews;
+the updated data model has not yet been released, but will be available on the Rubin schema browser in advance of the initial PPDB release.
 Query services for PPDB catalogs are described in \S\,\ref{ses:access}.
-The PPDB is prioritized as the second delivery milestone after EDP2 (\S~\ref{sssec:edp2}) and before DP2 (\S~\ref{ssec:dp2}), and is expected to become publicly available in the \ppdbdate\ time range.
 
-\subsection{Prompt Direct Catalogs}
-\label{ssec:prompt-direct-catalogs}
+Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and the current highest priority.
+In early October
+It is expected to be delivered before DP2 (\S~\ref{ssec:dp2})  in the \ppdbdate\ time range.
 
-Starting in Early Operations and continuing until Data Release 1 (DR1), Rubin will additionally provide \texttt{prompt\_direct\_source} catalogs for each PVI (\S~\ref{ssec:prompt-images}).
-These direct-image \texttt{Source}-like catalogs of detections in PVIs are analogous to the \texttt{Source} catalogs of future Data Releases and distinct from the difference-image \texttt{DiaSource} catalogs produced by Alert Production.
-They are an interim measure until DR1 catalog coverage supersedes them and are distributed only as per-image Butler datasets and will not be accessible via database queries.
-Although not strictly embargoed, for the sake of self-consistency, they will be released with their corresponding PVIs after the 80-hour embargo expires.
+Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and currently the highest priority, ahead of DP2 (\S~\ref{ssec:dp2}), with public availability expected in the \ppdbdate\ time range.
+In early October, however, the PPDB was not mature enough to give the community four weeks' advance notice of its release.
+The observatory had been off sky for three months with no confirmed date for resuming on-sky observations, and without live data the nightly APDB-to-PPDB update cycle could not be tested under operational conditions.
+Once observing resumes, a further 1--2 weeks of on-sky data will be needed for validation before release.
+The situation will be reviewed in the last week of October, when the PPDB release date will be set.
+If the observatory is still off sky at that point, DP2 may take priority over the PPDB.
