@@ -145,13 +145,18 @@ The overall data model and the schemas of these tables have evolved somewhat fro
 the updated data model has not yet been released, but will be available on the Rubin schema browser in advance of the initial PPDB release.
 Query services for PPDB catalogs are described in \S\,\ref{ses:access}.
 
-Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and the current highest priority.
-In early October
-It is expected to be delivered before DP2 (\S~\ref{ssec:dp2})  in the \ppdbdate\ time range.
-
 Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and currently the highest priority, ahead of DP2 (\S~\ref{ssec:dp2}), with public availability expected in the \ppdbdate\ time range.
 In early October, however, the PPDB was not mature enough to give the community four weeks' advance notice of its release.
-The observatory had been off sky for three months with no confirmed date for resuming on-sky observations, and without live data the nightly APDB-to-PPDB update cycle could not be tested under operational conditions.
+The observatory had been off sky for three months from  \elninooffsky with no confirmed date for resuming on-sky observations, and without live data the nightly APDB-to-PPDB update cycle could not be tested under operational conditions.
+Loading the historical data has been tested and works as expeected.
+Development work is continuing on two key items:
+\begin{itemize}
+  \item the daily Parquet extract of the previous night's updates, which will let data rights holders download new data through the RSP without repeated full table scans of the PPDB, and
+  \item the faster light curve extraction from the Cassandra-based backend, which is currently too slow for the volume of light curve queries expected.
+\end{itemize}
 Once observing resumes, a further 1--2 weeks of on-sky data will be needed for validation before release.
-The situation will be reviewed in the last week of October, when the PPDB release date will be set.
+The situation will be reviewed in the last week of October, and the PPDB release date will be set at that time
 If the observatory is still off sky at that point, DP2 may take priority over the PPDB.
+
+The first version of the PPDB will include all alert data from approximately September 2025 onward.
+These data have already been distributed to the community brokers.
