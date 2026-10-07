@@ -102,12 +102,13 @@ This approach is under investigation; deployment depends on demonstrating an acc
 \label{ssec:prompt-images}
 
 Prompt images comprise raw images, processed visit images (PVIs), and difference images.
-Difference image releases will each be accompanied by the template used to produce them; templates are not themselves prompt products but are required to interpret difference images.
+Difference image releases will each be accompanied by the template used to produce them.
+Templates are not themselves prompt products but are required to interpret difference images.
 Rubin plans to release PVIs and raw images from each night's observations, with difference images following as incremental templates are built and validated.
 
 PVIs and difference images are subject to the standard 80-hour embargo period (\S~\ref{ssec:impact}).
 Template images are formally subject to the same embargo, although in practice all constituent science images will have long since cleared the 80-hour window by the time a template is available.
-During the first six months of LSST operations, and throughout the preceding Early Optimization Phase, these products may be released with somewhat higher latency as Rubin scales up its data services.
+During the first year of LSST operations, and throughout the preceding Early Optimization Phase, these products may be released with somewhat higher latency as Rubin scales up its data services.
 
 Delivering prompt images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud, the same constraint driving the EDP2/DP2 split.
 As a result, prompt image delivery has been deprioritized relative to EDP2 and the PPDB, neither of which depends on hybrid cloud bandwidth.
@@ -122,7 +123,7 @@ They are an interim measure until DR1 catalog coverage supersedes them and are d
 Although not strictly embargoed, for the sake of self-consistency, they will be released with their corresponding PVIs after the 80-hour embargo expires.
 
 
-\subsection{Prompt Catalogs and the Prompt Products Database}
+\subsection{Prompt Catalogs and the Prompt Products Database (PPDB)}
 \label{ssec:ppdb}
 
 The Prompt Products Database (PPDB) serves as Rubin's real-time catalog of transient, variable, and moving-object detections, storing all prompt catalog data products and observation metadata and providing efficient access for scientific analysis.
@@ -145,18 +146,22 @@ The overall data model and the schemas of these tables have evolved somewhat fro
 the updated data model has not yet been released, but will be available on the Rubin schema browser in advance of the initial PPDB release.
 Query services for PPDB catalogs are described in \S\,\ref{ses:access}.
 
-Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and currently the highest priority, ahead of DP2 (\S~\ref{ssec:dp2}), with public availability expected in the \ppdbdate\ time range.
-In early October, however, the PPDB was not mature enough to give the community four weeks' advance notice of its release.
-The observatory had been off sky for three months from  \elninooffsky with no confirmed date for resuming on-sky observations, and without live data the nightly APDB-to-PPDB update cycle could not be tested under operational conditions.
-Loading the historical data has been tested and works as expeected.
-Development work is continuing on two key items:
+Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and currently the highest priority, ahead of DP2 (\S~\ref{ssec:dp2}), with public availability expected in the \ppdbdate time range.
+As of early October, however, the PPDB was not mature enough to give the community four weeks' advance notice of its release.
+The observatory had been off sky for three months from  \elninooffsky, due to an extreme weather event,  with no confirmed date for resuming on-sky observations.
+Without live data the nightly APDB-to-PPDB update cycle that keeps the PPDB current can not be tested under operational conditions.
+Loading the historical data has been tested and works as expected.
+In the interim, development work is continuing on two key items:
 \begin{itemize}
-  \item the daily Parquet extract of the previous night's updates, which will let data rights holders download new data through the RSP without repeated full table scans of the PPDB, and
-  \item the faster light curve extraction from the Cassandra-based backend, which is currently too slow for the volume of light curve queries expected.
+  \item the daily extract of the previous night's updates, which will let data rights holders download new data through the RSP (\secref{ssec:rsp}) without repeated full table scans of the PPDB, and
+  \item the faster light curve extraction, which is currently too slow for the volume of light curve queries expected.
 \end{itemize}
 Once observing resumes, a further 1--2 weeks of on-sky data will be needed for validation before release.
-The situation will be reviewed in the last week of October, and the PPDB release date will be set at that time
+The situation will be reviewed in the last week of October, and the PPDB release date will be set at that time.
+If the observatory comes online in early October, it may still be possible to release the PPDB in October, however without the four weeks notice period.
 If the observatory is still off sky at that point, DP2 may take priority over the PPDB.
 
 The first version of the PPDB will include all alert data from approximately September 2025 onward.
 These data have already been distributed to the community brokers.
+Access to the PPDB service requires data rights, but the data are public.
+Users without data rights can access the same data via the alert brokers.
