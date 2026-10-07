@@ -358,7 +358,7 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
  \\arrayrulecolor{{black}}\\hline
 \\end{{tabular}}}}
-\\caption{{Summary of the main data products expected in each data preview and early LSST data releases. A dark teal dot denotes confirmed data products whereas a gray dot denotes data products that currently remain a stretch goal.}}
+\\caption{{Summary of the main data products expected in each data preview and LSST DR1. A dark teal dot denotes confirmed data products whereas a gray dot denotes data products that currently remain a stretch goal.}}
 \\label{{tab:data-preview-summary}}
 \\end{{table}}"""
 
