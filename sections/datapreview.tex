@@ -1,29 +1,28 @@
-\section{Data Previews and Data Release 1}
+\section{Data Previews}
 \label{sec:datapreview}
 
-A series of three Data Previews (DP) and one Data Release (DR) are planned:
+A series of three Data Previews (DP) are planned:
 \begin{itemize}
 \item Data Preview 0 (DP0): Based on simulated LSST-like data.
 \item Data Preview 1 (DP1): Based on a subset of early science-grade commissioning data taken with LSSTComCam during commissioning.
 \item Data Preview 2 (DP2): Based on a full reprocessing of science-grade data taken with LSSTCam during commissioning and the Early Optimization phase until  the DP2 cutoff date, \dptwocutoffdate.
 DP2 will be delivered in two phases, EDP2 and DP2, as discussed in \S~\ref{ssec:dp2}.
-\item Data Release 1 (DR1): Based on the first year of LSST data.
 \end{itemize}
-Each successive Data Preview will demonstrate increasing levels of functionality and product maturity, progressively building toward the first full Data Release (DR1).
-Because the commissioning observation period is relatively short (\S~\ref{ssec:transition}), the Data Previews will necessarily cover smaller areas and shorter timescales than a standard Data Release.
+Each successive Data Preview will demonstrate increasing levels of functionality and product maturity, progressively building toward the first LSST release,  Data Release (DR1) \cite{RDO-011}.
+Because the commissioning observation period is relatively short (\S~\ref{ssec:transition}), the Data Previews will necessarily cover smaller areas and shorter timescales than an LSST Data Release.
 
 Successive data previews will exercise more and more functionality and products building up towards Data Release 1.
 Due to the relatively short time periods available for commissioning observations (\S~\ref{ssec:transition}), the Data Previews will necessarily be limited in their area and temporal coverage relative to a full Data Release.
 
-The data products that comprise the Data Previews and Data Releases are produced by the LSST Science Pipelines~\citep[][]{2019ASPC..523..521B,2018PASJ...70S...5B}.
-For an introduction to the LSST data products, see~\citet[][]{RubinDataProductsAbridged} and for a detailed description, see the LSST~\dpdd{},~\citeds{LSE-163}.
-Each Data Preview and LSST Data Release will be accompanied by its own release-specific documentation\footnote{For an example, see the online DP0.2 documentation {\url{https://dp0-2.lsst.io/data-products-dp0-2/}}.}, giving e.g. the  database schema for the catalogs included in that dataset.
-Table~\ref{tab:data-preview-summary} provides a summary of the expected early science data products available in DP0, DP1, DP2 and the LSST Data Release 1.
-Prior to DR1, not all columns described in the DPDD may be produced, depending on the quality and volume of the data from commissioning, and the maturity of the science pipelines.
+The data products that comprise the Data Previews are produced by the LSST Science Pipelines~\citep[][]{PSTN-019}.
+For an introduction to the LSST data products, see~\citet[][]{RubinDataProductsAbridged} and for a detailed description, see the LSST~\dpdd,~\citeds{LSE-163}.
+Each Data Preview will be accompanied by its own release-specific documentation\footnote{For an example, see the online DP0.2 documentation {\url{https://dp0-2.lsst.io/data-products-dp0-2/}}.}, giving e.g. the  database schema for the catalogs included in that dataset.
+Table~\ref{tab:data-preview-summary} provides a summary of the expected early science data products available in DP0, DP1, DP2. with a look forward to LSST Data Release 1.
+Not all catalog columns described in the \dpdd will necessarily be populated in each Data Preview; the exact set depends on the quality and volume of the commissioning data and the maturity of the science pipelines at the time of each release.
 All LSST data products will be subject to the embargo periods described in~\citeds{DMTN-199}; 30 days during commissioning and 80 hours during operations for pixel data.
 \input{tables/rubin_early_dr_scenario}
 
-The following sections outline which data products can be expected in each planned Data Preview and Data Release, and on what timescale.
+The following sections outline which data products can be expected in each planned Data Preview, and on what timescale.
 Table~\ref{tab:ops-timeline} in \S~\ref{sec:timeline} provides a combined view of the expected data preview schedule and associated uncertainties.
 
 \subsection{Data Preview 0}
@@ -189,22 +188,15 @@ Image quality during the Science Validation surveys was variable, and the PSF ex
 Some catalog columns described in the \dpdd{},~\citeds{LSE-163} may not be populated depending on the quality and volume of the input data and the maturity of the relevant pipeline algorithms.
 DP2-specific documentation, including the catalog schema and known issues, accompanies the release and can be found at \url{dp-2.lsst.io}
 
-\subsection{Data Release 1}
+\subsection{Looking Ahead to Data Release 1}
 \label{ssec:dr1}
 
-LSST Data Release 1 (DR1) will be the first Data Release in which all data products, as described in the \dpdd{},~\citeds{LSE-163}, are provided for the full LSST footprint \citep[][]{PSTN-056}.
-Table~\ref{tab:data-preview-summary} presents a summary of the data products expected in DR1.
+LSST Data Release 1 (DR1) will be the first release to deliver the full suite of data products described in the \dpdd{}~\citeds{LSE-163} across the LSST footprint \citep[][]{PSTN-056}.
+Table~\ref{tab:data-preview-summary} summarizes the data products expected in DR1.
 
-DR1 is currently envisaged as being based on approximately the first year of data taken as part of the LSST 10-year survey.
-However, the exact definition of the DR1 dataset remains an open topic of discussion, particularly in light of the early system optimization phase described in \S\ref{ssec:ops-lsst-start}.
-Because this optimization is expected to continue beyond the formal start of the LSST, the data quality and survey performance during early operations may not be fully representative of nominal survey conditions.
-In this context, it may be advantageous to define the start date for the DR1 dataset independently of the formal start of the LSST, particularly if the survey begins in a non-representative mode.
-This flexibility would enable the construction of a DR1 dataset that is optimally suited to early static  and non-time-critical time-domain science.
+DR1 is currently envisaged as being based on approximately the first year of LSST survey data.
+The exact definition of the DR1 dataset, however, remains under discussion, particularly given the early system optimization phase described in \S\ref{ssec:ops-lsst-start} and the extended period of lost observing time following the extreme weather event that took the observatory off sky on \elninooffsky.
+Data Release Processing of one year of LSST data is estimated to take approximately one year, implying a DR1 delivery roughly two years after the start date of the LSST.
 
-The criteria used to define (“cut”) the DR1 dataset are currently under active discussion.
-A proposal currently under consideration at Rubin advocates for a science-driven definition of DR1, rather than one based solely on an arbitrary calendar boundary.
-In this approach, the DR1 dataset is defined by the achievement of key survey milestones, such as reaching the nominal Year~1 depth across the survey footprint, acquiring sufficient observations to enable robust photometric and astrometric calibration, and generating adequate template coverage over the full sky area.
-Within this framework, the temporal span of DR1 would be approximately one year, however the exact boundaries would be determined by survey performance and scientific readiness rather than a fixed calendar date, ensuring a more scientifically meaningful  Data Release.
-
-Data Release Processing of one year of LSST data is estimated to require approximately one year. 
-This implies an expected DR1 delivery approximately two years after the effective start date for the DR1 dataset.
+DR1 falls outside the scope of the Early Science Program; its definition and all associated community communication will be led by the Rubin Operations Data Release Board.
+.
