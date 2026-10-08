@@ -26,6 +26,8 @@ milestones:
   rfldate: "2025-06-23"
   opsstartdate: "2025-10-25"
   lsststartdate: "2026-06-29"
+  elninooffsky: "2026-07-15"
+  elninoonsky: "TBD"
 
 # ---------------------------------------------------------------------------
 # Data and service release events (datarelease, prompt):

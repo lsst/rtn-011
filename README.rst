@@ -82,3 +82,13 @@ To update to a newer version of `lsst-texmf`_, you can update the submodule in t
 Commit, then push, the updated submodule.
 
 .. _lsst-texmf: https://github.com/lsst/lsst-texmf
+
+Producing the parameters file
+-----------------------------
+
+Many parameters in the DP2 paper are auto generated from values in data.parameters.yaml
+
+To generate the parameters.tex file
+
+.. uv run python bin/dp2_parameters.py --static-only
+
