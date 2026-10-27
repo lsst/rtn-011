@@ -42,7 +42,7 @@ Templates will be constructed once sufficient high-quality visits have been accu
 However, the production and scientific use of these templates must be understood within the broader operational realities of early survey execution.
 
 The guiding principle for Y1 is that system calibration and survey integrity take precedence over alert production.
-Following the guidance of the SCOC in Section 3.8 of \citeds{PSTN-056}, stating that releasing some alerts in Y1 is an important goal, but that this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.
+The SCOC states in Section~3.8 of \citeds{PSTN-056} that releasing some alerts in Y1 is an important goal, but that this objective must not override the priority of delivering a fully calibrated and stable system by the end of Y1.
 
 Templates will be generated once a field has accumulated a sufficient number of visits of adequate image quality with stable and validated calibration and passing defined quality thresholds.
 
@@ -53,7 +53,7 @@ In practice, however, incremental template generation is effectively a race betw
 If sufficient visits are not accumulated and processed before a field sets, alerts for that field will not be issued until the next seasonal revisit.
 Given realistic Y1 conditions, this outcome is expected to be common.
 
-Operational Constraints in Year 1 include several factors  that limit the likelihood of widespread same-season template use, including
+Operational Constraints in Year 1 include several factors that limit the likelihood of widespread same-season template use.
 
 \begin{itemize}
 \item Survey speed and observing efficiency.
@@ -112,7 +112,7 @@ During the first year of LSST operations, and throughout the preceding Early Opt
 
 Delivering prompt images requires sufficient hybrid cloud bandwidth between the USDF and Google Cloud, the same constraint driving the EDP2/DP2 split.
 As a result, prompt image delivery has been deprioritized relative to EDP2 and the PPDB, neither of which depends on hybrid cloud bandwidth.
-Prompt images are expected to become publicly available in the \npcdate time range, following delivery of EDP2 (\S~\ref{ssec:dp2}) and the PPDB (\S~\ref{ssec:ppdb}).
+Prompt images are expected to become publicly available in the \npcdate time range, following delivery of DP2 (\S~\ref{ssec:dp2}) and the PPDB (\S~\ref{ssec:ppdb}).
 
 \subsection{Prompt Direct Catalogs}
 \label{ssec:prompt-direct-catalogs}
@@ -144,20 +144,22 @@ The key tables provided will be the following:
 \end{itemize}
 The overall data model and the schemas of these tables have evolved somewhat from the version presented in the DPDD and those in previous Data Previews;
 the updated data model has not yet been released, but will be available on the Rubin schema browser in advance of the initial PPDB release.
-Query services for PPDB catalogs are described in \S\,\ref{ses:access}.
-
-Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and currently the highest priority, ahead of DP2 (\S~\ref{ssec:dp2}), with public availability expected in the \ppdbdate time range.
-As of early October, however, the PPDB was not mature enough to give the community four weeks' advance notice of its release.
-The observatory had been off sky for three months from  \elninooffsky due to an extreme weather event,  with no confirmed date for resuming on-sky observations.
-Without live data the nightly APDB-to-PPDB update cycle that keeps the PPDB current can not be tested under operational conditions.
-Loading the historical data has been tested and works as expected.
-
-Once observing resumes, a further 1--2 weeks of on-sky data will be needed for validation before release.
-The situation will be reviewed in the last week of October, and the PPDB release date will be set at that time.
-If the observatory comes online in early October, it may still be possible to release the PPDB in October, however without the four weeks notice period.
-If the observatory is still off sky at that point, DP2 may take priority over the PPDB.
+Query services for PPDB catalogs are described in \S\,\ref{sec:access}.
 
 The first version of the PPDB will include all alert data from approximately September 2025 onward.
 These data have already been distributed to the community brokers.
 Access to the PPDB service requires data rights, but the data are public.
 Users without data rights can access the same data via the alert brokers.
+
+Following the delivery of EDP2 (\S~\ref{sssec:edp2}) on \edptwodate, the PPDB is the next delivery milestone and currently the highest priority, ahead of DP2 (\S~\ref{ssec:dp2}).
+The PPDB is scheduled for release on \ppdbdate.
+%, with public availability expected in the \ppdbdate time range.
+%As of early October, however, the PPDB was not mature enough to give the community four weeks' advance notice of its release.
+%The observatory had been off sky for three months from  \elninooffsky due to an extreme weather event,  with no confirmed date for resuming on-sky observations.
+%Without live data the nightly APDB-to-PPDB update cycle that keeps the PPDB current can not be tested under operational conditions.
+%Loading the historical data has been tested and works as expected.
+
+%Once observing resumes, a further 1--2 weeks of on-sky data will be needed for validation before release.
+%The situation will be reviewed in the last week of October, and the PPDB release date will be set at that time.
+%If the observatory comes online in early October, it may still be possible to release the PPDB in October, however without the four weeks notice period.
+%If the observatory is still off sky at that point, DP2 may take priority over the PPDB.
