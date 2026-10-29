@@ -27,7 +27,7 @@ milestones:
   opsstartdate: "2025-10-25"
   lsststartdate: "2026-06-29"
   elninooffsky: "2026-07-15"
-  elninoonsky: "TBD"
+  elninoonsky: "2026-10-27"
 
 # ---------------------------------------------------------------------------
 # Data and service release events (datarelease, prompt):
