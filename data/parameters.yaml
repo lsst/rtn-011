@@ -115,7 +115,7 @@ datarelease:
       date:
         value: "2026-07-27"
         latex_string: edptwodate
-      color: TLOrange3
+      color: RubinDarkTeal
       description: "LSSTCam Science Validation Data"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
@@ -126,7 +126,7 @@ datarelease:
         value: "2026-07/2026-12"
         latex_string: dptwofulldaterange
       date:
-        value: "2026-12"
+        value: "2026-12-15"
         latex_string: dptwodate
       color: TLOrange3
       science_visit_start_date:
