@@ -123,7 +123,7 @@ datarelease:
     - key: DP2
       name: "Data Preview 2"
       full_date-range:
-        value: "2026-07/12"
+        value: "2026-07/2026-12"
         latex_string: dptwofulldaterange
       date:
         value: "2026-12-15"
