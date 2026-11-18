@@ -96,7 +96,7 @@ There were  no cell-based coadds in DP1, nor \texttt{ShearObject} catalog.
 
 Data Preview 2 (DP2) will provide the first large-area, multiband dataset generated from a subset of science-grade astronomically useful images taken during the LSSTCam on-sky commissioning campaign between \startsciencelsstcam and \finonskylsstcam (\S~\ref{ssec:commissioning-lsstcam}), supplemented by observations taken between \opsstartdate  and  \dptwocutoffdate during the Early Optimization Phase.
 This commissioning and early operations dataset was reprocessed during late 2025 and early 2026 to produce the DP2 data products.
-Data processing completed in April 2026 and the products are currently undergoing detailed validation and preparation for release via the RSP (\S\,\ref{ssec:rsp}).
+Data processing completed in April 2026.
 The full definition and production plan for DP2 is described in \citeds{RTN-111}.
 
 DP2 is being delivered in two phases in the \dptwofulldaterange window.
@@ -110,11 +110,9 @@ Engineering work to address this, including installation of new network switches
 Deep coadd images are unaffected as they are hosted directly in Google Cloud\footnote{As will be the case for all future Data Releases.} and were delivered in EDP2 without reliance on hybrid cloud readiness.
 Serving DP2 raw, processed visit, and template images required the hybrid system to be tested at scale; sufficient performance has been confirmed and DP2 will follow once the remaining work, producing the templates in LSST image format, is complete.
 
-EDP2 was released on \edptwodate, with DP2 expected to follow in \dptwodate.
+EDP2 was released on \edptwodate, with DP2 planned for release on \dptwodate.
 Following an extreme weather event, the observatory went  off sky on \elninooffsky, and  resumed on-sky observations on \elninoonsky.
 As DP2 is built from data already taken, work on DP2 continued during the outage.
-
-
 
 \subsubsection{Dataset Definition}
 \label{sssec:dp2-sky}
@@ -156,11 +154,11 @@ Table \ref{tab:dp1_fields_in_dp2} details the number of visits in DP2 that overl
 \label{sssec:edp2}
 
 EDP2 includes \textbf{all} catalog data products derived from the DRP reprocessing of the DP2 dataset, plus the deep coadd images; visit-level images and template coadds are not available until DP2 (\S~\ref{sssec:dp2-full}).
-Deep coadd images will be distributed in a new \texttt{LSST images} FITS-based format, which enables more efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of details of the LSST science pipelines, supporting long-term archival use.
+Deep coadd images are distributed in the new \texttt{LSST images} FITS-based format, which enables more efficient bulk data access and embeds WCS, PSF models, and photometric calibration metadata in a manner that is independent of details of the LSST science pipelines, supporting long-term archival use.
 
 New in DP2 are cell-based coadds \citep[][]{DMTN-015, SITCOMTN-137, SITCOMTN-162}, a Rubin/LSST image coaddition product in which a survey patch is subdivided into small spatial cells, and each cell is independently coadded using only fully overlapping input exposures to ensure a well-defined, spatially uniform PSF and weighting within the cell.
 The driving motivation for cell-based coadds is to improve the accuracy and stability of precision measurements by controlling PSF variation and edge effects that arise in standard coadds.
-Together with cell-based coadds, EDP2 will deliver the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citeds{LSE-163}.
+Together with cell-based coadds, EDP2 delivered the first version of the \texttt{ShearObject} catalog, a shape-measurement catalog designed to support weak gravitational lensing measurements \dpdd{},~\citeds{LSE-163}.
 
 Solar System processing in DP2 follows the same simplified approach as for DP1 relative to the full Rubin DRP Solar System Processing (SSP) framework.
 In its full form, SSP is designed to produce a Rubin-only product, beginning without reliance on the Minor Planet Center (MPC) catalog used in Prompt Processing.

@@ -27,10 +27,11 @@ During commissioning, templates were generated incrementally based on the availa
 Due to a slower-than-expected rate of data taking, this yielded usable templates for several Deep Drilling fields and several hundred deg$^{\rm 2}$ of the wide SV survey.
 
 The first Rubin alerts began \rubinfirstalerts{} and initially used templates derived solely from the DDFs, which remained observable through the end of 2025.
-Rubin is scaling up alert production during 2026 over a progressively increasing fraction of the sky, as additional incremental templates become available.
+Rubin has been scaling up alert production during 2026 over a progressively increasing fraction of the sky, as additional incremental templates become available and will continue to do so until DRP templates for the full sky are available.
 The template coverage map can be found at \url{ls.st/template-coverage}.
 Alerts generated during Early Operations may be produced with higher latency.
-Access to images (\S\ref{ssec:prompt-images}) and the PPDB (\S\ref{ssec:ppdb}) were not available initially when the alert stream became active, but will be phased in during 2026 as discussed below.
+Access to images (\S\ref{ssec:prompt-images}) and the PPDB (\S\ref{ssec:ppdb}) were not available initially when the alert stream became active.
+The PPDB is scheduled for delivery on \ppdbdate and the prompt images in  \npcdate.
 
 During the Commissioning and Early Operations periods, alert packets for moving objects may not include the associated historical source records, and parameters such as phase curve slope (G) will be empty (null) until sufficient detections exist to derive them.
 Solar System discoveries will be reported to the Minor Planet Center on an ad-hoc basis during Early Operations, with a goal of increased automation as alert production becomes routine.
@@ -94,7 +95,7 @@ However, realistic operational constraints make widespread same-season template 
 Alert production in Y1 will be limited and opportunistic, with calibration stability and survey quality remaining the overriding priorities.
 
 \subsubsection{Using external templates}
-Some new external drivers, including the upcoming six-month LIGO-Virgo-KAGRA (LVK) run ``IR1,” provide motivation to consider deploying DECam-based templates in Alert Production.
+Some new external drivers, including the upcoming six-month LIGO-Virgo-KAGRA (LVK) run ``IR1" in early 2027, provide motivation to consider deploying DECam-based templates in Alert Production.
 These would allow the alert system to build operational history, validate performance, and demonstrate readiness ahead of full LSST alert volumes.
 This approach is under investigation; deployment depends on demonstrating an acceptably low rate of false positives.
 
