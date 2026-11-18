@@ -73,7 +73,8 @@ class RTN011Parameters:
         # Prompt product events
         self._prompt: list[dict[str, Any]] = raw.get("prompt", [])
 
-        # All top-level events combined, sorted chronologically by start date
+        # All top-level events combined, sorted chronologically by start date.
+        # Derive color from delivered flag: no color field in YAML.
         def _date_sort_key(event: dict) -> str:
             value = event["date"]["value"]
             return "9999-99-99" if value == "TBD" else value.split("/")[0]
@@ -81,6 +82,8 @@ class RTN011Parameters:
         self._events: list[dict[str, Any]] = sorted(
             self._datarelease + self._prompt, key=_date_sort_key
         )
+        for event in self._events:
+            event["color"] = "RubinDarkTeal" if event.get("delivered", False) else "TLOrange3"
 
         # Combined lookup by latex_string name for __getattr__
         self._by_latexstring: dict[str, str] = dict(self._dates)

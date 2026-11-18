@@ -71,7 +71,7 @@ datarelease:
       date:
         value: "2023-06-30"
         latex_string: dpzerodate
-      color: RubinDarkTeal
+      delivered: true
       sub_releases:
         - key: DP0.1
           name: "Data Preview 0.1"
@@ -105,7 +105,7 @@ datarelease:
       date:
         value: "2025-06-30"
         latex_string: dponedate
-      color: RubinDarkTeal
+      delivered: true
       description: "LSST ComCam Science Validation Data"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   X,   T,   T,   T,   X,   T,   T,   T]
@@ -115,7 +115,7 @@ datarelease:
       date:
         value: "2026-07-27"
         latex_string: edptwodate
-      color: RubinDarkTeal
+      delivered: true
       description: "LSSTCam Science Validation Data"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
@@ -128,7 +128,6 @@ datarelease:
       date:
         value: "2026-12-15"
         latex_string: dptwodate
-      color: TLOrange3
       science_visit_start_date:
         value: "2025-04-24"
         latex_string: dptwostartdate
@@ -144,9 +143,9 @@ datarelease:
       date:
         value: "2028-07/2028-11"
         latex_string: dronedate
-      color: TLOrange3
       description: "LSST Year 1 Data"
       date_label: "LSST start + 2 yrs"
+      early_science: false
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
@@ -159,7 +158,7 @@ prompt:
     date:
       value: "2026-02-24"
       latex_string: rubinfirstalerts
-    color: RubinDarkTeal
+    delivered: true
     description: "Rubin First Alerts Data"
 
   - key: NPC
@@ -167,12 +166,10 @@ prompt:
     date:
       value: "2027-01/2027-03"
       latex_string: npcdate
-    color: TLOrange3
 
   - key: PPDB
     name: "PPDB Release"
     date:
       value: "2026-11-30"
       latex_string: ppdbdate
-    color: TLOrange3
     description: "Prompt Products database"

@@ -16,6 +16,7 @@ from lsst.texmf.tables import (
     make_dp1_fields_in_dp2_table,
     make_dp1_visits_table,
     make_dr_scenario_table,
+    make_early_science_status_table,
     make_ops_timeline_table,
     make_pp_scenario_table,
 )
@@ -32,6 +33,7 @@ def main() -> None:
     params = RTN011Parameters()
     params.write()
 
+    write(TABLES_DIR / "early_science_status.tex",   make_early_science_status_table(params))
     write(TABLES_DIR / "rubin_ops_timeline.tex",    make_ops_timeline_table(params))
     write(TABLES_DIR / "rubin_early_dr_scenario.tex", make_dr_scenario_table(params))
     write(TABLES_DIR / "rubin_early_pp_scenario.tex", make_pp_scenario_table())

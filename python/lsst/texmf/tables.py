@@ -25,6 +25,7 @@ __all__ = [
     "make_dp1_fields_in_dp2_table",
     "make_dp1_visits_table",
     "make_dr_scenario_table",
+    "make_early_science_status_table",
     "make_ops_timeline_table",
     "make_pp_scenario_table",
 ]
@@ -117,8 +118,6 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
 
     event_rows = []
     for event in params.events:
-        if "color" not in event:
-            continue
         desc = event["name"].replace("&", r"\&")
         event_rows.append(
             _timeline_row(event["key"], desc, _event_date(event), event["color"]) + "\n\\\\\\hline"
@@ -128,6 +127,8 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
 
     return f"""{AUTOGEN_STR}
 \\begin{{table}}
+\\caption{{Rubin Operations Key Milestones for Early Science. Dark teal boxes indicate milestones that have been achieved, whereas orange boxes indicate best-estimate ranges at the time of writing.}}
+\\label{{tab:ops-timeline}}
 \\centering
 \\fontsize{{6}}{{10}}\\selectfont
 \\setlength{{\\tabcolsep}}{{1.2pt}}
@@ -155,8 +156,59 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
  \\\\ \\arrayrulecolor{{black}}\\hline\\hline
 
 \\end{{tabular}}}}
-\\caption{{Rubin Operations Key Milestones for Early Science. Dark teal boxes indicate milestones that have been achieved, whereas orange boxes indicate best-estimate ranges at the time of writing.}}
-\\label{{tab:ops-timeline}}
+\\end{{table}}
+"""
+
+
+# ---------------------------------------------------------------------------
+# Early Science status summary table (for intro section)
+# ---------------------------------------------------------------------------
+
+def make_early_science_status_table(params: RTN011Parameters) -> str:
+    """Generate ``tables/early_science_status.tex``.
+
+    A compact three-column table (Milestone, Date, Status) placed in the
+    introduction.  Status is color-coded: delivered events use RubinDarkTeal,
+    planned events use TLOrange3.  Toggle status by setting ``delivered: true``
+    on an event in parameters.yaml.
+    """
+    def _status(delivered: bool) -> str:
+        if delivered:
+            return r"{\color{RubinDarkTeal}\textbf{Delivered}}"
+        return r"{\color{TLOrange3}\textbf{Planned}}"
+
+    rows = []
+    for event in params.events:
+        if not event.get("early_science", True):
+            continue
+        delivered = event.get("delivered", False)
+        subs = event.get("sub_releases")
+        if subs:
+            for sub in subs:
+                name = sub["name"].replace("&", r"\&")
+                date = to_short_month_year(sub["date"]["value"])
+                rows.append(f"    {name} & {date} & {_status(delivered)} \\\\")
+        else:
+            name = event["name"].replace("&", r"\&")
+            date = to_short_month_year(_event_date(event))
+            rows.append(f"    {name} & {date} & {_status(delivered)} \\\\")
+
+    rows_str = "\n\\arrayrulecolor{gray}\\hline\n".join(rows)
+
+    return f"""{AUTOGEN_STR}
+\\begin{{table}}[h!]
+\\caption{{Early Science Program milestones. \\color{{RubinDarkTeal}}\\textbf{{Delivered}}\\color{{black}}\\ indicates milestones that have been achieved; \\color{{TLOrange3}}\\textbf{{Planned}}\\color{{black}}\\ indicates best-estimate dates at the time of writing.}}
+\\label{{tab:early-science-milestones}}
+\\centering
+\\setlength{{\\tabcolsep}}{{6pt}}
+{{\\renewcommand{{\\arraystretch}}{{1.4}}
+\\begin{{tabular}}{{|l|l|l|}}
+\\hline\\hline
+\\textbf{{Release}} & \\textbf{{Date}} & \\textbf{{Status}} \\\\
+\\hline\\hline
+{rows_str}
+\\arrayrulecolor{{black}}\\hline
+\\end{{tabular}}}}
 \\end{{table}}
 """
 
@@ -358,6 +410,8 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
     return f"""{AUTOGEN_STR}
 \\begin{{table}}[hbt!]
+\\caption{{Summary of the main data products expected in each data preview and LSST DR1. A dark teal dot denotes confirmed data products whereas a gray dot denotes data products that currently remain a stretch goal.}}
+\\label{{tab:data-preview-summary}}
 \\centering
 \\fontsize{{7}}{{10}}\\selectfont
 \\setlength{{\\tabcolsep}}{{8pt}}
@@ -379,8 +433,6 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
  \\arrayrulecolor{{black}}\\hline
 \\end{{tabular}}}}
-\\caption{{Summary of the main data products expected in each data preview and LSST DR1. A dark teal dot denotes confirmed data products whereas a gray dot denotes data products that currently remain a stretch goal.}}
-\\label{{tab:data-preview-summary}}
 \\end{{table}}"""
 
 
