@@ -47,51 +47,72 @@ AUTOGEN_STR = "%%% This table is auto-generated from data/parameters.yaml -- DO 
 # Timeline table
 # ---------------------------------------------------------------------------
 
-_TIMELINE_YEARS = (2025, 2026, 2027, 2028)
+# (year, months): months is a list of 1-based month numbers shown as columns.
+# A partial entry like (2023, [6]) contributes only that month as a column.
+_YEAR_MONTHS: list[tuple[int, list[int]]] = [
+    (2023, [5, 6, 7]),
+    (2025, list(range(1, 13))),
+    (2026, list(range(1, 13))),
+    (2027, list(range(1, 13))),
+    (2028, list(range(1, 13))),
+]
 
-_MONTH_COL = (
-    r"p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule}"
-    r"p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule}p{1mm} !{\color{gray}\vrule} "
-    r"p{1mm} !{\color{gray}\vrule}p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule} "
-    r"p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule} p{1mm}|"
-)
+_MONTH_LABELS = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+_MONTH_ABBREV = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def _month_col_spec(months: list[int]) -> str:
+    """LaTeX column spec for a group of month columns separated by gray rules."""
+    n = len(months)
+    if n == 1:
+        return "p{1mm}|"
+    sep = r" !{\color{gray}\vrule} "
+    return sep.join(["p{1mm}"] * n) + "|"
+
+
+def _year_header(year: int, months: list[int]) -> str:
+    """LaTeX multicolumn header for one year (or partial year)."""
+    n = len(months)
+    if n == 12:
+        return f"& \\multicolumn{{12}}{{c|}}{{\\textbf{{{year}}}}}"
+    return f"& \\multicolumn{{{n}}}{{c|}}{{\\textbf{{{year}}}}}"
 
 
 def _timeline_row(key: str, label: str, value: str, color: str) -> str:
     """Build one data row for the timeline table."""
-    start_year = _TIMELINE_YEARS[0]
-    end_year   = _TIMELINE_YEARS[-1]
-    cells = colored_month_cells(value, start_year, end_year, color)
+    cells = colored_month_cells(value, _YEAR_MONTHS, color)
     display = to_short_month_year(value)
 
     parts = [f"\\tiny {label} & \\tiny {key} & \\tiny {display}"]
-    for yi, year in enumerate(_TIMELINE_YEARS):
-        group = cells[yi * 12 : (yi + 1) * 12]
+    idx = 0
+    for year, months in _YEAR_MONTHS:
+        n = len(months)
+        group = cells[idx:idx + n]
+        idx += n
         parts.append("    & " + " & ".join(group) + f"   % {year}")
     return "\n".join(parts)
 
 
 def make_ops_timeline_table(params: RTN011Parameters) -> str:
     """Generate ``tables/rubin_ops_timeline.tex``."""
-    n_years = len(_TIMELINE_YEARS)
-    total_cols = 3 + n_years * 12  # 51
+    total_cols = 3 + sum(len(ms) for _, ms in _YEAR_MONTHS)
 
     indent = "      "
     col_spec_years = "\n".join(
-        f"{indent * (i + 1)}{_MONTH_COL}  % {year}"
-        for i, year in enumerate(_TIMELINE_YEARS)
+        f"{indent * (i + 1)}{_month_col_spec(months)}  % {year}"
+        for i, (year, months) in enumerate(_YEAR_MONTHS)
     )
 
     year_headers = "\n     ".join(
-        f"& \\multicolumn{{12}}{{c|}}{{\\textbf{{{year}}}}}"
-        for year in _TIMELINE_YEARS
+        _year_header(year, months) for year, months in _YEAR_MONTHS
     )
 
     month_labels_block = "\n".join(
         "        &  " + " & ".join(
-            r"\scalebox{.7}  " + m for m in ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+            r"\scalebox{.7}  " + _MONTH_LABELS[m - 1] for m in months
         ) + f"    % {year}"
-        for year in _TIMELINE_YEARS
+        for year, months in _YEAR_MONTHS
     )
 
     event_rows = []

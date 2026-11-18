@@ -77,7 +77,8 @@ def to_year(value: str) -> int | None:
 def to_short_month_year(value: str) -> str:
     """Format value as short display string.
 
-    - ``YYYY-MM-DD`` or ``YYYY-MM`` → "Mon YYYY"
+    - ``YYYY-MM-DD`` → "D Mon YYYY" (exact date)
+    - ``YYYY-MM`` → "Mon YYYY"
     - ``YYYY-MM/YYYY-MM`` → "Mon -- Mon YYYY" (same year) or
       "Mon YYYY -- Mon YYYY" (different years)
     - ``TBD`` → "TBD"
@@ -85,7 +86,10 @@ def to_short_month_year(value: str) -> str:
     if value == "TBD":
         return "TBD"
     if not is_range(value):
-        return _to_time(value).strftime("%b %Y")
+        t = _to_time(value)
+        if value.count("-") == 2:
+            return f"{t.datetime.day} {t.strftime('%b')} {t.datetime.year}"
+        return t.strftime("%b %Y")
     start, end = parse_range(value)
     ts, te = _to_time(start), _to_time(end)
     s_year, e_year = ts.datetime.year, te.datetime.year
@@ -113,47 +117,47 @@ def to_long_month_year(value: str) -> str:
     return f"{ts.strftime('%B')} {s_year} -- {te.strftime('%B')} {e_year}"
 
 
-def colored_month_cells(value: str, start_year: int, end_year: int, color: str) -> list[str]:
-    """Return a list of cell strings (one per month) for the timeline grid.
-
-    The list covers start_year January through end_year December.
-    Cells for the date or date range carry ``\\cellcolor{color}``; all
-    others are empty strings.
+def colored_month_cells(
+    value: str,
+    year_months: list[tuple[int, list[int]]],
+    color: str,
+) -> list[str]:
+    """Return a list of cell strings, one per shown (year, month) slot.
 
     Parameters
     ----------
     value : `str`
         ISO 8601 date, date range, or ``"TBD"``.
-    start_year : `int`
-        First year of the grid (January of this year is index 0).
-    end_year : `int`
-        Last year of the grid (December of this year is the final cell).
+    year_months : `list` of ``(year, months)``
+        Pairs defining which cells exist in the grid.  ``months`` is a
+        list of 1-based month numbers shown as columns for that year.
     color : `str`
         LaTeX color name applied to cells matching the date or range.
 
     Returns
     -------
     cells : `list` [`str`]
-        Flat list of length ``(end_year - start_year + 1) * 12``.
+        Flat list with one entry per slot defined by *year_months*.
     """
-    n_years = end_year - start_year + 1
-    cells = [""] * (n_years * 12)
+    cells = [""] * sum(len(ms) for _, ms in year_months)
 
     if value == "TBD":
         return cells
 
-    def _set(year: int, month: int) -> None:
-        if start_year <= year <= end_year:
-            cells[(year - start_year) * 12 + (month - 1)] = f"\\cellcolor{{{color}}}"
-
     start, end = parse_range(value)
     s_year, s_month, _ = _parse_iso_date(start)
     e_year, e_month, _ = _parse_iso_date(end)
-    for y in range(s_year, e_year + 1):
-        m0 = s_month if y == s_year else 1
-        m1 = e_month if y == e_year else 12
-        for m in range(m0, m1 + 1):
-            _set(y, m)
+
+    idx = 0
+    for year, months in year_months:
+        for month in months:
+            in_range = (
+                (year > s_year or (year == s_year and month >= s_month))
+                and (year < e_year or (year == e_year and month <= e_month))
+            )
+            if in_range:
+                cells[idx] = f"\\cellcolor{{{color}}}"
+            idx += 1
 
     return cells
 
