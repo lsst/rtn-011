@@ -172,10 +172,19 @@ def make_early_science_status_table(params: RTN011Parameters) -> str:
     planned events use TLOrange3.  Toggle status by setting ``delivered: true``
     on an event in parameters.yaml.
     """
-    def _status(delivered: bool) -> str:
+    def _status(delivered: bool, date_value: str = "") -> str:
         if delivered:
             return r"{\color{RubinDarkTeal}\textbf{Delivered}}"
-        return r"{\color{TLOrange3}\textbf{Planned}}"
+        if "/" in date_value:
+            return r"{\color{TLOrange3}\textbf{Forecast}}"
+        return r"{\color{TLOrange2}\textbf{Planned}}"
+
+    def _secref(ref) -> str:
+        if not ref:
+            return ""
+        if isinstance(ref, list):
+            return ", ".join(f"\\S\\,\\ref{{{r}}}" for r in ref)
+        return f"\\S\\,\\ref{{{ref}}}"
 
     rows = []
     for event in params.events:
@@ -186,25 +195,31 @@ def make_early_science_status_table(params: RTN011Parameters) -> str:
         if subs:
             for sub in subs:
                 name = sub["name"].replace("&", r"\&")
-                date = to_short_month_year(sub["date"]["value"])
-                rows.append(f"    {name} & {date} & {_status(delivered)} \\\\")
+                key = sub["key"]
+                date_value = sub["date"]["value"]
+                date = to_short_month_year(date_value)
+                sec = _secref(sub.get("section_ref", ""))
+                rows.append(f"    {name} & {key} & {date} & {_status(delivered, date_value)} & {sec} \\\\")
         else:
             name = event["name"].replace("&", r"\&")
-            date = to_short_month_year(_event_date(event))
-            rows.append(f"    {name} & {date} & {_status(delivered)} \\\\")
+            key = event["key"]
+            date_value = _event_date(event)
+            date = to_short_month_year(date_value)
+            sec = _secref(event.get("section_ref", ""))
+            rows.append(f"    {name} & {key} & {date} & {_status(delivered, date_value)} & {sec} \\\\")
 
     rows_str = "\n\\arrayrulecolor{gray}\\hline\n".join(rows)
 
     return f"""{AUTOGEN_STR}
 \\begin{{table}}[h!]
-\\caption{{Early Science Program milestones. \\color{{RubinDarkTeal}}\\textbf{{Delivered}}\\color{{black}}\\ indicates milestones that have been achieved; \\color{{TLOrange3}}\\textbf{{Planned}}\\color{{black}}\\ indicates best-estimate dates at the time of writing.}}
+\\caption{{Early Science Program releases. \\color{{RubinDarkTeal}}\\textbf{{Delivered}}\\color{{black}}\\ indicates releases that have been achieved; \\color{{TLOrange2}}\\textbf{{Planned}}\\color{{black}}\\ indicates a committed delivery date; \\color{{TLOrange3}}\\textbf{{Forecast}}\\color{{black}}\\ indicates our current best estimate, expressed as a date range, which may change as uncertainties are resolved.}}
 \\label{{tab:early-science-milestones}}
 \\centering
 \\setlength{{\\tabcolsep}}{{6pt}}
 {{\\renewcommand{{\\arraystretch}}{{1.4}}
-\\begin{{tabular}}{{|l|l|l|}}
+\\begin{{tabular}}{{|l|l|l|l|l|}}
 \\hline\\hline
-\\textbf{{Release}} & \\textbf{{Date}} & \\textbf{{Status}} \\\\
+\\textbf{{Release}} & \\textbf{{Key}} & \\textbf{{Date}} & \\textbf{{Status}} & \\textbf{{Section}} \\\\
 \\hline\\hline
 {rows_str}
 \\arrayrulecolor{{black}}\\hline
