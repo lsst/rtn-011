@@ -25,6 +25,7 @@ __all__ = [
     "make_dp1_fields_in_dp2_table",
     "make_dp1_visits_table",
     "make_dr_scenario_table",
+    "make_early_science_status_table",
     "make_ops_timeline_table",
     "make_pp_scenario_table",
 ]
@@ -47,57 +48,76 @@ AUTOGEN_STR = "%%% This table is auto-generated from data/parameters.yaml -- DO 
 # Timeline table
 # ---------------------------------------------------------------------------
 
-_TIMELINE_YEARS = (2025, 2026, 2027, 2028)
+# (year, months): months is a list of 1-based month numbers shown as columns.
+# A partial entry like (2023, [6]) contributes only that month as a column.
+_YEAR_MONTHS: list[tuple[int, list[int]]] = [
+    (2023, [5, 6, 7]),
+    (2025, list(range(1, 13))),
+    (2026, list(range(1, 13))),
+    (2027, list(range(1, 13))),
+    (2028, list(range(1, 13))),
+]
 
-_MONTH_COL = (
-    r"p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule}"
-    r"p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule}p{1mm} !{\color{gray}\vrule} "
-    r"p{1mm} !{\color{gray}\vrule}p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule} "
-    r"p{1mm} !{\color{gray}\vrule} p{1mm} !{\color{gray}\vrule} p{1mm}|"
-)
+_MONTH_LABELS = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+_MONTH_ABBREV = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def _month_col_spec(months: list[int]) -> str:
+    """LaTeX column spec for a group of month columns separated by gray rules."""
+    n = len(months)
+    if n == 1:
+        return "p{1mm}|"
+    sep = r" !{\color{gray}\vrule} "
+    return sep.join(["p{1mm}"] * n) + "|"
+
+
+def _year_header(year: int, months: list[int]) -> str:
+    """LaTeX multicolumn header for one year (or partial year)."""
+    n = len(months)
+    if n == 12:
+        return f"& \\multicolumn{{12}}{{c|}}{{\\textbf{{{year}}}}}"
+    return f"& \\multicolumn{{{n}}}{{c|}}{{\\textbf{{{year}}}}}"
 
 
 def _timeline_row(key: str, label: str, value: str, color: str) -> str:
     """Build one data row for the timeline table."""
-    start_year = _TIMELINE_YEARS[0]
-    end_year   = _TIMELINE_YEARS[-1]
-    cells = colored_month_cells(value, start_year, end_year, color)
+    cells = colored_month_cells(value, _YEAR_MONTHS, color)
     display = to_short_month_year(value)
 
     parts = [f"\\tiny {label} & \\tiny {key} & \\tiny {display}"]
-    for yi, year in enumerate(_TIMELINE_YEARS):
-        group = cells[yi * 12 : (yi + 1) * 12]
+    idx = 0
+    for year, months in _YEAR_MONTHS:
+        n = len(months)
+        group = cells[idx:idx + n]
+        idx += n
         parts.append("    & " + " & ".join(group) + f"   % {year}")
     return "\n".join(parts)
 
 
 def make_ops_timeline_table(params: RTN011Parameters) -> str:
     """Generate ``tables/rubin_ops_timeline.tex``."""
-    n_years = len(_TIMELINE_YEARS)
-    total_cols = 3 + n_years * 12  # 51
+    total_cols = 3 + sum(len(ms) for _, ms in _YEAR_MONTHS)
 
     indent = "      "
     col_spec_years = "\n".join(
-        f"{indent * (i + 1)}{_MONTH_COL}  % {year}"
-        for i, year in enumerate(_TIMELINE_YEARS)
+        f"{indent * (i + 1)}{_month_col_spec(months)}  % {year}"
+        for i, (year, months) in enumerate(_YEAR_MONTHS)
     )
 
     year_headers = "\n     ".join(
-        f"& \\multicolumn{{12}}{{c|}}{{\\textbf{{{year}}}}}"
-        for year in _TIMELINE_YEARS
+        _year_header(year, months) for year, months in _YEAR_MONTHS
     )
 
     month_labels_block = "\n".join(
         "        &  " + " & ".join(
-            r"\scalebox{.7}  " + m for m in ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+            r"\scalebox{.7}  " + _MONTH_LABELS[m - 1] for m in months
         ) + f"    % {year}"
-        for year in _TIMELINE_YEARS
+        for year, months in _YEAR_MONTHS
     )
 
     event_rows = []
     for event in params.events:
-        if "color" not in event:
-            continue
         desc = event["name"].replace("&", r"\&")
         event_rows.append(
             _timeline_row(event["key"], desc, _event_date(event), event["color"]) + "\n\\\\\\hline"
@@ -107,6 +127,8 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
 
     return f"""{AUTOGEN_STR}
 \\begin{{table}}
+\\caption{{Rubin Operations Key Milestones for Early Science. Dark teal boxes indicate milestones that have been achieved, whereas orange boxes indicate best-estimate ranges at the time of writing.}}
+\\label{{tab:ops-timeline}}
 \\centering
 \\fontsize{{6}}{{10}}\\selectfont
 \\setlength{{\\tabcolsep}}{{1.2pt}}
@@ -134,8 +156,74 @@ def make_ops_timeline_table(params: RTN011Parameters) -> str:
  \\\\ \\arrayrulecolor{{black}}\\hline\\hline
 
 \\end{{tabular}}}}
-\\caption{{Rubin Operations Key Milestones for Early Science. Dark teal boxes indicate milestones that have been achieved, whereas orange boxes indicate best-estimate ranges at the time of writing.}}
-\\label{{tab:ops-timeline}}
+\\end{{table}}
+"""
+
+
+# ---------------------------------------------------------------------------
+# Early Science status summary table (for intro section)
+# ---------------------------------------------------------------------------
+
+def make_early_science_status_table(params: RTN011Parameters) -> str:
+    """Generate ``tables/early_science_status.tex``.
+
+    A compact three-column table (Milestone, Date, Status) placed in the
+    introduction.  Status is color-coded: delivered events use RubinDarkTeal,
+    planned events use TLOrange3.  Toggle status by setting ``delivered: true``
+    on an event in parameters.yaml.
+    """
+    def _status(delivered: bool, date_value: str = "") -> str:
+        if delivered:
+            return r"{\color{RubinDarkTeal}\textbf{Delivered}}"
+        if "/" in date_value:
+            return r"{\color{TLOrange3}\textbf{Forecast}}"
+        return r"{\color{TLOrange2}\textbf{Planned}}"
+
+    def _secref(ref) -> str:
+        if not ref:
+            return ""
+        if isinstance(ref, list):
+            return ", ".join(f"\\S\\,\\ref{{{r}}}" for r in ref)
+        return f"\\S\\,\\ref{{{ref}}}"
+
+    rows = []
+    for event in params.events:
+        if not event.get("early_science", True):
+            continue
+        delivered = event.get("delivered", False)
+        subs = event.get("sub_releases")
+        if subs:
+            for sub in subs:
+                name = sub["name"].replace("&", r"\&")
+                key = sub["key"]
+                date_value = sub["date"]["value"]
+                date = to_short_month_year(date_value)
+                sec = _secref(sub.get("section_ref", ""))
+                rows.append(f"    {name} & {key} & {date} & {_status(delivered, date_value)} & {sec} \\\\")
+        else:
+            name = event["name"].replace("&", r"\&")
+            key = event["key"]
+            date_value = _event_date(event)
+            date = to_short_month_year(date_value)
+            sec = _secref(event.get("section_ref", ""))
+            rows.append(f"    {name} & {key} & {date} & {_status(delivered, date_value)} & {sec} \\\\")
+
+    rows_str = "\n\\arrayrulecolor{gray}\\hline\n".join(rows)
+
+    return f"""{AUTOGEN_STR}
+\\begin{{table}}[h!]
+\\caption{{Early Science Program releases. \\color{{RubinDarkTeal}}\\textbf{{Delivered}}\\color{{black}}\\ indicates releases that have been achieved; \\color{{TLOrange2}}\\textbf{{Planned}}\\color{{black}}\\ indicates a committed delivery date; \\color{{TLOrange3}}\\textbf{{Forecast}}\\color{{black}}\\ indicates our current best estimate, expressed as a date range, which may change as uncertainties are resolved.}}
+\\label{{tab:early-science-milestones}}
+\\centering
+\\setlength{{\\tabcolsep}}{{6pt}}
+{{\\renewcommand{{\\arraystretch}}{{1.4}}
+\\begin{{tabular}}{{|l|l|l|l|l|}}
+\\hline\\hline
+\\textbf{{Release}} & \\textbf{{Key}} & \\textbf{{Date}} & \\textbf{{Status}} & \\textbf{{Section}} \\\\
+\\hline\\hline
+{rows_str}
+\\arrayrulecolor{{black}}\\hline
+\\end{{tabular}}}}
 \\end{{table}}
 """
 
@@ -337,6 +425,8 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
     return f"""{AUTOGEN_STR}
 \\begin{{table}}[hbt!]
+\\caption{{Summary of the main data products expected in each data preview and LSST DR1. A dark teal dot denotes confirmed data products whereas a gray dot denotes data products that currently remain a stretch goal.}}
+\\label{{tab:data-preview-summary}}
 \\centering
 \\fontsize{{7}}{{10}}\\selectfont
 \\setlength{{\\tabcolsep}}{{8pt}}
@@ -358,8 +448,6 @@ def make_dr_scenario_table(params: RTN011Parameters) -> str:
 
  \\arrayrulecolor{{black}}\\hline
 \\end{{tabular}}}}
-\\caption{{Summary of the main data products expected in each data preview and LSST DR1. A dark teal dot denotes confirmed data products whereas a gray dot denotes data products that currently remain a stretch goal.}}
-\\label{{tab:data-preview-summary}}
 \\end{{table}}"""
 
 

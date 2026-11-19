@@ -71,13 +71,14 @@ datarelease:
       date:
         value: "2023-06-30"
         latex_string: dpzerodate
-      color: RubinDarkTeal
+      delivered: true
       sub_releases:
         - key: DP0.1
           name: "Data Preview 0.1"
           date:
-            value: "2021-06"
+            value: "2021-06-30"
             latex_string: dpzeropointonedate
+          section_ref: "sec:dp01"
           description: "DC2 Simulated Sky Survey"
           #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
           data_product_status: [T,   T,   T,   X,   X,   T,   T,   T,   X,   X,   X,   X]
@@ -85,8 +86,9 @@ datarelease:
         - key: DP0.2
           name: "Data Preview 0.2"
           date:
-            value: "2022-06"
+            value: "2022-06-30"
             latex_string: dpzeropointtwodate
+          section_ref: "sec:dp02"
           description: "Reprocessed DC2 Sky Survey"
           #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
           data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   X,   T,   X,   X]
@@ -94,8 +96,9 @@ datarelease:
         - key: DP0.3
           name: "Data Preview 0.3"
           date:
-            value: "2023-06"
+            value: "2023-06-30"
             latex_string: dpzeropointthreedate
+          section_ref: "sec:dp03"
           description: "Solar System PPDB Simulation"
           #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
           data_product_status: [X,   X,   X,   X,   X,   X,   X,   X,   X,   X,   T,   X]
@@ -105,7 +108,8 @@ datarelease:
       date:
         value: "2025-06-30"
         latex_string: dponedate
-      color: RubinDarkTeal
+      delivered: true
+      section_ref: "ssec:dp1"
       description: "LSST ComCam Science Validation Data"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   X,   T,   T,   T,   X,   T,   T,   T]
@@ -115,20 +119,21 @@ datarelease:
       date:
         value: "2026-07-27"
         latex_string: edptwodate
-      color: TLOrange3
+      delivered: true
+      section_ref: "sssec:edp2"
       description: "LSSTCam Science Validation Data"
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [X,   X,   T,   X,   X,   T,   T,   T,   T,   T,   T,   T]
 
     - key: DP2
       name: "Data Preview 2"
+      section_ref: "ssec:dp2"
       full_date-range:
         value: "2026-07/2026-12"
         latex_string: dptwofulldaterange
       date:
-        value: "2026-12"
+        value: "2026-12-15"
         latex_string: dptwodate
-      color: TLOrange3
       science_visit_start_date:
         value: "2025-04-24"
         latex_string: dptwostartdate
@@ -144,9 +149,9 @@ datarelease:
       date:
         value: "2028-07/2028-11"
         latex_string: dronedate
-      color: TLOrange3
       description: "LSST Year 1 Data"
       date_label: "LSST start + 2 yrs"
+      early_science: false
       #                    Raw  PVI  DCI  DIF  TCI  SRC  OBJ  FRC  SHR  DIA  SSP  MPC
       data_product_status: [T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T,   T]
 
@@ -159,7 +164,8 @@ prompt:
     date:
       value: "2026-02-24"
       latex_string: rubinfirstalerts
-    color: RubinDarkTeal
+    delivered: true
+    section_ref: "ssec:ap"
     description: "Rubin First Alerts Data"
 
   - key: NPC
@@ -167,12 +173,14 @@ prompt:
     date:
       value: "2027-01/2027-03"
       latex_string: npcdate
-    color: TLOrange3
+    section_ref:
+      - "ssec:prompt-images"
+      - "ssec:prompt-direct-catalogs"
 
   - key: PPDB
     name: "PPDB Release"
     date:
       value: "2026-11-30"
       latex_string: ppdbdate
-    color: TLOrange3
+    section_ref: "ssec:ppdb"
     description: "Prompt Products database"

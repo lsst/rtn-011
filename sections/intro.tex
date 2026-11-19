@@ -11,11 +11,13 @@ The following terms and their definitions are used in this document:
 \begin{itemize}
 
 \item\textbf{Commissioning:} The Rubin Construction Commissioning period, from LSSTComCam First Photon on 2024-10-24 through the end of Construction, \cstrcompdate.
-\item\textbf{Early Operations:} The period from the start of Rubin Operations, \opsstartdate,  through the first Data Release, DR1.
+\item\textbf{Early Operations:} The period from the start of Rubin Operations, \opsstartdate, through, but not including the first Data Release, DR1.
 
 \item\textbf{Rubin Operations Early Optimization Phase:} The period from the start of Rubin Operations, \opsstartdate, through the start of the LSST, \lsststartdate.
 
 \item\textbf{Early Science:} Any science enabled by Rubin for its community during the period from the beginning of Commissioning through, but not including DR1.
+
+\item\textbf{Shared-risk:} A mode of access in which data products and services are provided before they have been fully validated, stabilized, or implemented with all envisaged features. Users are encouraged to engage with these products and provide feedback to inform ongoing development, but should expect changes, interruptions, and improvements as the system matures toward full operational readiness at DR1.
 \end{itemize}
 
 \subsection{Motivation for an Early Science Program} 
@@ -43,11 +45,26 @@ Before the Early Science Program was conceived, the project planned at least two
 The first of these, DR1, was to be based on the first six months of survey data and served as the original early preview of LSST data.
 The Early Science Program, introduced later as a much more comprehensive plan for releasing early data, initially incorporated this six-month DR1.
 However, its schedule overlapped with that of DP2, and two Data Release Processing campaigns cannot be run concurrently.
-The six-month DR1 was therefore cancelled and DR1 is now defined as the first data release based on a full year of LSST data.
-Because it is a full data release rather than a preview, it falls outside the scope of the Early Science Program (\S\ref{ssec:dr1}).
-DR1 will be led by the Rubin Operations Data Release Board, and its planning and contents will be documented from there.
+The six-month DR1 was therefore deprecated and DR1 is now defined as the first data release based on a full year of LSST data.
+As a full data release rather than a preview, DR1 falls outside the scope of the Early Science Program (\S\ref{ssec:elements}).
+Delivery is expected approximately 24 months after the start of the LSST survey (mid-2028) and will be planned and documented by the Rubin Data Release Board (see \S\ref{ssec:dr1}).
 
-%
+\subsection{Program Delivery Schedule}
+\label{ssec:schedule}
+Table~\ref{tab:early-science-milestones} summarizes the planned and delivered releases of the Early Science Program.
+Completed releases show exact dates; planned releases show a committed delivery date; forecast releases show a maximum--minimum date range reflecting current best estimates that may change as uncertainties are resolved.
+
+\textbf{All early data products and services provided prior to DR1 are offered on a shared-risk basis.}
+
+\input{tables/early_science_status}
+
+Rubin will endeavor to provide at least 4 weeks advance notice before any new release goes live.
+Given the rapidly evolving nature of the commissioning and Early Science periods, and the associated uncertainties, it may not always be possible to provide four weeks' notice; however, we will endeavor to do so whenever possible.
+
+Alert stream volume will continue to ramp up after the initial release; no further announcements will be made for subsequent increases.
+
+\tabref{tab:early-science-milestones} will be updated in future versions of this document as the program progresses.
+
 \subsection{Transition to Operations and Early Science}
 \label{ssec:transition}
 The Rubin Construction Project was declared substantially complete on \cstrcompdate, marking the delivery of an integrated system capable of capturing, transferring, and processing science-grade images consistent with the Rubin/LSST Science Requirements Document (SRD; \citealt[][]{LPM-17}).
@@ -56,11 +73,6 @@ Commissioning demonstrated that the as-built system could meet the LSST science 
 
 Data collected during Commissioning (\S~\ref{sec:commissioning}) and Early Operations provide the foundation for Early Science data products, offering the community an exceptional early dataset as the survey begins systematic sky coverage leading up to Data Release 1 (DR1).
 While the Operations team aims to deliver the broadest feasible range of early data products and services, the contents and timelines for Data Previews, the early Alert Stream, and supporting services remain subject to change and reflect the best available estimates at the time of publication.
-
-Rubin will endeavor to provide at least 4 weeks advance notice before a data release or new data access service goes live.
-For alerts, as this is an ongoing program, alerts will continue to ramp up following initial release, and no new announcements will be made for each subsequent increase.
-Given the rapidly evolving nature of the commissioning and Early Science periods, and the associated uncertainties, it may not always be possible to provide four weeks' notice; however, we will endeavor to do so whenever possible.
-
 
 \subsection{Factors Impacting the Early Science Program}
 \label{ssec:impact}
